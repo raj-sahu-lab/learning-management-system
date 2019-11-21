@@ -1,0 +1,91 @@
+<main class="default-transition" style="opacity: 1;">
+  <div class="container-fluid disable-text-selection">
+    <div class="row p-2">
+      <div class="col-12 mb-3 p-0">
+        <div class="row m-0 p-0">
+          <div class="col-md-12 col-lg-4 col-sm-12 p-0">
+            <h6>
+              <a class="text-muted cursor" (click)="goBack()"><i class="iconsminds-up"></i> Back</a>
+            </h6>
+          </div>
+          <div class="col-md-12 col-lg-4 col-sm-12 p-0">
+            <h6 class="cent headerSemiBold">
+              {{liveClass?.title}}
+            </h6>
+          </div>
+        </div>
+      </div>
+      <div class="card w-100">
+        <a class="pointer" (click)="navigateToZoom(liveClass)">
+          <!-- <a class="pointer" href="{{liveClass?.zoomResponse?.start_url}}" target="_blank"> -->
+          <!-- <a class="pointer" href="https://bluejeans.com/142318872/webrtc" target="_blank"> -->
+          <img class="w-100 im-lv-cls" src="{{liveClass?.image}}">
+          <span class="play"  *ngIf="!showtimeZoneBtn">
+            <span></span>
+          </span>
+          <button *ngIf="showtimeZoneBtn" type="submit" class="btn btn-secondary default headerSemiBold updateTimezone" (click)="updateTimeZone()" > Update Timezone</button> 
+        </a>
+
+        <div class="card-body">
+          <p class="text-muted labelTitle">Workshop and Expert Tallk</p>
+          <p class="labelTitle">{{liveClass?.agenda}}</p>
+          <p class="labelTitle"><i class="coral simple-icon-clock font-weight-bold">
+              {{liveClass?.scheduleTime | date:'short':timeOffSet}}</i></p>
+          <a class="pointer" href="{{liveClass?.zoomResponse?.start_url}}" target="_blank">
+            <button
+              *ngIf="(timeNow > liveClass?.formatedTime) && (liveClass?.formatedTime > (timeNow-60000*liveClass?.duration))"
+              type="button" class="btn btn-secondary default headerSemiBold mb-4">Joine Class</button>
+          </a>
+          <div class="separator mb-3"></div>
+
+          <div class="mb-4" >
+
+            <span class="text-muted labelTitle">Live on {{liveClass?.scheduleTime | date:'medium':timeOffSet}}</span>
+
+            <p class="mb-0 float-right">
+              <img src="../../../assets/img/profile-pic-l-10.jpg"
+                class="rounded-circle list-thumbnail xsmall imageSubscriber">
+              <img src="../../../assets/img/profile-pic-l-11.jpg"
+                class="rounded-circle list-thumbnail xsmall btn imageSubscriber">
+              <img src="../../../assets/img/profile-pic-l-9.jpg"
+                class="rounded-circle list-thumbnail xsmall btn imageSubscriber">
+              <span class="ml-2 mt-2 labelTitle">34 +</span>
+            </p>
+          </div>
+          <footer class="text-center d-none">
+            <button data-toggle="modal" data-target="#askQuestion" type="button"
+              class="btn btn-secondary default headerSemiBold">Ask Questions</button>
+          </footer>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>
+<div class="modal fade modal-top" id="askQuestion" tabindex="-1" role="dialog" aria-labelledby="askQuestion"
+  aria-hidden="true" style="display: none;">
+  <div class="modal-dialog " role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h6 class="headerBold">Ask your questions</h6>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+            aria-hidden="true">×</span></button>
+      </div>
+      <div class="modal-body">
+        <form class="needs-validation tooltip-label-right">
+          <div class="form-group">
+            <label class="labelTitle">Question title</label>
+            <input type="text" class="form-control labelTitle">
+          </div>
+
+          <div class="form-group position-relative error-l-50">
+            <label class="labelTitle">Description</label>
+            <textarea class="form-control labelTitle" rows="4" required=""></textarea>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary default float-right"> Submit </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

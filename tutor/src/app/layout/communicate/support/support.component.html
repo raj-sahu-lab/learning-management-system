@@ -1,0 +1,196 @@
+<div class="container">
+
+  <div class="row clearfix">
+    <div class="col-lg-12">
+      <div class="card">
+        <div class="body block-header">
+          <div class="row">
+            <div class="col-lg-6 col-md-8 col-sm-12">
+              <h2 class="headerSemiBold">Manage Support Request</h2>
+              <ul class="breadcrumb p-l-0 p-b-0 labelTitle">
+                <li class="breadcrumb-item">
+                  <a class="linkColor" routerLink="/" routerLinkActive="active"><i class="icon-home"></i></a>
+                </li>
+                <li class="breadcrumb-item active labelTitle">Support Request</li>
+              </ul>
+            </div>
+            <div class="col-lg-6 col-md-4 col-sm-12">
+              <a routerLink="/" routerLinkActive="active" class="btn btn-secondary headerSemiBold float-right">
+                <i class="icon-arrow-left"></i> BACK
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row clearfix">
+
+    <div class="col-lg-6 col-md-6 col-sm-12" *ngFor="let supportRequest of supportRequestList; let i=index">
+      <div class="card">
+        <div class="body">
+
+          <div class="row">
+            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+              <!-- <p class="text-muted">#{{supportRequest.id}}</p> -->
+              <h6 class="headerSemiBold">
+                  #{{supportRequest.id}}
+                  <span class="text-info linkColor" *ngIf="supportRequest.unreadCount!=0">( Unread Message {{supportRequest.unreadCount}} )</span>
+              </h6>
+            </div>
+            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+              
+              <div (click)="viewChat(i)" class="btn btn-primary headerSemiBold float-right" *ngIf="supportRequest.authorityId != null">
+                {{supportRequest.currentStatus == 3 ? 'View Chat' : 'Chat Now'}}
+              </div>
+
+              <div (click)="showDescription(supportRequest.id,supportRequest.branch.id)" class="btn btn-default headerSemiBold float-right" *ngIf="userType == 1">Ticket Owner</div>
+
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+              <h6 class="headerSemiBold" style="height: 47px;overflow: hidden;text-align: justify;">{{supportRequest.name}}</h6>
+            </div>
+          </div>
+
+          <div class="row m-t-15">
+            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+              <h6 class="headerSemiBold">Type</h6>
+
+              <p class="text-muted" *ngIf="supportRequest.type == 1">Subject</p>
+              <p class="text-muted" *ngIf="supportRequest.type == 2">Topic</p>
+              <p class="text-muted" *ngIf="supportRequest.type == 3">Content</p>
+              <p class="text-muted" *ngIf="supportRequest.type == 4">Test</p>
+              <p class="text-muted" *ngIf="supportRequest.type == 5">Practice</p>
+              <p class="text-muted" *ngIf="supportRequest.type == 6">PDF</p>
+              <p class="text-muted" *ngIf="supportRequest.type == 7">PPT</p>
+              <p class="text-muted" *ngIf="supportRequest.type == 8">Audio</p>
+              <p class="text-muted" *ngIf="supportRequest.type == 9">Video</p>
+
+            </div>
+            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+              <h6 class="headerSemiBold">Course</h6>
+              <p class="text-muted">{{supportRequest?.detail?.title}}</p>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+              <h6 class="headerSemiBold">Query</h6>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+              <p class="text-muted" style="height: 50px;overflow: hidden;text-align: justify;">{{supportRequest.description}}</p>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+              <h6 class="headerSemiBold">Student</h6>
+              <p class="text-muted">
+                {{supportRequest.student.firstName}} {{supportRequest.student.lastLame}}
+                ( +{{supportRequest.student.countrycode}} {{supportRequest.student.phone}} )
+            </p>
+            </div>
+
+            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+              <h6 class="headerSemiBold">Branch</h6>
+              <p class="text-muted">{{supportRequest.branch.name}}</p>
+            </div>
+
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <div class="col-lg-12 col-md-12 col-sm-12" *ngIf="supportRequestList.length == 0">
+      <div class="card">
+        <div class="body">
+
+          <div class="row text-center">
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+              <img src="{{loginUser.userType == 1 ? loginUser.account_image : loginUser.image}}" alt="{{loginUser.userType == 1 ? loginUser.account_title : loginUser.name}}" style="max-height: 100px;"/>
+              <h5>You will see all the support requests listed here once it is raised from any student.</h5>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+</div>
+
+
+<!--Modal Popup -->
+<div class="modal" [style.display]="tutorList ? 'block' : 'none'">
+  <div class="modal-dialog">
+    <div class="modal-content">
+
+      <div class="modal-header">
+        <h6 class="headerBold">Ticket Owner</h6>
+      </div>
+
+      <div class="modal-body">
+
+        <div class="body">
+          <div class="demo-masked-input labelTitle">
+            <div class="row clearfix">
+             
+              <div class="col-lg-12 col-md-12" *ngIf="assignedTutor == null">Select Educator
+                <div class="input-group">
+                  <select class="form-control" [(ngModel)]="tutorId">
+                    <option [ngValue]="undefined" disabled>Select Educator</option>
+                    <option *ngFor="let tutor of tutorList" [ngValue]="tutor.id">
+                      {{tutor.name}}
+                    </option>
+                  </select>
+                </div>
+              </div>
+
+              <div class="col-lg-12 col-md-12" *ngIf="assignedTutor != null">
+                  <div class="input-group">
+                      <table class="table table-bordered table-striped table-hover">
+                          <thead class="headerSemiBold">
+                            <tr>
+                              <th>Name</th>
+                              <th>Phone</th>
+                              <th>Email</th>
+                            </tr>
+                          </thead>
+                          <tbody class="labelTitle">
+                            <tr>
+                              <td>{{assignedTutor.name}}</td>
+                              <td>{{assignedTutor.countryCode}} {{assignedTutor.phone}}</td>
+                              <td>{{assignedTutor.email}}</td>
+                            </tr>
+                          </tbody>
+                        </table>
+                  </div>
+                </div>
+
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="modal-footer">
+        <input type="button" class="btn btn-primary headerSemiBold float-right"
+          value="SUBMIT" style="margin:0px;" (click)="submitButtonClick();" *ngIf="assignedTutor == null">
+
+        <button type="button" class="btn btn-secondary headerSemiBold" data-dismiss="modal"
+          (click)="hideDescription()">Close</button>
+      </div>
+
+    </div>
+  </div>
+</div>
+<!--Modal Popup -->

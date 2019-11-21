@@ -1,0 +1,272 @@
+<div class="container">
+	<div class="row clearfix">
+		<div class="col-lg-12">
+			<div class="card">
+				<div class="body block-header">
+					<div class="row">
+						<div class="col-lg-6 col-md-8 col-sm-12">
+							<h2 class="headerSemiBold">Manage Practice</h2>
+							
+							<ul class="breadcrumb p-l-0 p-b-0 labelTitle">
+								<li class="breadcrumb-item">
+								<a class="linkColor" routerLink="/" routerLinkActive="active"><i class="icon-home"></i></a>
+								</li>
+								<li class="breadcrumb-item active labelTitle">Practice</li>
+							</ul>
+						</div>
+						<div class="col-lg-6 col-md-4 col-sm-12">
+							<a routerLink="/" routerLinkActive="active" class="btn btn-secondary headerSemiBold float-right">
+								<i class="icon-arrow-left"></i> BACK
+							</a>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="row clearfix">
+		<div class="col-sm-12 col-md-12 col-lg-12">
+			<div class="card">
+
+				<div class="header headerSemiBold">
+					<h2><span class="linkColor">Manage</span> Practice</h2>
+				</div>
+				
+				<div class="body">
+					<div class="demo-masked-input labelTitle">
+						<div class="row clearfix">
+							<div class="col-lg-3 col-md-3">Select Course Bundle
+								<div class="input-group">
+									<select class="form-control" [(ngModel)]="subjectId" (change)="subjectChanged()">
+										<option [ngValue]="undefined" disabled>Select Course Bundle</option>
+										<option *ngFor="let subject of subjectList" [ngValue]="subject.id">
+											{{subject.title}}
+										</option>
+									</select>
+								</div>
+							</div>
+							<div class="col-lg-3 col-md-3">Select Module
+								<div class="input-group">
+									<select class="form-control" [(ngModel)]="topicId" (change)="topicChanged()">
+										<option [ngValue]="undefined" disabled>Select Module</option>
+										<option *ngFor="let topic of topicsList" [ngValue]="topic.id">
+											{{topic.title}}
+										</option>
+									</select>
+								</div>
+							</div>
+							<div class="col-lg-3 col-md-3">Select Lecture Content
+								<div class="input-group">
+									<select class="form-control" [(ngModel)]="contentId" (change)="contentChange()">
+										<option [ngValue]="undefined" disabled>Select Content</option>
+										<option *ngFor="let content of contentList" [ngValue]="content.id">
+											{{content.title}}
+										</option>
+									</select>
+								</div>
+							</div>
+							<div class="col-lg-3 col-md-3">Practice Name
+								<div class="input-group">
+									<input type="text" class="form-control" [(ngModel)]="title"
+										placeholder="Enter practice name">
+								</div>
+							</div>
+						</div>
+
+						<div class="row clearfix" *ngFor="let practiceQuestion of practiceQuestionList; let i = index">
+							<div class="col-lg-12 col-md-12">Question
+								<div class="input-group">
+									<input type="text" class="form-control" [(ngModel)]="practiceQuestion.question"
+										placeholder="Enter question">
+
+									<input type="button" class="btn btn-danger float-right" value="-"
+										style="margin:0px;" (click)="removeButtonClick(i);">
+								</div>
+							</div>
+							<div class="col-lg-12 col-md-12">Answer
+								<div class="input-group">
+									<textarea rows="2" class="form-control no-resize"
+										placeholder="Please enter appropriate answer"
+										[(ngModel)]="practiceQuestion.rightanswer"
+										style="border: 1px solid #E3E3E3;border-radius: 10px;"
+										maxlength="200"></textarea>
+								</div>
+							</div>
+						</div>
+
+						<div class="row clearfix">
+							<div class="col-lg-1 col-md-1"><b>&nbsp;</b>
+								<div class="input-group">
+									<input type="button" class="btn btn-warning headerSemiBold float-right" value="Add More"
+										style="margin:0px;" (click)="addButtonClick();">
+								</div>
+							</div>
+							<div class="col-lg-3 col-md-3" *ngIf="isEdit">Status
+								<div class="input-group">
+									<div class="radio inlineblock m-r-20" style="margin-top:10px;">
+										<input type="radio" [(ngModel)]="status" name="status" id="active"
+											class="with-gap" value="0">
+										<label for="active">Active</label>
+									</div>
+									<div class="radio inlineblock" style="margin-top:10px;">
+										<input type="radio" [(ngModel)]="status" name="status" id="inactive"
+											class="with-gap" value="1">
+										<label for="inactive">Inactive</label>
+									</div>
+								</div>
+							</div>
+
+							<div class="col-lg-1 col-md-1"><b>&nbsp;</b>
+								<div class="input-group">
+									<input type="button" class="btn btn-secondary headerSemiBold float-right"
+										value="{{ isEdit ? 'UPDATE' : 'SUBMIT'}}" style="margin:0px;"
+										(click)="submitButtonClick();">
+								</div>
+							</div>
+							<div class="col-lg-1 col-md-1"><b>&nbsp;</b>
+								<div class="input-group">
+									<input type="button" class="btn btn-warning headerSemiBold float-right" *ngIf="isEdit"
+										value="CANCEL" style="margin:0px;" (click)="cancelEditClick();">
+								</div>
+							</div>
+
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="col-sm-12 col-md-12 col-lg-12">
+			<div class="card">
+				<div class="header headerSemiBold">
+					<h2><span class="linkColor">Available</span> Practice</h2>
+					
+					<ul class="header-dropdown">
+						<li class="dropdown">
+							<a href="javascript:void(0);" class="dropdown-toggle linkColor" data-toggle="dropdown" role="button" (click)="dropDownFilter();" aria-haspopup="true" aria-expanded="false">
+								<strong>Manage columns</strong>
+							</a>
+							<ul class="dropdown-menu dropdown-menu-right labelTitle">
+								<li style="padding:10px;">
+									<input type="checkbox" [(ngModel)]="columBranch"> Branch Name<br>
+									
+								  	<input type="checkbox" [(ngModel)]="columTutor"> Educator Name<br>
+				  
+									<input type="checkbox" [(ngModel)]="columSubject"> Bundle Name<br>
+
+									<input type="checkbox" [(ngModel)]="columTopic"> Module Name<br>
+
+									<input type="checkbox" [(ngModel)]="columContent"> Content Header<br>
+
+									<input type="checkbox" [(ngModel)]="columTitle"> Set Name <br>
+
+									<input type="checkbox" [(ngModel)]="columQuestion"> Question <br>
+
+									<input type="checkbox" [(ngModel)]="columStatus"> Status
+
+								</li>
+							</ul>
+						</li>
+					</ul>
+				</div>
+				<div class="body">
+					<div class="table-responsive">
+						<table class="table table-bordered table-striped table-hover dataTable js-exportable">
+							<thead class="headerSemiBold">
+								<tr>
+									<th>#</th>
+									<th>S No</th>
+									<th [ngClass]="(columBranch == false)?'d-none':''">Branch Name</th>
+									<th [ngClass]="(columTutor == false)?'d-none':''">Educator Name</th>
+									<th [ngClass]="(columSubject == false)?'d-none':''">Bundle Name</th>
+									<th [ngClass]="(columTopic == false)?'d-none':''">Module Name</th>
+									<th [ngClass]="(columContent == false)?'d-none':''">Content Header</th>
+									<th [ngClass]="(columTitle == false)?'d-none':''">Practice Name</th>
+									<th [ngClass]="(columQuestion == false)?'d-none':''">Question</th>
+									<th [ngClass]="(columStatus == false)?'d-none':''">Status</th>
+								</tr>
+							</thead>
+							<tbody class="labelTitle">
+								<tr *ngFor="let practice of practiceList;let i=index;">
+									<td>
+										<!--
+										<span class="badge badge-success" title="Update Practice" (click)="editButtonClick(i)">
+											<i class="icon-pencil"></i>
+										</span>
+										-->
+
+										<span class="badge badge-danger" title="Delete Practice"
+											(click)="deleteButtonClick(i)">
+											<i class="icon-trash"></i>
+										</span>
+									</td>
+									<td>{{practiceList.length - i}}</td>
+									<td [ngClass]="(columBranch == false)?'d-none':''">{{practice.subject.tutor.branch.name}}</td>
+									<td [ngClass]="(columTutor == false)?'d-none':''">{{practice.subject.tutor.name}}</td>
+									<td [ngClass]="(columSubject == false)?'d-none':''">{{practice.subject.title}}</td>
+									<td [ngClass]="(columTopic == false)?'d-none':''">{{practice.topic.title}}</td>
+									<td [ngClass]="(columContent == false)?'d-none':''">{{practice.content.title}}</td>
+									<td [ngClass]="(columTitle == false)?'d-none':''">{{practice.title}}</td>
+									<td [ngClass]="(columQuestion == false)?'d-none':''">
+										<span class="badge badge-success" title="Question List"
+											(click)="showDescription(i)">
+											<i class="icon-eye"></i>
+										</span>
+									</td>
+									<td [ngClass]="(columStatus == false)?'d-none':''">
+										<span class="badge badge-{{practice.status==0 ? 'success' : 'warning'}}">
+											{{practice.status==0 ? 'Active' : 'Inactive'}}
+										</span>
+									</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+				</div>
+			</div>
+		</div>
+
+	</div>
+</div>
+
+<!--Modal Popup -->
+
+<div class="modal" [style.display]="selectedDescription ? 'block' : 'none'">
+	<div class="modal-dialog modal-lg">
+		<div class="modal-content">
+
+			<div class="modal-header">
+				<h6 class="headerBold">{{selectedDescription?.title}}</h6>
+			</div>
+
+			<div class="modal-body labelTitle">
+
+				<table class="table table-bordered table-striped table-hover">
+					<thead class="headerSemiBold">
+						<tr>
+							<th>S No</th>
+							<th>Question</th>
+							<th>Answer</th>
+						</tr>
+					</thead>
+					<tbody class="labelTitle">
+						<tr *ngFor="let questionList of selectedDescription?.question_list;let i=index;">
+							<td>{{selectedDescription.question_list.length - i}}</td>
+							<td>{{questionList.question}}</td>
+							<td>{{questionList.answer}}</td>
+						</tr>
+					</tbody>
+				</table>
+
+			</div>
+
+			<div class="modal-footer">
+				<button type="button" class="btn btn-secondary headerSemiBold" data-dismiss="modal"
+					(click)="hideDescription()">Close</button>
+			</div>
+
+		</div>
+	</div>
+</div>
+<!--Modal Popup -->

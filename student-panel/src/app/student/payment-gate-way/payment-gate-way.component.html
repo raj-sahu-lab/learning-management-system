@@ -1,0 +1,12 @@
+<div *ngIf="loading">
+    <img style="height: 50px;" src="./assets/img/icons/loading.gif">
+</div>
+<ngx-paypal *ngIf="payPalPay && !loading" [config]="payPalConfig"></ngx-paypal>
+<div *ngIf="type == 'Stripe'" style="border: 1px solid #d7d7d7;padding: 10px;">
+    <div class="mt-3 mb-3">
+        <ngx-stripe-card [stripe]="stripe" [options]="cardOptions" [elementsOptions]="elementsOptions"></ngx-stripe-card>
+    </div>
+    <div>
+        <button type="submit" [disabled]="clicked" class="btn btn-secondary default headerSemiBold" (click)="stripToken()">Pay {{paymentData?.currency?.sign}} {{paymentData?.amount | number: '1.2'}}</button>
+    </div>
+</div>

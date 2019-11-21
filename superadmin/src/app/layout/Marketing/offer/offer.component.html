@@ -1,0 +1,206 @@
+<div class="container" id="startForm">
+  <div class="row clearfix">
+    <div class="col-lg-12">
+      <div class="card">
+        <div class="body block-header">
+          <div class="row">
+            <div class="col-lg-6 col-md-8 col-sm-12">
+              <h2 class="headerSemiBold">Manage Offer</h2>
+
+              <ul class="breadcrumb p-l-0 p-b-0 labelTitle">
+                <li class="breadcrumb-item">
+                  <a class="linkColor" routerLink="/" routerLinkActive="active"><i class="icon-home"></i></a>
+                </li>
+                <li class="breadcrumb-item active labelTitle">Offer</li>
+              </ul>
+            </div>
+            <div class="col-lg-6 col-md-4 col-sm-12">
+              <a routerLink="/" routerLinkActive="active"
+                class="btn btn-secondary headerSemiBold btn-simple float-right">
+                <i class="icon-arrow-left"></i> BACK
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row clearfix">
+
+    <div class="col-sm-12 col-md-12 col-lg-12">
+      <div class="card">
+
+        <div class="header headerSemiBold">
+          <h2><span class="linkColor">Manage</span> Offer</h2>
+        </div>
+
+        <div class="body">
+          <div class="demo-masked-input labelTitle">
+            <div class="row clearfix">
+
+              <div class="col-lg-3 col-md-3">Plan Duration 
+                <div class="input-group">
+                  <select class="form-control" [(ngModel)]="termId">
+                    <option [ngValue]="undefined" disabled>Select Plan Duration</option>
+                    <option *ngFor="let term of termList" [ngValue]="term.id">
+                      {{term.title}}
+                    </option>
+                  </select>
+                </div>
+              </div>
+              <div class="col-lg-3 col-md-3"> Offer Title
+                <div class="input-group">
+                  <input type="text" class="form-control" [(ngModel)]="title" placeholder="Enter title">
+                </div>
+              </div>
+              <div class="col-lg-3 col-md-3"> Offer Code
+                <div class="input-group">
+                  <input type="text" class="form-control" [(ngModel)]="code" placeholder="Enter code" minlength="5"
+                    maxlength="8">
+                </div>
+              </div>
+              <div class="col-lg-3 col-md-3"> No of Users
+                <div class="input-group">
+                  <input type="number" class="form-control" [(ngModel)]="noOfUsers">
+                </div>
+              </div>
+              <div class="col-lg-3 col-md-3"> Discount (%)
+                <div class="input-group">
+                  <input type="number" class="form-control" [(ngModel)]="discount">
+                </div>
+              </div>
+              <div class="col-lg-3 col-md-3"> Max Discount Amount
+                <div class="input-group">
+                  <input type="number" class="form-control" [(ngModel)]="maxDiscountAmount">
+                </div>
+              </div>
+              <div class="col-lg-3 col-md-3"> Max Discount Amount In $
+                <div class="input-group">
+                  <input type="number" class="form-control" [(ngModel)]="maxDollerAmount">
+                </div>
+              </div>
+              <div class="col-lg-3 col-md-3"> Start Date
+                <div class="input-group">
+                  <input type="date" class="form-control" [(ngModel)]="sDate">
+                </div>
+              </div>
+              <div class="col-lg-3 col-md-3"> End Date
+                <div class="input-group">
+                  <input type="date" class="form-control" [(ngModel)]="eDate">
+                </div>
+              </div>
+              <div class="col-lg-3 col-md-3" *ngIf="isEdit"> Status
+                <div class="input-group">
+                  <div class="radio inlineblock m-r-20" style="margin-top:10px;">
+                    <input type="radio" [(ngModel)]="status" name="status" id="active" class="with-gap" value="0">
+                    <label for="active">Active</label>
+                  </div>
+                  <div class="radio inlineblock" style="margin-top:10px;">
+                    <input type="radio" [(ngModel)]="status" name="status" id="inactive" class="with-gap" value="1">
+                    <label for="inactive">Inactive</label>
+                  </div>
+                </div>
+              </div>
+              <div class="col-lg-1 col-md-1"><b>&nbsp;</b>
+                <div class="input-group">
+                  <input type="button" class="btn btn-secondary headerSemiBold float-right" value="{{ isEdit ? 'UPDATE' : 'SUBMIT'}}"
+                    style="margin:0px;" (click)="submitButtonClick();">
+                </div>
+              </div>
+              <div class="col-lg-1 col-md-1"><b>&nbsp;</b>
+                <div class="input-group">
+                  <input type="button" class="btn btn-warning headerSemiBold float-right" *ngIf="isEdit" value="CANCEL"
+                    style="margin:0px;" (click)="cancelEditClick();">
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-sm-12 col-md-12 col-lg-12">
+      <div class="card">
+        <div class="header headerSemiBold">
+          <h2><span class="linkColor">Available</span> Offers</h2>
+
+          <ul class="header-dropdown">
+            <li class="dropdown">
+              <a href="javascript:void(0);" class="dropdown-toggle linkColor" data-toggle="dropdown" role="button"
+                aria-haspopup="true" aria-expanded="false"> Manage Column
+              </a>
+              <ul class="dropdown-menu dropdown-menu-right labelTitle">
+                <li style="padding:10px;">
+                  <input type="checkbox" [(ngModel)]="columTerm"> Plan Duration <br>
+                  <input type="checkbox" [(ngModel)]="columTitle"> Offer Title <br>
+                  <input type="checkbox" [(ngModel)]="columCode"> Offer Code <br>
+                  <input type="checkbox" [(ngModel)]="columUsers"> No of Users <br>
+                  <input type="checkbox" [(ngModel)]="columDiscount"> Discount <br>
+                  <input type="checkbox" [(ngModel)]="columMaxAmount"> Max Discount Amount <br>
+                  <input type="checkbox" [(ngModel)]="columMaxDollerAmount"> Max Discount Amount ($)<br>
+                  <input type="checkbox" [(ngModel)]="columStartDate"> Start Date <br>
+                  <input type="checkbox" [(ngModel)]="columEndDate"> End Date <br>
+                  <input type="checkbox" [(ngModel)]="columStatus"> Status
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+        <div class="body">
+          <div class="table-responsive">
+            <table class="table table-bordered table-striped table-hover dataTable js-exportable w-100">
+              <thead class="headerSemiBold">
+                <tr>
+                  <th>#</th>
+                  <th>No</th>
+                  <th *ngIf="columTerm">Plan Duration</th>
+                  <th *ngIf="columTitle">Offer Title</th>
+                  <th *ngIf="columCode">Offer Code</th>
+                  <th *ngIf="columUsers">No of Users</th>
+                  <th *ngIf="columDiscount">Discount (%)</th>
+                  <th *ngIf="columMaxAmount">Max Discount Amount</th>
+                  <th *ngIf="columMaxDollerAmount">Max Discount Amount $</th>
+                  <th *ngIf="columStartDate">Start Date</th>
+                  <th *ngIf="columEndDate">End Date</th>
+                  <th *ngIf="columStatus">Status</th>
+                </tr>
+              </thead>
+              <tbody class="labelTitle">
+                <tr *ngFor="let offer of offerList;let i=index;">
+                  <td>
+                    <span class="badge badge-success" title="Update Learner" (click)="editButtonClick(offer.id)">
+                      <i class="icon-pencil"></i>
+                    </span>
+                    
+                    <span class="badge badge-danger" title="Delete Learner" (click)="deleteButtonClick(offer.id)">
+                      <i class="icon-trash"></i>
+                    </span>
+                  </td>
+                  <td>{{offerList.length - i}}</td>
+                  <td *ngIf="columTerm">{{offer.term.title}}</td>
+                  <td *ngIf="columTitle">{{offer.title}}</td>
+                  <td *ngIf="columCode">{{offer.code}}</td>
+                  <td *ngIf="columUsers">{{offer.users}}</td>
+                  <td *ngIf="columDiscount">{{offer.discount}}</td>
+                  <td *ngIf="columMaxAmount">{{offer.maxAmount}}</td>
+                  <td *ngIf="columMaxDollerAmount">{{offer.maxDollerAmount}}</td>
+                  <td *ngIf="columStartDate">{{offer.startDate}}</td>
+                  <td *ngIf="columEndDate">{{offer.endDate}}</td>
+                  <td *ngIf="columStatus">
+                    <span class="badge badge-{{offer.status==0 ? 'success' : 'warning'}}">
+                      {{offer.status==0 ? 'Active' : 'Inactive'}}
+                    </span>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+  </div>
+</div>

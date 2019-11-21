@@ -1,0 +1,67 @@
+<!-- <main class="default-transition" style="opacity: 1;">
+  <div class="container-fluid disable-text-selection"> -->
+      <div class="row">
+          <div class="col-12">
+
+              <div class="row">
+                  <div class="col-xs-12 col-lg-12 col-12 mb-3">
+                      <h6 class="headerSemiBold">Test Results</h6>
+                      <div class="separator mb-2"></div>
+                    </div>
+              </div>
+
+              <div class="row mb-4" *ngIf="!results?.length">
+                  <div class="col-12 col-sm-12 col-md-12 mx-auto my-auto">
+                      <div class="card index-card">
+                          <div class="card-body text-center form-side">
+                              <p class="mb-3 text-center">
+                                  <img *ngIf="instituteLogo" src="{{instituteLogo}}"
+                                      class="img-thumbnail border-0 list-thumbnail align-self-center xsmall">
+                                  <img *ngIf="!instituteLogo" src="../../../assets/img/favicon.png"
+                                      class="img-thumbnail border-0 rounded-circle list-thumbnail align-self-center xsmall">
+                              </p>
+                              <h6 class="text-muted headerSemiBold">No test taken yet</h6>
+                              <p class="card-title labelTitle">Start taking the test to know how much you know</p>
+
+                          </div>
+                      </div>
+                  </div>
+              </div>
+
+              <div class="row mb-4">
+
+                  <div class="col-md-6 col-sm-6 col-lg-4 col-12" *ngFor="let testResult of results">
+                      <div class="card shadow mb-4 pointer" (click)="requestNavigate(testResult)">
+                          <div class="card-body m-180">
+                              <p class="mb-3 h6 headerSemiBold">
+                                  {{testResult?.series.title | slice:0:65}}
+                                  <span *ngIf="testResult?.series?.title.length>=65">...</span>
+                              </p>
+                              <div class="btn-link mb-2">
+                                  <p>
+                                      <span class="labelTitle text-muted">
+                                          <img src="../../../assets/img/icons/comm.png" style="height:15px;"> 
+                                          {{testResult.totalQuestions}} Questions | {{testResult.series.timed? (testResult.series.duration? testResult.series.duration + ' Min' : 'Timed Test') : ' Untimed Test' }}
+                                      </span>
+                                  </p>
+                                  
+                              </div>
+                              <div class="btn-link h6">
+                                  <p class="mb-0 green">
+                                      <span *ngIf="testResult?.series?.marked" class="mt-1 h6 headerSemiBold">
+                                          Your score {{testResult?.totalMarks | number : '1.0-2'}} / {{testResult?.series?.totalMarks}}
+                                      </span>
+                                      <span *ngIf="!testResult?.series?.marked" class="mt-1 h6 headerSemiBold">
+                                        Unmarked Test
+                                    </span>
+                                  </p>
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+
+              </div>
+          </div>
+      </div>
+  <!-- </div>
+</main> -->

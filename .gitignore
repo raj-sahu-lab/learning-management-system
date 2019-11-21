@@ -1,0 +1,22 @@
+# OS files
+.DS_Store
+Thumbs.db
+
+# Dependencies
+node_modules/
+
+# Build artifacts
+dist/
+.angular/
+
+# IDE
+.vscode/
+.idea/
+
+# Pitch decks (contain company info)
+*.ppsx
+*.pptx
+pitchdeck.pdf
+
+# Firebase keys
+*firebase-adminsdk*.json

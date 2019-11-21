@@ -1,0 +1,46 @@
+@media (max-width: 767px) {
+    .navbar .search {
+        width: 100px;
+        height: auto;
+    }
+}
+
+.tutor-selected{
+    color: white;
+    background-color: #007bff;
+}
+
+.srch{
+    padding: 10px;
+    margin-left: 8px;
+    width: 95%;
+    margin-bottom: 5px;
+}
+
+.prof{
+    height: 40px;
+    object-fit: cover;
+}
+
+.labelBell{
+    padding-right: 25px;
+}
+
+.labelTitle{
+    padding-right: 15px;
+}
+
+@media (min-width : 321px) and (max-width : 420px){
+    .mar-inst{
+        margin-left : 10px;
+    }
+    
+}
+@media screen and (max-width : 320px){
+    .mar-inst{
+        margin-left : 0px;
+    }
+    .mar-img-lf-0{
+        margin-left: 0px !important;
+    }
+}

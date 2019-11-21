@@ -1,0 +1,105 @@
+<div class="container">
+	<div class="row clearfix">
+		<div class="col-lg-12">
+			<div class="card">
+				<div class="body block-header">
+					<div class="row">
+						<div class="col-lg-6 col-md-8 col-sm-12">
+							<h2 class="headerSemiBold">Manage Bundles</h2>
+							<ul class="breadcrumb p-l-0 p-b-0 labelTitle">
+								<li class="breadcrumb-item">
+									<a class="linkColor" routerLink="/" routerLinkActive="active"><i
+											class="icon-home"></i></a>
+								</li>
+								<li class="breadcrumb-item active labelTitle">Bundles</li>
+							</ul>
+						</div>
+						<div class="col-lg-6 col-md-4 col-sm-12">
+							<a routerLink="/" routerLinkActive="active"
+								class="btn btn-secondary headerSemiBold float-right">
+								<i class="icon-arrow-left"></i> BACK
+							</a>
+						</div>
+
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="alert alert-warning" role="alert">
+		<div class="container" style="font-size: 14px;color:black;">
+			Please start from questions to build repository of questions. Once questions are added, you can pick
+			multiple questions to form a test. Set will allow you to sell multiple tests as a series. In bundle section
+			you can add multiple sets to club it and define pricing and validity to sell it in your ecommerce website
+			and mobile apps.
+		</div>
+	</div>
+
+	<div class="row clearfix">
+		<div class="col-lg-3 col-md-6">
+			<div class="card l-pink">
+				<a class="labelTitle" routerLink="/question">
+					<div class="body">
+						<h4 class="welcomeFont m-t-0 m-b-0">{{questionCount}}</h4>
+						<span class="m-b-0">No of questions </span>
+
+						<span tooltip="Click to add questions." placement="top">
+							<i class="icon-info"></i>
+						</span>
+						
+						<span class="m-b-0 float-right">Click here <i class=" icon-arrow-right"></i></span>
+					</div>
+				</a>
+			</div>
+		</div>
+		<div class="col-lg-3 col-md-6">
+			<div class="card l-blue">
+				<a class="labelTitle" routerLink="/series">
+					<div class="body">
+						<h4 class="welcomeFont m-t-0 m-b-0">{{seriesCount}}</h4>
+						<span class="m-b-0">No of tests </span>
+
+						<span tooltip="Click to create test" placement="top">
+							<i class="icon-info"></i>
+						</span>
+
+						<span class="m-b-0 float-right">Click here <i class=" icon-arrow-right"></i></span>
+					</div>
+				</a>
+			</div>
+		</div>
+		<div class="col-lg-3 col-md-6">
+			<div class="card l-seagreen">
+				<a class="labelTitle" routerLink="/set">
+					<div class="body">
+						<h4 class="welcomeFont m-t-0 m-b-0">{{setCount}}</h4>
+						<span class="m-b-0">No of sets/series </span>
+
+						<span tooltip="Click to make sets." placement="top">
+							<i class="icon-info"></i>
+						</span>
+
+						<span class="m-b-0 float-right">Click here <i class=" icon-arrow-right"></i></span>
+					</div>
+				</a>
+			</div>
+		</div>
+		<div class="col-lg-3 col-md-6">
+			<div class="card l-parpl">
+				<a class="labelTitle" routerLink="/bundle">
+					<div class="body">
+						<h4 class="welcomeFont m-t-0 m-b-0">{{bundleCount}}</h4>
+						<span class="m-b-0">No of bundles </span>
+
+						<span tooltip="Click to make bundles." placement="top">
+							<i class="icon-info"></i>
+						</span>
+
+						<span class="m-b-0 float-right">Click here <i class=" icon-arrow-right"></i></span>
+					</div>
+				</a>
+			</div>
+		</div>
+	</div>
+</div>

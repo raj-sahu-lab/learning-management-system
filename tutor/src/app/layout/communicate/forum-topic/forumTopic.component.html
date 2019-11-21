@@ -1,0 +1,222 @@
+<div class="container">
+
+  <div class="row clearfix">
+    <div class="col-lg-12">
+      <div class="card">
+        <div class="body block-header">
+          <div class="row">
+            <div class="col-lg-6 col-md-8 col-sm-12">
+              <h2 class="headerSemiBold">Manage Forum Topic</h2>
+              <ul class="breadcrumb p-l-0 p-b-0 labelTitle">
+                <li class="breadcrumb-item">
+                  <a class="linkColor" routerLink="/" routerLinkActive="active"><i class="icon-home"></i></a>
+                </li>
+                <li class="breadcrumb-item active labelTitle">Forum Topic</li>
+              </ul>
+            </div>
+            <div class="col-lg-6 col-md-4 col-sm-12">
+              <a routerLink="/forum" routerLinkActive="active" class="btn btn-secondary headerSemiBold float-right">
+                <i class="icon-arrow-left"></i> BACK
+              </a>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row clearfix">
+    <div class="col-sm-12 col-md-12 col-lg-12">
+      <div class="card">
+
+        <div class="header headerSemiBold">
+          <h2><span class="linkColor">Manage</span> Forum Topic</h2>
+        </div>
+
+        <div class="body">
+          <div class="demo-masked-input labelTitle">
+            <div class="row clearfix">
+              <div class="col-lg-4 col-md-4">Forum Category
+                <div class="input-group">
+                  <select class="form-control" [(ngModel)]="categoryId" (change)="categoryChanged()">
+                    <option [ngValue]="undefined" disabled>Select Category</option>
+                    <option *ngFor="let category of forumList" [ngValue]="category.id">
+                      {{category.title}}
+                    </option>
+                  </select>
+                </div>
+              </div>
+              <div class="col-lg-4 col-md-4">Forum Subject
+                <div class="input-group">
+                  <select class="form-control" [(ngModel)]="subjectId">
+                    <option [ngValue]="undefined" disabled>Select Subject</option>
+                    <option *ngFor="let subject of subjectList" [ngValue]="subject.id">
+                      {{subject.title}}
+                    </option>
+                  </select>
+                </div>
+              </div>
+              <div class="col-lg-4 col-md-4">Forum Topic
+                <div class="input-group">
+                  <input type="text" class="form-control" [(ngModel)]="title" placeholder="Enter forum topic title">
+                </div>
+              </div>
+              <div class="col-lg-12 col-md-12">Description
+                <div class="input-group">
+                  <textarea rows="6" class="form-control no-resize" [(ngModel)]="description"
+                    style="border: 1px solid #E3E3E3;border-radius: 10px;"></textarea>
+                </div>
+              </div>
+            </div>
+            <div class="row clearfix">
+
+              <div class="col-lg-3 col-md-3" *ngIf="isEdit">Status
+                <div class="input-group">
+                  <div class="radio inlineblock m-r-20" style="margin-top:10px;">
+                    <input type="radio" [(ngModel)]="status" name="status" id="active" class="with-gap" value="0">
+                    <label for="active">Active</label>
+                  </div>
+                  <div class="radio inlineblock" style="margin-top:10px;">
+                    <input type="radio" [(ngModel)]="status" name="status" id="inactive" class="with-gap" value="1">
+                    <label for="inactive">Inactive</label>
+                  </div>
+                </div>
+              </div>
+
+              <div class="col-lg-1 col-md-1"><b>&nbsp;</b>
+                <div class="input-group">
+                  <input type="button" class="btn btn-secondary headerSemiBold float-right"
+                    value="{{ isEdit ? 'UPDATE' : 'SUBMIT'}}" style="margin:0px;" (click)="submitButtonClick();">
+                </div>
+              </div>
+              <div class="col-lg-1 col-md-1"><b>&nbsp;</b>
+                <div class="input-group">
+                  <input type="button" class="btn btn-warning headerSemiBold float-right" *ngIf="isEdit" value="CANCEL"
+                    style="margin:0px;" (click)="cancelEditClick();">
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-sm-12 col-md-12 col-lg-12">
+      <div class="card">
+
+        <div class="header headerSemiBold">
+          <div class="row clearfix">
+
+            <div class="col-sm-6 col-md-6 col-lg-6">
+
+              <h2><span class="linkColor">Available</span> Forum Topic</h2>
+
+            </div>
+
+            <div class="col-sm-6 col-md-6 col-lg-6">
+
+              <ul class="header-dropdown" style="top: 0px;">
+
+                <li [ngClass]="filter ? 'dropdown show' : 'dropdown'">
+
+                  <a href="javascript:void(0);" class="dropdown-toggle mr-4 linkColor" data-toggle="dropdown"
+                    role="button" (click)="dropDownFilter();" aria-haspopup="true" aria-expanded="false">
+                    Manage columns
+                  </a>
+
+                  <ul class="dropdown-menu dropdown-menu-right labelTitle mangeColumn">
+
+                    <li class="p-2">
+                      <input type="checkbox" data-target="2" [(ngModel)]="columCategory"><span class="pl-2">Category</span>  <br>
+                      <input type="checkbox" data-target="3" [(ngModel)]="columSubject"><span class="pl-2">Subject</span>  <br>
+                      <input type="checkbox" data-target="4" [(ngModel)]="columTopic"><span class="pl-2">Topic</span>  <br>
+                      <input type="checkbox" data-target="5" [(ngModel)]="columDescription"><span class="pl-2">Description</span>  <br>
+                      <input type="checkbox" data-target="6" [(ngModel)]="columStatus"><span class="pl-2">Status</span> 
+                    </li>
+
+                  </ul>
+
+                </li>
+
+              </ul>
+
+            </div>
+
+          </div>
+        </div>
+
+        <div class="body">
+          <div class="table-responsive">
+            <table id="articleTable" class="table table-bordered table-striped table-hover dataTable js-exportable w-100">
+              <thead class="headerSemiBold">
+                <tr>
+                  <th>#</th>
+                  <th>S No</th>
+                  <th [ngClass]="(columCategory == false)?'d-none':''">Category</th>
+                  <th [ngClass]="(columSubject == false)?'d-none':''">Subject</th>
+                  <th [ngClass]="(columTopic == false)?'d-none':''">Topic</th>
+                  <th [ngClass]="(columDescription == false)?'d-none':''">Description</th>
+                  <th [ngClass]="(columStatus == false)?'d-none':''">Status</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let topic of forumTopic;let i=index;">
+                  <td>
+                    <span class="badge badge-success" title="Update forum topic" (click)="editButtonClick(topic.id)">
+                      <i class="icon-pencil"></i>
+                    </span>
+
+                    <span class="badge badge-danger" title="Delete forum topic" (click)="deleteButtonClick(topic.id)">
+                      <i class="icon-trash"></i>
+                    </span>
+                  </td>
+                  <td>{{forumTopic.length - i}}</td>
+                  <td [ngClass]="(columCategory == false)?'d-none':''">{{topic.subject.category.title}}</td>
+                  <td [ngClass]="(columSubject == false)?'d-none':''">{{topic.subject.title}}</td>
+                  <td [ngClass]="(columTopic == false)?'d-none':''">{{topic.title}}</td>
+                  <td [ngClass]="(columDescription == false)?'d-none':''">
+                    <span class="badge badge-success" title="Forum topic description"
+                      (click)="showDescription(topic.id)">
+                      <i class="icon-eye"></i>
+                    </span>
+                  </td>
+                  <td [ngClass]="(columStatus == false)?'d-none':''">
+                    <span class="badge badge-{{topic.status==0 ? 'success' : 'warning'}}">
+                      {{topic.status==0 ? 'Active' : 'Inactive'}}
+                    </span>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!--Modal Popup -->
+<div class="modal" [style.display]="selectedDescription ? 'block' : 'none'">
+  <div class="modal-dialog">
+    <div class="modal-content">
+
+      <div class="modal-header">
+        <h6 class="headerBold">{{selectedDescription?.title}}</h6>
+      </div>
+
+      <div class="modal-body labelTitle">
+        {{selectedDescription?.description}}
+      </div>
+
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary headerSemiBold" data-dismiss="modal"
+          (click)="hideDescription()">Close</button>
+      </div>
+
+    </div>
+  </div>
+</div>
+<!--Modal Popup -->

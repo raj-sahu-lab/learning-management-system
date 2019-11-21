@@ -1,0 +1,80 @@
+<div class="container">
+  <div class="row clearfix">
+    <div class="col-lg-12">
+      <div class="card">
+        <div class="body block-header">
+          <div class="row">
+            <div class="col-lg-6 col-md-8 col-sm-12">
+              <h2 class="headerSemiBold">Manage Review</h2>
+              <ul class="breadcrumb p-l-0 p-b-0 labelTitle">
+                <li class="breadcrumb-item">
+                  <a class="linkColor" routerLink="/" routerLinkActive="active"><i class="icon-home"></i></a>
+                </li>
+                <li class="breadcrumb-item active labelTitle">Review</li>
+              </ul>
+            </div>
+            <div class="col-lg-6 col-md-4 col-sm-12">
+              <a routerLink="/" routerLinkActive="active" class="btn btn-secondary headerSemiBold float-right">
+                <i class="icon-arrow-left"></i> BACK
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <div class="row clearfix">
+
+    <div class="col-sm-12 col-md-12 col-lg-12">
+      <div class="card">
+        <div class="header headerSemiBold">
+          <h2><span class="linkColor">Manage</span> Review</h2>
+        </div>
+        <div class="body">
+          <div class="table-responsive">
+            <table class="table table-bordered table-striped table-hover dataTable js-exportable w-100">
+              <thead class="headerSemiBold">
+                <tr>
+                  <th>No</th>
+                  <th>Type</th>
+                  <th>Learner</th>
+                  <th>Course</th>
+                  <th>Rating</th>
+                  <th>Review</th>
+                </tr>
+              </thead>
+              <tbody class="labelTitle">
+                <tr *ngFor="let review of reviewList;let i=index;">
+                  <td>{{reviewList.length - i}}</td>
+                  <td>Subject</td>
+                  <td>{{review?.student?.first_name}}</td>
+                  <td>{{review?.detail?.title}}</td>
+                  <td>{{review.rating}}</td>
+                  <td>{{review.review}}</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-lg-12 col-md-12 col-sm-12" *ngIf="reviewList.length != 0">
+      <div class="card">
+        <div class="body">
+
+          <div class="row text-center">
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+              <img src="{{loginUser.userType == 1 ? loginUser.account_image : loginUser.image}}" alt="{{loginUser.userType == 1 ? loginUser.account_title : loginUser.name}}" style="max-height: 100px;"/>
+              <h5>You will see all the reviews listed here once it is raised from any student.</h5>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+</div>

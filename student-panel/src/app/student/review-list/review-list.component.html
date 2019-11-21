@@ -1,0 +1,153 @@
+<main class="default-transition" style="opacity: 1;">
+    <div class="container-fluid disable-text-selection">
+        <div class="row mb-3">
+            <div class="col-md-12 col-lg-4 col-sm-12 text-muted cursor">
+                <h6><a class="text-muted" (click)="goBack()"><i class="iconsminds-up"></i> Back</a></h6>
+            </div>
+            <div class="col-md-12 col-lg-4 col-sm-12">
+                <h6 class="cent headerSemiBold">
+                    My Course reviews
+                </h6>
+            </div>
+        </div>
+        <div *ngIf="!reviews" class="row mb-4">
+            <div class="col-12 col-sm-12 col-md-12 mx-auto my-auto">
+            <div class="card index-card">
+                <div class="card-body text-center form-side">
+                    <p class="mb-3 text-center">
+                        <img *ngIf="instituteLogo" src="{{instituteLogo}}"
+                            class="img-thumbnail border-0 list-thumbnail align-self-center xsmall">
+                        <img *ngIf="!instituteLogo" src="../../../assets/img/favicon.png"
+                            class="img-thumbnail border-0 rounded-circle list-thumbnail align-self-center xsmall">
+                    </p>
+                    <h6 class="card-title font-weight-bold">No Course Reviews Posted yet</h6>
+                </div>
+            </div>
+            </div>
+        </div>
+
+        <!-- <div *ngIf="reviews" class="row mb-4">
+            <div class="col-xs-12 col-lg-12 col-12 mb-4">
+                <div class="card">
+                    <img class="card-img" src="../../../assets/img/icons/background.png" style="border-radius: 0px;">
+                    <div class="card-img-overlay text-center" style="color:#3a3a3a">
+                        <h1 class="welcomeFont mt-4">Reviews</h1>
+                        <h3 class="headerSemiBold">Connect to the community worldwide</h3>
+                    </div>
+                </div>
+            </div>
+        </div> -->
+        
+        <div *ngIf="reviews" class="row">
+            <div class="col-12">               
+
+                <div class="row mb-4">
+
+                    <div class="col-xs-12 col-sm-12 col-md-6 col-lg-4 col-12 mb-4 cursor" *ngFor="let postReview of reviews">
+                        <div class="card" data-toggle="modal" data-target="#viewReview" (click)="reviewSelected(postReview)">
+                            <div class="card-body">
+                                <div class="mb-2 br-wrapper br-theme-bootstrap-stars">
+                                    <div class="br-widget br-readonly">
+                                        <div class="simple-line-icons">
+
+                                            <!-- <div [ngClass]="(postReview.rating >= 1 ) ? 'selected' : 'not-selected'" class="glyph">
+                                                <div
+                                                    class="glyph-icon simple-icon-star font-weight-bold pr-1">
+                                                </div>
+                                            </div>
+                                            <div [ngClass]="(postReview.rating >= 2 ) ? 'selected' : 'not-selected'" class="glyph">
+                                                <div
+                                                    class="glyph-icon simple-icon-star font-weight-bold pr-1">
+                                                </div>
+                                            </div>
+                                            <div [ngClass]="(postReview.rating >= 3 ) ? 'selected' : 'not-selected'" class="glyph">
+                                                <div
+                                                    class="glyph-icon simple-icon-star font-weight-bold pr-1">
+                                                </div>
+                                            </div>
+                                            <div [ngClass]="(postReview.rating >= 4 ) ? 'selected' : 'not-selected'" class="glyph">
+                                                <div
+                                                    class="glyph-icon simple-icon-star font-weight-bold pr-1">
+                                                </div>
+                                            </div>
+                                            <div [ngClass]="(postReview.rating >= 5 ) ? 'selected' : 'not-selected'" class="glyph">
+                                                <div
+                                                    class="glyph-icon simple-icon-star font-weight-bold pr-1">
+                                                </div>
+                                            </div> -->
+                                            <i [ngClass]="(postReview.rating >= 1 ) ? 'dblu' : 'd7d7d7'" class="icon-star"></i>
+                                            <i [ngClass]="(postReview.rating >= 2 ) ? 'dblu' : 'd7d7d7'" class="icon-star"></i>
+                                            <i [ngClass]="(postReview.rating >= 3 ) ? 'dblu' : 'd7d7d7'" class="icon-star"></i>
+                                            <i [ngClass]="(postReview.rating >= 4 ) ? 'dblu' : 'd7d7d7'" class="icon-star"></i>
+                                            <i [ngClass]="(postReview.rating >= 5 ) ? 'dblu' : 'd7d7d7'" class="icon-star"></i>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <p class="mb-0 text-justify scrollbar labelTitle">
+                                    {{postReview.review | slice:0:120}}
+                                    <span *ngIf="postReview?.review.length>=120">...</span>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        
+    </div>
+</main>
+<div class="modal fade modal-top" id="viewReview" tabindex="-1" role="dialog" aria-labelledby="viewReview"
+    aria-hidden="true" style="display: none;">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-body">
+                <div class="mb-2 br-wrapper br-theme-bootstrap-stars">
+                    <div class="br-widget br-readonly">
+                        <div class="simple-line-icons">
+
+                            <i [ngClass]="(reviewSele?.rating >= 1 ) ? 'dblu' : 'd7d7d7'" class="icon-star"></i>
+                            <i [ngClass]="(reviewSele?.rating >= 2 ) ? 'dblu' : 'd7d7d7'" class="icon-star"></i>
+                            <i [ngClass]="(reviewSele?.rating >= 3 ) ? 'dblu' : 'd7d7d7'" class="icon-star"></i>
+                            <i [ngClass]="(reviewSele?.rating >= 4 ) ? 'dblu' : 'd7d7d7'" class="icon-star"></i>
+                            <i [ngClass]="(reviewSele?.rating >= 5 ) ? 'dblu' : 'd7d7d7'" class="icon-star"></i>
+
+                            <!-- <div [ngClass]="(reviewSele?.rating >= 1 ) ? 'selected' : 'not-selected'" class="glyph">
+                                <div
+                                    class="glyph-icon simple-icon-star font-weight-bold pr-1">
+                                </div>
+                            </div>
+                            <div [ngClass]="(reviewSele?.rating >= 2 ) ? 'selected' : 'not-selected'" class="glyph">
+                                <div
+                                    class="glyph-icon simple-icon-star font-weight-bold pr-1">
+                                </div>
+                            </div>
+                            <div [ngClass]="(reviewSele?.rating >= 3 ) ? 'selected' : 'not-selected'" class="glyph">
+                                <div
+                                    class="glyph-icon simple-icon-star font-weight-bold pr-1">
+                                </div>
+                            </div>
+                            <div [ngClass]="(reviewSele?.rating >= 4 ) ? 'selected' : 'not-selected'" class="glyph">
+                                <div
+                                    class="glyph-icon simple-icon-star font-weight-bold pr-1">
+                                </div>
+                            </div>
+                            <div [ngClass]="(reviewSele?.rating >= 5 ) ? 'selected' : 'not-selected'" class="glyph">
+                                <div
+                                    class="glyph-icon simple-icon-star font-weight-bold pr-1">
+                                </div>
+                            </div> -->
+
+                        </div>
+                    </div>
+                </div>
+                <button id="closePostReview" type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                    aria-hidden="true">×</span></button>
+                <p class="mb-0 text-justify labelTitle pre-line">
+                    {{reviewSele?.review}}
+                </p>
+            </div>
+        </div>
+    </div>
+</div>

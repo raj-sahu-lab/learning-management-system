@@ -1,0 +1,31 @@
+.seen-circle {
+    background: #cccccc;
+    border-radius: 50%;
+    height: 13px;
+    width: 13px;
+    display: inline-block;
+}
+.not-seen-circle{
+    background: coral;
+    border-radius: 50%;
+    height: 13px;
+    width: 13px;
+    display: inline-block;
+}
+.iconsminds-up{
+    transform: rotate(-90deg);
+}
+.iconsminds-up:before{
+    transform: rotate(-90deg);
+    font-size: 20px;
+}
+@media (min-width:992px){
+    .cent{
+        text-align: center;
+    }
+}
+@media (max-width:420px){
+    .card-img{
+        width: 100%;
+    }
+}

@@ -1,0 +1,24 @@
+.card .card-body {
+    padding: 0.75rem;
+}
+
+.btn-sm {
+    padding: .1rem 1rem;
+}
+
+.mainCard{
+    padding: 2%;
+}
+
+
+
+  .howerCard {
+    transition: transform 0.2s ease;
+    box-shadow: 0 4px 6px 0 rgba(22, 22, 26, 0.18);
+    border-radius: 0;
+    border: 0;
+    margin-bottom: 1.5em;
+  }
+  .howerCard:hover {
+    transform: scale(1.004);
+  }

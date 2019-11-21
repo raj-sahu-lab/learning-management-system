@@ -1,0 +1,293 @@
+<div class="container">
+  <div class="row clearfix">
+    <div class="col-lg-12">
+      <div class="card">
+        <div class="body block-header">
+          <div class="row">
+            <div class="col-lg-6 col-md-8 col-sm-12">
+              <h2 class="headerSemiBold">Manage Learner</h2>
+              <ul class="breadcrumb p-l-0 p-b-0 labelTitle">
+                <li class="breadcrumb-item">
+                  <a class="linkColor" routerLink="/" routerLinkActive="active"><i class="icon-home"></i></a>
+                </li>
+                <li class="breadcrumb-item active labelTitle">Learner</li>
+              </ul>
+            </div>
+            <div class="col-lg-6 col-md-4 col-sm-12">
+              <a routerLink="/" routerLinkActive="active" class="btn btn-secondary headerSemiBold float-right">
+                <i class="icon-arrow-left"></i> BACK
+              </a>
+
+              <button class="btn btn-primary headerSemiBold float-right" (click)="showDescription()">
+                Student Bulk Upload
+              </button>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="alert alert-warning" role="alert">
+    <div class="container" style="font-size: 14px;color:black;">
+      Students’ details will automatically reflect if they have signed up from website or mobile apps using your
+      institutes unique code or use this section to add them manually.
+    </div>
+  </div>
+
+  <div class="row clearfix">
+    <div class="col-sm-12 col-md-12 col-lg-12">
+      <div class="card">
+
+        <div class="header headerSemiBold">
+          <h2><span class="linkColor">Manage</span> Learner</h2>
+        </div>
+
+        <div class="body">
+          <div class="demo-masked-input labelTitle">
+            <div class="row clearfix">
+
+              <div class="col-lg-3 col-md-3">Select Education
+                <div class="input-group">
+                  <select class="form-control" [(ngModel)]="educationType">
+                    <option [ngValue]="undefined" disabled>Select Education</option>
+                    <option *ngFor="let education of educationList" [ngValue]="education.id">
+                      {{education.title}}
+                    </option>
+                  </select>
+                </div>
+              </div>
+              <div class="col-lg-3 col-md-3" *ngIf="userType!=3">Select Branch
+                <div class="input-group">
+                  <select class="form-control" [(ngModel)]="branchId">
+                    <option [ngValue]="undefined" disabled>Select Branch</option>
+                    <option *ngFor="let branch of branchList" [ngValue]="branch.id">
+                      {{branch.name}}
+                    </option>
+                  </select>
+                </div>
+              </div>
+              <div class="col-lg-3 col-md-3">Student First Name
+                <div class="input-group">
+                  <input type="text" class="form-control" [(ngModel)]="firstName" placeholder="Tony">
+                </div>
+              </div>
+              <div class="col-lg-3 col-md-3">Student Last Name
+                <div class="input-group">
+                  <input type="text" class="form-control" [(ngModel)]="lastName" placeholder="Stark">
+                </div>
+              </div>
+              <div class="col-lg-3 col-md-3">Contact Number with country code
+                <div class="input-group">
+                  <select class="form-control" [(ngModel)]="countryCode">
+                    <option [ngValue]="undefined" disabled>Select Country</option>
+                    <option *ngFor="let country of countryList" [ngValue]="country.code">
+                      {{country.title}} (+{{country.code}})
+                    </option>
+                  </select>
+                  <input type="number" class="form-control" [(ngModel)]="phone" placeholder="14157078933">
+                </div>
+              </div>
+              <div class="col-lg-3 col-md-3">Email
+                <div class="input-group">
+                  <input type="email" class="form-control" [(ngModel)]="email" placeholder="name@yourdomain.com">
+                </div>
+              </div>
+              <div class="col-lg-3 col-md-3" *ngIf="isEdit? false : true">Password
+                <div class="input-group">
+                  <input type="password" class="form-control" [(ngModel)]="password" placeholder="Type password">
+                </div>
+              </div>
+              <div class="col-lg-1 col-md-1"><b>&nbsp;</b>
+                <div class="input-group">
+                  <input type="button" class="btn btn-secondary headerSemiBold float-right"
+                    value="{{ isEdit ? 'UPDATE' : 'SUBMIT'}}" style="margin:0px;" (click)="submitButtonClick();">
+                </div>
+              </div>
+              <div class="col-lg-1 col-md-1"><b>&nbsp;</b>
+                <div class="input-group">
+                  <input type="button" class="btn btn-warning headerSemiBold float-right" *ngIf="isEdit" value="CANCEL"
+                    style="margin:0px;" (click)="cancelEditClick();">
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-sm-12 col-md-12 col-lg-12">
+      <div class="card">
+        <div class="header headerSemiBold">
+          <div class="row clearfix">
+
+            <div class="col-sm-12 col-md-12 col-lg-12">
+
+              <h2><span class="linkColor">Available</span> Learner</h2>
+
+            </div>
+
+            <div class="col-sm-12 col-md-12 col-lg-12">
+
+              <ul class="header-dropdown" style="top: 0px;">
+
+                <li [ngClass]="filter ? 'dropdown show' : 'dropdown'">
+
+                  <a href="javascript:void(0);" class="dropdown-toggle mr-4 linkColor" data-toggle="dropdown"
+                    role="button" (click)="dropDownFilter();" aria-haspopup="true" aria-expanded="false">
+                    Manage columns
+                  </a>
+
+                  <ul class="dropdown-menu dropdown-menu-right labelTitle mangeColumn">
+
+                    <li class="p-2">
+                      <input type="checkbox" data-target="2" [(ngModel)]="columBranch"><span class="pl-2">Branch
+                        Name</span> <br>
+                      <input type="checkbox" data-target="3" [(ngModel)]="columFirstName"><span class="pl-2">First
+                        Name</span> <br>
+                      <input type="checkbox" data-target="4" [(ngModel)]="columLastName"><span class="pl-2">Last
+                        Name</span> <br>
+                      <input type="checkbox" data-target="5" [(ngModel)]="columPhone"><span class="pl-2">Number</span>
+                      <br>
+                      <input type="checkbox" data-target="6" [(ngModel)]="columEmail"><span
+                        class="pl-2">Email</span><br>
+                      <input type="checkbox" data-target="7" [(ngModel)]="columStatus"><span class="pl-2">Status</span>
+                    </li>
+
+                  </ul>
+
+                </li>
+
+              </ul>
+
+            </div>
+
+          </div>
+        </div>
+
+        <div class="body">
+          <div class="table-responsive">
+            <table class="table table-bordered table-striped table-hover dataTable js-exportable w-100">
+              <thead class="headerSemiBold">
+                <tr>
+                  <th>#</th>
+                  <th>S No</th>
+                  <th [ngClass]="(columBranch == false)?'d-none':''">Branch Name</th>
+                  <th [ngClass]="(columFirstName == false)?'d-none':''">First Name</th>
+                  <th [ngClass]="(columLastName == false)?'d-none':''">Last Name</th>
+                  <th [ngClass]="(columPhone == false)?'d-none':''">Number</th>
+                  <th [ngClass]="(columEmail == false)?'d-none':''">Email</th>
+                  <th [ngClass]="(columStatus == false)?'d-none':''">Status</th>
+                </tr>
+              </thead>
+              <tbody class="labelTitle">
+                <tr *ngFor="let learner of learnerList;let i=index;">
+                  <td>
+                    <span class="badge badge-{{learner.instituteList.isActive==1 ? 'success' : 'danger'}}"
+                      title="Active / Inactive" (click)="editButtonClick(learner?.id)">
+                      <i class="icon-pencil"></i>
+                    </span>
+                  </td>
+                  <td>{{learnerList.length - i}}</td>
+                  <td [ngClass]="(columBranch == false)?'d-none':''">{{learner.instituteList.branch.name}}</td>
+                  <td [ngClass]="(columFirstName == false)?'d-none':''">{{learner.firstName}}</td>
+                  <td [ngClass]="(columLastName == false)?'d-none':''">{{learner.lastName}}</td>
+                  <td [ngClass]="(columPhone == false)?'d-none':''">{{learner.countrycode}} {{learner.phone}}</td>
+                  <td [ngClass]="(columEmail == false)?'d-none':''">{{learner.email}}</td>
+                  <td [ngClass]="(columStatus == false)?'d-none':''">
+                    <span class="badge badge-{{learner.instituteList.isActive==1 ? 'success' : 'warning'}}">
+                      {{learner.instituteList.isActive==1 ? 'Active' : 'Inactive'}}
+                    </span>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<!--Modal Popup -->
+<div class="modal" [style.display]="selectedDescription ? 'block' : 'none'">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+
+      <div class="modal-header">
+        <h6 class="headerBold">
+          Sheet Upload
+          <a href="../.../../../../../assets/StudentBulkUpload.xlsx" target="_target" class="linkColor"> Download
+            Sample</a>
+
+        </h6>
+      </div>
+
+      <div class="modal-body labelTitle">
+        <input type="file" class="form-control float-right" (change)="selectExcelFile($event)" [(ngModel)]="excelFile"
+          style="margin:0px;"
+          accept=".csv, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, application/vnd.ms-excel">
+
+        <button type="button" class="btn btn-primary headerSemiBold" data-dismiss="modal"
+          (click)="submitExcelButtonClick()">Upload Excel</button>
+
+        <button type="button" class="btn btn-secondary headerSemiBold" data-dismiss="modal"
+          (click)="hideDescription()">Close</button>
+      </div>
+
+      <div class="modal-footer">
+
+
+        <div class="table-responsive">
+          <table class="table table-bordered table-striped table-hover">
+            <thead class="headerSemiBold">
+              <tr>
+                <th>S No</th>
+                <th>Education</th>
+                <th>Branch Name</th>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>Number</th>
+                <th>Password</th>
+                <th>Error</th>
+              </tr>
+            </thead>
+            <tbody class="labelTitle">
+              <tr *ngIf="learnerListExcel?.errorList.length>0">
+                <td colspan="8">Error List</td>
+              </tr>
+              <tr *ngFor="let errorList of learnerListExcel?.errorList;let i=index;">
+                <td>{{learnerListExcel?.errorList?.length - i}}</td>
+                <td>{{errorList.Education}}</td>
+                <td>{{errorList.BranchName}}</td>
+                <td>{{errorList.FirstName}}</td>
+                <td>{{errorList.LastName}}</td>
+                <td>{{errorList.CountryCode}} {{errorList.MobileNumber}}</td>
+                <td>{{errorList.Password}}</td>
+                <td>{{errorList.error}}</td>
+              </tr>
+
+              <tr *ngIf="learnerListExcel?.successList.length>0">
+                <td colspan="8">Success List</td>
+              </tr>
+              <tr *ngFor="let successList of learnerListExcel?.successList;let i=index;">
+                <td>{{learnerListExcel?.successList?.length - i}}</td>
+                <td>{{successList.education.title}}</td>
+                <td>{{successList.branch.name}}</td>
+                <td>{{successList.firstName}}</td>
+                <td>{{successList.lastName}}</td>
+                <td>{{successList.phone}}</td>
+                <td> - </td>
+                <td>success</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+<!--Modal Popup -->

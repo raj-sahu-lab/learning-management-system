@@ -1,0 +1,501 @@
+<main class="default-transition">
+    <div class="container-fluid">
+        <div class="row">
+            <!-- <div class="col-12 mb-3">
+                <div class="row m-0 p-0">
+                    <div class="col-md-12 col-lg-1 col-sm-12 p-0">
+                        <h6>
+                            <a class="text-muted cursor" (click)="goBack()"><i class="iconsminds-up"></i> Back</a>
+                        </h6>
+                    </div>
+                    <div class="col-md-12 col-lg-10 col-sm-12 p-0">
+                        <h6 class="cent headerSemiBold">
+                            User Profile
+                        </h6>
+                    </div>
+                </div>
+            </div> -->
+            <div class="col-12 mb-3">
+                <!-- <div class="card mb-4">
+                    <div class="position-absolute card-top-buttons upload-wrap">
+                        <button class="btn btn-outline-white icon-button" style="background: #FF7A59;height: 30px;width: 30px;">
+                            <i class="simple-icon-pencil"></i>
+                        </button>
+                        <input type="file" class="upload-btn w-100" accept="image/*" (change)="uploadImage($event)">
+                    </div>
+                    <img src="{{studentData?.image}}" class="card-img-top prof">
+                    <div class="card-body">
+                        <p class="text-center headerSemiBold">{{studentData?.firstName}} {{studentData?.lastName}}</p>
+                        <p class="text-center labelTitle">{{studentData?.phone}}</p>
+                        <p *ngIf="studentData.email" class="text-center labelTitle">{{studentData?.email}}</p>
+                    </div>
+                </div>
+
+                <div *ngIf="studentData?.branch?.account?.is_MarketplaceEnable == 1" class="card mb-4 d-none">
+                    <div class="card-body">
+                        <h6 class="headerBold">Institutes</h6>
+                        <button class="btn btn-secondary default headerSemiBold" data-toggle="modal" data-backdrop="static" data-target="#addInstitutes" (click)="InstituteLists()">Add institutes</button>
+
+                    </div>
+                </div> -->
+
+                <div class="card mb-2">
+                    <div class="card-body">
+                        <h6 class="headerBold mb-3">Your Feedback</h6>
+                        
+                        <div *ngIf="userInfo?.feedBack!=null" style="font-size: 14px;">
+                            {{userInfo?.feedBack?.description}}
+                        </div>
+                        <div *ngIf="!rating && userInfo?.feedBack==null" class="mb-3">
+                            <div class="headerSemiBold mb-3">How would you rate your experience with the application ?</div>
+                            <div class="pt-2">
+                                <span class="pr-2 pointer" (click)="setRating(5)">
+                                    <img class="before-rate-img" src="./assets/img/icons/1.jpg">
+                                </span>
+                                <span class="pr-2 pointer" (click)="setRating(4)">
+                                    <img class="before-rate-img" src="./assets/img/icons/2@1x.png">
+                                </span>
+                                <span class="pr-2 pointer" (click)="setRating(3)">
+                                    <img class="before-rate-img" src="./assets/img/icons/3.jpg">
+                                </span>
+                                <span class="pr-2 pointer" (click)="setRating(2)">
+                                    <img class="before-rate-img" src="./assets/img/icons/4.jpg">
+                                </span>
+                                <span class="pr-2 pointer" (click)="setRating(1)">
+                                    <img class="before-rate-img" src="./assets/img/icons/5@1x.png">
+                                </span>
+                            </div>
+                        </div>
+
+                        <div *ngIf="rating && userInfo?.feedBack==null">
+                            <div *ngIf="rating==5" class="text-center">
+                                <img class="after-date-img mb-2" src="./assets/img/icons/1.jpg">
+                                <p class="headerBold">Wonderful !</p>
+                            </div>
+                            <div *ngIf="rating==4" class="text-center">
+                                <img class="after-date-img mb-2" src="./assets/img/icons/2@1x.png">
+                                <p class="headerBold">Good !</p>
+                            </div>
+                            <div *ngIf="rating==3" class="text-center">
+                                <img class="after-date-img mb-2" src="./assets/img/icons/3.jpg">
+                                <p class="headerBold">Average !</p>
+                            </div>
+                            <div *ngIf="rating==2" class="text-center">
+                                <img class="after-date-img mb-2" src="./assets/img/icons/4.jpg">
+                                <p class="headerBold">Poor !</p>
+                            </div>
+                            <div *ngIf="rating==1" class="text-center">
+                                <img class="after-date-img mb-2" src="./assets/img/icons/5@1x.png">
+                                <p class="headerBold">Sorry to Hear That !</p>
+                            </div>
+                            <div class="headerSemiBold pb-2">Any suggestion to improve your experience</div>
+                            <div class="form-group">
+                                <textarea class="form-control" rows="4" [(ngModel)]="feedBackDescription" placeholder="Write something"></textarea>
+                            </div>
+                            <p class="alert alert-danger labelTitle" role="alert" *ngIf="feedbackErrorMessage!=''">{{feedbackErrorMessage}}</p>
+                            <div class="text-center">
+                                <button type="button" class="btn btn-secondary default headerSemiBold" (click)="postFeedBack()">
+                                    Submit Feedback
+                                </button>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-12 col-md-12 col-lg-12 col-xl-12 col-sm-12 mb-4">
+
+                <!-- <div class="card mb-4">
+                    <div class="card-body">
+                        <h6 class="headerBold">Personal Information</h6>
+                        
+                        <div class="form-row">
+                            <div class="form-group col-sm-12 col-md-12 col-lg-4">
+                                <label class="labelTitle">First Name</label>
+                                <input type="text" class="form-control labelTitle" [(ngModel)]="studentData.firstName" value="{{studentData?.firstName}}" touched>
+                            </div>
+                            <div class="form-group col-sm-12 col-md-12 col-lg-4">
+                                <label class="labelTitle">Last name</label>
+                                <input type="text" class="form-control labelTitle" [(ngModel)]="studentData.lastName" value="{{studentData?.lastName}}">
+                            </div>
+                            <div class="form-group col-sm-12 col-md-12 col-lg-4">
+                                <label class="labelTitle">Select Education</label>
+                                <select class="form-control labelTitle" [(ngModel)]="studentData.educationType">
+                                    <option [ngValue]=0 disabled>Select Education</option>
+                                    <option *ngFor="let education of educationList" value="{{education.id}}">
+                                        {{education?.title}}
+                                    </option>
+                                </select>
+                            </div>
+                            <div class="form-group col-sm-12 col-md-12 col-lg-4">
+                                <label class="labelTitle">Mobile number</label>
+                                <input [disabled]="true" type="number" class="form-control labelTitle" placeholder="{{studentData?.phone}}">
+                            </div>
+                            <div class="form-group col-sm-12 col-md-12 col-lg-4">
+                                <label class="labelTitle">Email ID*</label>
+                                <input type="email" class="form-control labelTitle" [(ngModel)]="studentData.email" placeholder="{{studentData?.email}}">
+                            </div>
+                            <div class="form-group col-sm-12 col-md-12 col-lg-4">
+                                <label class="labelTitle">Select Gender</label>
+                                <select id="inputGender" [(ngModel)]="studentData.gender" class="form-control labelTitle">
+                                    <option value="male">Male</option>
+                                    <option value="female">Female</option>
+                                    <option value="others">Others</option>
+                                </select>
+                            </div>
+                            <div class="form-group col-sm-12 col-md-12 col-lg-4">
+                                <label class="labelTitle">Select Country</label>
+                                <select id="inputCountry" [(ngModel)]="countrySelected" class="form-control labelTitle" required (change)="countryChanged()">
+                                    <option [ngValue]=0 disabled>Select Country</option>
+                                    <option *ngFor="let country of countryList" [ngValue]="country.id">
+                                        {{country.title}}
+                                    </option>
+                                </select>
+                            </div>
+                            <div class="form-group col-sm-12 col-md-12 col-lg-4">
+                                <label class="labelTitle">Select City</label>
+                                <select id="inputState" [(ngModel)]="citySelected" class="form-control labelTitle" required>
+                                    <option [ngValue]=0 disabled>Select City</option>
+                                    <option *ngFor="let city of cityList" [ngValue]="city.id">
+                                        {{city.title}}
+                                    </option>
+                                </select>
+                            </div>
+                            <div class="form-group col-sm-12 col-md-12 col-lg-4">
+                                <label class="labelTitle">Enter PIN code</label>
+                                <input type="number" class="form-control labelTitle" [(ngModel)]="studentData.pincode" placeholder="{{studentData?.pincode}}">
+                            </div>
+                        </div>  
+                        <p class="alert alert-success labelTitle" role="alert" *ngIf="profileSuccessMessage!=''">{{profileSuccessMessage}}</p>
+                        <p class="alert alert-danger labelTitle" role="alert" *ngIf="profileErrorMessage!=''">{{profileErrorMessage}}</p>
+                        
+                        <button type="submit" class="btn btn-secondary default headerSemiBold" (click)="updateProfile()">Save Changes</button>
+                    </div>
+                </div> -->
+
+                <!-- <div class="card mb-4">
+                    <div class="card-body">
+                        <h6 class="mb-4 headerBold">Change Password</h6>
+
+                        <div class="form-row">
+
+                            <div class="form-group col-sm-12 col-md-12 col-lg-4">
+                                <label>Old Password</label>
+                                <input type="password" class="form-control" [(ngModel)]="oldPassword" placeholder="Enter old password">
+                            </div>
+                            <div class="form-group col-sm-12 col-md-12 col-lg-4">
+                                <label>Set Password</label>
+                                <input type="password" class="form-control" [(ngModel)]="setPassword" placeholder="Enter password">
+                            </div>
+                            <div class="form-group col-sm-12 col-md-12 col-lg-4">
+                                <label>Confirm Password</label>
+                                <input type="password" class="form-control" [(ngModel)]="confirmPassword" placeholder="Confirm new password">
+                            </div>
+                        </div>
+                        <p class="alert alert-danger labelTitle" role="alert" *ngIf="passwordErrorMessage!=''">{{passwordErrorMessage}}</p>
+                        <button type="submit" class="btn btn-secondary default headerSemiBold" (click)="changePassword()">Submit</button>
+                    </div>
+                </div> -->
+
+                <div class="card mb-4">
+                    <div class="card-body">
+                        <div *ngIf="purchaseOrders" class="row">
+                            <div class="container-fluid pt-0">
+                                <div id="">
+                                    <h6 class="headerSemiBold d-inline-block pl-3">
+                                        Invoice
+                                    </h6>
+                                    <!-- <a class="float-right d-inline-block pr-4" href="#carousel-example" role="button" data-slide="next">
+                                        <span class="simple-icon-arrow-right" aria-hidden="true"></span>
+                                        <span class="sr-only">Next</span>
+                                    </a>
+                                    <a class="float-right d-inline-block pr-2" href="#carousel-example" role="button" data-slide="prev">
+                                        <span class="simple-icon-arrow-left" aria-hidden="true"></span>
+                                        <span class="sr-only">Previous</span>
+                                    </a> -->
+        
+                                    <div class="separator ml-3 mb-3 mr-3"></div>
+        
+                                    <!-- <div class="carousel-inner row w-100 mx-auto p-0 m-0" role="listbox" style="flex-wrap: inherit;">
+                                        <div *ngFor="let purchaseOrder of purchaseOrders; let i = index" data-toggle="modal" data-backdrop="static" data-target="#viewInvoice" class="carousel-item col-md-12 col-lg-4 col-xl-4 col-sm-12 mb-4 cursor" (click)="orderSelected(purchaseOrder)" [ngClass]="(i == 0 ) ? 'active' : ''">
+                                            <div class="card mr-2" style="min-height: 235px;">
+                                                <div class="card-body">
+                                                    <table class="table table-sm table-borderless">
+                                                        <tbody>
+                                                            <tr>
+                                                                <td>
+                                                                    <p class="text-muted labelTitle">Transaction ID : {{purchaseOrder?.payments?.transactionId}}</p>
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>
+                                                                    <p class="text-muted labelTitle">{{purchaseOrder?.purchasedAt | date}}</p>
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td colspan="2">
+            
+                                                                    <p class="headerSemiBold">{{purchaseOrder?.detail?.title}}</p>
+                                                                    <p *ngIf="purchaseOrder?.type == 1" class="text-muted labelTitle">Subject</p>
+            
+                                                                    <p *ngIf="purchaseOrder?.type == 2" class="text-muted labelTitle">Topic</p>
+            
+                                                                    <p *ngIf="purchaseOrder?.type == 3" class="text-muted labelTitle">Content</p>
+            
+                                                                    <p *ngIf="purchaseOrder?.type == 4" class="text-muted labelTitle">Test</p>
+            
+                                                                    <p *ngIf="purchaseOrder?.type == 5" class="text-muted labelTitle">Practice</p>
+            
+                                                                    <p *ngIf="purchaseOrder?.type == 6" class="text-muted labelTitle">PDF</p>
+            
+                                                                    <p *ngIf="purchaseOrder?.type == 7" class="text-muted labelTitle">PPT</p>
+            
+                                                                    <p *ngIf="purchaseOrder?.type == 8" class="text-muted labelTitle">Audio</p>
+            
+                                                                    <p *ngIf="purchaseOrder?.type == 9" class="text-muted labelTitle">Video</p>
+                                                                    
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td colspan="2">
+                                                                    <div class="d-inline-block">
+                                                                        <p class="headerSemiBold green" style="padding-top: 10px;">₹ {{purchaseOrder?.payments?.amount}}.00</p>
+                                                                    </div>
+                                                                    <img class="list-thumbnail img-thumbnail d-inline-block float-right" style="height: auto;" src="{{purchaseOrder?.detail?.account?.image}}">
+                                                                </td>
+                                                            </tr>
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div> -->
+                                    <div class="row" style="margin: 0px;">
+                                        <div *ngFor="let purchaseOrder of purchaseOrders" data-toggle="modal" data-backdrop="static" data-target="#viewInvoice" class="col-md-12 col-lg-4 col-xl-4 col-sm-12 mb-4 cursor" (click)="orderSelected(purchaseOrder)">
+                                            <div class="card mr-2">
+                                                <div class="card-body">
+                                                    <table class="table table-sm table-borderless">
+                                                        <tbody>
+                                                            <tr>
+                                                                <td>
+                                                                    <p class="text-muted labelTitle">Transaction ID : {{purchaseOrder?.payments?.transactionId}}</p>
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>
+                                                                    <p class="text-muted labelTitle">{{purchaseOrder?.purchasedAt | date}}</p>
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td colspan="2">
+
+                                                                    <p class="headerSemiBold">{{purchaseOrder?.detail?.title}}</p>
+                                                                    <p *ngIf="purchaseOrder?.type == 1" class="text-muted labelTitle">Subject</p>
+
+                                                                    <p *ngIf="purchaseOrder?.type == 2" class="text-muted labelTitle">Topic</p>
+
+                                                                    <p *ngIf="purchaseOrder?.type == 3" class="text-muted labelTitle">Content</p>
+
+                                                                    <p *ngIf="purchaseOrder?.type == 4" class="text-muted labelTitle">Test</p>
+
+                                                                    <p *ngIf="purchaseOrder?.type == 5" class="text-muted labelTitle">Practice</p>
+
+                                                                    <p *ngIf="purchaseOrder?.type == 6" class="text-muted labelTitle">PDF</p>
+
+                                                                    <p *ngIf="purchaseOrder?.type == 7" class="text-muted labelTitle">PPT</p>
+
+                                                                    <p *ngIf="purchaseOrder?.type == 8" class="text-muted labelTitle">Audio</p>
+
+                                                                    <p *ngIf="purchaseOrder?.type == 9" class="text-muted labelTitle">Video</p>
+                                                                    
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td colspan="2">
+                                                                    <div class="d-inline-block">
+                                                                        <p class="headerSemiBold green" style="padding-top: 10px;">{{purchaseOrder?.payments?.currency?.sign}} {{purchaseOrder?.payments?.amount}}.00</p>
+                                                                    </div>
+                                                                    <img class="list-thumbnail img-thumbnail d-inline-block float-right" style="height: auto;" src="{{purchaseOrder?.detail?.account?.image}}">
+                                                                </td>
+                                                            </tr>
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- <div *ngFor="let purchaseOrder of purchaseOrders" data-toggle="modal" data-backdrop="static" data-target="#viewInvoice" class="col-md-12 col-lg-6 col-xl-6 col-sm-12 mb-4 cursor" (click)="orderSelected(purchaseOrder)">
+                                <div class="card mr-2">
+                                    <div class="card-body">
+                                        <table class="table table-sm table-borderless">
+                                            <tbody>
+                                                <tr>
+                                                    <td>
+                                                        <p class="text-muted labelTitle">Transaction ID : {{purchaseOrder?.payments?.transactionId}}</p>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        <p class="text-muted labelTitle">{{purchaseOrder?.purchasedAt | date}}</p>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td colspan="2">
+
+                                                        <p class="headerSemiBold">{{purchaseOrder?.detail?.title}}</p>
+                                                        <p *ngIf="purchaseOrder?.type == 1" class="text-muted labelTitle">Subject</p>
+
+                                                        <p *ngIf="purchaseOrder?.type == 2" class="text-muted labelTitle">Topic</p>
+
+                                                        <p *ngIf="purchaseOrder?.type == 3" class="text-muted labelTitle">Content</p>
+
+                                                        <p *ngIf="purchaseOrder?.type == 4" class="text-muted labelTitle">Test</p>
+
+                                                        <p *ngIf="purchaseOrder?.type == 5" class="text-muted labelTitle">Practice</p>
+
+                                                        <p *ngIf="purchaseOrder?.type == 6" class="text-muted labelTitle">PDF</p>
+
+                                                        <p *ngIf="purchaseOrder?.type == 7" class="text-muted labelTitle">PPT</p>
+
+                                                        <p *ngIf="purchaseOrder?.type == 8" class="text-muted labelTitle">Audio</p>
+
+                                                        <p *ngIf="purchaseOrder?.type == 9" class="text-muted labelTitle">Video</p>
+                                                        
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td colspan="2">
+                                                        <div class="d-inline-block">
+                                                            <p class="headerSemiBold green" style="padding-top: 10px;">₹ {{purchaseOrder?.payments?.amount}}.00</p>
+                                                        </div>
+                                                        <img class="list-thumbnail img-thumbnail d-inline-block float-right" style="height: auto;" src="{{purchaseOrder?.detail?.account?.image}}">
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div> -->
+                        </div>
+                        <div *ngIf="!purchaseOrders">
+                            <h6 class="headerSemiBold">
+                                Invoice
+                            </h6>
+                            <div class="separator mb-3"></div>
+                            <div class="text-center">
+                                <h6 class="text-muted text-center headerSemiBold">No invoice available</h6>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+        
+    </div>
+</main>
+
+<div class="modal fade modal-top" id="addInstitutes" tabindex="-1" role="dialog" aria-labelledby="addInstitutes" aria-hidden="true" style="display: none;">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h6 class="headerBold">Add Institutes</h6>
+                <button id="closeInstitute" type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+            </div>
+            <div class="modal-body">
+                <table class="table table-borderless">
+                    <tbody>
+                        <tr *ngFor="let institute of instituteList">
+                            <td>
+                                <img src="{{institute?.account?.image}}" class="img-thumbnail list-thumbnail" style="height: auto;">
+                            </td>
+                            <td><p class="mt-2 labelTitle">{{institute.title}}</p></td>
+                            <td class="text-right">
+                                <div class="custom-control custom-checkbox mt-2">
+                                    <input [disabled]="institute?.selected" [checked]="institute?.selected" type="checkbox" class="custom-control-input" id="{{institute.id}}" (change)="instituteChecked(institute.id,$event)">
+                                    <label class="custom-control-label" for="{{institute.id}}">&nbsp;</label>
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="modal-footer text-center" style="display: block;">
+                <button class="btn btn-secondary default headerSemiBold float-right" type="button" (click)="submitButtonClick();">Submit</button>               
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade modal-top" id="viewInvoice" tabindex="-1" role="dialog" aria-labelledby="viewInvoice" aria-hidden="true" style="display: none;" #viewInvoice>
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h6 class="headerBold">Transaction Details</h6>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+            </div>
+            <div id="printPdf" class="modal-body" #printPdf>
+                <div class="text-center">
+                    <h6 class="headerBold">platform.example.com</h6>
+                </div>
+                <table class="table table-sm table-borderless">
+                    <tbody>
+                        <tr>
+                            <td>
+                                <p class="labelTitle">ID : {{purchaseOrderSelected.transactionId}}</p>
+                            </td>
+                            <td class="text-right">
+                                <p class="labelTitle rating mb-2">Approved</p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="2">
+                                <p class="text-muted labelTitle">Purchased Item</p>
+                                <p class="headerSemiBold nav-link.active mb-2">{{purchaseOrderSelected.title}}</p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="2">
+                                <p class="text-muted labelTitle">Item Type</p>
+                                <p class="labelTitle mb-2">{{purchaseOrderSelected.type}}</p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="2">
+                                <p class="text-muted labelTitle">Offered By</p>
+                                <div>
+                                    <img class="list-thumbnail xsmall imageSubscriber d-inline-block" src="{{purchaseOrderSelected?.instituteLogo}}">
+                                </div>
+                                <p class="labelTitle">{{purchaseOrderSelected?.instituteName}}</p>
+                            </td>
+                        </tr>
+                         <tr>
+                            <td colspan="2">
+                                <p class="text-muted labelTitle">Purchased Date</p>
+                                <p class="labelTitle mb-2">{{purchaseOrderSelected.date | date}}</p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <p class="text-muted labelTitle">Amount Paid</p>
+                                <p class="welcomeFont h2">{{purchaseOrderSelected?.currency?.sign}} {{purchaseOrderSelected.amount}}.00</p>
+                            </td>
+                            <td>
+                                <p class="text-muted labelTitle">Remaining Amount</p>
+                                <p class="welcomeFont h3">{{purchaseOrderSelected?.currency?.sign}} 0.00</p>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-secondary default headerSemiBold" type="button" (click)="downloadAsPDF(purchaseOrderSelected)">
+                    Download Receipt
+                </button>               
+            </div>
+        </div>
+    </div>
+</div>

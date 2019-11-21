@@ -1,0 +1,439 @@
+<div class="container">
+
+  <div class="row clearfix">
+    <div class="col-lg-12">
+      <div class="card">
+        <div class="body block-header">
+          <div class="row">
+            <div class="col-lg-6 col-md-8 col-sm-12">
+              <h2 class="headerSemiBold">Live Classes</h2>
+              <ul class="breadcrumb p-l-0 p-b-0 ">
+                <li class="breadcrumb-item">
+                  <a class="linkColor" routerLink="/" routerLinkActive="active"><i class="icon-home"></i></a>
+                </li>
+                <li class="breadcrumb-item active labelTitle">Live Classes</li>
+              </ul>
+            </div>
+            <div class="col-lg-6 col-md-4 col-sm-12">
+              <a routerLink="/" class="btn btn-secondary headerSemiBold float-right active">
+                <i class="icon-arrow-left"></i>
+                BACK</a>
+
+                <a routerLink="/createGroup" class="btn btn-primary headerSemiBold float-right">Create Group</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="alert alert-warning" role="alert">
+    <div class="container" style="font-size: 14px;color:black;">
+      Please fill the details below and select students to conduct live classes. Students can find the meeting in their calendar section and join it from there without any hassle.
+    </div>
+  </div>
+
+  <div class="row clearfix">
+
+    <div class="col-sm-12 col-md-12 col-lg-12">
+      <div class="card">
+
+        <div class="header headerSemiBold">
+          <h2><span class="linkColor">Manage</span> Live Classes</h2>
+        </div>
+
+        <div class="body">
+          <div class="demo-masked-input labelTitle">
+            <div class="row clearfix">
+
+              <div class="col-sm-1" *ngIf="selectedClassImage"><b>&nbsp;</b>
+                <div class="input-group">
+                  <img [src]="selectedClassImage" alt="assets/images/my-image/choose-file.png"
+                    data-holder-rendered="true" id="ImagePreview" style="height:50px" />
+                </div>
+              </div>
+
+              <div class="col-lg-{{selectedClassImage ? 3 : 4}} col-md-{{selectedClassImage ? 2 : 3}}">Choose Image (
+                945 x 615 px )
+                <div class="input-group">
+                  <input type="file" class="form-control" [(ngModel)]="image" accept="image/jpeg, image/png"
+                    (change)="classFileChanged($event)" autofocus="true">
+                </div>
+              </div>
+
+              <div class="col-lg-4 col-md-4">Live Meeting Company
+                <div class="input-group">
+                  <select class="form-control" [(ngModel)]="liveClassUserType" (change)="userChanged()">
+                    <option [ngValue]="undefined" disabled>Select Here</option>
+                    <option [ngValue]="1">BlueJeans</option>
+                    <option [ngValue]="2">Zoom</option>
+                  </select>
+                </div>
+              </div>
+
+              <div class="col-lg-4 col-md-4" *ngIf="userType!=3">Select Educator | <a class="linkColor" [routerLink]="['/tutor']" [routerLinkActive]="['router-link-active']">Create Educator </a>
+                <span
+                  tooltip="Please assign educator from settings -> live class section if it is not visible in the drop down."
+                  placement="top">
+                  <i class="icon-info"></i>
+                </span>
+
+                <div class="input-group">
+                  <select class="form-control" [(ngModel)]="liveClassUserListId">
+                    <option [ngValue]="undefined" disabled>Select Educator</option>
+                    <option *ngFor="let liveClassUser of liveClassUserList" [ngValue]="liveClassUser?.id">
+                      {{liveClassUser?.tutor?.name}}
+                    </option>
+                  </select>
+                </div>
+              </div>
+
+              <div *ngIf="!isCustomDatePicker" class="col-lg-4 col-md-4">Schedule Date & Time
+                <div class="input-group">
+                  <input type="datetime-local" class="form-control" [(ngModel)]="scheduleTime">
+                </div>
+              </div>
+
+
+              <div *ngIf="isCustomDatePicker" class="col-lg-4 col-md-4">Schedule Date & Time
+                <div class="input-group form-control">
+                  <input [min]="todayDate"  [owlDateTime]="dt2" placeholder="Schedule Date & Time" style="border-width:0px;border:none;" readonly="readonly" [(ngModel)]="scheduleTime">
+                  <span [owlDateTimeTrigger]="dt2" style="position: absolute;right: 20px;"><i class="fa fa-calendar fa-2x"></i></span>
+                  <owl-date-time #dt2></owl-date-time>
+                </div>                
+              </div>
+
+              <div class="col-lg-4 col-md-4">Duration (Min)
+                <div class="input-group">
+                  <input type="number" class="form-control" [(ngModel)]="duration" placeholder="Meeting duration"
+                    min="0">
+                </div>
+              </div>
+
+              <div class="col-lg-4 col-md-4">Title
+                <div class="input-group">
+                  <input type="text" class="form-control" [(ngModel)]="title" placeholder="Enter live class title">
+                </div>
+              </div>
+              <div class="col-lg-12 col-md-12">Agenda
+                <div class="input-group">
+                  <textarea rows="2" class="form-control no-resize" [(ngModel)]="agenda"
+                    style="border: 1px solid #E3E3E3;border-radius: 10px;" maxlength="500"></textarea>
+                </div>
+              </div>
+
+              <div class="col-lg-12 col-md-12">
+                <div class="input-group">
+                  <span class="linkColor">{{500 - agenda?.length}} character left</span>
+                </div>
+              </div>
+
+              <div class="col-lg-4 col-md-4">Select Students
+                <div class="input-group">
+                  <select class="form-control" [(ngModel)]="studentSelectionType" (change)="studentSelection()">
+                    <option [ngValue]="undefined" disabled>Select Student</option>
+                    <option [ngValue]="1">Individual</option>
+                    <option [ngValue]="2">Group</option>
+                  </select>
+                </div>
+              </div>
+
+              <div class="col-lg-12 col-md-12" *ngIf="learnerList.length>0 && studentSelectionType==1">
+                <table class="table table-bordered table-striped table-hover dataTable js-exportable w-100">
+                  <thead class="headerSemiBold">
+                    <tr>
+                      <th>
+                        <div class="checkbox">
+                          <input id="selectAll" type="checkbox" (change)="selectAll($event)">
+                          <label for="selectAll">Name</label>
+                        </div>
+                      </th>
+                      <th>Mobile</th>
+                    </tr>
+                  </thead>
+                  <tbody class="labelTitle">
+                    <tr *ngFor="let learner of learnerList;let i=index;">
+                      <td>
+                        <div class="checkbox">
+                          <input id="learner{{learner.id}}" type="checkbox" [(ngModel)]="learner.selected"
+                            (click)="studentCheck(learner.id,$event)">
+                          <label for="learner{{learner.id}}"> {{learner.firstName}} {{learner.lastName}}</label>
+                        </div>
+                      </td>
+                      <td>{{ learner.countrycode }}{{ learner.phone }}</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+
+              <div class="col-lg-12 col-md-12" *ngIf="learnerList.length>0 && studentSelectionType==2">
+                <table class="table table-bordered table-striped table-hover dataTable js-exportable w-100">
+                  <thead class="headerSemiBold">
+                    <tr>
+                      <th>Group Name</th>
+                    </tr>
+                  </thead>
+                  <tbody class="labelTitle">
+                    <tr *ngFor="let group of groupList;let i=index;">
+                      <td>
+                        <div class="radio">
+                          <input id="groupName{{group.group_id}}" type="radio" name="groupName"
+                            (click)="groupCheck(group.group_id)">
+                          <label for="groupName{{group.group_id}}">{{ group.group_name }}</label>
+                        </div>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+
+              <div class="col-lg-1 col-md-1"><b>&nbsp;</b>
+                <div class="input-group">
+                  <input type="button" class="btn btn-secondary headerSemiBold float-right" value="SUBMIT"
+                    style="margin:0px;" (click)="submitButtonClick();">
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-sm-12 col-md-12 col-lg-12">
+      <div class="card">
+
+        <div class="header headerSemiBold">
+          <h2><span class="linkColor">Available</span> Classes</h2>
+        </div>
+
+        <div class="body">
+          <div class="table-responsive">
+            <table class="table table-bordered table-striped table-hover dataTable js-exportable">
+              <thead class="headerSemiBold">
+                <tr>
+                  <th *ngIf="userType == 1">#</th>
+                  <th>S No</th>
+                  <th>Image</th>
+                  <th>Type</th>
+                  <th>Title</th>
+                  <th>Schedule Time</th>
+                  <th>Student</th>
+                  <th>Agenda</th>
+                  <th>Meeting</th>
+                </tr>
+              </thead>
+              <tbody class="labelTitle">
+
+                <tr *ngFor="let liveClass of liveClassList; let i=index">
+                  <td *ngIf="userType == 1">
+                    <span class="badge badge-danger" title="Delete Subject" (click)="deleteButtonClick(liveClass.id)">
+                      <i class="icon-trash"></i>
+                    </span>
+                  </td>
+                  <td>{{liveClassList.length - i}}</td>
+                  <td>
+                    <img src="{{liveClass.image}}" id="MediaPreview" style="height:30px" />
+                  </td>
+                  <td>{{liveClass.userType == 1 ? 'Bluejeans' : 'Zoom'}}</td>
+                  <td>{{liveClass.title}}</td>
+                  <td>{{liveClass.scheduleTime | date:'dd-MM-yyyy h:mm a'}}</td>
+                  <td>
+                    <span class="badge badge-info" title="Preview" (click)="showPreview(i)">
+                      <i class="icon-users"></i>
+                    </span>
+                  </td>
+                  <td>
+                    <span class="badge badge-success" title="Preview" (click)="showDescription(i)">
+                      <i class="icon-eye"></i>
+                    </span>
+                  </td>
+                  <td>
+                    <span class="badge badge-info" title="Start Meeting" (click)="startLiveClass(i)">
+                      <i class="icon-earphones-alt"></i>
+                    </span>
+
+                    <span class="badge badge-warning" *ngIf="liveClass.userType == 1" title="Meeting List"
+                      (click)="downloadVideoList(i)">
+                      <i class="icon-cloud-download"></i>
+                    </span>
+
+                    <span class="badge badge-success" *ngIf="liveClass.userType == 1" title="Download attendees"
+                      (click)="downloadAttendeesList(i)">
+                      <i class="icon-clock"></i>
+                    </span>
+
+                  </td>
+                </tr>
+
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<!--Modal Popup -->
+<div class="modal" [style.display]="selectedPreview ? 'block' : 'none'">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+
+      <div class="modal-header">
+        <h6 class="headerBold">{{selectedPreview?.title}}</h6>
+      </div>
+
+      <div class="modal-body labelTitle">
+        <table class="table table-bordered table-striped table-hover">
+          <thead class="headerSemiBold">
+            <tr>
+              <th>S No</th>
+              <th>Image</th>
+              <th>Name</th>
+              <th>Email</th>
+              <th>Phone</th>
+            </tr>
+          </thead>
+          <tbody class="labelTitle">
+            <tr *ngFor="let student of selectedPreview?.studentList; let i=index">
+              <td>{{selectedPreview?.studentList.length - i}}</td>
+              <td>
+                <img src="{{student.image}}" style="height:30px" />
+              </td>
+              <td>{{student.first_name}} {{student.last_name}}</td>
+              <td>{{student.email}}</td>
+              <td>+{{student.countrycode}} {{student.phone}}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary headerSemiBold" data-dismiss="modal"
+          (click)="hidePreview()">Close</button>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<div class="modal" [style.display]="selectedDescription ? 'block' : 'none'">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+
+      <div class="modal-header">
+        <h6 class="headerBold">{{selectedDescription?.title}}</h6>
+      </div>
+
+      <div class="modal-body labelTitle">
+        {{selectedDescription?.agenda}}
+
+        <!-- <iframe width="100%" height="500px" frameBorder="0" src="https://bluejeans.com/142318872/webrtc"></iframe> -->
+
+      </div>
+
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary headerSemiBold" data-dismiss="modal"
+          (click)="hideDescription()">Close</button>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<div class="modal" [style.display]="selectedMeetingList ? 'block' : 'none'">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+
+      <div class="modal-header">
+        <h6 class="headerBold">{{selectedMeetingTitle}}</h6>
+      </div>
+
+      <div class="modal-body labelTitle">
+        <table class="table table-bordered table-striped table-hover">
+          <thead class="headerSemiBold">
+            <tr>
+              <th>S No</th>
+              <th>Image</th>
+              <th>Title</th>
+              <th>Download</th>
+            </tr>
+          </thead>
+          <tbody class="labelTitle">
+            <tr *ngFor="let selectedMeeting of selectedMeetingList?.recordingList; let i=index">
+              <td>{{selectedMeetingList?.recordingList.length - i}}</td>
+              <td>
+                <img src="{{selectedMeeting.recordingSessions[0].thumbnailUrl}}" style="height:30px" />
+              </td>
+              <td>{{selectedMeeting.chapterName}}</td>
+              <td>
+                <span class="badge badge-warning" title="Download Meeting" (click)="downloadVideo(i)">
+                  <i class="icon-cloud-download"></i>
+                </span>
+              </td>
+            </tr>
+          </tbody>
+          <tfoot *ngIf="copyURL">
+            <tr>
+              <td colspan="3">
+                <h6 class="headerSemiBold">Video URL</h6>
+                {{copyURL}}
+              </td>
+              <td>
+                Duration : {{contentDuration}}
+              </td>
+            </tr>
+          </tfoot>
+        </table>
+      </div>
+
+      <div class="modal-footer">
+
+        <button type="button" class="btn btn-secondary headerSemiBold" data-dismiss="modal"
+          (click)="hideSelectedMeetingList()">Close</button>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<div class="modal" [style.display]="selectedAttendeesMeetingList ? 'block' : 'none'">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+
+      <div class="modal-header">
+        <h6 class="headerBold">Attendees Meeting List</h6>
+      </div>
+
+      <div class="modal-body labelTitle">
+        <table class="table table-bordered table-striped table-hover">
+          <thead class="headerSemiBold">
+            <tr>
+              <th>Title</th>
+              <!-- <th>Time</th> -->
+              <th>Minutes</th>
+            </tr>
+          </thead>
+          <tbody class="labelTitle">
+            <tr *ngFor="let selectedAttendeesMeeting of selectedAttendeesMeetingList; let i=index">
+              <td>{{selectedAttendeesMeeting.endpointName}}</td>
+              <!-- <td>{{selectedAttendeesMeeting.joinTime | date:'short'}} - {{selectedAttendeesMeeting.disconnectTime | date:'short'}}</td> -->
+              <td>{{selectedAttendeesMeeting.minutes}}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="modal-footer">
+        <a href="../.../../../../../assets/MeetingAttendees.csv" target="_target"
+          class="btn btn-secondary headerSemiBold">Downlaod Attendees </a>
+
+        <button type="button" class="btn btn-secondary headerSemiBold" data-dismiss="modal"
+          (click)="hideAttendeesList()">Close</button>
+      </div>
+
+    </div>
+  </div>
+</div>

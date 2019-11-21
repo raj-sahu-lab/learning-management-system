@@ -1,0 +1,132 @@
+:host {
+    display: block;
+    height: 100%;
+    position: relative;
+  }
+  
+  p {
+    font-family: Lato;
+  }
+  
+  .wrapper {
+    padding: 20px;
+    margin: 10px;
+    border: 1px solid black;
+    display: block;
+  }
+  
+  .super-duper-keyboard {
+    background: black;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+  }
+
+  .btn-la{
+    width: 58px;
+    margin: 5px;
+    padding: 5px;
+    border: none;
+    border-radius: 8px;
+    background-color: lightgrey;
+  }
+  .inpt-txt{
+    min-height: 70px;
+    margin: 10px;
+  }
+  
+  .typeEquation{
+    border: 1px solid #E3E3E3;
+    border-radius: 10px;
+    width: 100%;
+    min-height: calc(1.5em + .75rem + 13px);
+    padding: 10px 18px 10px 18px;
+  }
+  
+  input:focus{
+    outline: none;
+  }
+  #substitue-id{
+    word-break: break-word;
+  }
+  .divEdit{
+    border: 1px solid BLACK;
+    min-height: 65px;
+  }
+
+  .inpt-txt{
+    border: 1px solid grey;
+    border-radius: 0px 8px 8px 8px;
+    min-height: 70px;
+    margin: 10px;
+  }
+  .math-fld{
+    min-height: 69px;
+    width: 100%;
+    box-shadow: none;
+    font-size: 16px;
+  }
+  .img-pre{
+    height: 450px;
+    width: 100%;
+    object-fit: contain;
+  }
+  .base{
+    font-size : 14px
+  }
+  .btn-math {
+    border-radius: 0.1875rem !important;
+    font-weight: 400;
+    font-size: 0.8571em !important;
+    line-height: 1.35em;
+    border-width: 2px;
+    padding: 11px 22px;
+    font-family: semiBoldHeader !important;
+}
+.div-textArea {
+  -moz-appearance: textfield-multiline;
+  -webkit-appearance: textarea;
+  border-radius: 0px 8px 8px 8px solid grey !important;
+  font: medium -moz-fixed;
+  font: -webkit-small-control;
+  min-height: 80px;
+  padding: 2px;
+  resize: both;
+  width: 400px;
+}
+.w-95{
+  width: 95% !important;
+}
+.bbtn{
+  /* background-color: #f1f1f1; */
+  color: black;
+  font-weight: 600;
+  padding: 0px 4px;
+  margin: 0px 4px
+}
+
+.btnb{
+  padding: 10px;
+  width: 190px;
+  border-left: 1px solid grey;
+  border-top: 1px solid grey;
+  border-right: 1px solid grey;
+}
+
+.f1f1{
+  background-color: #dad3d3 !important;
+}
+@media (max-width:992px){
+  .btn-la{
+    width: 54px;
+    margin: 5px;
+    padding: 5px;
+    border: none;
+    border-radius: 8px;
+    background-color: lightgrey;
+  }
+  .w-95{
+    width: 90% !important;
+  }
+}

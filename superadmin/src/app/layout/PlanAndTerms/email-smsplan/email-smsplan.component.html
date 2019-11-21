@@ -1,0 +1,148 @@
+<div class="container" id="startForm">
+    <div class="row clearfix">
+      <div class="col-lg-12">
+        <div class="card">
+          <div class="body block-header">
+            <div class="row">
+              <div class="col-lg-6 col-md-8 col-sm-12">
+                <h2 class="headerSemiBold">Manage Email & SMS Plans</h2>
+                
+                <ul class="breadcrumb p-l-0 p-b-0 labelTitle">
+                  <li class="breadcrumb-item">
+                    <a class="linkColor" routerLink="/" routerLinkActive="active"><i class="icon-home"></i></a>
+                  </li>
+                  <li class="breadcrumb-item active labelTitle">Email & SMS</li>
+                </ul>
+              </div>
+              <div class="col-lg-6 col-md-4 col-sm-12">
+                <a routerLink="/" routerLinkActive="active" class="btn btn-secondary headerSemiBold btn-simple float-right"><i
+                    class="icon-arrow-left"></i> BACK</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  
+    <div class="row clearfix">
+      <div class="col-sm-12 col-md-12 col-lg-12">
+        <div class="card">
+  
+          <div class="header headerSemiBold">
+            <h2><span class="linkColor">Create</span> Email & SMS Plans</h2>
+          </div>
+          
+          <div class="body">
+            <div class="demo-masked-input labelTitle">
+              <div class="row clearfix">
+                <div class="col-lg-3 col-md-3">Select Country
+                    <div class="input-group">
+                      <select id="inputState" [(ngModel)]="countryId" class="form-control labelTitle" required>
+                        <option [ngValue]="undefined" disabled>Select Country</option>
+                        <option *ngFor="let country of countryList" [ngValue]="country.id">
+                          {{country.title}}
+                        </option>
+                      </select>
+                    </div>
+                  </div>
+                <div class="col-lg-3 col-md-3">Select Plan Type
+                  <div class="input-group">
+                    <select class="form-control" [(ngModel)]="planType" autofocus="true">
+                      <option [ngValue]="undefined" disabled>Select Plan Type</option>
+                      <option [ngValue]="1">Email</option>
+                      <option [ngValue]="2">SMS</option>
+                    </select>
+                  </div>
+                </div>
+                <div class="col-lg-3 col-md-3">Plan Title
+                  <div class="input-group">
+                    <input type="text" class="form-control" [(ngModel)]="title" placeholder="Enter title">
+                  </div>
+                </div>
+                <div class="col-lg-3 col-md-3">Qty.
+                    <div class="input-group">
+                      <input type="text" class="form-control" [(ngModel)]="qty" placeholder="Enter qty">
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-3">Amount (₹)
+                  <div class="input-group">
+                    <input type="number" class="form-control" [(ngModel)]="amount" placeholder="Enter amount">
+                  </div>
+                </div>
+                <div class="col-lg-3 col-md-3">Amount ($)
+                  <div class="input-group">
+                    <input type="number" class="form-control" [(ngModel)]="amountUSD" placeholder="Enter amount">
+                  </div>
+                </div>
+              </div>
+  
+              <div class="row clearfix">
+                <div class="col-lg-1 col-md-1"><b>&nbsp;</b>
+                  <div class="input-group">
+                    <input type="button" class="btn btn-secondary headerSemiBold float-right" value="{{ isEdit ? 'UPDATE' : 'SUBMIT'}}"
+                      style="margin:0px;" (click)="submitButtonClick();">
+                  </div>
+                </div>
+                <div class="col-lg-1 col-md-1"><b>&nbsp;</b>
+                  <div class="input-group">
+                    <input type="button" class="btn btn-warning headerSemiBold float-right" *ngIf="isEdit" value="CANCEL"
+                      style="margin:0px;" (click)="cancelEditClick();">
+                  </div>
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </div>
+      </div>
+  
+      <div class="col-sm-12 col-md-12 col-lg-12">
+        <div class="card">
+  
+          <div class="header headerSemiBold">
+            <h2><span class="linkColor">Available</span> Email & SMS Plans
+            </h2>
+          </div>
+          
+          <div class="body">
+            <div class="table-responsive">
+              <table class="table table-bordered table-striped table-hover dataTable js-exportable w-100">
+                <thead class="headerSemiBold">
+                  <tr>
+                    <th>#</th>
+                    <th>S No</th>
+                    <th>Country</th>
+                    <th>Plan Type</th>
+                    <th>Title</th>
+                    <th>Qty.</th>
+                    <th>Amount (₹)</th>
+                    <th>Amount ($)</th>
+                  </tr>
+                </thead>
+                <tbody class="labelTitle">
+                  <tr *ngFor="let emailSMSPlan of emailSMSPlanList;let i=index;">
+                    <td>
+                      <span class="badge badge-success" title="Update Plan" (click)="editButtonClick(emailSMSPlan.id)">
+                        <i class="icon-pencil"></i>
+                      </span>
+                      <span class="badge badge-danger" title="Delete Plan" (click)="deleteButtonClick(emailSMSPlan.id)">
+                        <i class="icon-trash"></i>
+                      </span>
+                    </td>
+                    <td>{{emailSMSPlanList.length - i}}</td>
+                    <td>{{emailSMSPlan.country.title}}</td>
+                    <td>{{emailSMSPlan.planType == 2 ? 'SMS' : 'Email'}}</td>
+                    <td>{{emailSMSPlan.title}}</td>
+                    <td>{{emailSMSPlan.totalCount}}</td>
+                    <td>{{emailSMSPlan.amount}}</td>
+                    <td>{{emailSMSPlan.amountUSD}}</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+  
+    </div>
+  </div>

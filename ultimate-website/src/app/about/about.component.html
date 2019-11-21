@@ -1,0 +1,201 @@
+<section class="page-header minimal page-title-left">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 text-left">
+                <h2 class="text-uppercase" data-animated="fadeInLeftBig" data-animation-delay="400">About Us</h2>
+                
+                <!-- <ul class="breadcrumb">
+                    <li>Home</li>
+                    <li class="active">About Us</li>
+                </ul> -->
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="about-us" class="bottom-padding">
+    <div class="container" style="min-height: 450px;">
+        <div class="row">
+            <!-- <div class="col-md-5 text-center" data-animation="fadeInUp" data-delay="100">
+                <img class="img-responsive" src="http://zozothemes.com/html/epoint/demo/images/content/device/welcome.png" width="860" height="750" />
+            </div> -->
+            <div *ngIf="about" class="col-12" data-animation="fadeInUp" data-delay="200" style="padding: 0px 15px;">
+                <h6 class="headerSemiBold text-center">Welcome to {{account?.title}}</h6>
+                <h6 class="headerSemiBold">{{about?.title}}</h6>
+                <p class="wht-pr-ln">{{about?.description}}</p>
+            </div>
+            <div *ngIf="!about" class="col-12" style="padding: 15px 15px;">
+                <div class="card index-card brd">
+                    <div class="card-body text-center form-side">
+                        <p class="mb-3 text-center">
+                            <img src="../../../assets/images/book.png"
+                                class="img-thumbnail border-0 rounded-circle list-thumbnail align-self-center img-no-c" alt="Book image">
+                        </p>
+                        <h6 class="headerSemiBold">No info posted</h6>
+                        <p class="text-muted labelTitle">will be added soon!</p>
+                    </div>
+                </div>
+              </div>
+        </div>
+    </div>
+</section>
+
+<!-- <section id="welcome" class="light-bg bottom-padding-sm">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 bottom-padding-sm">
+                <div class="bottom-line">
+                    <h3>Welcome to ePoint</h3>
+                </div>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Et culpa dolore odio voluptate suscipit corporis sed ad sunt autem! Lorem ipsum dolor sit amet, consectetur adipisicing elit. </p>
+            </div>
+        </div>
+        <div class="row padding-top-20">
+            <div class="col-md-3 bottom-padding-sm">
+                <div class="feature-box hv-wrapper">
+                    <div class="feature-inner-wrapper">
+                        <div class="icon-wrapper">
+                            <i class="flaticon-animal-2 fa-2x icon-shape-circle icon-light icon-theme-bg"></i>
+                        </div>
+                        <div class="title-wrapper">
+                            <h5 class="feature-title bottom-line">Who We Are?</h5>
+                        </div>
+                    </div>
+                    <p class="feature-description">Lorem ipsum dolor sit amet, consectetuer adipiscing elit. </p>
+                </div>
+            </div>
+            <div class="col-md-3 bottom-padding-sm">
+                <div class="feature-box hv-wrapper">
+                    <div class="feature-inner-wrapper">
+                        <div class="icon-wrapper">
+                            <i class="flaticon-arrow fa-2x icon-shape-circle icon-light icon-theme-bg"></i>
+                        </div>
+                        <div class="title-wrapper">
+                            <h5 class="feature-title bottom-line">Why Choose Us?</h5>
+                        </div>
+                    </div>
+                    <p class="feature-description">Lorem ipsum dolor sit amet, consectetuer adipiscing elit.</p>
+                </div>
+            </div>
+            <div class="col-md-3 bottom-padding-sm">
+                <div class="feature-box hv-wrapper">
+                    <div class="feature-inner-wrapper">
+                        <div class="icon-wrapper">
+                            <i class="flaticon-crown fa-2x icon-shape-circle icon-light icon-theme-bg"></i>
+                        </div>
+                        <div class="title-wrapper">
+                            <h5 class="feature-title bottom-line">Our Mission</h5>
+                        </div>
+                    </div>
+                    <p class="feature-description">Lorem ipsum dolor sit amet, consectetuer adipiscing elit. </p>
+                </div>
+            </div>
+            <div class="col-md-3 bottom-padding-sm">
+                <div class="feature-box hv-wrapper">
+                    <div class="feature-inner-wrapper">
+                        <div class="icon-wrapper">
+                            <i class="flaticon-idea fa-2x icon-shape-circle icon-light icon-theme-bg"></i>
+                        </div>
+                        <div class="title-wrapper">
+                            <h5 class="feature-title bottom-line">What we Do?</h5>
+                        </div>
+                    </div>
+                    <p class="feature-description">Lorem ipsum dolor sit amet, consectetuer adipiscing elit.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section> -->
+
+<!-- <section id="about-us" class="no-bottom-padding">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 text-center">
+                <div class="section-title bottom-line">
+                    <h3>What we offer?</h3>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Et culpa dolore odio voluptate suscipit corporis sed ad sunt autem! </p>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-4 bottom-margin-sm">
+                <div class="feature-box style-3">
+                    <div class="icon-wrapper">
+                        <i class="flaticon-tool-11 fa-2x icon-shape-circle icon-light icon-theme-bg"></i>
+                    </div>
+                    <div class="inner-wrapper">
+                        <div class="title-wrapper">
+                            <h5 class="feature-title">Branding</h5>
+                        </div>
+                        <p class="feature-description">Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 bottom-margin-sm">
+                <div class="feature-box style-3">
+                    <div class="icon-wrapper">
+                        <i class="flaticon-video fa-2x icon-shape-circle icon-light icon-theme-bg"></i>
+                    </div>
+                    <div class="inner-wrapper">
+                        <div class="title-wrapper">
+                            <h5 class="feature-title">App Development</h5>
+                        </div>
+                        <p class="feature-description">Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 bottom-margin-sm">
+                <div class="feature-box style-3">
+                    <div class="icon-wrapper">
+                        <i class="flaticon-computer-5 fa-2x icon-shape-circle icon-light icon-theme-bg"></i>
+                    </div>
+                    <div class="inner-wrapper">
+                        <div class="title-wrapper">
+                            <h5 class="feature-title">Video Production</h5>
+                        </div>
+                        <p class="feature-description">Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 bottom-margin-sm">
+                <div class="feature-box style-3">
+                    <div class="icon-wrapper">
+                        <i class="flaticon-agenda fa-2x icon-shape-circle icon-light icon-theme-bg"></i>
+                    </div>
+                    <div class="inner-wrapper">
+                        <div class="title-wrapper">
+                            <h5 class="feature-title">Web Design</h5>
+                        </div>
+                        <p class="feature-description">Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 bottom-margin-sm">
+                <div class="feature-box style-3">
+                    <div class="icon-wrapper">
+                        <i class="flaticon-paper fa-2x icon-shape-circle icon-light icon-theme-bg"></i>
+                    </div>
+                    <div class="inner-wrapper">
+                        <div class="title-wrapper">
+                            <h5 class="feature-title">Content Creation</h5>
+                        </div>
+                        <p class="feature-description">Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 bottom-margin-lg">
+                <div class="feature-box style-3">
+                    <div class="icon-wrapper">
+                        <i class="flaticon-clock-5 fa-2x icon-shape-circle icon-light icon-theme-bg"></i>
+                    </div>
+                    <div class="inner-wrapper">
+                        <div class="title-wrapper">
+                            <h5 class="feature-title">Customer Support</h5>
+                        </div>
+                        <p class="feature-description">Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section> -->

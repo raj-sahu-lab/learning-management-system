@@ -1,0 +1,114 @@
+<div class="container">
+  <div class="row clearfix">
+    <div class="col-lg-12">
+      <div class="card">
+        <div class="body block-header">
+          <div class="row">
+            <div class="col-lg-6 col-md-8 col-sm-12">
+              <h2 class="headerSemiBold">Manage Notification</h2>
+
+              <ul class="breadcrumb p-l-0 p-b-0 labelTitle">
+                <li class="breadcrumb-item">
+                  <a class="linkColor" routerLink="/" routerLinkActive="active"><i class="icon-home"></i></a>
+                </li>
+                <li class="breadcrumb-item active labelTitle">Notification</li>
+              </ul>
+            </div>
+            <div class="col-lg-6 col-md-4 col-sm-12">
+              <a routerLink="/" routerLinkActive="active" class="btn btn-secondary headerSemiBold float-right">
+                <i class="icon-arrow-left"></i> BACK
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <div class="row clearfix">
+
+    <div class="col-sm-12 col-md-12 col-lg-12">
+      <div class="card">
+        <div class="header headerSemiBold">
+          <h2><span class="linkColor">Send</span> Notification</h2>
+        </div>
+        <div class="body">
+          <div class="demo-masked-input labelTitle">
+            <div class="row clearfix">
+
+              <div class="col-sm-1" *ngIf="selectedNotificationImage"><b>&nbsp;</b>
+                <div class="input-group">
+                  <img [src]="selectedNotificationImage" alt="assets/images/my-image/choose-file.png"
+                    data-holder-rendered="true" id="ImagePreview" style="height:50px" />
+                </div>
+              </div>
+
+              <div class="col-lg-{{selectedNotificationImage ? 3 : 4}} col-md-{{selectedNotificationImage ? 3 : 4}}">Choose Image ( Optional )
+                <div class="input-group">
+                  <input type="file" class="form-control" [(ngModel)]="image" accept="image/jpeg, image/png"
+                    (change)="notificationFileChanged($event)" autofocus="true">
+                </div>
+              </div>
+
+              <div class="col-lg-8 col-md-8">Title
+                <div class="input-group">
+                  <input type="text" class="form-control" [(ngModel)]="title" placeholder="Enter title">
+                </div>
+              </div>
+
+              <div class="col-lg-12 col-md-12">Notification content
+                <div class="input-group">
+                  <textarea rows="6" class="form-control no-resize" [(ngModel)]="content"
+                    style="border: 1px solid #E3E3E3;border-radius: 10px;" maxlength="200"></textarea>
+                </div>
+              </div>
+              
+              <div class="col-lg-12 col-md-12">
+                <div class="input-group">
+                  <span class="linkColor">{{200 - content?.length}} character left</span>
+                </div>
+              </div>
+
+              <div class="col-lg-12 col-md-12" *ngIf="instituteList.length>0">                
+                <table class="table table-bordered table-striped table-hover dataTable js-exportable w-100">
+                    <thead class="headerSemiBold">
+                        <tr>
+                            <th>
+                                <div class="checkbox">
+                                    <input id="selectAll" type="checkbox" (change)="selectAll($event)">
+                                    <label for="selectAll">Name</label>
+                                </div>
+                            </th>
+                            <th>Mobile</th>
+                        </tr>
+                    </thead>
+                    <tbody class="labelTitle">
+                        <tr *ngFor="let institute of instituteList;let i=index;">
+                            <td>
+                              <div class="checkbox">
+                                <input id="institute{{institute.account_id}}" type="checkbox" [(ngModel)]="institute.checked" (click)="instituteCheck(institute.account_id,$event)">
+                                <label for="institute{{institute.account_id}}">{{institute.account_title}}</label>
+                              </div>
+                            </td>
+                            <td>{{institute.account_phone}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+              </div>
+
+             
+              <div class="col-lg-1 col-md-1"><b>&nbsp;</b>
+                <div class="input-group">
+                  <input type="button" class="btn btn-secondary headerSemiBold float-right" value="SUBMIT"
+                    style="margin:0px;" (click)="submitButtonClick();">
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>

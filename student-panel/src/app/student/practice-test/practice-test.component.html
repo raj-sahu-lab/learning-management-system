@@ -1,0 +1,30 @@
+<main *ngIf="practiceTestId" class="default-transition" style="opacity: 1;">
+  <div class="container-fluid disable-text-selection">
+      <div class="card">
+        <div class="card-body">
+          <div *ngFor="let practiceQuestion of practiceQuestions;let questionIndex = index">
+            <div *ngIf="questionIndex == pager.index">
+              <div class="mb-4">
+                  <h6 class="headerSemiBold">
+                      <span>Q{{pager.index + 1}}.</span>
+                      <span class="ml-2" [innerHTML]="practiceQuestion.question"></span>
+                  </h6>
+              </div>
+              <p attr.id="practice{{practiceQuestion.id}}" class="collapse ml-4 labelTitle">
+                  {{practiceQuestion.answer}}
+              </p>
+            </div>
+            
+            <div *ngIf="questionIndex == pager.index" class="text-center mt-4">
+                <button *ngIf="viewAnswer" (click)="toogleView()" type="button" class="btn btn-secondary default headerSemiBold mt-4" data-toggle="collapse" attr.data-target="#practice{{practiceQuestion.id}}">View answer</button>
+                <div *ngIf="!viewAnswer">
+                    <button type="button" class="btn white headerSemiBold mr-2 default" (click)="goTo(pager.index - 1);toogleView()" [ngClass]="{'selected-bk': pager.index!=0}">Previous</button>
+                    <button *ngIf="pager.index+1 < pager.count" type="button" class="btn headerSemiBold white default" [ngClass]="{'selected-bk': pager.index < this.pager.count-1}" (click)="goTo(pager.index + 1);toogleView()">Next</button>
+                    <button *ngIf="pager.index+1 == pager.count" type="button" class="btn headerSemiBold white default" [ngClass]="{'selected-bk': pager.index <= this.pager.count-1}" (click)="goTo(pager.index + 1);toogleView();backClicked()">Finish</button>
+                </div>
+            </div>
+          </div>
+        </div>
+      </div>
+  </div>
+</main>

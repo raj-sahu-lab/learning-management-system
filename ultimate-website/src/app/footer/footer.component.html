@@ -1,0 +1,46 @@
+<footer id="footer" class="footer dark-bg">
+    <div class="footer-top d-none" style="padding-top: 30px;">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-offset-3 col-md-6 footer-widgets">
+                    <p>Subscribe And Get 10% Off</p>
+                    
+                    <form class="input-group form-flat form-theme padding-top-10 bv-form" name="subscribe-form" method="post" action="php/subscription.php" id="subscribe-form" novalidate="novalidate"><button type="submit" class="bv-hidden-submit" style="display: none; width: 0px; height: 0px;"></button>
+                        <div class="form-group has-feedback">
+                            <input class="form-control typo-light" type="email" placeholder="Enter Your Email" value="" name="subscribe_email" data-bv-field="subscribe_email"><i class="form-control-feedback bv-no-label" data-bv-icon-for="subscribe_email" style="display: none;"></i>
+                        <small class="help-block" data-bv-validator="notEmpty" data-bv-for="subscribe_email" data-bv-result="NOT_VALIDATED" style="display: none;">Email is required. Please enter email.</small><small class="help-block" data-bv-validator="emailAddress" data-bv-for="subscribe_email" data-bv-result="NOT_VALIDATED" style="display: none;">Please enter a correct email address.</small></div>
+                        <span class="input-group-btn">
+                            <button class="btn btn-default" type="submit"><i class="flaticon-next-1 fa"></i></button>
+                        </span>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="footer-bottom footer-top-border">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="copyright">
+                        &copy; {{year}} <a href="https://example.com/" target="_blank" rel="noreferrer">Company</a>. All Rights Reserved.
+                        <ul class="footer-bottom-links">
+                            <li><a routerLink="/termsAndCondition">Terms & Conditions</a></li>
+                            <li><a routerLink="/privacyPolicies">Privacy policy </a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-md-6 text-right d-none">
+                    <ul class="footer-social-icons">
+                        <li class="facebook"><a href="#" target="_blank" rel="noreferrer"><i class="fa fa-facebook text-darkest social-facebook-hvcolor"></i></a></li>
+                        <li class="twitter"><a href="#" target="_blank" rel="noreferrer"><i class="fa fa-twitter text-darkest social-twitter-hvcolor"></i></a></li>
+                        <li class="linkedin"><a href="#" target="_blank" rel="noreferrer"><i class="fa fa-linkedin text-darkest social-linkedin-hvcolor"></i></a></li>
+                        <li class="pinterest"><a href="#" target="_blank" rel="noreferrer"><i class="fa fa-pinterest text-darkest social-pinterest-hvcolor"></i></a></li>
+                        <li class="google-plus"><a href="#" target="_blank" rel="noreferrer"><i class="fa fa-google-plus text-darkest social-google-plus-hvcolor"></i></a></li>
+                        <li class="youtube"><a href="#" target="_blank" rel="noreferrer"><i class="fa fa-youtube text-darkest social-youtube-hvcolor"></i></a></li>
+                        <li class="dribbble"><a href="#" target="_blank" rel="noreferrer"><i class="fa fa-dribbble text-darkest social-dribbble-hvcolor"></i></a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>

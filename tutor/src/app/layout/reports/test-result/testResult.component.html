@@ -1,0 +1,116 @@
+<div class="container">
+  
+  <div class="row clearfix">
+    <div class="col-lg-12">
+      <div class="card">
+        <div class="body block-header">
+          <div class="row">
+            <div class="col-lg-6 col-md-8 col-sm-12">
+              <h2 class="headerSemiBold">Manage Results</h2>
+
+              <ul class="breadcrumb p-l-0 p-b-0 ">
+                <li class="breadcrumb-item">
+                  <a class="linkColor" routerLink="/" routerLinkActive="active"><i class="icon-home"></i></a>
+                </li>
+                <li class="breadcrumb-item active labelTitle">Results</li>
+              </ul>
+            </div>
+            <div class="col-lg-6 col-md-4 col-sm-12">
+              <a routerLink="./../fees" class="btn btn-secondary headerSemiBold btn-simple float-right active"><i
+                  class="icon-arrow-left"></i> BACK</a>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <div class="row clearfix">
+
+    <div class="col-sm-12 col-md-12 col-lg-12">
+      <div class="card">
+
+        <div class="header headerSemiBold">
+          <div class="row clearfix">
+
+            <div class="col-sm-6 col-md-6 col-lg-6">
+
+              <h2><span class="linkColor">Students</span> Results</h2>
+
+            </div>
+
+            <div class="col-sm-6 col-md-6 col-lg-6">
+
+              <ul class="header-dropdown" style="top: 0px;">
+
+                <li [ngClass]="filter ? 'dropdown show' : 'dropdown'">
+
+                  <a href="javascript:void(0);" class="dropdown-toggle mr-4 linkColor" data-toggle="dropdown"
+                    role="button" (click)="dropDownFilter();" aria-haspopup="true" aria-expanded="false">
+                    Manage columns
+                  </a>
+
+                  <ul class="dropdown-menu dropdown-menu-right labelTitle mangeColumn">
+
+                    <li class="p-2">
+                      <input type="checkbox" data-target="1" [(ngModel)]="columStudent"><span class="pl-2">Student</span><br>
+                      <input type="checkbox" data-target="2" [(ngModel)]="columTest"><span class="pl-2">Test</span><br>
+                      <input type="checkbox" data-target="2" [(ngModel)]="columQuestion"><span class="pl-2">Question</span><br>
+                      <input type="checkbox" data-target="2" [(ngModel)]="columDuration"><span class="pl-2">Duration</span><br>
+                      <input type="checkbox" data-target="2" [(ngModel)]="columMark"><span class="pl-2">Mark</span><br>
+                      <input type="checkbox" data-target="2" [(ngModel)]="columAttempt"><span class="pl-2">Attempt</span><br>
+                      <input type="checkbox" data-target="2" [(ngModel)]="columCorrect"><span class="pl-2">Correct</span><br>
+                      <input type="checkbox" data-target="2" [(ngModel)]="columScore"><span class="pl-2">Score</span>
+                    </li>
+
+                  </ul>
+
+                </li>
+
+              </ul>
+
+            </div>
+
+          </div>          
+        </div>
+
+        <div class="body">
+          <div class="table-responsive">
+              <table class="table table-bordered table-striped table-hover dataTable js-exportable w-100">
+                <thead class="headerSemiBold">
+                  <tr>
+                    <th>S No</th>
+                    <th [ngClass]="(columStudent == false)?'d-none':''">Student</th>
+                    <th [ngClass]="(columTest == false)?'d-none':''">Test</th>
+                    <th [ngClass]="(columQuestion == false)?'d-none':''">Question</th>
+                    <th [ngClass]="(columDuration == false)?'d-none':''">Duration</th>
+                    <th [ngClass]="(columMark == false)?'d-none':''">Total Mark</th>
+                    <th [ngClass]="(columAttempt == false)?'d-none':''">Attempted</th>
+                    <th [ngClass]="(columCorrect == false)?'d-none':''">Correct</th>
+                    <th [ngClass]="(columScore == false)?'d-none':''">Score</th>
+                  </tr>
+                </thead>
+                <tbody class="labelTitle">
+                  <tr *ngFor="let testresult of testresultList;let i=index;">
+                    <td>{{testresultList?.length-i}}</td>
+                    <td [ngClass]="(columStudent == false)?'d-none':''">{{testresult?.student?.first_name}} {{testresult?.student?.last_name}}</td>                    
+                    <td [ngClass]="(columTest == false)?'d-none':''">{{testresult.test.title}}</td>
+                    <td [ngClass]="(columQuestion == false)?'d-none':''">{{testresult.totalQuestions}}</td>
+                    <td [ngClass]="(columDuration == false)?'d-none':''">{{testresult.test.duration}} Min</td>
+                    <td [ngClass]="(columMark == false)?'d-none':''">{{testresult.test.totalMarks}}</td>
+                    <td [ngClass]="(columAttempt == false)?'d-none':''">{{testresult.attempted}}</td>
+                    <td [ngClass]="(columCorrect == false)?'d-none':''">{{testresult.correctAnswers}}</td>
+                    <td [ngClass]="(columScore == false)?'d-none':''">{{testresult.totalMarks}} / {{testresult?.test?.totalMarks}}</td>
+                  </tr>
+                </tbody>
+              </table>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+  
+</div>

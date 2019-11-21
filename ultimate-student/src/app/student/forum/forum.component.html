@@ -1,0 +1,103 @@
+<main class="default-transition" style="opacity: 1;">
+    <div class="container-fluid disable-text-selection">
+        <div class="row">
+            <div class="col-12 text-muted mb-3 cursor">
+                <h6><a class="text-muted" (click)="goBack()"><i class="iconsminds-up"></i> Back</a></h6>
+            </div>
+        </div>
+
+        <div class="row mb-2" *ngIf="forumCategories?.length">
+            <div class="col-xs-12 col-lg-12 col-12 mb-4">
+                <div class="card">
+                    <img class="card-img" src="../../../assets/img/icons/background.png" style="border-radius: 0px;">
+                    <div class="card-img-overlay text-center" style="color:#3a3a3a">
+                        <h1 class="welcomeFont mt-4">Forum</h1>
+                        <h3 class="headerSemiBold">Start Discussing</h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div *ngIf="!forumCategories?.length" class="row mb-4">
+            <div class="col-12 col-sm-12 col-md-12 mx-auto my-auto">
+                <div class="card index-card">
+                    <div class="card-body text-center form-side">
+                        <p class="mb-3 text-center">
+                            <img *ngIf="instituteLogo" src="{{instituteLogo}}"
+                                class="img-thumbnail border-0 list-thumbnail align-self-center xsmall">
+                            <img *ngIf="!instituteLogo" src="../../../assets/img/favicon.png"
+                                class="img-thumbnail border-0 rounded-circle list-thumbnail align-self-center xsmall">
+                        </p>
+                        <h6 class="card-title font-weight-bold">Will comming soon</h6>
+                        <p class="text-muted">Start exploring, we will be back soon with the details</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div *ngIf="forumCategories?.length">
+            <div class="row">
+                <div class="col-12 mb-2">
+                    <h6 class="headerSemiBold">Select your favourite category</h6>
+                </div>
+                <div class="col-md-6 col-sm-6 col-lg-3 col-12 mb-4" *ngFor="let category of forumCategories">
+                    <div class="card shadow d-flex flex-row">
+                        <div class="d-flex flex-grow-1 min-width-zero">
+                            <div class="card-body min-width-zero">
+                                <div class="min-width-zero text-center">
+                                    <p class="headerSemiBold mb-2">{{category?.title}}</p>
+                                    <a (click)="navigateUrl(category)" routerLinkActive="active"
+                                        class="active btn btn-xs btn-outline-primary labelTitle">View All</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-12 mb-2">
+                    <h6 class="headerSemiBold">
+                        Popular Articles
+                    </h6>
+                    <div class="separator ml-1 mb-4 mr-3"></div>
+                    <div class="row">
+
+                        <div class="col-12 col-sm-12 col-md-12 mx-auto my-auto mb-4" *ngIf="!popularArticles?.articals">
+                            <div class="card index-card mb-4">
+                                <div class="card-body text-center form-side">
+                                    <p class="mb-3 text-center">
+                                        <img *ngIf="instituteLogo" src="{{instituteLogo}}"
+                                            class="img-thumbnail border-0 list-thumbnail align-self-center xsmall">
+                                        <img *ngIf="!instituteLogo" src="../../../assets/img/favicon.png"
+                                            class="img-thumbnail border-0 rounded-circle list-thumbnail align-self-center xsmall">
+                                    </p>
+                                    <h6 class="card-title labelTitle">No article found</h6>
+                                    <p class="text-muted headerSemiBold">Search and read the article</p>
+
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-xs-6 col-lg-4 col-12 mb-4" *ngFor="let article of popularArticles?.articals">
+                            <div class="card shadow pointer">
+                                <div class="card-body">
+                                    <a (click)="navigateArticleUrl(article)" routerLinkActive="active">
+                                        <h6 class="mb-3 headerSemiBold">{{article?.title | slice:0:25}}
+                                            <span *ngIf="article?.description.length>=25">...</span>
+                                        </h6>
+                                        <p class="text-justify labelTitle">
+                                            {{article?.description | slice:0:115}}
+                                            <span *ngIf="article?.description.length>=115">...</span>
+                                        </p>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</main>

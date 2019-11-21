@@ -1,0 +1,46 @@
+.pop-open{
+    display: block;
+}
+.pop-close{
+    display: block ;
+}
+.prof{
+    width: 40px;
+    height: 40px;
+    object-fit: cover;
+    border-radius: 50%;
+}
+.name{
+    margin-top: 20px;
+    margin-right: 5px;
+}
+.bc{
+    background: transparent;
+    border: none;
+    transition: none;
+    margin-top: 10px;
+    outline:none;
+}
+.black {
+    color: black !important;
+}
+.white {
+    color: white !important;
+}
+@media (min-width:768px){
+    .pop-close{
+        display: block ;
+    }
+}
+
+@media screen and (max-width:767px){
+    .pop-close{
+        display: none ;
+    }
+    .pop-open{
+        display: block;
+    }
+}
+.extra-nav>.navbar-nav:after {
+    top: unset;
+}

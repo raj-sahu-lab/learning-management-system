@@ -1,0 +1,127 @@
+<div class="container">
+  
+  <div class="row clearfix">
+    <div class="col-lg-12">
+      <div class="card">
+        <div class="body block-header">
+          <div class="row">
+            <div class="col-lg-6 col-md-8 col-sm-12">
+              <h2 class="headerSemiBold">Manage Fees</h2>
+              <ul class="breadcrumb p-l-0 p-b-0 ">
+                <li class="breadcrumb-item">
+                  <a class="linkColor" routerLink="/" routerLinkActive="active"><i class="icon-home"></i></a>
+                </li>
+                <li class="breadcrumb-item active labelTitle">Fees</li>
+              </ul>
+            </div>
+            <div class="col-lg-6 col-md-4 col-sm-12">
+              <a routerLink="./../fees" class="btn btn-secondary headerSemiBold btn-simple float-right active"><i
+                  class="icon-arrow-left"></i> BACK</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <div class="row clearfix">
+    
+    <div class="col-sm-12 col-md-12 col-lg-12">
+      <div class="card">
+
+        <div class="header headerSemiBold">
+          <div class="row clearfix">
+
+            <div class="col-sm-6 col-md-6 col-lg-6">
+
+              <h2><span class="linkColor">Received</span> Fees</h2>
+
+            </div>
+
+            <div class="col-sm-6 col-md-6 col-lg-6">
+
+              <ul class="header-dropdown" style="top: 0px;">
+
+                <li [ngClass]="filter ? 'dropdown show' : 'dropdown'">
+
+                  <a href="javascript:void(0);" class="dropdown-toggle mr-4 linkColor" data-toggle="dropdown"
+                    role="button" (click)="dropDownFilter();" aria-haspopup="true" aria-expanded="false">
+                    Manage columns
+                  </a>
+
+                  <ul class="dropdown-menu dropdown-menu-right labelTitle mangeColumn">
+
+                    <li class="p-2">
+                      <input type="checkbox" data-target="1" [(ngModel)]="columStudent"><span class="pl-2">Student</span><br>
+                      <input type="checkbox" data-target="2" [(ngModel)]="columType"><span class="pl-2">Type</span><br>
+                      <input type="checkbox" data-target="3" [(ngModel)]="columCourse"><span class="pl-2">Course</span><br>
+                      <input type="checkbox" data-target="4" [(ngModel)]="columAmount"><span class="pl-2">Amount</span><br>
+                      <input type="checkbox" data-target="5" [(ngModel)]="columPaidBy"><span class="pl-2">PaidBy</span><br>
+                      <input type="checkbox" data-target="6" [(ngModel)]="columDate"><span class="pl-2">Date</span>
+                      <input type="checkbox" data-target="6" [(ngModel)]="columValidity"><span class="pl-2">Day's of validity</span>
+                    </li>
+
+                  </ul>
+
+                </li>
+
+              </ul>
+
+            </div>
+
+          </div>           
+        </div>
+
+        <div class="body">
+          <div class="table-responsive">
+              <table class="table table-bordered table-striped table-hover dataTable js-exportable w-100">
+                <thead class="headerSemiBold">
+                  <tr>
+                    <th>S No</th>
+                    <th [ngClass]="(columStudent == false)?'d-none':''">Student</th>
+                    <th [ngClass]="(columType == false)?'d-none':''">Type</th>
+                    <th [ngClass]="(columCourse == false)?'d-none':''">Course</th>
+                    <th [ngClass]="(columAmount == false)?'d-none':''">Amount</th>
+                    <th [ngClass]="(columPaidBy == false)?'d-none':''">PaidBy</th>
+                    <th [ngClass]="(columDate == false)?'d-none':''">Purchase Date</th>
+                    <th [ngClass]="(columValidity == false)?'d-none':''">Day's of validity</th>
+                  </tr>
+                </thead>
+                <tbody class="labelTitle">
+                  <tr *ngFor="let purchase of purchaseList; let i=index">
+                    <td>{{purchaseList.length-i}}</td>
+                    <td [ngClass]="(columStudent == false)?'d-none':''">{{purchase.student?.first_name}} {{purchase.student?.last_name}}</td>
+                    <td [ngClass]="(columType == false)?'d-none':''">
+                      <span *ngIf="purchase.type == 1">Subject</span>
+                      <span *ngIf="purchase.type == 2">Topic</span>
+                      <span *ngIf="purchase.type == 3">Content</span>
+                      <span *ngIf="purchase.type == 4">Test</span>
+                      <span *ngIf="purchase.type == 5">Practice</span>
+                      <span *ngIf="purchase.type == 6">PDF</span>
+                      <span *ngIf="purchase.type == 7">PPT</span>
+                      <span *ngIf="purchase.type == 8">Audio</span>
+                      <span *ngIf="purchase.type == 9">Video</span>
+                    </td>
+                    <td [ngClass]="(columCourse == false)?'d-none':''">{{purchase.detail?.title}}</td>
+                    <td [ngClass]="(columAmount == false)?'d-none':''">
+
+                      <span *ngIf="purchase.payments != NULL">
+                        {{purchase.payments?.currency?.sign}}
+                      </span>
+                      {{purchase.payments?.amount}}
+                      
+                    </td>
+                    <td [ngClass]="(columPaidBy == false)?'d-none':''">{{purchase.payments?.payment_type?.title}}</td>
+                    <td [ngClass]="(columDate == false)?'d-none':''">{{purchase.payments?.paidDate | date:'dd/MM/yyyy h:mm a'}}</td>
+                    <td [ngClass]="(columValidity == false)?'d-none':''">{{purchase.detail?.validity}}</td>
+                  </tr>
+                </tbody>
+              </table>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+  </div>  
+  
+</div>

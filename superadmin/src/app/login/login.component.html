@@ -1,0 +1,39 @@
+<div class="authentication">
+	<div class="container">
+		<div class="col-md-12 content-center">
+			<div class="row clearfix">
+				<div class="offset-lg-3 col-lg-6 col-md-12">
+					<div class="card-plain" ng-view>
+						<div class="header">
+							<h5 class="headerBold">Login</h5>
+						</div>						
+
+						<div class="input-group warning">
+							<input type="text" class="form-control labelTitle" placeholder="Enter email or Mobile no" [(ngModel)]="user.email">
+							
+							<span class="input-group-addon">
+								<i class="icon-envelope-open" style="padding-left: 15px;"></i>
+							</span>
+						</div>
+						<div class="input-group warning">
+							<input type="password" class="form-control labelTitle" placeholder="Enter password" [(ngModel)]="user.password">
+							
+							<span class="input-group-addon">
+								<i class="icon-lock" style="padding-left: 15px;"></i>
+							</span>
+						</div>
+
+						<div class="col-md-12 text-danger"><strong>{{ LoginMessage }}</strong></div>
+
+						<div class="footer">
+							<button class="btn btn-secondary btn-block" (click)="onLoggedin()">
+								SIGN IN <i class="icon-login"></i>
+							</button>
+						</div>
+						<a routerLink="/forgotpassword" routerLinkActive="active" class="link headerSemiBold">Forgot Password?</a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

@@ -1,0 +1,332 @@
+<main class="default-transition" style="opacity: 1;">
+  <div class="container-fluid disable-text-selection">
+    <div class="row">
+      <div class="col-12 mb-3">
+        <div class="row m-0 p-0">
+          <div class="col-md-12 col-lg-1 col-sm-12 p-0">
+            <h6>
+              <a class="text-muted cursor" (click)="goBack()"><i class="iconsminds-up"></i> Back</a>
+            </h6>
+          </div>
+          <div class="col-md-12 col-lg-10 col-sm-12 p-0">
+            <h6 class="cent headerSemiBold">
+              News
+            </h6>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div *ngIf="news" class="col-12 col-sm-12 col-md-12 mx-auto my-auto">
+        <div class="card index-card">
+            <div class="card-body text-center form-side">
+                <p class="mb-3 text-center">
+                  <img *ngIf="instituteLogo" src="{{instituteLogo}}"
+                      class="img-thumbnail border-0 list-thumbnail align-self-center xsmall">
+                  <img *ngIf="!instituteLogo" src="../../../assets/img/favicon.png"
+                      class="img-thumbnail border-0 rounded-circle list-thumbnail align-self-center xsmall">
+                </p>
+                <h6 class="text-muted headerSemiBold">No news posted yet</h6>
+                <p class="card-title labelTitle">Will be added soon</p>
+            </div>
+        </div>
+      </div>
+      <div class="col-12">
+        <h6 class="headerSemiBold">General
+          <a routerLink="/student/news/category/1" class="float-right headerSemiBold coral cursor">
+              View all
+          </a>
+        </h6>
+        <hr>
+        <div class="row p-0 m-0">
+          <div class="col-lg-3 mb-4 cursor" (click)="navigateUrl()">
+            <div class="card shadow-sm">
+              <div class="position-relative">
+                  <img class="card-img-top obj-cover" src="assets/img/card-thumb-1.jpg" style="height: 128px;"> 
+              </div>
+              
+              <div class="card-body p-2">
+                  <p class="labelTitle mb-2"><i class="simple-icon-calendar"><span> 01-06-2020</span></i></p>
+                  <h6 class="mb-2 headerSemiBold">
+                      Corona Spreading as fast as light
+                      <!-- {{course.title | slice:0:30}}
+                      <span *ngIf="course.title.length>=30">...</span> -->
+                  </h6>
+                  <p class="mb-3 text-justify scrollbar labelTitle">
+                    The Punjab government on Tuesday decided to fill 3,186 posts of various cadres in teaching and non-teaching staff in schools. The Cabinet led by Chief Minister Amarinder Singh approved the School Education Department
+                      <!-- {{course.description | slice:0:135}} -->
+                      <!-- <span *ngIf="course.description.length>=135">...</span> -->
+                  </p>
+              </div>
+          </div>
+
+          </div>
+          <div class="col-lg-3 mb-4 cursor">
+            <div class="card shadow-sm">
+              <div class="position-relative">
+                  <img class="card-img-top obj-cover" src="assets/img/card-thumb-1.jpg" style="height: 128px;"> 
+              </div>
+              
+              <div class="card-body p-2">
+                  <p class="labelTitle mb-2"><i class="simple-icon-calendar"><span> 01-06-2020</span></i></p>
+                  <h6 class="mb-2 headerSemiBold">
+                      Corona Spreading as fast as light
+                      <!-- {{course.title | slice:0:30}}
+                      <span *ngIf="course.title.length>=30">...</span> -->
+                  </h6>
+                  <p class="mb-3 text-justify scrollbar labelTitle">
+                    The Punjab government on Tuesday decided to fill 3,186 posts of various cadres in teaching and non-teaching staff in schools. The Cabinet led by Chief Minister Amarinder Singh approved the School Education Department
+                      <!-- {{course.description | slice:0:135}} -->
+                      <!-- <span *ngIf="course.description.length>=135">...</span> -->
+                  </p>
+              </div>
+          </div>
+
+          </div>
+          <div class="col-lg-3 mb-4 cursor">
+            <div class="card shadow-sm">
+              <div class="position-relative">
+                  <img class="card-img-top obj-cover" src="assets/img/card-thumb-1.jpg" style="height: 128px;"> 
+              </div>
+              
+              <div class="card-body p-2">
+                  <p class="labelTitle mb-2"><i class="simple-icon-calendar"><span> 01-06-2020</span></i></p>
+                  <h6 class="mb-2 headerSemiBold">
+                      Corona Spreading as fast as light
+                      <!-- {{course.title | slice:0:30}}
+                      <span *ngIf="course.title.length>=30">...</span> -->
+                  </h6>
+                  <p class="mb-3 text-justify scrollbar labelTitle">
+                    The Punjab government on Tuesday decided to fill 3,186 posts of various cadres in teaching and non-teaching staff in schools. The Cabinet led by Chief Minister Amarinder Singh approved the School Education Department
+                      <!-- {{course.description | slice:0:135}} -->
+                      <!-- <span *ngIf="course.description.length>=135">...</span> -->
+                  </p>
+              </div>
+          </div>
+
+          </div>
+          <div class="col-lg-3 mb-4 cursor">
+            <div class="card shadow-sm">
+              <div class="position-relative">
+                  <img class="card-img-top obj-cover" src="assets/img/card-thumb-1.jpg" style="height: 128px;"> 
+              </div>
+              
+              <div class="card-body p-2">
+                  <p class="labelTitle mb-2"><i class="simple-icon-calendar"><span> 01-06-2020</span></i></p>
+                  <h6 class="mb-2 headerSemiBold">
+                      Corona Spreading as fast as light
+                      <!-- {{course.title | slice:0:30}}
+                      <span *ngIf="course.title.length>=30">...</span> -->
+                  </h6>
+                  <p class="mb-3 text-justify scrollbar labelTitle">
+                    The Punjab government on Tuesday decided to fill 3,186 posts of various cadres in teaching and non-teaching staff in schools. The Cabinet led by Chief Minister Amarinder Singh approved the School Education Department
+                      <!-- {{course.description | slice:0:135}} -->
+                      <!-- <span *ngIf="course.description.length>=135">...</span> -->
+                  </p>
+              </div>
+          </div>
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="col-12">
+        <h6 class="headerSemiBold">Corona
+          <a class="float-right headerSemiBold coral cursor">
+              View all
+          </a>
+        </h6>
+        <hr>
+        <div class="row p-0 m-0">
+          <div class="col-lg-3 mb-4 cursor">
+            <div class="card shadow-sm">
+              <div class="position-relative">
+                  <img class="card-img-top obj-cover" src="assets/img/card-thumb-1.jpg" style="height: 128px;"> 
+              </div>
+              
+              <div class="card-body p-2">
+                  <p class="labelTitle mb-2"><i class="simple-icon-calendar"><span> 01-06-2020</span></i></p>
+                  <h6 class="mb-2 headerSemiBold">
+                      Corona Spreading as fast as light
+                      <!-- {{course.title | slice:0:30}}
+                      <span *ngIf="course.title.length>=30">...</span> -->
+                  </h6>
+                  <p class="mb-3 text-justify scrollbar labelTitle">
+                    The Punjab government on Tuesday decided to fill 3,186 posts of various cadres in teaching and non-teaching staff in schools. The Cabinet led by Chief Minister Amarinder Singh approved the School Education Department
+                      <!-- {{course.description | slice:0:135}} -->
+                      <!-- <span *ngIf="course.description.length>=135">...</span> -->
+                  </p>
+              </div>
+          </div>
+
+          </div>
+          <div class="col-lg-3 mb-4 cursor">
+            <div class="card shadow-sm">
+              <div class="position-relative">
+                  <img class="card-img-top obj-cover" src="assets/img/card-thumb-1.jpg" style="height: 128px;"> 
+              </div>
+              
+              <div class="card-body p-2">
+                  <p class="labelTitle mb-2"><i class="simple-icon-calendar"><span> 01-06-2020</span></i></p>
+                  <h6 class="mb-2 headerSemiBold">
+                      Corona Spreading as fast as light
+                      <!-- {{course.title | slice:0:30}}
+                      <span *ngIf="course.title.length>=30">...</span> -->
+                  </h6>
+                  <p class="mb-3 text-justify scrollbar labelTitle">
+                    The Punjab government on Tuesday decided to fill 3,186 posts of various cadres in teaching and non-teaching staff in schools. The Cabinet led by Chief Minister Amarinder Singh approved the School Education Department
+                      <!-- {{course.description | slice:0:135}} -->
+                      <!-- <span *ngIf="course.description.length>=135">...</span> -->
+                  </p>
+              </div>
+          </div>
+
+          </div>
+          <div class="col-lg-3 mb-4 cursor">
+            <div class="card shadow-sm">
+              <div class="position-relative">
+                  <img class="card-img-top obj-cover" src="assets/img/card-thumb-1.jpg" style="height: 128px;"> 
+              </div>
+              
+              <div class="card-body p-2">
+                  <p class="labelTitle mb-2"><i class="simple-icon-calendar"><span> 01-06-2020</span></i></p>
+                  <h6 class="mb-2 headerSemiBold">
+                      Corona Spreading as fast as light
+                      <!-- {{course.title | slice:0:30}}
+                      <span *ngIf="course.title.length>=30">...</span> -->
+                  </h6>
+                  <p class="mb-3 text-justify scrollbar labelTitle">
+                    The Punjab government on Tuesday decided to fill 3,186 posts of various cadres in teaching and non-teaching staff in schools. The Cabinet led by Chief Minister Amarinder Singh approved the School Education Department
+                      <!-- {{course.description | slice:0:135}} -->
+                      <!-- <span *ngIf="course.description.length>=135">...</span> -->
+                  </p>
+              </div>
+          </div>
+
+          </div>
+          <div class="col-lg-3 mb-4 cursor">
+            <div class="card shadow-sm">
+              <div class="position-relative">
+                  <img class="card-img-top obj-cover" src="assets/img/card-thumb-1.jpg" style="height: 128px;"> 
+              </div>
+              
+              <div class="card-body p-2">
+                  <p class="labelTitle mb-2"><i class="simple-icon-calendar"><span> 01-06-2020</span></i></p>
+                  <h6 class="mb-2 headerSemiBold">
+                      Corona Spreading as fast as light
+                      <!-- {{course.title | slice:0:30}}
+                      <span *ngIf="course.title.length>=30">...</span> -->
+                  </h6>
+                  <p class="mb-3 text-justify scrollbar labelTitle">
+                    The Punjab government on Tuesday decided to fill 3,186 posts of various cadres in teaching and non-teaching staff in schools. The Cabinet led by Chief Minister Amarinder Singh approved the School Education Department
+                      <!-- {{course.description | slice:0:135}} -->
+                      <!-- <span *ngIf="course.description.length>=135">...</span> -->
+                  </p>
+              </div>
+          </div>
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="col-12">
+        <h6 class="headerSemiBold">Category 1
+          <a class="float-right headerSemiBold coral cursor">
+              View all
+          </a>
+        </h6>
+        <hr>
+        <div class="row p-0 m-0">
+          <div class="col-lg-3 mb-4 cursor">
+            <div class="card shadow-sm">
+              <div class="position-relative">
+                  <img class="card-img-top obj-cover" src="assets/img/card-thumb-1.jpg" style="height: 128px;"> 
+              </div>
+              
+              <div class="card-body p-2">
+                  <p class="labelTitle mb-2"><i class="simple-icon-calendar"><span> 01-06-2020</span></i></p>
+                  <h6 class="mb-2 headerSemiBold">
+                      Corona Spreading as fast as light
+                      <!-- {{course.title | slice:0:30}}
+                      <span *ngIf="course.title.length>=30">...</span> -->
+                  </h6>
+                  <p class="mb-3 text-justify scrollbar labelTitle">
+                    The Punjab government on Tuesday decided to fill 3,186 posts of various cadres in teaching and non-teaching staff in schools. The Cabinet led by Chief Minister Amarinder Singh approved the School Education Department
+                      <!-- {{course.description | slice:0:135}} -->
+                      <!-- <span *ngIf="course.description.length>=135">...</span> -->
+                  </p>
+              </div>
+          </div>
+
+          </div>
+          <div class="col-lg-3 mb-4 cursor">
+            <div class="card shadow-sm">
+              <div class="position-relative">
+                  <img class="card-img-top obj-cover" src="assets/img/card-thumb-1.jpg" style="height: 128px;"> 
+              </div>
+              
+              <div class="card-body p-2">
+                  <p class="labelTitle mb-2"><i class="simple-icon-calendar"><span> 01-06-2020</span></i></p>
+                  <h6 class="mb-2 headerSemiBold">
+                      Corona Spreading as fast as light
+                      <!-- {{course.title | slice:0:30}}
+                      <span *ngIf="course.title.length>=30">...</span> -->
+                  </h6>
+                  <p class="mb-3 text-justify scrollbar labelTitle">
+                    The Punjab government on Tuesday decided to fill 3,186 posts of various cadres in teaching and non-teaching staff in schools. The Cabinet led by Chief Minister Amarinder Singh approved the School Education Department
+                      <!-- {{course.description | slice:0:135}} -->
+                      <!-- <span *ngIf="course.description.length>=135">...</span> -->
+                  </p>
+              </div>
+          </div>
+
+          </div>
+          <div class="col-lg-3 mb-4 cursor">
+            <div class="card shadow-sm">
+              <div class="position-relative">
+                  <img class="card-img-top obj-cover" src="assets/img/card-thumb-1.jpg" style="height: 128px;"> 
+              </div>
+              
+              <div class="card-body p-2">
+                  <p class="labelTitle mb-2"><i class="simple-icon-calendar"><span> 01-06-2020</span></i></p>
+                  <h6 class="mb-2 headerSemiBold">
+                      Corona Spreading as fast as light
+                      <!-- {{course.title | slice:0:30}}
+                      <span *ngIf="course.title.length>=30">...</span> -->
+                  </h6>
+                  <p class="mb-3 text-justify scrollbar labelTitle">
+                    The Punjab government on Tuesday decided to fill 3,186 posts of various cadres in teaching and non-teaching staff in schools. The Cabinet led by Chief Minister Amarinder Singh approved the School Education Department
+                      <!-- {{course.description | slice:0:135}} -->
+                      <!-- <span *ngIf="course.description.length>=135">...</span> -->
+                  </p>
+              </div>
+          </div>
+
+          </div>
+          <div class="col-lg-3 mb-4 cursor">
+            <div class="card shadow-sm">
+              <div class="position-relative">
+                  <img class="card-img-top obj-cover" src="assets/img/card-thumb-1.jpg" style="height: 128px;"> 
+              </div>
+              
+              <div class="card-body p-2">
+                  <p class="labelTitle mb-2"><i class="simple-icon-calendar"><span> 01-06-2020</span></i></p>
+                  <h6 class="mb-2 headerSemiBold">
+                      Corona Spreading as fast as light
+                      <!-- {{course.title | slice:0:30}}
+                      <span *ngIf="course.title.length>=30">...</span> -->
+                  </h6>
+                  <p class="mb-3 text-justify scrollbar labelTitle">
+                    The Punjab government on Tuesday decided to fill 3,186 posts of various cadres in teaching and non-teaching staff in schools. The Cabinet led by Chief Minister Amarinder Singh approved the School Education Department
+                      <!-- {{course.description | slice:0:135}} -->
+                      <!-- <span *ngIf="course.description.length>=135">...</span> -->
+                  </p>
+              </div>
+          </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>

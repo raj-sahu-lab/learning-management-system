@@ -1,0 +1,81 @@
+module.exports.loginWithPhone = async function (req, res) {
+
+   const body = req.fields;
+   if (!body.phone) {
+
+      return ReE(res, 'Please enter phone number.', 422);
+
+   } else if(!body.accessToken){
+
+      return ReE(res, 'Access token missing.', 422);
+
+   }else {
+
+      [err, user] = await to(authService.getStudentByPhone(body.phone));
+      if (err) return ReE(res, err, 422);
+      
+      [err, user] = await to(authService.getStudent(user.id));
+      if (err) return ReE(res, err, 422);
+
+      if (user) {
+         
+         if (user.instituteList.branch){
+            
+            if(user.instituteList.branch.account.toJSON().accessToken == body.accessToken){
+
+               var studentJson = { update_ip: req.ip , deviceType: body.deviceType };
+   
+               if (body.deviceType == 1 || body.deviceType == 2) { // 1 - Android , 2 - IOS
+      
+                  studentJson.androidDeviceId = body.deviceId;
+      
+               } else { // 3 - WebSite
+      
+                  studentJson.webDeviceId = body.deviceId;
+               }
+      
+               // Check Notification Token
+               if (body.notificationToken) {
+      
+                  if (body.deviceType == 1 || body.deviceType == 2) { // 1 - Android , 2 - IOS
+      
+                     studentJson.androidDeviceToken = body.notificationToken;
+      
+                  } else { // 3 - WebSite
+      
+                     studentJson.webDeviceToken = body.notificationToken;
+                  }
+               }
+      
+               [err, studentUpdate] = await to(authService.updatePersonalInfo(studentJson, user.id));
+               if (err) return ReE(res, 'Failed to verify credentials, please try again.', 422);
+      
+               if (studentUpdate.length == 1 && studentUpdate[0] == 1) {
+      
+                  [err, student] = await to(module.exports.getStudentInfo(user.id));
+                  if (err) return ReE(res, err, 422);
+      
+                  if ((student.instituteList != null) && student.instituteList.isActive == 0) {
+                     return ReE(res, 'Your account disabled by institute.', 422);
+                  }
+                  return ReS(res, 'Student Logged successfully.', student);
+      
+               } else {
+      
+                  return ReE(res, 'Failed to login. Please try again.', 422);
+               }
+            } else {
+      
+               return ReE(res, 'Invalid details.', 422);
+            }
+         } else {
+      
+            return ReE(res, 'Your account disabled by admin, please contact your institute.', 422);
+         }
+      } else {
+
+         return ReE(res, 'Invalid Credentials. Please try again.', 422);
+      }
+
+   }
+}

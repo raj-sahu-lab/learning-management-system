@@ -1,0 +1,117 @@
+$topnav-background-color: #222;
+:host {
+    .navbar {
+        background-color: $topnav-background-color;
+        .navbar-brand {
+            color: #fff;
+        }
+        .nav-item > a {
+            color: #999;
+            &:hover {
+                color: #fff;
+            }
+        }
+    }
+    .messages {
+        width: 300px;
+        .media {
+            border-bottom: 1px solid #ddd;
+            padding: 5px 10px;
+            &:last-child {
+                border-bottom: none;
+            }
+        }
+        .media-body {
+            h5 {
+                font-size: 13px;
+                font-weight: 600;
+            }
+            .small {
+                margin: 0;
+            }
+            .last {
+                font-size: 12px;
+                margin: 0;
+            }
+        }
+    }
+}
+.collapse{
+    margin-left: 20px;
+}
+
+.list {
+    // overflow-x: scroll;
+    white-space: nowrap;
+
+}
+.icon-list{
+    color: white;
+    font-size: 20px;
+    vertical-align: middle;
+}
+@media only screen and (max-width: 992px) {
+    .d-lg-block{
+        display: none;
+    }
+    .d-md-none{
+        display: none !important;
+    }
+    .list {
+        padding: 0px !important;
+        // height: 30vh !important;
+        // white-space: nowrap;
+    }
+    .sm-sidebar{
+        z-index: 13;
+        background-color: white ;
+        height: 100vh;
+        overflow: scroll;
+    }
+    .bars1:before{
+        content: '\E5D2';
+        transform: scale(1);
+        font-family: 'Material Icons';
+        font-size: 24px;
+        position: absolute;
+        top: 11px;
+        left: 12px;
+        transition: all 0.3s;
+    }
+    .bars1:after{
+        content: '\E5C4';
+        transform: scale(1);
+        font-family: 'Material Icons';
+        font-size: 24px;
+        position: absolute;
+        top: 11px;
+        left: 12px;
+        transition: all 0.3s;
+    }
+    .hide-sidebar{
+        margin-left: -320px;
+    }
+}
+@media only screen and (min-width: 993px) {
+    
+    .d-lg-none{
+        display: none;
+    }
+    .d-lg-block{
+        display: block;
+    }
+    
+}
+
+
+// ::-webkit-scrollbar {
+//     width: 1px;
+// }
+
+// ::-webkit-scrollbar-track {
+//     background: #f1f1f1;
+// }
+
+// ::-webkit-scrollbar-thumb {
+//     background: coral;
+// }

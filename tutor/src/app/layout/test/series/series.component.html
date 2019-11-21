@@ -1,0 +1,370 @@
+<div class="container">
+    <div class="row clearfix">
+        <div class="col-lg-12">
+            <div class="card">
+                <div class="body block-header">
+                    <div class="row">
+                        <div class="col-lg-6 col-md-8 col-sm-12">
+                            <h2 class="headerSemiBold">Manage Tests</h2>
+                            <ul class="breadcrumb p-l-0 p-b-0 ">
+                                <li class="breadcrumb-item">
+                                    <a class="linkColor" routerLink="/" routerLinkActive="active"><i
+                                            class="icon-home"></i></a>
+                                </li>
+                                <li class="breadcrumb-item active labelTitle">Tests Details</li>
+                            </ul>
+                        </div>
+                        <div class="col-lg-6 col-md-4 col-sm-12">
+                            <a routerLink="/paper" class="btn btn-secondary headerSemiBold float-right active">
+                                <i class="icon-arrow-left"></i>
+                                BACK</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row clearfix">
+
+        <div class="col-sm-12 col-md-12 col-lg-12">
+            <div class="card">
+
+                <div class="header headerSemiBold">
+                    <h2><span class="linkColor">Add</span> Test</h2>
+                </div>
+
+                <div class="body">
+                    <div class="demo-masked-input labelTitle">
+                        <div class="row clearfix">
+
+                            <div class="col-lg-4 col-md-4">Select Question Type
+                                <div class="input-group">
+                                    <div class="checkbox d-inline-block mr-2">
+                                        <input id="MCQ" type="checkbox" (change)="typeSelected($event, 0)">
+                                        <label for="MCQ">MCQ</label>
+                                    </div>
+                                    <div class="checkbox d-inline-block mr-2">
+                                        <input id="MultipleChoice" type="checkbox" (change)="typeSelected($event, 1)">
+                                        <label for="MultipleChoice">Multi Checkbox</label>
+                                    </div>
+                                    <div class="checkbox d-inline-block mr-2">
+                                        <input id="fillInTheBlank" type="checkbox" (change)="typeSelected($event, 2)">
+                                        <label for="fillInTheBlank">Filling the blank</label>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-lg-8 col-md-8"> Test title
+                                <div class="input-group">
+                                    <input type="text" [(ngModel)]="title" class="form-control"
+                                        placeholder="Enter test title">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row clearfix">
+
+                            <div class="col-lg-12 col-md-12">Test Preview
+                              <div class="input-group">
+                                <textarea rows="6" class="form-control no-resize" [(ngModel)]="description"
+                                  style="border: 1px solid #E3E3E3;border-radius: 10px;" maxlength="200"></textarea>
+                              </div>
+                            </div>
+              
+                        </div>
+            
+                        <div class="row clearfix">
+                        <!-- Time Management Start-->
+                        <div class="col-lg-4 col-md-4"> Set Test Time
+                            <div class="input-group">
+                            <div class="radio inlineblock m-r-20" style="margin-top:10px;">
+                                <input type="radio" [(ngModel)]="timedTest" value="0" name="timedTest" id="untimed"
+                                class="with-gap">
+                                <label for="untimed">Untimed</label>
+                            </div>
+                            <div class="radio inlineblock" style="margin-top:10px;">
+                                <input type="radio" [(ngModel)]="timedTest" value="1" name="timedTest" id="timed" class="with-gap">
+                                <label for="timed">Timed</label>
+                            </div>
+                            </div>
+                        </div>
+            
+                        <div class="col-lg-6 col-md-6" *ngIf="timedTest == '1'"> Manage Time
+                            <div class="input-group">
+                            <div class="radio inlineblock m-r-20" style="margin-top:10px;">
+                                <input type="radio" [(ngModel)]="timeManage" value="0" name="timeManage" id="differentTime"
+                                class="with-gap">
+                                <label for="differentTime">Use question bank time</label>
+                            </div>
+                            <div class="radio inlineblock" style="margin-top:10px;">
+                                <input type="radio" [(ngModel)]="timeManage" value="1" name="timeManage" id="equalTime"
+                                class="with-gap">
+                                <label for="equalTime">All question have equal time</label>
+                            </div>
+                            </div>
+                        </div>
+            
+                        <div class="col-lg-2 col-md-2" *ngIf="timedTest == '1' && timeManage == '1' "> Total duration in min
+                            <div class="input-group">
+                            <input type="number" class="form-control" [(ngModel)]="testDuration" placeholder="Enter duration" min="0" pattern="/^-?\d+\.?\d*$/" onKeyPress="if(this.value.length==3) return false;">
+                            </div>
+                        </div>
+                        <!-- Time Management End-->
+                        </div>
+            
+                        <div class="row clearfix">
+                        <!-- Mark Management Start-->
+                        <div class="col-lg-4 col-md-4"> Set Mark
+                            <div class="input-group">
+                            <div class="radio inlineblock m-r-20" style="margin-top:10px;">
+                                <input type="radio" [(ngModel)]="marked" value="0" name="marked" id="unmarked"
+                                class="with-gap">
+                                <label for="unmarked">Unmarked</label>
+                            </div>
+                            <div class="radio inlineblock" style="margin-top:10px;">
+                                <input type="radio" [(ngModel)]="marked" value="1" name="marked" id="marked" class="with-gap">
+                                <label for="marked">Marked</label>
+                            </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-6 col-md-6" *ngIf="marked == '1'"> Add marks
+                            <div class="input-group">
+                            <div class="radio inlineblock m-r-20" style="margin-top:10px;">
+                                <input type="radio" [(ngModel)]="markDistribution" value="0" name="markManage" id="differentMark"
+                                class="with-gap">
+                                <label for="differentMark">Use question bank mark</label>
+                            </div>
+                            <div class="radio inlineblock" style="margin-top:10px;">
+                                <input type="radio" [(ngModel)]="markDistribution" value="1" name="markManage" id="equalMark"
+                                class="with-gap">
+                                <label for="equalMark">All question have equal mark</label>
+                            </div>
+                            </div>
+                        </div>
+            
+                        <div class="col-lg-2 col-md-2" *ngIf="marked == '1' && markDistribution == '1' "> Total mark
+                            <div class="input-group">
+                            <input type="number" class="form-control" [(ngModel)]="totalMarks" placeholder="Enter duration" min="0" pattern="/^-?\d+\.?\d*$/" onKeyPress="if(this.value.length==3) return false;">
+                            </div>
+                        </div>
+                        <!-- Mark Management End-->
+            
+                        </div>
+                        <div class="row clearfix m-t-25">
+                            <div class="col-lg-12 col-md-12 headerSemiBold" *ngIf="questionList?.length>0">
+                                <span class="linkColor headerSemiBold">Select Questions</span>
+
+                                <div class="col-lg-12 col-md-12">
+                                    <div class="input-group">
+                                        <div class="checkbox">
+                                            <input id="selectAll" type="checkbox" (change)="allChecked(questionList,$event)">
+                                            <label for="selectAll">Select All</label>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-lg-12 col-md-12" style="height: 300px;overflow-y: scroll;">
+                                    <div class="input-group" *ngFor="let question of questionList;let i = index"> <!-- *ngFor="let learner of learnerList"-->
+
+                                        <div class="checkbox">
+                                            <input id="question{{question.id}}" type="checkbox" (click)="questionChecked(question.id,$event)"> <!-- (click)="studentCheck(learner.id,$event)"-->
+                                            <label for="question{{question.id}}">
+                                                <img class="d-inline-block" *ngIf="question?.questionMedia" style="height: 30px;" src="{{question?.questionMedia}}">
+                                                <!-- <ng-katex class="d-inline-block" [equation]="question.question"></ng-katex> -->
+                                                <div class="d-inline-block" [innerHtml]="question.question"></div>
+                                            </label>
+                                        </div>
+
+                                    </div>
+                                    <div *ngIf="questionList.length >= (page*limit)" class="text-center">
+                                        <div class="btn btn-secondary headerSemiBold" (click)="getQuestionList(page+1,limit,questionType)">View more</div>
+                                    </div>
+                                </div>
+
+                                <div class="col-lg-1 col-md-1"><b>&nbsp;</b>
+                                    <div class="input-group">
+                                        <input type="button" class="btn btn-secondary headerSemiBold float-right"
+                                            value="SUBMIT" style="margin:0px;" (click)="submitButtonClick();">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-sm-12 col-md-12 col-lg-12" *ngIf="seriesLists.length">
+            <div class="card">
+                <div class="header headerSemiBold">
+                    <h2>
+                        <span class="linkColor">Available</span> Test
+                    </h2>
+                </div>
+
+                <div class="body">
+                    <div class="table-responsive">
+                        <table class="table table-bordered table-striped table-hover dataTable js-exportable w-100">
+                            <thead class="headerSemiBold">
+                                <tr>
+                                    <th>#</th>
+                                    <th>S No</th>
+                                    <th>title</th>
+                                    <th>Marks</th>
+                                    <th>Duration</th>
+                                </tr>
+                            </thead>
+                            <tbody class="labelTitle">
+                                <tr *ngFor="let series of seriesLists ;let i=index;">
+                                    <td>
+                                        <span class="badge badge-success cursor" title="Add Questions" (click)="editButtonClick(series)">
+                                            <i class="icon-pencil"></i>
+                                          </span>
+                                        <span class="badge badge-success cursor" title="Question List" (click)="deleteSerQstButtonClick(series)">
+                                            <i class="icon-eye"></i>
+                                        </span>
+                                        <span class="badge badge-danger cursor" title="Delete series"
+                                            (click)="deleteSeriesButtonClick(series.id)" *ngIf="userType == 1">
+                                            <i class="icon-trash"></i>
+                                        </span>
+                                    </td>
+                                    <td>{{seriesLists.length - i}}</td>
+                                    <td>{{ series?.title }}</td>
+                                    <td>{{ series?.totalMarks | number: '1.2' }}</td>
+                                    <td>{{ series?.duration | number: '1.2' }}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div *ngIf="seriesLists.length >= (seriesPage*limit)" class="text-center">
+                        <div class="btn btn-secondary headerSemiBold" (click)="getSeriesList(seriesPage+1,limit)">View more</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+<!-- Modal -->
+<div class="modal" [style.display]="editSeries ? 'block' : 'none'">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+  
+        <div class="modal-header">
+          <h6 class="headerBold">{{editSeries?.title}}</h6>
+        </div>
+  
+        <div class="modal-body">
+            <div class="demo-masked-input labelTitle">
+                <div class="row clearfix">
+
+                    <div class="col-lg-12 col-md-12">Select Question Type
+                        <div class="input-group">
+                            <div class="checkbox d-inline-block mr-2">
+                                <input id="MCQEdit" type="checkbox" (change)="typeSelected($event, 0)">
+                                <label for="MCQEdit">MCQ</label>
+                            </div>
+                            <div class="checkbox d-inline-block mr-2">
+                                <input id="MultipleChoiceEdit" type="checkbox" (change)="typeSelected($event, 1)">
+                                <label for="MultipleChoiceEdit">Multi Choice</label>
+                            </div>
+                            <div class="checkbox d-inline-block mr-2">
+                                <input id="fillInTheBlankEdit" type="checkbox" (change)="typeSelected($event, 2)">
+                                <label for="fillInTheBlankEdit">Filling the blank</label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-12 col-md-12 headerSemiBold" *ngIf="questionList?.length>0">Select Questions
+
+                        <!-- <div class="col-lg-12 col-md-12">
+                            <div class="input-group">
+                                <div class="checkbox">
+                                    <input id="selectAll" type="checkbox" (change)="allChecked(questionList,$event)">
+                                    <label for="selectAll">Select All</label>
+                                </div>
+                            </div>
+                        </div> -->
+
+                        <div class="col-lg-12 col-md-12" style="height: 300px;overflow-y: scroll;">
+                            <div class="input-group" *ngFor="let question of questionList;let i = index"> <!-- *ngFor="let learner of learnerList"-->
+
+                                <div class="checkbox">
+                                    <input id="editQuestion{{question.id}}" type="checkbox" (click)="editQuestionChecked(question.id,$event)"> <!-- (click)="studentCheck(learner.id,$event)"-->
+                                    <label for="editQuestion{{question.id}}">
+                                        <img class="d-inline-block" *ngIf="question?.questionMedia" style="height: 30px;" src="{{question?.questionMedia}}">
+                                        <!-- <ng-katex class="d-inline-block" [equation]="question.question"></ng-katex> -->
+                                        <div class="d-inline-block" [innerHtml]="question.question"></div>
+                                    </label>
+                                </div>
+
+                            </div>
+                            <div *ngIf="questionList.length >= (page*limit)" class="text-center">
+                                <div class="btn btn-secondary headerSemiBold" (click)="getQuestionList(page+1,limit,questionType)">View more</div>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-1 col-md-1"><b>&nbsp;</b>
+                            <div class="input-group text-center">
+                                <input type="button" class="btn btn-secondary headerSemiBold float-right"
+                                    value="Add" style="margin:0px;" (click)="updateButtonClick();">
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+  
+        </div>
+  
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary headerSemiBold" data-dismiss="modal"
+            (click)="hideEditModal()">Close</button>
+        </div>
+  
+      </div>
+    </div>
+  </div>
+<div class="modal" [style.display]="delQuesMdl ? 'block' : 'none'">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+
+        <div class="modal-header">
+            <h6 class="headerBold">{{delQuesMdl?.title}}</h6>
+        </div>
+
+        <div class="modal-body tbl-scr">
+            <table class="table table-bordered table-striped table-hover">
+            <thead class="headerSemiBold">
+                <tr>
+                <th>#</th>
+                <th>Question</th>
+                </tr>
+            </thead>
+            <tbody class="labelTitle">
+                <tr *ngFor="let questionList of delQuesMdl?.questionList;let i=index;">
+                <td>
+                    <span class="badge badge-danger cursor" title="Delete question"
+                        (click)="deleteQuestionClick(questionList.id)" *ngIf="userType == 1">
+                        <i class="icon-trash"></i>
+                    </span>
+                </td>
+                <td>
+                    <img class="d-inline-block" *ngIf="questionList?.question?.questionMedia" style="height: 30px;" src="{{questionList?.question?.questionMedia}}">
+                    <!-- <ng-katex class="d-inline-block" [equation]="questionList.question.question"></ng-katex> -->
+                    <div class="d-inline-block" [innerHtml]="questionList.question.question"></div>
+                </tr>
+            </tbody>
+            </table>
+
+        </div>
+
+        <div class="modal-footer">
+            <button type="button" class="btn btn-secondary headerSemiBold" data-dismiss="modal"
+            (click)="hideDeleteModal()">Close</button>
+        </div>
+
+        </div>
+    </div>
+</div>
+<!-- End Modal -->

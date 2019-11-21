@@ -1,0 +1,98 @@
+<div class="background show-spinner">
+    <div class="fixed-background" style="overflow-y: scroll;">
+        <main class="default-transition">
+            <div class="container">
+                <div class="row">
+                    <div class="col-12 col-md-10 mx-auto my-auto">
+                        <div class="card auth-card ">
+                            <div class="position-relative image-side">
+                                <h4 class="text-white headerSemiBold">REGISTER YOUR ACCOUNT</h4>
+                                <p class="white mb-0 labelTitle"> Please provide details</p>
+                            </div>
+                            <div class="form-side">
+                                <p class="mb-5 text-center">
+                                    <img src="../../../assets/img/company.png" class="img-thumbnail list-thumbnail xsmall">
+                                </p>
+
+                                <p class="alert alert-danger labelTitle" role="alert" *ngIf="errorMessage!=''">{{errorMessage}}</p>
+                                <!-- <div *ngIf="defaultInstitute =='0'">
+        
+                                    <div class="position-relative mb-5">
+                                        <h4 class="headerBold">Select Institute</h4>
+                                    </div>
+    
+                                    <div class="form-group">
+                                        <table class="table table-borderless">
+                                            <tbody>
+                                                <tr *ngFor="let institute of instituteList">
+                                                    <td>
+                                                        <img src="{{institute.account.image}}" class="img-thumbnail list-thumbnail img-insti" style="height: auto;">
+                                                    </td>
+                                                    <td><p class="mt-2 labelTitle">{{institute.title}}</p></td>
+                                                    <td class="text-right">
+                                                        <div class="custom-control custom-checkbox mt-2">
+                                                            <input type="checkbox" class="custom-control-input" id="{{institute.id}}" (change)="instituteChecked(institute.id,$event)">
+                                                            <label class="custom-control-label" for="{{institute.id}}">&nbsp;</label>
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+    
+                                    <div class="form-group">
+                                        <button class="btn btn-secondary default headerSemiBold float-right" type="button" (click)="submitButtonClick();">Next</button>
+                                    </div>
+        
+                                </div>
+                                <div *ngIf="defaultInstitute =='1'">
+        
+                                    <div class="position-relative mb-5">
+                                        <h4 class="headerBold">Select the branch</h4>
+                                    </div>
+    
+                                    <div class="form-group">
+                                        <table class="table table-borderless">
+                                            <tbody>
+                                                <tr *ngFor="let institute of instituteListSelected">
+                                                    <td>
+                                                        <img src="{{institute.account.image}}" class="img-thumbnail list-thumbnail img-insti" style="height: auto;">
+                                                    </td>
+                                                    <td><p class="mt-2 labelTitle">{{institute.title}}</p></td>
+                                                    <td class="text-right">
+                                                        <div class="custom-control custom-checkbox mt-2">
+                                                            <input type="checkbox" class="custom-control-input" id="{{institute.id}}" [(ngModel)]="institute.selected" (change)="defaultInstituteChecked(institute.id,$event)">
+                                                            <label class="custom-control-label" for="{{institute.id}}">&nbsp;</label>
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+    
+                                    <div class="form-group">
+                                        <button class="btn btn-secondary default headerSemiBold float-right" type="button" (click)="setDefaultInstitute();">Submit</button>
+                                    </div>
+                                </div> -->
+                                <div>
+                                    <div class="position-relative mb-5">
+                                        <h4 class="headerBold">Enter Institute Branch Code</h4>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="labelTitle">Enter Code</label>
+                                        <input type="text" class="form-control labelTitle" [(ngModel)]="branchCode">
+                                    </div>
+                                    <div class="form-group">
+                                        <button class="btn btn-secondary default headerSemiBold float-right" type="button" (click)="setBranchCode();">Submit</button>
+                                    </div>
+                                </div>
+                                
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+</div>

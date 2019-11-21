@@ -1,0 +1,72 @@
+<main class="default-transition" style="opacity: 1;">
+        <div class="container-fluid disable-text-selection">
+            
+            <div class="row">
+                <div class="col-12 mb-3">
+                    <div class="row m-0 p-0">
+                        <div class="col-md-12 col-lg-4 col-sm-12 p-0">
+                            <h6>
+                                <a class="text-muted cursor" (click)="goBack()"><i class="iconsminds-up"></i> Back</a>
+                            </h6>
+                        </div>
+                        <div class="col-md-12 col-lg-4 col-sm-12 p-0">
+                            <h6 class="cent headerSemiBold">
+                                Live Class
+                            </h6>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-6 col-lg-12 mb-3">
+    
+                    <div class="row text-center mb-1">
+                        <div class="col-xl-6 col-lg-12">
+                            <div class="btn-group">
+                                <div class="btn btn-secondary default headerSemiBold" mwlCalendarPreviousView [view]="view" [(viewDate)]="viewDate" (viewDateChange)="closeOpenMonthViewDay()"> Previous </div>
+                                <div class="btn headerSemiBold" mwlCalendarToday [(viewDate)]="viewDate">Today </div>
+                                <div class="btn btn-secondary default headerSemiBold" mwlCalendarNextView [view]="view" [(viewDate)]="viewDate" (viewDateChange)="closeOpenMonthViewDay()"> Next </div>
+                            </div>
+                        </div>
+                        <div class="col-xl-6 col-lg-12">
+                            <h5 class="card-title mt-3 headerSemiBold">{{ viewDate | calendarDate:(view + 'ViewTitle'):'en' }}</h5>
+                        </div>
+                    </div>
+                    
+                    <div [ngSwitch]="view">
+                        <mwl-calendar-month-view id="cal" *ngSwitchCase="CalendarView.Month" [viewDate]="viewDate" [events]="events" [refresh]="refresh" [activeDayIsOpen]="activeDayIsOpen" (dayClicked)="dayClicked($event.day)" (eventClicked)="handleEvent('Clicked', $event.event)" (eventTimesChanged)="eventTimesChanged($event)" > </mwl-calendar-month-view>
+                    </div>
+               
+                </div>
+    
+                <div *ngIf="count" class="col-xl-6 col-lg-12 mb-4">
+                    
+                    <a *ngFor="let class of liveClasses" class="cursor" (click)="navigateUrl(class)">
+                        <div *ngIf="!((timeNow > class?.formatedTime) && ((timeNow-60000*class?.duration)>class?.formatedTime))" class="card flex-row mb-3">
+                            <div class="w-25 position-relative"> 
+                                <img class="card-img-left" src="{{class?.image}}">
+                                <span *ngIf="(timeNow > class?.formatedTime) && (class?.formatedTime > (timeNow-60000*class?.duration))" class="play">
+                                    <span></span>
+                                </span>
+                            </div>
+                            
+                            <div class="w-75">
+                                <div class="card-body">
+                                    <h6 class="headerSemiBold">{{class?.title}}</h6>
+                                    <p class="labelTitle scrollbar">{{class?.agenda}}</p>
+                                    <p *ngIf="(class?.formatedTime > timeNow) && (!((timeNow-60000*class?.duration)>class?.formatedTime)) && ((class?.formatedTime-60000*23*60)>timeNow)" class="labelTitle"> <i class="coral simple-icon-clock font-weight-bold"> {{class?.scheduleTime | date : 'mediumDate' : timeOffSet}}</i> </p>
+                                    <p *ngIf="(class?.formatedTime > timeNow) && (!((timeNow-60000*class?.duration)>class?.formatedTime)) && (!((class?.formatedTime-60000*23*60)>timeNow))" class="labelTitle"> <i class="coral simple-icon-clock font-weight-bold"> {{class?.scheduleTime | date : 'shortTime' : timeOffSet}}</i> </p>
+                                    <div *ngIf="(timeNow > class?.formatedTime) && (class?.formatedTime > (timeNow-60000*class?.duration))" class="progress mb-2">
+                                        <div class="coral-bck" role="progressbar" aria-valuenow="66" aria-valuemin="0" aria-valuemax="100" style="width: 66%;"></div>
+                                    </div>
+                                    <button *ngIf="(timeNow > class?.formatedTime) && (class?.formatedTime > (timeNow-60000*class?.duration))" (click)="navigateUrl(class)" type="button" class="btn btn-secondary default headerSemiBold">Live now</button>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                <div *ngIf="!count" class="col-xl-6 col-lg-12 mb-4">
+                    <div class="card headerSemiBold noClass text-muted h6">Opps! No live class available at this time</div>
+                </div>
+            </div>
+        </div>
+    </main>
+        

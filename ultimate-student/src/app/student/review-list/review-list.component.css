@@ -1,0 +1,19 @@
+@import url("//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css");
+
+.iconsminds-up {
+  transform: rotate(-90deg);
+}
+.iconsminds-up:before {
+  transform: rotate(-90deg);
+  font-size: 20px;
+}
+.d7d7d7{
+  color: #d7d7d7;
+  font-size: 22px;
+  padding-right: 3px;
+}
+.dblu{
+  color : #145388;
+  font-size: 22px;
+  padding-right: 3px;
+}

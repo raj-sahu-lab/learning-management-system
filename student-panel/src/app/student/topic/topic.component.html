@@ -1,0 +1,158 @@
+<main *ngIf="subjectId" class="default-transition" style="opacity: 1;">
+    <div class="container-fluid disable-text-selection">
+
+        <div class="row mb-5">
+
+            <div class="col-12 mb-3">
+                <!-- <h4><a class="text-muted" routerLink="/student/dashboard">Courses</a> > {{subjectList?.title}}</h4> -->
+                <div class="row m-0 p-0">
+                    <div class="col-md-12 col-lg-1 col-sm-12 p-0">
+                        <h6>
+                            <a class="text-muted cursor" (click)="goBack()"><i class="iconsminds-up"></i> Back</a>
+                        </h6>
+                    </div>
+                    <div class="col-md-12 col-lg-10 col-sm-12 p-0">
+                        <h6 class="cent headerSemiBold">
+                            {{subjectList?.title}}
+                        </h6>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-12 col-md-12 col-xl-4 col-left">
+                
+                <img class="w-100 mb-5" src="{{subjectList?.image}}">
+                
+            </div>
+
+            <div class="col-12 col-md-12 col-xl-8 col-right">
+                <!-- <h2 class="mb-5 h3 headerBold">
+                    {{subjectList?.title}}
+                    <div class="float-right headerSemiBold rating h6">
+                        <i class="simple-icon-star" style="font-weight: 900;"></i> 4.5
+                    </div>
+                </h2> -->
+
+                <div class="mb-4">
+                    <p class="text-justify labelTitle" [innerHTML]="subjectList?.description" style="white-space: pre-line;"></p>
+                </div>
+
+                <div class="col-lg-6 col-md-6 col-sm-12  p-0">
+                    <p class="mb-3 labelTitle">Your Progress <span class="float-right text-muted">{{subjectList?.progress}} %</span></p>
+                    <div class="progress">
+                        <div class="progress-bar" role="progressbar" [attr.aria-valuenow]="subjectList?.progress" aria-valuemin="0" aria-valuemax="100" [ngStyle]="{'width': subjectList?.progress+'%'}"></div>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+        <div *ngIf="subjectList?.topics?.length" class="row mb-3">
+            <div class="col-12">
+                <h6 class="headerSemiBold"> 
+                    Modules
+                </h6> 
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-6 col-sm-6 col-lg-4 col-12" *ngFor="let topics of subjectList?.topics; let i=index">
+                <div class="card shadow mb-4 pointer">
+
+                    <div class="card-body" (click)="navigateUrl(topics)">
+                        <h6 class="mb-2 headerSemiBold">
+                            {{topics?.title | slice:0:25}}
+                            
+                            <span *ngIf="topics?.title.length>=25">...</span>
+                        </h6>
+
+                        <p class="text-justify labelTitle">
+                            {{topics.description | slice:0:30}}
+                            <span *ngIf="topics?.description.length>=30">...</span>
+                        </p>
+
+                        <div *ngIf="topics?.isPaid==0" class="float-right headerSemiBold rating">
+                            <span class="headerSemiBold text-muted">
+                                <img src="../../../assets/img/icons/toa@2x.png" style="height: 17px; width: 15px;"> Free
+                            </span>
+                        </div>
+
+                        <div *ngIf="!(topics?.isPaid==0) && !(topics?.purchase || subjectList?.purchase)" class="headerSemiBold rating">
+                            <span class="headerSemiBold float-right" style="color:#FF7A59"  >
+                                {{topics?.currency?.sign}} {{ topics.amount }}.00
+                            </span>
+                            <span *ngIf="topics?.validity && !(topics?.purchase || subjectList?.purchase)" class="coral headerSemiBold">Valid for {{topics?.validity}} days</span>
+                        </div>
+                        <div class="float-right" *ngIf="(topics?.purchase || subjectList?.purchase) && topics.isPaid">
+                            <span class="headerSemiBold">
+                                <div role="progressbar" class="progress-bar-circle position-relative" data-color="#FF7A59" data-trailcolor="#d7d7d7" aria-valuemax="100" [attr.aria-valuenow]="topics?.progress" data-show-percent="true">
+                                    <svg viewBox="0 0 110 110" style="display: block; width: 100%;">
+                                        <path d="M 50,50 m 0,-48 a 48,48 0 1 1 0,96 a 48,48 0 1 1 0,-96" stroke="#d7d7d7" stroke-width="10" fill-opacity="0"></path>
+                                        <path d="M 50,50 m 0,-48 a 48,48 0 1 1 0,96 a 48,48 0 1 1 0,-96" stroke="#FF7A59" stroke-width="10" fill-opacity="0" style="stroke-dasharray: 301.635, 301.635;" [ngStyle]="{'stroke-dashoffset': 301-(topics?.progress*3)}"></path>
+                                    </svg>
+                                    <!-- <div class="progressbar-text" style="position: absolute; left: 50%; top: 50%; padding: 0px; margin: 0px; transform: translate(-50%, -50%); color: rgb(146, 44, 136);">
+                                        64%
+                                    </div> -->
+                                </div>
+                                <span style="position:relative;right:120%">{{topics?.progress}}%</span>
+                            </span>
+                        </div>
+                        <span *ngIf="topics.isPaid && (topics?.purchase?.remainHours > 72)" class="selected headerSemiBold"> Expires in {{topics?.purchase?.remainDays}} days</span>
+                        <span *ngIf="topics.isPaid && topics?.purchase?.remainHours && (topics?.purchase?.remainHours <= 72)" class="selected headerSemiBold"> Expires in {{topics?.purchase?.remainTime}} hr</span>
+                        <span *ngIf="!topics?.purchase && (subjectList?.purchase?.remainHours > 72) && topics.isPaid" class="selected headerSemiBold"> Expires in {{subjectList?.purchase?.remainDays}} days</span>
+                        <span *ngIf="!topics?.purchase && subjectList?.purchase?.remainHours && (subjectList?.purchase?.remainHours <= 72) && topics.isPaid" class="selected headerSemiBold"> Expires in {{subjectList?.purchase?.remainTime}} hr</span>
+
+                    </div>
+
+                    <button id="paymentButton" class="d-none" data-toggle="modal" data-backdrop="static" data-target="#topicPayment"></button>
+
+                    <!-- <div class="card-body" *ngIf="topics?.isPaid==1" (click)="topicSelect(topics.id);subscribePay()" data-toggle="modal" data-backdrop="static" data-target="#topicPayment">
+                        <h4 class="mb-3 headerSemiBold">
+                            {{topics.title | slice:0:25}}
+                            
+                            <span *ngIf="topics.title.length>=25">...</span>
+                        </h4>
+
+                        <p class="text-justify labelTitle">
+                            {{topics.description | slice:0:120}}
+                            <span *ngIf="topics.description.length>=120">...</span>
+                        </p>
+
+                        <div class="float-right headerSemiBold rating h6">
+                            <span class="headerSemiBold" style="color:#FF7A59"  >
+                                ₹ {{ topics.amount }}
+                            </span>
+                        </div>
+                        
+                    </div> -->
+                </div>
+            </div>
+        </div>
+
+    </div>
+</main>
+    
+<div class="modal fade modal-top" id="topicPayment" tabindex="-1" role="dialog" aria-labelledby="topicPayment" aria-hidden="true" style="display: none;">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h6 class="headerBold">{{topicTitle}}</h6>
+                <button id="closeTopicPay" type="button" class="close" data-dismiss="modal" aria-label="Close" (click)="payementModalClose()"><span aria-hidden="true">×</span></button>
+            </div>
+            <div class="modal-body">
+                <p class="text-justify labelTitle" [innerHTML]="topicPreview" style="white-space: pre-line;"></p>
+            </div>
+            <div class="modal-footer text-center" style="display: block;">
+                <p *ngIf="paymentGateWayName != 'OfflinePay'" class="text-justify labelTitle">By clicking on continue you agree to subscribe to the course</p>
+                <button *ngIf="(paymentGateWayName != 'OfflinePay') && !payPalPay" type="button" class="btn btn-secondary default headerSemiBold" (click)="payementDetails('topic',topicId,topicAmount,topicCurrency,topicTitle,topicGateWayId,paymentGateWayName,topicKey)">
+                    CONTINUE TO PAY {{topicCurrency?.sign}} {{topicAmount}}
+                </button>
+                <div *ngIf="paymentGateWayName == 'OfflinePay'">
+                    <p class="headerSemiBold m-0">OfflinePay</p>
+                    <p class="text-center labelTitle m-0">Please contact your institute for more details</p>
+                </div>
+                <app-payment-gate-way (payementDetails)="afterPayment($event)"></app-payment-gate-way>
+            </div>
+        </div>
+    </div>
+</div>

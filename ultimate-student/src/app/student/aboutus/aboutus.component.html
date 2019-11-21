@@ -1,0 +1,44 @@
+<main class="default-transition" style="opacity: 1;">
+    <div class="container-fluid disable-text-selection">
+      
+        <div *ngIf="aboutUs" class="row mt-2">
+            <div class="col-md-12 col-lg-4 col-sm-12">
+                <h6 class="mb-3 pointer">
+                    <a class="text-muted" (click)="goBack()"><i class="iconsminds-up"></i> Back</a>
+                </h6>
+            </div>
+            <div class="col-md-12 col-lg-4 col-sm-12">
+                <h6 class="headerSemiBold cent mb-4">
+                    {{aboutUs?.title}}
+                </h6>
+            </div>
+            <div class="col-12 col-md-12 col-xl-12">
+                <div class="card mb-4">
+                    <div class="card-body">
+
+                        <!-- <h6 class="headerBold">{{aboutUs?.title}}</h6> -->
+                        <p class="mb-3 text-justify labelTitle pre-line">{{aboutUs?.description}}</p>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row mb-4" *ngIf="!aboutUs">
+            <div class="col-12 col-sm-12 col-md-12 mx-auto my-auto">
+                <div class="card index-card">
+                    <div class="card-body text-center form-side">
+                        <p class="mb-3 text-center">
+                            <img *ngIf="instituteLogo" src="{{instituteLogo}}"
+                                class="img-thumbnail border-0 list-thumbnail align-self-center xsmall">
+                            <img *ngIf="!instituteLogo" src="../../../assets/img/favicon.png"
+                                class="img-thumbnail border-0 rounded-circle list-thumbnail align-self-center xsmall">
+                        </p>
+                        <h5 class="card-title labelTitle">No Details Added yet</h5>
+                    </div>
+                </div>
+            </div>
+        </div>
+       
+    </div>
+</main>

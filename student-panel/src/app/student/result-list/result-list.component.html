@@ -1,0 +1,66 @@
+<!-- <main class="default-transition" style="opacity: 1;">
+    <div class="container-fluid disable-text-selection"> -->
+        <div class="row">
+            <div class="col-12">
+
+                <div class="row">
+                    <div class="col-xs-12 col-lg-12 col-12 mb-3">
+                        <h6 class="headerSemiBold">
+                            Assignments Result
+                        </h6>
+                        <div class="separator mb-2"></div>
+                    </div>
+                </div>
+
+                <div class="row mb-4" *ngIf="result == false">
+                    <div class="col-12 col-sm-12 col-md-12 mx-auto my-auto">
+                        <div class="card index-card">
+                            <div class="card-body text-center form-side">
+                                <p class="mb-3 text-center">
+                                    <img *ngIf="instituteLogo" src="{{instituteLogo}}"
+                                        class="img-thumbnail list-thumbnail align-self-center border-0 xsmall">
+                                    <img *ngIf="!instituteLogo" src="../../../assets/img/favicon.png"
+                                        class="img-thumbnail list-thumbnail align-self-center border-0 xsmall">
+                                </p>
+                                <h6 class="text-muted headerSemiBold">No assignments taken yet</h6>
+                                <p class="card-title labelTitle">Start taking the assignments to know how much you know</p>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row mb-4">
+
+                    <div class="col-md-6 col-sm-6 col-lg-4 col-12" *ngFor="let testResult of results">
+                        <div class="card shadow mb-4 pointer" (click)="requestNavigate(testResult.test.id)">
+                            <div class="card-body m-170">
+                                <p class="mb-3 h6 headerSemiBold">
+                                    {{testResult?.test.title | slice:0:65}}
+                                    <span *ngIf="testResult?.test?.title.length>=65">...</span>
+                                </p>
+                                <div class="btn-link mb-2">
+                                    <p>
+                                        <span class="labelTitle text-muted">
+                                            <img src="../../../assets/img/icons/comm.png" style="height:15px;"> 
+                                            {{testResult.totalQuestions}} Questions | {{testResult.test.timedTest? testResult.test.duration + ' Min' : ' Untimed Test' }}
+                                        </span>
+                                    </p>
+                                    
+                                </div>
+                                <div class="btn-link">
+                                    <p class="mb-0 green">
+                                        <span class="mt-1 h6 headerSemiBold">
+                                            Your score {{testResult.totalMarks}} / {{testResult.test.totalMarks}}
+                                        </span>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    <!-- </div>
+</main> -->

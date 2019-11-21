@@ -1,0 +1,239 @@
+<div class="background show-spinner">
+    <div class="fixed-background" style="overflow-y: scroll;">
+        <main class="default-transition">
+            <div class="container">
+                <div class="row">
+                    <div class="col-12 col-md-10 mx-auto my-auto">
+                        <div class="card auth-card ">
+                            <div class="position-relative image-side">
+                                <h4 class="text-white headerSemiBold">REGISTER YOUR ACCOUNT</h4>
+                                <p class="white mb-0 labelTitle"> Please provide details</p>
+                            </div>
+                            <div class="form-side">
+                                <p class="mb-5 text-center d-none">
+                                    <img src="../../../assets/img/company.png" class="img-thumbnail list-thumbnail xsmall">
+                                </p>
+
+                                <p class="alert alert-danger labelTitle" role="alert" *ngIf="LoginMessage!=''">{{LoginMessage}}</p>
+
+                                <div *ngIf="registerMobile == true">
+
+                                    <div class="position-relative mb-5">
+                                        <h4 class="headerBold">Please verify your phone number</h4>
+                                    </div>
+                                    <div class="form-group row">
+                                        <div class="col-sm-4">
+                                            <label class="labelTitle">Select Country</label>
+                                            <div class="dropdown">
+                                                <button type="button" class="truncate navbar-logo form-control b-none dropdown-toggle" data-toggle="dropdown" data-display="static">
+                                                    +{{selectedCountry.code}} {{selectedCountry?.title}}
+                                                </button>
+                                                <div id="countrySearch" class="dropdown-menu navbar-logo" style="transform : none">
+                                                    <input class="srch" type="text" placeholder="Search.." id="countrySelect" (keyup)="filterFunction()" autocomplete="off">
+                                                    <div style="max-height: 350px;overflow-y: scroll;">
+                                                        <a class="dropdown-item navbar-logo" [ngClass]="{'tutor-selected' : country.code==selectedCountry.code}" (click)="countrySelected(country)" *ngFor="let country of countryList">+{{country.code}} {{country.title}}</a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <!-- <select class="form-control labelTitle" [(ngModel)]="countryCode">
+                                                <option [ngValue]="undefined" disabled>Select Country</option>
+                                                <option *ngFor="let country of countryList" [ngValue]="country.code">
+                                                    +{{country.code}} {{country.title}}
+                                                </option>
+                                            </select> -->
+                                        </div>
+                                        <div class="col-sm-8">
+                                            <label class="labelTitle">Mobile Number</label>
+                                            <input type="number" class="form-control labelTitle" [(ngModel)]="mobile" placeholder="Please enter mobile number">
+                                        </div>
+                                    </div>
+								    <div *ngIf="lastRegister && ((60000*90) > (timeNow-lastRegister))" class="danger">* You have exceeded maximum limit, try after {{time}} min</div>
+
+                                    <div class="form-group">
+                                        <button *ngIf="lastRegister && ((60000*90) > (timeNow-lastRegister))" class="btn btn-secondary default headerSemiBold float-right" type="button" disabled>Send OTP</button>
+                                        <button *ngIf="!lastRegister || ((timeNow-lastRegister) >=(60000*90))" class="btn btn-secondary default headerSemiBold float-right" type="button" (click)="sendOTP()">Send OTP</button>
+                                        <a class="headerSemiBold float-right selected" style="padding: 15px;" routerLink="/">Click here to login</a>
+                                    </div>
+                                </div>
+
+                                <div [ngClass]="(registerOTP == true)?'display':'d-none'">
+                                    <!-- <div [class.show]="registerOTP" *ngIf="registerOTP == true"> -->
+
+                                    <div class="position-relative mb-5">
+                                        <h4 class="headerBold">Please verify your phone number</h4>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label class="labelTitle">Mobile Number *</label>
+                                        <input type="number" class="form-control labelTitle" [(ngModel)]="mobile" [readonly]="isReadonly">
+                                         <small class="form-text text-muted mt-2 pointer labelTitle" *ngIf="countDownMessage!=0"> {{countDownMessage}} </small>
+                                        <small class="form-text text-muted mt-2 pointer labelTitle" *ngIf="countDownMessage==0" (click)="sendOTP()"> Resend OTP </small>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label class="labelTitle">Enter OTP <span class="crimson headerSemiBold">(Valid for 2 Min.)</span></label>
+                                        <input type="otp" class="form-control labelTitle" [(ngModel)]="otp">
+                                    </div>
+
+                                    <div #recaptchaRe ></div>
+								    <div *ngIf="lastRegister && ((60000*90) > (timeNow-lastRegister))" class="danger">* You have exceeded maximum limit, try after {{time}} min</div>
+
+                                    <div class="d-flex justify-content-between align-items-center">
+                                        <small *ngIf="!lastRegister || ((timeNow-lastRegister) >=(60000*90))" class="pointer labelTitle" (click)="changeNumber()">Change phone number</small>
+                                        <button *ngIf="lastRegister && ((60000*90) > (timeNow-lastRegister))" class="btn btn-secondary default headerSemiBold" type="button" (click)="verifyOTP()" disabled>Verify</button>
+                                        <button *ngIf="!lastRegister || ((timeNow-lastRegister) >=(60000*90))" class="btn btn-secondary default headerSemiBold" type="button" (click)="verifyOTP()">Verify</button>
+                                    </div>
+
+                                </div>
+
+                                <div *ngIf="registerDetails == true">
+
+                                    <div class="position-relative mb-5">
+                                        <h4 class="headerBold">Great! Provide us some basic details</h4>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label class="labelTitle">First Name *</label>
+                                        <input type="text" class="form-control labelTitle" [(ngModel)]="fname">
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label class="labelTitle">Last Name</label>
+                                        <input type="text" class="form-control labelTitle" [(ngModel)]="lname">
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label class="labelTitle">Education *</label>
+                                        <select id="inputState" class="form-control labelTitle" [(ngModel)]="education">
+                                            <option [ngValue]="undefined" disabled>Select Education</option>
+                                            <option *ngFor="let education of educationList" [ngValue]="education.id">
+                                                {{education.title}}
+                                            </option>
+                                        </select>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <button class="btn btn-secondary default headerSemiBold float-right" type="button" (click)="setPassword()">Next</button>
+                                    </div>
+                                </div>
+
+                                <div *ngIf="registerPassword == true">
+
+                                    <div class="position-relative mb-5">
+                                        <h4 class="headerBold">Setup Password</h4>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label class="labelTitle">Set Password *</label>
+                                        <input type="password" class="form-control labelTitle" [(ngModel)]="password">
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label class="labelTitle">Confirm Password *</label>
+                                        <input type="password" class="form-control labelTitle" [(ngModel)]="cpassword">
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label class="labelTitle">Email</label>
+                                        <input type="email" class="form-control labelTitle" [(ngModel)]="email">
+                                    </div>
+
+                                    <div class="mb-4">
+                                        <div class="custom-control custom-checkbox mb-4">
+                                            <input type="checkbox" class="custom-control-input" id="termsCondition" [(ngModel)]="terms">
+                                            <label class="custom-control-label ml-4 labelTitle" for="termsCondition">
+                                                I agree to <a routerLink="../termscondition" class="btn-link">Terms &
+                                                    Condition</a>
+                                            </label>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <button class="btn btn-secondary default headerSemiBold float-right" type="button" (click)="setInstitute()">Next</button>
+                                    </div>
+                                </div>
+
+                                <!-- <div *ngIf="registerInstitute == true">
+
+                                    <div class="position-relative mb-5">
+                                        <h4 class="headerBold">Select Institute</h4>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <table class="table table-borderless">
+                                            <tbody>
+                                                <tr *ngFor="let institute of instituteList">
+                                                    <td>
+                                                        <img src="{{institute?.account.image}}" class="img-thumbnail list-thumbnail img-insti" style="height: auto;">
+                                                    </td>
+                                                    <td><p class="mt-2 labelTitle">{{institute?.title}}</p></td>
+                                                    <td class="text-right">
+                                                        <div class="custom-control custom-checkbox mt-2">
+                                                            <input type="checkbox" class="custom-control-input" id="{{institute.id}}" (change)="instituteChecked(institute.id,$event)">
+                                                            <label class="custom-control-label" for="{{institute.id}}">&nbsp;</label>
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <button class="btn btn-secondary default headerSemiBold float-right" type="button" (click)="submitButtonClick();">Next</button>
+                                    </div>
+                                </div>
+
+                                <div *ngIf="defaultInstitute == true">
+
+                                    <div class="position-relative mb-5">
+                                        <h4 class="headerBold">Select the branch</h4>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <table class="table table-borderless">
+                                            <tbody>
+                                                <tr *ngFor="let institute of instituteListSelected">
+                                                    <td>
+                                                        <img src="{{institute?.account.image}}" class="img-thumbnail list-thumbnail img-insti" style="height: auto;">
+                                                    </td>
+                                                    <td><p class="mt-2 labelTitle">{{institute?.title}}</p></td>
+                                                    <td class="text-right">
+                                                        <div class="custom-control custom-checkbox mt-2">
+                                                            <input type="checkbox" class="custom-control-input" id="{{institute.id}}" [(ngModel)]="institute.selected" (change)="defaultInstituteChecked(institute.id,$event)">
+                                                            <label class="custom-control-label" for="{{institute.id}}">&nbsp;</label>
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <button class="btn btn-secondary default headerSemiBold float-right" type="button" (click)="setDefaultInstitute();">Submit</button>
+                                    </div>
+                                </div> -->
+
+                                <div *ngIf="setBranch">
+                                    <div class="position-relative mb-5">
+                                        <h4 class="headerBold">Enter Institute Branch Code</h4>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="labelTitle">Enter Code</label>
+                                        <input type="text" class="form-control labelTitle" [(ngModel)]="branchCode">
+                                    </div>
+                                    <div class="form-group">
+                                        <button class="btn btn-secondary default headerSemiBold float-right" type="button" (click)="setBranchCode();">Submit</button>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+</div>
+<div class="noti-back" [ngClass]="notificationMessage ? '':'d-none'">
+	<img class="noti-img" src="assets/img/icons/notification.png">
+</div>

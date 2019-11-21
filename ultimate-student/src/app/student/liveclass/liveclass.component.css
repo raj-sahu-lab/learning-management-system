@@ -1,0 +1,72 @@
+.coral{
+    color:coral;
+}
+.coral-bck{
+    background-color: coral;
+}
+.live-btn-bak{
+    background-color: coral;
+    border-color: coral;
+    color: #fff;
+}
+.play{
+    position:absolute;
+    width:50px;
+    height:50px;
+    border:3px solid #fff;
+    top: 50%;
+    left: 50%;
+    margin: -25px 0 0 -25px;
+    border-radius:30px;
+    box-shadow:1px 1px 2px rgba(0,0,0,.2);
+}
+.play span{
+    position:absolute;
+    width:0;
+    height:0;
+    border-top:12px solid transparent;
+    border-bottom:12px solid transparent;
+    border-left:20px solid #fff;
+    top:12px;
+    left:16px;
+}
+.cal-day-badge{
+    background-color: coral !important;
+}
+.iconsminds-up{
+    transform: rotate(-90deg);
+}
+.iconsminds-up:before{
+    transform: rotate(-90deg);
+    font-size: 20px;
+}
+.cal-month-view .cal-cell-top{
+    min-height: 50px !important;
+}
+.cal-month-view .cal-day-cell {
+    min-height: 70px !important;
+}
+.noClass{
+    height: 300px;
+    text-align: center;
+    padding: 135px 0px;
+}
+@media (min-width : 1199px){
+    .noClass{
+        top: 80px;
+    }
+}
+
+@media (min-width:992px){
+    .cent{
+        text-align: center;
+    }
+    .rght{
+        float: right !important;
+    }
+  }
+  @media (max-width:991px){
+    .cent{
+        padding: 15px 0px;
+    }
+  }

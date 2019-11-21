@@ -1,0 +1,803 @@
+<nav id="topNav" class="top_navbar">
+    <div class="container">
+        <div class="row clearfix">
+            <div class="col-12">
+                <div class="navbar-logo">
+                    <!-- <a href="javascript:void(0);" class="bars"></a> -->
+                    <a class="d-lg-none" href="javascript:void(0);" id="sideList"  style="margin-right: 10px;">
+                        <i class="icon-list"></i>
+                    </a>
+                    <a routerLink="/" routerLinkActive="active" class="navbar-brand">
+                        <!-- <span class="m-l-10 labelTitle">{{ account_title }}</span> -->
+                        <img class="rounded-circle" src="{{ picture }}"
+                            style="border:0px;border-radius: 0px !important;width: auto;height:35px;">
+                    </a>
+                </div>
+                <!-- 
+                <ul class="nav navbar-nav">
+                    <li [ngClass]="status ? 'dropdown profile show' : 'dropdown profile'">
+                        <a href="javascript:void(0);" data-toggle="dropdown" role="button" (click)="dropDown();">
+                            <img class="rounded-circle" src="{{ picture }}" style="border:0px;border-radius: 0px !important;width: auto;height:35px;">
+                        </a>
+                        <ul class="dropdown-menu pullDown" id="dropDownId">
+                            <li>
+                                <a class="headerSemiBold" [routerLink]="['/setting']" [routerLinkActive]="['router-link-active']"> 
+                                    <i class="icon-user m-r-10"></i>Settings
+                                </a>
+                            </li>
+                            <li>
+                                <a class="headerSemiBold" href="../../../../assets/images/trainingManual1.1.pdf" target="_blank"> 
+                                    <i class="icon-screen-desktop m-r-10"></i>Training Manual
+                                </a>
+                            </li>
+                            <li>
+                                <a class="headerSemiBold" [routerLink]="['/helpSupport']" [routerLinkActive]="['router-link-active']"> 
+                                    <i class="icon-earphones-alt m-r-10"></i>Help & Support
+                                </a>
+                            </li>
+                            <li>
+                                <a class="headerSemiBold" (click)="onLoggedout()">
+                                    <i class="icon-power m-r-10"></i><span>Sign Out</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+                 -->
+            </div>
+        </div>
+    </div>
+</nav>
+
+<aside id="leftsidebar" class="sidebar h_menu d-lg-block d-md-none">
+    <div class="container">
+        <div class="row clearfix">
+            <div class="col-12">
+                <div class="menu">
+                    <ul class="list">
+                        <li class="header headerBold">{{ account_title }}</li>
+                        <li class="active open">
+                            <a routerLink="/" routerLinkActive="active">
+                                <span class="headerSemiBold">Home</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="javascript:void(0);" class="menu-toggle">
+                                <span class="headerSemiBold">Courses</span>
+                            </a>
+                            <ul class="ml-menu">
+                                <li class="headerSemiBold" *ngIf="userType == 1">Add Educators</li>
+                                
+                                <li class="labelTitle" *ngIf="userType == 1">
+                                    <a [routerLink]="['/tutor']" [routerLinkActive]="['router-link-active']">Educators</a>
+                                </li>
+
+                                <li *ngIf="userType == 1">
+                                    <hr>
+                                </li>
+
+                                <li class="labelTitle" *ngIf="userType == 1"><a [routerLink]="['/subject']" [routerLinkActive]="['router-link-active']">Course Bundles</a></li>
+                                
+                                <li class="labelTitle">
+                                    <a [routerLink]="['/topic']" [routerLinkActive]="['router-link-active']">Modules</a>
+                                </li>
+                                
+                                <li class="labelTitle">
+                                    <a [routerLink]="['/content']" [routerLinkActive]="['router-link-active']">Lecture Content </a>
+                                </li>
+                                
+                                <li class="labelTitle">
+                                    <a [routerLink]="['/pdf']" [routerLinkActive]="['router-link-active']">
+                                        Add PDF
+                                        <span tooltip="Shortcut to add PDF files on previously added content." placement="top">
+                                            <i class="icon-info"></i>
+                                        </span>
+                                    </a>
+                                </li>
+                                
+                                <li class="labelTitle">
+                                    <a [routerLink]="['/ppt']" [routerLinkActive]="['router-link-active']">
+                                        Add PPT
+                                        <span tooltip="Shortcut to add PPT files on previously added content." placement="top">
+                                            <i class="icon-info"></i>
+                                        </span>
+                                    </a>
+                                </li>
+                                
+                                <li class="labelTitle">
+                                    <a [routerLink]="['/audio']" [routerLinkActive]="['router-link-active']">
+                                        Add Audio
+                                        <span tooltip="Shortcut to add Audio files on previously added content." placement="top">
+                                            <i class="icon-info"></i>
+                                        </span>
+                                    </a>
+                                </li>
+
+                                <li class="labelTitle">
+                                    <a [routerLink]="['/video']" [routerLinkActive]="['router-link-active']">
+                                        Add Video
+                                        <span tooltip="Shortcut to add Video files on previously added content." placement="top">
+                                            <i class="icon-info"></i>
+                                        </span>
+                                    </a>
+                                </li>
+
+                            </ul>
+                        </li>
+
+                        <li *ngIf="userType == 1">
+                            <a href="javascript:void(0);" class="menu-toggle">
+                                <span class="headerSemiBold">Test</span>
+                            </a>
+                            <ul class="ml-menu">
+                                
+                                <li class="labelTitle">
+                                    <a [routerLink]="['/practice']" [routerLinkActive]="['router-link-active']">Practice Questions</a>
+                                </li>
+                                
+                                <li class="labelTitle">
+                                    <a [routerLink]="['/test']" [routerLinkActive]="['router-link-active']">Assignments</a>
+                                </li>
+
+                                <li class="labelTitle">
+                                    <a [routerLink]="['/paper']" [routerLinkActive]="['router-link-active']">Sets & Bundles</a>
+                                </li>
+                                
+                            </ul>
+                        </li>
+
+                        <li *ngIf="userType == 1">
+
+                            <a href="javascript:void(0);" class="menu-toggle">
+                                <span class="headerSemiBold">Marketing</span>
+                            </a>
+
+                            <ul class="ml-menu">
+                                <li class="labelTitle">
+                                    <a [routerLink]="['/sms']" [routerLinkActive]="['router-link-active']">Send Bulk SMS</a>
+                                </li>
+                                
+                                <li class="labelTitle">
+                                    <a [routerLink]="['/email']" [routerLinkActive]="['router-link-active']">Send Bulk Email</a>
+                                </li>
+                                
+                                <li class="labelTitle">
+                                    <a [routerLink]="['/notification']" [routerLinkActive]="['router-link-active']">
+                                        Send notifications
+                                    </a>
+                                </li>
+
+                                <li class="labelTitle">
+
+                                    <a target="_self" *ngIf="plan_id == 1 || plan_id == 6">
+                                        Manage Coupons
+                                        <span tooltip="Upgrade to premium version." placement="top">
+                                            <i class="icon-info"></i>
+                                        </span>
+                                    </a>
+
+                                    <a [routerLink]="['/coupon']" [routerLinkActive]="['router-link-active']" *ngIf="plan_id == 2 || plan_id == 3 || plan_id == 4 || plan_id == 5 || plan_id == 7">
+                                        Manage Coupons
+                                    </a>
+
+                                </li>
+
+                                <li class="labelTitle">
+
+                                    <a target="_self" *ngIf="plan_id == 1 || plan_id == 6">
+                                        News Category
+                                        <span tooltip="Upgrade to premium version." placement="top">
+                                            <i class="icon-info"></i>
+                                        </span>
+                                    </a>
+
+                                    <a [routerLink]="['/newsCategory']" [routerLinkActive]="['router-link-active']" *ngIf="plan_id == 2 || plan_id == 3 || plan_id == 4 || plan_id == 5 || plan_id == 7">
+                                        News Category
+                                    </a>
+
+                                </li>
+
+                                <li class="labelTitle">
+
+                                    <a target="_self" *ngIf="plan_id == 1 || plan_id == 6">
+                                        Create News Feed
+                                        <span tooltip="Upgrade to premium version." placement="top">
+                                            <i class="icon-info"></i>
+                                        </span>
+                                    </a>
+
+                                    <a  [routerLink]="['/news']" [routerLinkActive]="['router-link-active']" *ngIf="plan_id == 2 || plan_id == 3 || plan_id == 4 || plan_id == 5 || plan_id == 7">
+                                        Create News Feed
+                                    </a>
+
+                                </li>
+                            </ul>
+                        </li>
+
+                        <li>
+                            <a href="javascript:void(0);" class="menu-toggle">
+                                <span class="headerSemiBold">Communication</span>
+                            </a>
+                            <ul class="ml-menu">
+                                <li class="labelTitle" *ngIf="userType == 1">
+
+                                    <a target="_self" *ngIf="plan_id == 1 || plan_id == 6">
+                                        Create Polls
+                                        <span tooltip="Upgrade to premium version." placement="top">
+                                            <i class="icon-info"></i>
+                                        </span>
+                                    </a>
+
+                                    <a [routerLink]="['/polls']" [routerLinkActive]="['router-link-active']" *ngIf="plan_id == 2 || plan_id == 3 || plan_id == 4 || plan_id == 5 || plan_id == 7">
+                                        Create Polls
+                                    </a>
+
+                                </li>
+
+                                <li class="labelTitle" *ngIf="userType == 1">
+
+                                    <a target="_self" *ngIf="plan_id == 1 || plan_id == 6">
+                                        Forum and Discussions
+                                        <span tooltip="Upgrade to premium version." placement="top">
+                                            <i class="icon-info"></i>
+                                        </span>
+                                    </a>
+
+                                    <a [routerLink]="['/forum']" [routerLinkActive]="['router-link-active']" *ngIf="plan_id == 2 || plan_id == 3 || plan_id == 4 || plan_id == 5 || plan_id == 7">
+                                        Forum and Discussions
+                                    </a>
+
+                                </li>
+
+                                <li class="labelTitle" *ngIf="userType == 1">
+
+                                    <!-- <a [routerLink]="['/reviews']" [routerLinkActive]="['router-link-active']"> -->
+
+                                    <a target="_self" *ngIf="plan_id == 1 || plan_id == 6">
+                                        Course reviews
+                                        <span tooltip="Upgrade to premium version." placement="top">
+                                            <i class="icon-info"></i>
+                                        </span>
+                                    </a>
+
+                                    <a [routerLink]="['/reviews']" [routerLinkActive]="['router-link-active']" *ngIf="plan_id == 2 || plan_id == 3 || plan_id == 4 || plan_id == 5 || plan_id == 7">
+                                        Course reviews
+                                    </a>
+
+                                </li>
+
+                                <li class="labelTitle">
+
+                                    <a target="_self" *ngIf="plan_id == 1 || plan_id == 6">
+                                        Support Request
+                                        <span tooltip="Upgrade to premium version." placement="top">
+                                            <i class="icon-info"></i>
+                                        </span>
+                                    </a>
+
+                                    <a [routerLink]="['/support']" [routerLinkActive]="['router-link-active']" *ngIf="plan_id == 2 || plan_id == 3 || plan_id == 4 || plan_id == 5 || plan_id == 7">
+                                        Support Request
+                                    </a>
+
+                                </li>
+
+                                <li class="labelTitle">
+
+                                    <a target="_self" *ngIf="plan_id == 1 || plan_id == 6">
+                                        Live Chat
+                                        <span tooltip="Upgrade to premium version." placement="top">
+                                            <i class="icon-info"></i>
+                                        </span>
+                                    </a>
+
+                                    <a [routerLink]="['/normalChat']" [routerLinkActive]="['router-link-active']" *ngIf="plan_id == 2 || plan_id == 3 || plan_id == 4 || plan_id == 5 || plan_id == 7">
+                                        Live Chat
+                                    </a>
+
+                                </li>
+                            </ul>
+                        </li>
+
+                        <li>
+                            <a href="javascript:void(0);" class="menu-toggle">
+                                <span class="headerSemiBold">Admission And Fee</span>
+                            </a>
+
+                            <ul class="ml-menu">
+                                <li class="labelTitle">
+                                    <a [routerLink]="['/learner']" [routerLinkActive]="['router-link-active']">
+                                        Manage Students
+                                        <span tooltip="You can give access to students by adding their details from here. Use the student bulk student option if you want to add multiple students’ at once." placement="top">
+                                            <i class="icon-info"></i>
+                                        </span>
+                                    </a>
+                                </li>
+
+                                <li class="labelTitle" *ngIf="userType == 1">
+                                    
+                                    <a [routerLink]="['/fees']" [routerLinkActive]="['router-link-active']">
+                                        Manage Fees
+                                        <span tooltip="You can assign students to any paid courses or give access to paid topics from this section. Use case - If they have paid you online or you want to give them free access to some of your paid content." placement="top">
+                                            <i class="icon-info"></i>
+                                        </span>
+                                    </a>
+                                </li>
+                                <!-- <li class="labelTitle">
+                                    <a [routerLink]="['/results']" [routerLinkActive]="['router-link-active']">
+                                        Student Results
+                                        <i class="icon-badge text-warning small" title="Premium feature"></i>
+                                    </a>
+                                </li> -->
+                            </ul>
+                        </li>
+
+                        <li>
+                            
+                            <a href="javascript:void(0);" class="menu-toggle">
+                                <span class="headerSemiBold">Live Classes</span>
+                            </a>
+                            <ul class="ml-menu">
+                                <li class="labelTitle">
+                                    <a [routerLink]="['/liveClass']" [routerLinkActive]="['router-link-active']">
+                                        Live Classes
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+
+                        <li>
+                            <a href="javascript:void(0);" class="menu-toggle">
+                                <span class="headerSemiBold">Reports</span>
+                            </a>
+                            <ul class="ml-menu">
+                                
+                                <li class="labelTitle" *ngIf="userType == 1">
+                                    <a [routerLink]="['/admission']" [routerLinkActive]="['router-link-active']">
+                                        Admission
+                                    </a>
+                                </li>
+
+                                <li class="labelTitle" *ngIf="userType == 1">
+                                    <a [routerLink]="['/feesDetails']" [routerLinkActive]="['router-link-active']">
+                                        Fees
+                                    </a>
+                                </li>
+
+                                <li class="labelTitle">
+                                    <a [routerLink]="['/testResult']" [routerLinkActive]="['router-link-active']">
+                                        Test Scores
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+
+                        <li>
+                            <a href="javascript:void(0);" class="menu-toggle">
+                                <span class="headerSemiBold">Settings</span>
+                            </a>
+                            <ul class="ml-menu">
+
+                                <li class="labelTitle">
+                                    <a class="headerSemiBold" [routerLink]="['/notifications']" [routerLinkActive]="['router-link-active']">
+                                        <i class="icon-bell m-r-10"></i> View notifications
+                                    </a>
+                                </li>
+
+                                <li *ngIf="userType == 1">
+                                    <a class="headerSemiBold" [routerLink]="['/setting']" [routerLinkActive]="['router-link-active']">
+                                        <i class="icon-user m-r-10"></i>Settings
+                                    </a>
+                                </li>
+
+                                <li class="labelTitle">
+                                    <a class="headerSemiBold" href="../../../../assets/images/trainingManual1.1.pdf"
+                                        target="_blank">
+                                        <i class="icon-screen-desktop m-r-10"></i>Training Manual
+                                    </a>
+                                </li>
+
+                                <li class="labelTitle">
+                                    <a class="headerSemiBold" [routerLink]="['/helpSupport']"
+                                        [routerLinkActive]="['router-link-active']">
+                                        <i class="icon-earphones-alt m-r-10"></i>Help & Support
+                                    </a>
+                                </li>
+
+                                <li class="labelTitle" *ngIf="userType == 3">
+                                    <a class="headerSemiBold" [routerLink]="['/password']" [routerLinkActive]="['router-link-active']">
+                                        <i class="icon-lock-open m-r-10"></i>Change Password
+                                    </a>
+                                </li>
+
+                                <li class="labelTitle">
+                                    <a class="headerSemiBold" (click)="onLoggedout()">
+                                        <i class="icon-power m-r-10"></i><span>Sign Out</span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</aside>
+
+<aside id="sm-leftsidebar" class="sidebar sm-sidebar  hide-sidebar d-lg-none">
+    <div class="container">
+        <div class="row clearfix">
+            <div class="col-12">
+                <div class="menu">
+                    <ul class="list">
+                        <li class="header headerBold">{{ account_title }}</li>
+                        <li class="active open">
+                            <a routerLink="/" routerLinkActive="active">
+                                <span class="headerSemiBold">Home</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a class="menu-toggle collapsed" data-toggle="collapse" data-target="#collapse1" aria-expanded="false" aria-controls="collapse1">
+                                <span class="headerSemiBold">Courses</span>
+                            </a>
+                            <ul id="collapse1" class="collapse" data-parent="#accordion" style="list-style: none;">
+                                
+                                <li class="labelTitle" *ngIf="userType == 1">
+                                    <a [routerLink]="['/tutor']" [routerLinkActive]="['router-link-active']">Add Educators</a>
+                                </li>
+
+                                <li class="labelTitle" *ngIf="userType == 1">
+                                    <a [routerLink]="['/subject']" [routerLinkActive]="['router-link-active']">Course Bundles</a>
+                                </li>
+                                
+                                <li class="labelTitle">
+                                    <a [routerLink]="['/topic']" [routerLinkActive]="['router-link-active']">Modules</a>
+                                </li>
+                                
+                                <li class="labelTitle">
+                                    <a [routerLink]="['/content']" [routerLinkActive]="['router-link-active']">Lecture Content </a>
+                                </li>
+                                
+                                <li class="labelTitle">
+                                    <a [routerLink]="['/pdf']" [routerLinkActive]="['router-link-active']">
+                                        Add PDF
+                                        <span tooltip="Shortcut to add PDF files on previously added content." placement="top">
+                                            <i class="icon-info"></i>
+                                        </span>
+                                    </a>
+                                </li>
+                                
+                                <li class="labelTitle">
+                                    <a [routerLink]="['/ppt']" [routerLinkActive]="['router-link-active']">
+                                        Add PPT
+                                        <span tooltip="Shortcut to add PPT files on previously added content." placement="top">
+                                            <i class="icon-info"></i>
+                                        </span>
+                                    </a>
+                                </li>
+                                
+                                <li class="labelTitle">
+                                    <a [routerLink]="['/audio']" [routerLinkActive]="['router-link-active']">
+                                        Add Audio
+                                        <span tooltip="Shortcut to add Audio files on previously added content." placement="top">
+                                            <i class="icon-info"></i>
+                                        </span>
+                                    </a>
+                                </li>
+
+                                <li class="labelTitle">
+                                    <a [routerLink]="['/video']" [routerLinkActive]="['router-link-active']">
+                                        Add Video
+                                        <span tooltip="Shortcut to add Video files on previously added content." placement="top">
+                                            <i class="icon-info"></i>
+                                        </span>
+                                    </a>
+                                </li>
+
+                            </ul>
+                        </li>
+
+                        <li *ngIf="userType == 1">
+                            <a class="menu-toggle collapsed" data-toggle="collapse" data-target="#collapse2" aria-expanded="false" aria-controls="collapse2">
+                                <span class="headerSemiBold">Test</span>
+                            </a>
+                            <ul id="collapse2" class="collapse" data-parent="#accordion" style="list-style: none;">
+                                
+                                <li class="labelTitle">
+                                    <a [routerLink]="['/practice']" [routerLinkActive]="['router-link-active']">Practice Questions</a>
+                                </li>
+                                
+                                <li class="labelTitle">
+                                    <a [routerLink]="['/test']" [routerLinkActive]="['router-link-active']">Assignments</a>
+                                </li>
+                                
+                                <li class="labelTitle">
+                                    <a [routerLink]="['/paper']" [routerLinkActive]="['router-link-active']">Sets & Bundles</a>
+                                </li>
+                            </ul>
+                        </li>
+
+                        <li *ngIf="userType == 1">
+
+                            <a class="menu-toggle collapsed" data-toggle="collapse" data-target="#collapse3" aria-expanded="false" aria-controls="collapse3">
+                                <span class="headerSemiBold">Marketing</span>
+                            </a>
+
+                            <ul id="collapse3" class="collapse" data-parent="#accordion" style="list-style: none;">
+                                <li class="labelTitle">
+                                    <a [routerLink]="['/sms']" [routerLinkActive]="['router-link-active']">Send Bulk SMS</a>
+                                </li>
+                                
+                                <li class="labelTitle">
+                                    <a [routerLink]="['/email']" [routerLinkActive]="['router-link-active']">Send Bulk Email</a>
+                                </li>
+                                
+                                <li class="labelTitle">
+                                    <a [routerLink]="['/notification']" [routerLinkActive]="['router-link-active']">
+                                        Send notifications
+                                    </a>
+                                </li>
+
+                                <li class="labelTitle">
+                                    
+                                    <a target="_self" *ngIf="plan_id == 1 || plan_id == 6">
+                                        Manage Coupons
+                                        <span tooltip="Upgrade to premium version." placement="top">
+                                            <i class="icon-info"></i>
+                                        </span>
+                                    </a>
+
+                                    <a [routerLink]="['/coupon']" [routerLinkActive]="['router-link-active']" *ngIf="plan_id == 2 || plan_id == 3 || plan_id == 4 || plan_id == 5 || plan_id == 7">
+                                        Manage Coupons
+                                    </a>
+
+                                </li>
+
+                                <li class="labelTitle">
+
+                                    <a target="_self" *ngIf="plan_id == 1 || plan_id == 6">
+                                        News Category
+                                        <span tooltip="Upgrade to premium version." placement="top">
+                                            <i class="icon-info"></i>
+                                        </span>
+                                    </a>
+
+                                    <a [routerLink]="['/newsCategory']" [routerLinkActive]="['router-link-active']" *ngIf="plan_id == 2 || plan_id == 3 || plan_id == 4 || plan_id == 5 || plan_id == 7">
+                                        News Category
+                                    </a>
+
+                                </li>
+
+                                <li class="labelTitle">
+
+                                    <a target="_self" *ngIf="plan_id == 1 || plan_id == 6">
+                                        Create News Feed
+                                        <span tooltip="Upgrade to premium version." placement="top">
+                                            <i class="icon-info"></i>
+                                        </span>
+                                    </a>
+
+                                    <a  [routerLink]="['/news']" [routerLinkActive]="['router-link-active']" *ngIf="plan_id == 2 || plan_id == 3 || plan_id == 4 || plan_id == 5 || plan_id == 7">
+                                        Create News Feed
+                                    </a>
+
+                                </li>
+                            </ul>
+                        </li>
+
+                        <li>
+                            <a class="menu-toggle collapsed" data-toggle="collapse" data-target="#collapse4" aria-expanded="false" aria-controls="collapse4">
+                                <span class="headerSemiBold">Communication</span>
+                            </a>
+                            <ul id="collapse4" class="collapse" data-parent="#accordion" style="list-style: none;">
+                                <li class="labelTitle" *ngIf="userType == 1">
+
+                                    <a target="_self" *ngIf="plan_id == 1 || plan_id == 6">
+                                        Create Polls
+                                        <span tooltip="Upgrade to premium version." placement="top">
+                                            <i class="icon-info"></i>
+                                        </span>
+                                    </a>
+
+                                    <a [routerLink]="['/polls']" [routerLinkActive]="['router-link-active']" *ngIf="plan_id == 2 || plan_id == 3 || plan_id == 4 || plan_id == 5 || plan_id == 7">
+                                        Create Polls
+                                    </a>
+
+                                </li>
+
+                                <li class="labelTitle" *ngIf="userType == 1">
+
+                                    <a target="_self" *ngIf="plan_id == 1 || plan_id == 6">
+                                        Forum and Discussions
+                                        <span tooltip="Upgrade to premium version." placement="top">
+                                            <i class="icon-info"></i>
+                                        </span>
+                                    </a>
+
+                                    <a [routerLink]="['/forum']" [routerLinkActive]="['router-link-active']" *ngIf="plan_id == 2 || plan_id == 3 || plan_id == 4 || plan_id == 5 || plan_id == 7">
+                                        Forum and Discussions
+                                    </a>
+
+                                </li>
+
+                                <li class="labelTitle" *ngIf="userType == 1">
+
+                                    <!-- <a [routerLink]="['/reviews']" [routerLinkActive]="['router-link-active']"> -->
+
+                                    <a target="_self" *ngIf="plan_id == 1 || plan_id == 6">
+                                        Course reviews
+                                        <span tooltip="Upgrade to premium version." placement="top">
+                                            <i class="icon-info"></i>
+                                        </span>
+                                    </a>
+
+                                    <a [routerLink]="['/reviews']" [routerLinkActive]="['router-link-active']" *ngIf="plan_id == 2 || plan_id == 3 || plan_id == 4 || plan_id == 5 || plan_id == 7">
+                                        Course reviews
+                                    </a>
+
+                                </li>
+
+                                <li class="labelTitle">
+
+                                    <a target="_self" *ngIf="plan_id == 1 || plan_id == 6">
+                                        Support Request
+                                        <span tooltip="Upgrade to premium version." placement="top">
+                                            <i class="icon-info"></i>
+                                        </span>
+                                    </a>
+
+                                    <a [routerLink]="['/support']" [routerLinkActive]="['router-link-active']" *ngIf="plan_id == 2 || plan_id == 3 || plan_id == 4 || plan_id == 5 || plan_id == 7">
+                                        Support Request
+                                    </a>
+
+                                </li>
+
+                                <li class="labelTitle">
+
+                                    <a target="_self" *ngIf="plan_id == 1 || plan_id == 6">
+                                        Live Chat
+                                        <span tooltip="Upgrade to premium version." placement="top">
+                                            <i class="icon-info"></i>
+                                        </span>
+                                    </a>
+
+                                    <a [routerLink]="['/normalChat']" [routerLinkActive]="['router-link-active']" *ngIf="plan_id == 2 || plan_id == 3 || plan_id == 4 || plan_id == 5 || plan_id == 7">
+                                        Live Chat
+                                    </a>
+
+                                </li>
+                                
+                            </ul>
+                        </li>
+
+                        <li>
+                            <a class="menu-toggle collapsed" data-toggle="collapse" data-target="#collapse5" aria-expanded="false" aria-controls="collapse5">
+                                <span class="headerSemiBold">Admission And Fee</span>
+                            </a>
+
+                            <ul id="collapse5" class="collapse" data-parent="#accordion" style="list-style: none;">
+                                <li class="labelTitle">
+                                    <a [routerLink]="['/learner']" [routerLinkActive]="['router-link-active']">Manage Students
+                                        <span tooltip="You can give access to students by adding their details from here. Use the student bulk student option if you want to add multiple students’ at once." placement="top">
+                                            <i class="icon-info"></i>
+                                        </span>
+                                    </a>
+                                </li>
+
+                                <li class="labelTitle" *ngIf="userType == 1">
+                                    
+                                    <a [routerLink]="['/fees']" [routerLinkActive]="['router-link-active']">
+                                        Manage Fees
+                                        <span tooltip="You can assign students to any paid courses or give access to paid topics from this section. Use case - If they have paid you online or you want to give them free access to some of your paid content." placement="top">
+                                            <i class="icon-info"></i>
+                                        </span>
+                                    </a>
+                                </li>
+                                <!-- <li class="labelTitle">
+                                    <a [routerLink]="['/results']" [routerLinkActive]="['router-link-active']">
+                                        Student Results
+                                        <i class="icon-badge text-warning small" title="Premium feature"></i>
+                                    </a>
+                                </li> -->
+                            </ul>
+                        </li>
+
+                        <li>
+                            <a class="menu-toggle collapsed" data-toggle="collapse" data-target="#collapse6" aria-expanded="false" aria-controls="collapse6">
+                                <span class="headerSemiBold">Live Classes</span>
+                            </a>
+                            <ul id="collapse6" class="collapse" data-parent="#accordion" style="list-style: none;">
+
+                                <li class="labelTitle">
+                                    <a [routerLink]="['/liveClass']" [routerLinkActive]="['router-link-active']">
+                                        Live Classes
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+
+                        <li>
+                            <a class="menu-toggle collapsed" data-toggle="collapse" data-target="#collapse7" aria-expanded="false" aria-controls="collapse7">
+                                <span class="headerSemiBold">Reports</span>
+                            </a>
+                            <ul id="collapse7" class="collapse" data-parent="#accordion" style="list-style: none;">
+                                
+                                <li class="labelTitle" *ngIf="userType == 1">
+                                    <a [routerLink]="['/admission']" [routerLinkActive]="['router-link-active']">
+                                        Admission
+                                    </a>
+                                </li>
+
+                                <li class="labelTitle" *ngIf="userType == 1">
+
+                                    <a [routerLink]="['/feesDetails']" [routerLinkActive]="['router-link-active']">
+                                        Fees
+                                    </a>
+
+                                </li>
+
+                                <li class="labelTitle">
+                                    <a [routerLink]="['/testResult']" [routerLinkActive]="['router-link-active']">
+                                        Test Scores
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+
+                        <li>
+                            <a class="menu-toggle collapsed" data-toggle="collapse" data-target="#collapse8" aria-expanded="false" aria-controls="collapse8">
+                                <span class="headerSemiBold">Settings</span>
+                            </a>
+                            <ul id="collapse8" class="collapse" data-parent="#accordion" style="list-style: none;">
+
+                                <li class="labelTitle">
+                                    <a class="headerSemiBold" [routerLink]="['/notifications']" [routerLinkActive]="['router-link-active']">
+                                        <i class="icon-bell m-r-10"></i> View notifications
+                                    </a>
+                                </li>
+
+                                <li *ngIf="userType == 1">
+                                    <a class="headerSemiBold" [routerLink]="['/setting']" [routerLinkActive]="['router-link-active']">
+                                        <i class="icon-user m-r-10"></i>Settings
+                                    </a>
+                                </li>
+
+                                <li class="labelTitle">
+                                    <a class="headerSemiBold" href="../../../../assets/images/trainingManual1.1.pdf"
+                                        target="_blank">
+                                        <i class="icon-screen-desktop m-r-10"></i>Training Manual
+                                    </a>
+                                </li>
+
+                                <li class="labelTitle">
+                                    <a class="headerSemiBold" [routerLink]="['/helpSupport']"
+                                        [routerLinkActive]="['router-link-active']">
+                                        <i class="icon-earphones-alt m-r-10"></i>Help & Support
+                                    </a>
+                                </li>
+
+                                <li class="labelTitle" *ngIf="userType == 3">
+                                    <a class="headerSemiBold" [routerLink]="['/password']" [routerLinkActive]="['router-link-active']">
+                                        <i class="icon-lock-open m-r-10"></i>Change Password
+                                    </a>
+                                </li>
+
+                                <li class="labelTitle">
+                                    <a class="headerSemiBold" (click)="onLoggedout()">
+                                        <i class="icon-power m-r-10"></i><span>Sign Out</span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+
+                        <li>
+                            <a class="headerSemiBold" (click)="onLoggedout()">
+                                <span>Sign Out</span>
+                            </a>
+                        </li>
+
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</aside>

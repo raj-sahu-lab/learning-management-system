@@ -1,0 +1,72 @@
+import { environment } from '../../../environments/environment';
+
+function createUrl(actionName: string): string {
+  return `${environment.apiUrl}${actionName}`;
+}
+
+export const appApiResources = {
+
+  login: createUrl('student/login'),
+  logout : createUrl('student/logOut'),
+  sendOTP: createUrl('student/sendOTP'),
+  verifyOTP: createUrl('student/verifyOTP'),
+  register: createUrl('student/signup'),
+  addInstitute: createUrl('student/institute'),
+  setDefaultInstitute: createUrl('student/setDefaultInstitute'),
+  setBranch: createUrl('student/setBranch'),
+
+  forGotPassword: createUrl('student/forGotPassword'),
+  changePassword: createUrl('student/updatePassword'),
+  profilePasswordChange: createUrl('student/changePassword'),
+  
+  loginWithPhone : createUrl('studentEnterprise/loginWithPhone'),
+
+  instituteList: createUrl('studentEnterprise/instituteList'),
+  dashboard: createUrl('studentEnterprise/dashboard'),
+  topic: createUrl('studentEnterprise/getTopicList'),
+  content: createUrl('studentEnterprise/getContentList'),
+  contentDetails: createUrl('studentEnterprise/getContentFileList'),
+  testQuestion: createUrl('studentEnterprise/test'),
+  practiceQuestion: createUrl('studentEnterprise/practice'),
+  polls: createUrl('studentEnterprise/poll'),
+  testResult: createUrl('studentEnterprise/testResult'),
+  changeProfilePic: createUrl('student/picture'),
+  profileInfo : createUrl('student/student'),
+  aboutUs : createUrl('studentEnterprise/aboutUs'),
+  privacyPolicies : createUrl('studentEnterprise/privacyPolicies'),
+  review : createUrl('studentEnterprise/review'),
+  feedBack : createUrl('studentEnterprise/feedBack'),
+  testList : createUrl('studentEnterprise/test'),
+  education : createUrl('education'),
+  countryCityList : createUrl('countryCityList'),
+  purchase : createUrl('studentEnterprise/purchase'),
+  checkCoupon : createUrl('studentEnterprise/checkCoupon'),
+  forumDashboard : createUrl('studentEnterprise/forumDashboard'),
+  forumSubject : createUrl('studentEnterprise/forumSubject'),
+  forumTopic : createUrl('studentEnterprise/forumTopic'),
+  forumArticles : createUrl('studentEnterprise/forumArticles'),
+  forumArticle: createUrl('studentEnterprise/forumArticle'),
+  discussionForum : createUrl('studentEnterprise/forumDiscussion'),
+  discussionForumReply : createUrl('studentEnterprise/forumDiscussionReply'),
+  supportRequest : createUrl('studentEnterprise/supportRequest'),
+  stctTypesList : createUrl('studentEnterprise/STCTtypesList'),
+  supportRequestChat : createUrl('studentEnterprise/supportRequestChat'),
+  liveClass : createUrl('studentEnterprise/liveClass'),
+  videoLog : createUrl('studentEnterprise/video-log'),
+  pdfLog : createUrl('studentEnterprise/pdf-log'),
+  audiLog : createUrl('studentEnterprise/audio-log'),
+  news : createUrl('studentEnterprise/news'),
+  newsCategory : createUrl('studentEnterprise/newsCategory'),
+  bundle : createUrl('studentEnterprise/bundle'),
+  bundleSet : createUrl('studentEnterprise/bundleSet'),
+  bundleSeries : createUrl('studentEnterprise/bundleSeries'),
+  bundleQuestion : createUrl('studentEnterprise/bundleQuestion'),
+  bundleResult : createUrl('studentEnterprise/bundleResult'),
+  reviewCourse : createUrl('studentEnterprise/reviewCourse'),
+  notification : createUrl('studentEnterprise/notification'),
+  liveClassSignature : createUrl('liveClassSignature'),
+  tutor : createUrl('studentEnterprise/tutor'),
+  zoomKey : createUrl('studentEnterprise/zoomKey'),
+  supportRequestChatRead : createUrl('studentEnterprise/supportRequestChatRead'),
+  stripePurchase : createUrl('studentEnterprise/stripePurchase')
+};

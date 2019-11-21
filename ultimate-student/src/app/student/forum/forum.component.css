@@ -1,0 +1,7 @@
+.iconsminds-up{
+    transform: rotate(-90deg);
+}
+.iconsminds-up:before{
+    transform: rotate(-90deg);
+    font-size: 20px;
+}

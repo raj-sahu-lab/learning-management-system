@@ -1,0 +1,71 @@
+<section id="login-form" class="parallax-bg bck-img page-header bg-no-repeat" data-stellar-background-ratio="0.5">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6 col-sm-5">
+            </div>
+            <div class="col-md-6 col-sm-7">
+                <p class="form-message" style="display: none;"></p>
+                <div class="contact-form headerSemiBold form-box style1 border-rounded white-bg">
+                    <h3 class="form-box-title theme-bg typo-light text-center">Sign In</h3>
+                    <form [ngClass]="(setBranch == false)?'display':'d-none'" class="custom-form bv-form">
+						<p class="alert alert-danger labelTitle" role="alert" *ngIf="LoginMessage!=''">{{LoginMessage}}</p>
+
+                        <!-- Field 1 -->
+                        <div class="input-text form-group has-feedback">
+                            <label>Mobile Number</label>
+                            <input type="text" name="contact_name" [(ngModel)]="user.phone"
+                                class="input-name form-control" placeholder="Please enter mobile number"
+                                data-bv-field="contact_name"><i class="form-control-feedback"
+                                data-bv-icon-for="contact_name" style="display: none;"></i>
+                            <small class="help-block" data-bv-validator="notEmpty" data-bv-for="contact_name"
+                                data-bv-result="NOT_VALIDATED" style="display: none;">Please enter mobile number</small>
+                        </div>
+                        <!-- Field 2 -->
+                        <div class="input-email form-group">
+                            <label>Password</label>
+                            <input type="password" name="pword" [(ngModel)]="user.password"
+                                class="input-pword form-control" placeholder="Password">
+                        </div>
+                        <div #recaptcha></div>
+                        <div *ngIf="lastlogin && ((60000*90) > (timeNow-lastlogin))" class="danger" style="font-size: 12px;">* You have exceeded
+                            maximum login, try after {{time}} min</div>
+                        <!-- Field 2 -->
+                        <div class="input-email form-group d-none">
+                            <!-- <input type="checkbox" name="remember-me" class="form-control-checkbox"> -->
+                            <!-- <label class="checkbox-label">Keep me signed in</label> -->
+                            <label class="pull-right"><a routerLink="/forgotpassword">Forgot Your Password ?</a></label>
+                        </div>
+                        
+                        <!-- Button -->
+                        <button *ngIf="lastlogin && ((60000*90) > (timeNow-lastlogin))" class="btn btn-lg btn-theme btn-block btn-rounded btn-hv-dark btn-hv-dark btn-default"
+                            disabled>LOGIN</button>
+                        <button *ngIf="!lastlogin || ((timeNow-lastlogin) >=(60000*90))" class="btn btn-lg btn-theme btn-block btn-rounded btn-hv-dark btn-hv-dark btn-default"
+                            (click)="onLoggedin()">LOGIN</button>
+                        <!-- Form Ends -->
+                        <div class="top-padding-vsm text-center">
+                            <h5 class="no-margin">Don't have an account?</h5>
+                            <a [routerLink]="['./../register']" [routerLinkActive]="['router-link-active']"
+                                class="">Create an Account</a>
+                        </div>
+                    </form>
+                    <form *ngIf="setBranch" class="custom-form bv-form">
+                        <p class="alert alert-danger labelTitle" role="alert" *ngIf="LoginMessage!=''">{{LoginMessage}}</p>
+                        <div class="input-text form-group has-feedback">
+                            <div class="input-text form-group has-feedback">
+                                <label>Enter Institute Branch Code </label>
+                                <span type="button" class="fa fa-info-circle menu-icon" data-toggle="tooltip"
+                                data-placement="right" title="Copy code from contact page"> </span>
+                                <input type="text" name="branchCode" class="input-name form-control"
+                                [(ngModel)]="branchCode">
+                            </div>
+                            <!-- Button -->
+                            <button class="btn btn-lg btn-theme btn-block btn-rounded btn-hv-dark btn-hv-dark btn-default"
+                                (click)="setBranchCode()">Submit</button>
+                            <!-- Form Ends -->
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

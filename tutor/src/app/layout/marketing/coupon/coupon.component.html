@@ -1,0 +1,234 @@
+<div class="container">
+  <div class="row clearfix">
+    <div class="col-lg-12">
+      <div class="card">
+        <div class="body block-header">
+          <div class="row">
+            <div class="col-lg-6 col-md-8 col-sm-12">
+              <h2 class="headerSemiBold">Manage Coupon</h2>
+              
+              <ul class="breadcrumb p-l-0 p-b-0 labelTitle">
+                <li class="breadcrumb-item">
+                  <a class="linkColor" routerLink="/" routerLinkActive="active"><i class="icon-home"></i></a>
+                </li>
+                <li class="breadcrumb-item active labelTitle">Coupon</li>
+              </ul>
+            </div>
+            <div class="col-lg-6 col-md-4 col-sm-12">
+              <a routerLink="/" routerLinkActive="active" class="btn btn-secondary headerSemiBold float-right">
+                <i class="icon-arrow-left"></i> BACK
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <div class="row clearfix">
+
+    <div class="col-sm-12 col-md-12 col-lg-12">
+      <div class="card">
+        <div class="header headerSemiBold">
+          <h2><span class="linkColor">Manage</span> Coupon</h2>
+        </div>
+        <div class="body">
+          <div class="demo-masked-input labelTitle">
+            <div class="row clearfix">
+
+              <div class="col-lg-3 col-md-3">Coupon offer type
+                <div class="input-group">
+                  <select class="form-control" [(ngModel)]="offerType">
+                    <option [ngValue]="undefined" disabled>Select Type</option>
+                    <option [ngValue]="1">First Time</option>
+                    <option [ngValue]="2">One Time</option>
+                    <option [ngValue]="3">Multiple time</option>
+                  </select>
+                </div>
+              </div>
+              <div class="col-lg-3 col-md-3">Select Course Bundle
+                <div class="input-group">
+                  <select class="form-control" [(ngModel)]="subjectId">
+                    <option [ngValue]="undefined" disabled>Select Course Bundle</option>
+                    <option *ngFor="let subject of subjectList" [ngValue]="subject.id">
+                      {{subject.title}}
+                    </option>
+                  </select>
+                </div>
+              </div>
+              <div class="col-lg-3 col-md-3"> Coupon Title
+                <div class="input-group">
+                  <input type="text" class="form-control" [(ngModel)]="title" placeholder="Enter title">
+                </div>
+              </div>
+              <div class="col-lg-3 col-md-3"> Coupon Code
+                <div class="input-group">
+                  <input type="text" class="form-control" [(ngModel)]="code" placeholder="Enter code" minlength="5" maxlength="8">
+                </div>
+              </div>
+              <div class="col-lg-3 col-md-3"> No of users
+                <div class="input-group">
+                  <input type="number" class="form-control" [(ngModel)]="noOfUsers">
+                </div>
+              </div>
+              <div class="col-lg-3 col-md-3"> Discount (%)
+                <div class="input-group">
+                  <input type="number" class="form-control" [(ngModel)]="discount">
+                </div>
+              </div>
+              <div class="col-lg-3 col-md-3">Currency
+                <div class="input-group">
+                  <select class="form-control" [(ngModel)]="currencyId">
+                    <option [ngValue]="undefined" disabled>Currency</option>
+                    <option *ngFor="let currency of currencyList" value="{{currency.id}}">
+                      {{currency.title}} ( {{currency.sign}} )
+                    </option>
+                  </select>
+                </div>
+              </div>
+              <div class="col-lg-3 col-md-3"> Max Discount Amount
+                <div class="input-group">
+                  <input type="number" class="form-control" [(ngModel)]="maxDiscountAmount">
+                </div>
+              </div>
+              <div class="col-lg-3 col-md-3"> Minimum Buy Amount
+                <div class="input-group">
+                  <input type="number" class="form-control" [(ngModel)]="minimumBuyAmount">
+                </div>
+              </div>
+              <div class="col-lg-3 col-md-3"> Start Date
+                <div class="input-group">
+                  <input type="date" class="form-control" [(ngModel)]="sDate">
+                </div>
+              </div>
+              <div class="col-lg-3 col-md-3"> End Date
+                <div class="input-group">
+                  <input type="date" class="form-control" [(ngModel)]="eDate">
+                </div>
+              </div>
+              <div class="col-lg-3 col-md-3" *ngIf="isEdit"> Status
+                <div class="input-group">
+                  <div class="radio inlineblock m-r-20" style="margin-top:10px;">
+                    <input type="radio" [(ngModel)]="status" name="status" id="active" class="with-gap" value="0">
+                    <label for="active">Active</label>
+                  </div>
+                  <div class="radio inlineblock" style="margin-top:10px;">
+                    <input type="radio" [(ngModel)]="status" name="status" id="inactive" class="with-gap" value="1">
+                    <label for="inactive">Inactive</label>
+                  </div>
+                </div>
+              </div>
+              <div class="col-lg-1 col-md-1"><b>&nbsp;</b>
+                <div class="input-group">
+                  <input type="button" class="btn btn-secondary headerSemiBold float-right" value="{{ isEdit ? 'UPDATE' : 'SUBMIT'}}" style="margin:0px;" (click)="submitButtonClick();">
+                 </div>
+              </div>
+              <div class="col-lg-1 col-md-1"><b>&nbsp;</b>
+                <div class="input-group">
+                <input type="button" class="btn btn-warning headerSemiBold float-right" *ngIf="isEdit" value="CANCEL" style="margin:0px;" (click)="cancelEditClick();">
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-sm-12 col-md-12 col-lg-12">
+      <div class="card">
+        <div class="header headerSemiBold">
+          <h2><span class="linkColor">Available</span> Coupon</h2>
+          
+          <ul class="header-dropdown">
+            <li [ngClass]="filter ? 'dropdown show' : 'dropdown'">
+               <a href="javascript:void(0);" class="dropdown-toggle linkColor" data-toggle="dropdown" role="button" (click)="dropDownFilter();" aria-haspopup="true" aria-expanded="false">
+								Manage Columns
+							</a>
+              <ul class="dropdown-menu dropdown-menu-right labelTitle">
+                <li style="padding:10px;">
+                  <input type="checkbox" [(ngModel)]="columType"> Coupon offer type <br>
+                  <input type="checkbox" [(ngModel)]="columSubject"> Bundle Name <br>
+                  <input type="checkbox" [(ngModel)]="columTitle"> Coupon Title <br>
+                  <input type="checkbox" [(ngModel)]="columCode"> Coupon Code <br>
+                  <input type="checkbox" [(ngModel)]="columUsers"> No of users <br>
+                  <input type="checkbox" [(ngModel)]="columDiscount"> Discount <br>
+                  <input type="checkbox" [(ngModel)]="columMaxAmount"> Max Discount Amount <br>
+                  <input type="checkbox" [(ngModel)]="columMinimumBuyAmountt"> Minimum Buy Amount <br>
+                  <input type="checkbox" [(ngModel)]="columStartDate"> Start Date <br>
+                  <input type="checkbox" [(ngModel)]="columEndDate"> End Date <br>
+                  <input type="checkbox" [(ngModel)]="columStatus"> Status
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+        <div class="body">
+          <div class="table-responsive">
+            <table class="table table-bordered table-striped table-hover dataTable js-exportable w-100">
+              <thead class="headerSemiBold">
+                <tr>
+                  <th>#</th>
+                  <th>No</th>
+                  <th [ngClass]="(columType == false)?'d-none':''">Coupon offer type</th>
+                  <th [ngClass]="(columSubject == false)?'d-none':''">Bundle Name</th>
+                  <th [ngClass]="(columTitle == false)?'d-none':''">Coupon Title</th>
+                  <th [ngClass]="(columCode == false)?'d-none':''">Coupon Code</th>
+                  <th [ngClass]="(columUsers == false)?'d-none':''">No of users</th>
+                  <th [ngClass]="(columDiscount == false)?'d-none':''">Discount (%)</th>
+                  <th [ngClass]="(columMaxAmount == false)?'d-none':''">Max Discount Amount</th>
+                  <th [ngClass]="(columMinimumBuyAmountt == false)?'d-none':''">Minimum Buy Amount</th>
+                  <th [ngClass]="(columStartDate == false)?'d-none':''">Start Date</th>
+                  <th [ngClass]="(columEndDate == false)?'d-none':''">End Date</th>
+                  <th [ngClass]="(columStatus == false)?'d-none':''">Status</th>
+                </tr>
+              </thead>
+              <tbody class="labelTitle">
+                <tr *ngFor="let coupon of couponList;let i=index;">
+                  <td>
+                    <span class="badge badge-success" title="Update Learner" (click)="editButtonClick(i)">
+                      <i class="icon-pencil"></i>
+                    </span>
+                    <span class="badge badge-danger" title="Delete Learner" (click)="deleteButtonClick(i)">
+                      <i class="icon-trash"></i>
+                    </span>
+                  </td>
+                  <td>{{couponList.length - i}}</td>
+                  <td *ngIf="columType" [ngClass]="(columType == false)?'d-none':''">
+                    <span [ngSwitch]="coupon.type">
+                      <div *ngSwitchCase="'1'">New User</div>
+                      <div *ngSwitchCase="'2'">One Time</div>
+                      <div *ngSwitchCase="'3'">Multiple Time</div>
+                      <div *ngSwitchDefault>Not Select</div>
+                    </span>
+                  </td>
+                  <td [ngClass]="(columSubject == false)?'d-none':''">{{coupon.subject.title}}</td>
+                  <td [ngClass]="(columTitle == false)?'d-none':''">{{coupon.title}}</td>
+                  <td [ngClass]="(columCode == false)?'d-none':''">{{coupon.code}}</td>
+                  <td [ngClass]="(columUsers == false)?'d-none':''">{{coupon.users}}</td>
+                  <td [ngClass]="(columDiscount == false)?'d-none':''">{{coupon.discount}}</td>
+                  <td [ngClass]="(columMaxAmount == false)?'d-none':''">
+                      <span *ngIf="coupon.maxAmount">{{coupon.currency.sign}}</span>
+                      {{coupon.maxAmount}}
+                  </td>
+                  <td [ngClass]="(columMinimumBuyAmountt == false)?'d-none':''">
+                      <span *ngIf="coupon.minBuyAmount">{{coupon.currency.sign}}</span>
+                      {{coupon.minBuyAmount}}
+                  </td>
+                  <td [ngClass]="(columStartDate == false)?'d-none':''">{{coupon.startDate}}</td>
+                  <td [ngClass]="(columEndDate == false)?'d-none':''">{{coupon.endDate}}</td>
+                  <td [ngClass]="(columStatus == false)?'d-none':''">
+                    <span class="badge badge-{{coupon.status==0 ? 'success' : 'warning'}}">
+                      {{coupon.status==0 ? 'Active' : 'Inactive'}}
+                    </span>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>

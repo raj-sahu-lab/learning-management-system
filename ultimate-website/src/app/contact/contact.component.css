@@ -1,0 +1,22 @@
+.white{
+    color: white;
+}
+.display-flex{
+    display: flex;
+}
+.m7{
+    margin: 7px;
+}
+.modal-dialog{
+    margin-top: 20%;
+}
+.btn-success{
+    background-color: green !important;
+    border-color: green !important;
+}
+
+@media screen and (max-width:767px){
+    .modal-dialog{
+        margin-top: 40%;
+    }
+}

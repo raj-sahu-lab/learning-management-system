@@ -1,0 +1,261 @@
+<main class="default-transition" style="opacity: 1;">
+  <div class="container-fluid disable-text-selection">
+
+      <div class="row">
+          <div class="col-12 mb-3 cursor">
+              <div class="row m-0 p-0">
+                  <div class="col-md-12 col-lg-1 col-sm-12 p-0">
+                      <h6>
+                          <a class="text-muted cursor" (click)="goBack()"><i class="iconsminds-up"></i> Back</a>
+                      </h6>
+                  </div>
+                  <div class="col-md-12 col-lg-8 col-sm-12 p-0">
+                      <h6 class="cent headerSemiBold">
+                          {{testdetails?.series?.title}}
+                      </h6>
+                  </div>
+                  <div class="col-md-12 col-lg-3 col-sm-12 p-0">
+                      <h6>
+                          <div class="labelTitle rating rght">
+                              <i class="simple-icon-list pr-3"></i>{{testdetails?.totalQuestions}}
+                              Questions
+                              <span *ngIf="testdetails?.series?.timed && testdetails?.series?.duration" class="ml-4"><i
+                                      class="iconsminds-sand-watch-2 pr-3"></i>{{testdetails?.series?.duration}}
+                                  min</span>
+                          </div>
+                      </h6>
+                  </div>
+              </div>
+              
+          </div>
+          <div class="col-12">
+              
+              <div class="mb-4 pre-line">
+                  <p class="labelTitle">{{testdetails?.series?.preview}}</p>
+              </div>
+          </div>
+          
+          <div class="col-md-12 col-lg-12 col-12 mb-4">
+              <div class="card">
+                  <div class="card-body">
+                      <div class="form-container">
+                          
+
+                          <div class="card-header p-0 mb-4">
+                              <ul class="nav nav-tabs card-header-tabs" role="tablist">
+                                  <li class="nav-item"><a class="nav-link active headerSemiBold" id="result-tab" data-toggle="tab" href="#result" role="tab" aria-controls="result" aria-selected="true">Results</a> </li>
+                                  <li class="nav-item"><a class="nav-link headerSemiBold" id="detail-tab" data-toggle="tab" href="#detail" role="tab" aria-controls="detail" aria-selected="false">Details</a></li>
+                              </ul>
+                          </div>
+                          <div class="separator mb-3"></div>
+
+                          <div class="card-body p-0">
+                              <div class="tab-content">
+
+                                  <div class="tab-pane fade active show" id="result" role="tabpanel" aria-labelledby="result-tab">
+
+                                      <div class="row">
+                                          <div class="col-md-12 col-sm-12 col-lg-6 col-12 mb-4">
+                                              <h6 class="headerSemiBold">Appeared on</h6>
+                                              <p class="labelTitle">{{testdetails?.attemptedAt | date}}</p>
+                                              
+                                              <h6 class="headerSemiBold mt-5">Score</h6>
+
+                                              <div class="card text-center progress-banner" style="color: white;height: auto;">
+                                                  <div class="card-body">
+                                                      <p *ngIf="testdetails?.series?.marked" class="welcomeFont headerBold h1">
+                                                          {{testdetails?.totalMarks | number : '1.0-2'}}<span class="labelTitle">/{{testdetails?.series?.totalMarks}}</span>
+                                                      </p>
+                                                      <p *ngIf="!testdetails?.series?.marked" class="headerSemiBold h1">
+                                                          Unmarked Test
+                                                      </p>
+                                                      <p *ngIf="testdetails?.series?.marked && ((testdetails?.totalMarks/testdetails?.series?.totalMarks)*100 >= 80)" class="labelTitle">Congrats!</p>
+                                                  </div>
+                                              </div>
+
+                                          </div>
+
+                                          <div class="col-md-12 col-sm-12 col-lg-6 col-12">
+                                              <h6 class="headerSemiBold">Summary</h6>
+                                              <table class="table table-borderless labelTitle">
+                                                  <tbody>
+                                                      <tr>
+                                                          <th>Total Questions</th>
+                                                          <td>{{testdetails?.totalQuestions}}</td>
+                                                      </tr>
+                                                      <tr>
+                                                          <th>Attempted</th>
+                                                          <td>{{testdetails?.attempted}}</td>
+                                                      </tr>
+                                                      <tr>
+                                                          <th>Correct</th>
+                                                          <td>{{testdetails?.correctAnswers}}</td>
+                                                      </tr>
+                                                      <tr>
+                                                          <th>Incorrect</th>
+                                                          <td>
+                                                            {{testdetails?.totalQuestions-testdetails?.correctAnswers}}
+                                                          </td>
+                                                      </tr>
+                                                  </tbody>
+                                              </table>
+                                          </div>
+                                      </div>
+
+                                  </div>
+
+                                  <div class="tab-pane fade" id="detail" role="tabpanel" aria-labelledby="detail-tab">
+                                      
+                                      <div class="card-header mb-5 p-0">
+                                          <ul class="nav nav-tabs card-header-tabs" role="tablist">
+                                              <li class="nav-item"><a class="nav-link active" id="first-tab" data-toggle="tab" href="#first" role="tab" aria-controls="first" aria-selected="true">All ({{testdetails?.totalQuestions}})</a></li>
+                                              <li class="nav-item"><a class="nav-link" id="second-tab" data-toggle="tab" href="#second" role="tab" aria-controls="second" aria-selected="false">Correct ({{testdetails?.correctAnswers}})</a></li>
+                                              <li class="nav-item"><a class="nav-link" id="third-tab" data-toggle="tab" href="#third" role="tab" aria-controls="third" aria-selected="false">Incorrect ({{testdetails?.attempted-testdetails?.correctAnswers}})</a> </li>
+                                              <li class="nav-item"><a class="nav-link" id="fourth-tab" data-toggle="tab" href="#fourth" role="tab" aria-controls="fourth" aria-selected="false">Not Attempted ({{testdetails?.totalQuestions-testdetails?.attempted}})</a> </li>
+                                          </ul>
+                                      </div>
+                                      
+                                      <div class="tab-content">
+                                          <div class="tab-pane fade active show" id="first" role="tabpanel" aria-labelledby="first-tab">
+                                              <div class="labelTitle" *ngFor="let question of questionAnswer;let questionIndex = index">
+                                                  
+                                                  <div class="separator mb-3"></div>
+                                                  <p class="mb-2 headerSemiBold">
+                                                      <span>Q{{questionIndex+1}}</span>
+                                                      <span class="ml-2">
+                                                          <img style="height: 30px;" src="{{question?.question?.questionMedia}}" class="cursor pr-2" data-toggle="modal" data-target="#viewImage" (click)="showImage(question.question.questionMedia)">
+                                                          <div class="d-inline" [innerHTML]="question.question.question"></div>
+                                                      </span>
+                                                    </p>
+                                                  
+                                                  <p *ngIf="question?.question?.isCorrect && question?.question?.attempted" class="rating">
+                                                      <span>Your answers : </span>
+                                                      <span class="ml-2" *ngFor="let option of question?.question?.studentAnswer">
+                                                          <img *ngIf="option.optionMedia && option.isAnswer" style="height: 30px;" src="{{option.optionMedia}}" class="cursor pr-2" data-toggle="modal" data-target="#viewImage" (click)="showImage(option.optionMedia)">
+                                                          <div class="d-inline" *ngIf="option.isAnswer" [innerHTML]="option.option"></div>
+                                                      </span>
+                                                  </p>
+                                                  <p *ngIf="!question?.question?.isCorrect && question?.question?.attempted" class="coral">
+                                                      <span>Your answers : </span>
+                                                      <span class="ml-2" *ngFor="let option of question?.question?.studentAnswer">
+                                                          <img style="height: 30px;" src="{{option.optionMedia}}" class="cursor pr-2" data-toggle="modal" data-target="#viewImage" (click)="showImage(option.optionMedia)">
+                                                          <div class="d-inline" [innerHTML]="option.option"></div>
+                                                      </span>
+                                                 </p>
+                                                 <p *ngIf="!question?.question?.attempted || !question?.question?.isCorrect" class="rating">
+                                                    <span>Correct answers : </span>
+                                                    <span class="ml-2" *ngFor="let option of question?.question?.correctAnswer; let i = index">
+                                                        <span *ngIf="i>=1">, </span>
+                                                        <img *ngIf="option.optionMedia" style="height: 30px;" src="{{option.optionMedia}}" class="cursor pr-2" data-toggle="modal" data-target="#viewImage" (click)="showImage(option.optionMedia)">
+                                                        <div class="d-inline" [innerHTML]="option.option"></div>
+                                                    </span>
+                                                 </p>
+                                              </div>
+                                          </div>
+
+                                          <div class="tab-pane fade" id="second" role="tabpanel" aria-labelledby="second-tab">
+                                              <div *ngFor="let question of questionAnswer;let questionIndex = index">
+                                                  <div class="labelTitle" *ngIf="question?.question.isCorrect">
+                                                      
+                                                      <div class="separator mb-3"></div>
+                                                      <p class="mb-2 headerSemiBold">
+                                                        <span>Q{{questionIndex+1}}</span>
+                                                        <span class="ml-2">
+                                                            <img style="height: 30px;" src="{{question?.question?.questionMedia}}" class="cursor pr-2" data-toggle="modal" data-target="#viewImage" (click)="showImage(question.question.questionMedia)">
+                                                            <div class="d-inline" [innerHTML]="question.question.question"></div>
+                                                        </span>
+                                                      </p>
+                                                    
+                                                        <p *ngIf="question?.question?.isCorrect" class="rating">
+                                                            <span>Correct answers : </span>
+                                                            <span class="ml-2" *ngFor="let option of question?.question?.correctAnswer; let i = index">
+                                                                <span *ngIf="i>=1">, </span>
+                                                                <img style="height: 30px;" src="{{option.optionMedia}}" class="cursor pr-2" data-toggle="modal" data-target="#viewImage" (click)="showImage(option.optionMedia)">
+                                                                <div class="d-inline" [innerHTML]="option.option"></div>
+                                                            </span>
+                                                        </p>
+                                                  </div>
+                                              </div>
+                                          </div>
+
+                                          <div class="tab-pane fade" id="third" role="tabpanel" aria-labelledby="third-tab">
+                                              <div class="labelTitle" *ngFor="let question of questionAnswer;let questionIndex = index">
+                                                  <div *ngIf="!question?.question?.isCorrect && question?.question?.attempted">
+                                                      
+                                                    <div class="separator mb-3"></div>
+                                                    <p class="mb-2 headerSemiBold">
+                                                      <span>Q{{questionIndex+1}}</span>
+                                                      <span class="ml-2">
+                                                          <img style="height: 30px;" src="{{question?.question?.questionMedia}}" class="cursor pr-2" data-toggle="modal" data-target="#viewImage" (click)="showImage(question.question.questionMedia)">
+                                                          <div class="d-inline" [innerHTML]="question.question.question"></div>
+                                                      </span>
+                                                    </p>
+
+                                                    <p *ngIf="!question?.question?.isCorrect && question?.question?.attempted" class="coral">
+                                                        <span>Your answers : </span>
+                                                        <span class="ml-2" *ngFor="let option of question?.question?.studentAnswer">
+                                                            <img style="height: 30px;" src="{{option.optionMedia}}" class="cursor pr-2" data-toggle="modal" data-target="#viewImage" (click)="showImage(option.optionMedia)">
+                                                            <div class="d-inline" [innerHTML]="option.option"></div>
+                                                        </span>
+                                                   </p>
+                                                  
+                                                      <p class="rating">
+                                                          <span>Correct answers : </span>
+                                                          <span class="ml-2" *ngFor="let option of question?.question?.correctAnswer; let i = index">
+                                                              <span *ngIf="i>=1">, </span>
+                                                              <img *ngIf="option.optionMedia" style="height: 30px;" src="{{option.optionMedia}}" class="cursor pr-2" data-toggle="modal" data-target="#viewImage" (click)="showImage(option.optionMedia)">
+                                                              <div class="d-inline" [innerHTML]="option.option"></div>
+                                                          </span>
+                                                      </p>
+                                                  </div>
+                                              </div>
+                                          </div>
+
+                                          <div class="tab-pane fade" id="fourth" role="tabpanel" aria-labelledby="fourth-tab">
+                                              <div *ngFor="let question of questionAnswer;let questionIndex = index">
+                                                  <div *ngIf="!question?.question?.attempted">
+                                                    <p class="mb-2 headerSemiBold">
+                                                        <span>Q{{questionIndex+1}}</span>
+                                                        <span class="ml-2">
+                                                            <img style="height: 30px;" src="{{question?.question?.questionMedia}}" class="cursor pr-2" data-toggle="modal" data-target="#viewImage" (click)="showImage(question.question.questionMedia)">
+                                                            <div class="d-inline" [innerHTML]="question.question.question"></div>
+                                                        </span>
+                                                    </p>
+                                                    
+                                                   <p class="rating">
+                                                      <span>Correct answers : </span>
+                                                      <span class="ml-2" *ngFor="let option of question?.question?.correctAnswer; let i = index">
+                                                          <span *ngIf="i>=1">, </span>
+                                                          <img *ngIf="option.optionMedia" style="height: 30px;" src="{{option.optionMedia}}" class="cursor pr-2" data-toggle="modal" data-target="#viewImage" (click)="showImage(option.optionMedia)">
+                                                          <div class="d-inline" [innerHTML]="option.option"></div>
+                                                      </span>
+                                                   </p>
+                                                  </div>
+                                              </div>
+                                          </div>
+                                      </div>
+
+                                  </div>
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </div>
+</main>
+<!-- Modal -->
+<div class="modal fade modal-top" id="viewImage" tabindex="-1" role="dialog" aria-labelledby="viewImage" aria-hidden="true" style="display: none;">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-body">
+                <img src={{viewImage}} style="width: 100%;object-fit:contain;">
+            </div>
+            <div class="modal-footer">
+                <button id="closeImage" type="button" class="cursor btn headerSemiBold coral-bk white default float-right" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">Close</span></button>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- End Modal -->

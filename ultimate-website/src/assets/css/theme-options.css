@@ -1,0 +1,229 @@
+/*
+ *
+ *		THEME-OPTIONS.CSS
+ *
+ *	+ THEME OPTIONS
+ *	 - PANEL STYLE
+ *	 - COLORS
+ *	 - PATTERNS
+ *	+ SELECT DEMOS
+ *
+ */
+
+/***********************************************************************************
+ *	+ THEME OPTIONS
+ ***********************************************************************************/
+/***********************************************************************************
+ *	 - PANEL STYLE
+ ***********************************************************************************/
+
+	#theme-options {
+		padding: 0 20px;
+		z-index: 9999;
+		background-color: #fff;
+		position: fixed;
+		top: 100px;
+		left: -250px;
+		width: 250px;
+		color: #323232;
+		-webkit-box-sizing: border-box;
+		   -moz-box-sizing: border-box;
+				box-sizing: border-box;
+		-webkit-transition: all 0.5s;
+				transition: all 0.5s;
+	}
+	
+	#theme-options.open {
+		left: 0;
+		box-shadow: 1px 1px 2px 0 #ccc;
+	}
+	
+	#theme-options a.switcher_btn {
+		text-decoration: none;
+		color: #323232;
+	}
+	
+	#theme-options > a.switcher_btn {
+		position: absolute;
+		top: 0;
+		right: -47px;
+		display: block;
+		background-color: #323232;
+		color: #fff;
+		font-size: 20px;
+		text-align: center;
+		text-decoration: none;
+		width: 47px;
+		height: 47px;
+		line-height: 47px;
+	}
+	
+	#theme-options > a.switcher_btn:before {
+		font-family: "FontAwesome";
+		content: "\f013";
+	}
+	
+	#theme-options h4 {
+		text-transform: uppercase;
+		text-align: center;
+		color: #fff;
+		background-color: #323232;
+		padding: 8px 0;
+		margin: 0 -20px;
+		font-size: 16px;
+		font-weight: 400;
+		letter-spacing:.5px;
+	}
+	
+	#theme-options h5 {
+		text-transform: uppercase;
+		margin-bottom: 20px;
+		color: #000;
+		font-size: 14px;
+		font-weight: 400;
+		text-align:center;
+	}
+	.mar-10{
+		margin-bottom: 10px;
+	}
+	
+	.colors,
+	.layout {
+		margin-bottom: 15px;
+	}
+	
+	.colors {
+		padding-bottom: 15px;
+		 border-bottom: 1px solid #ccc; 
+	}
+	
+	.boxed-bg {
+		padding-top: 15px;
+		border-top: 1px solid #ccc;
+	}
+	.layout .boxed {
+		box-shadow:none;
+		margin:0;
+	}
+	
+	.colors a {
+		display: block;
+		width: 30px;
+		height: 30px;
+		float: left;
+		margin-bottom: 5px;
+		margin-right: 2px;
+		margin-left: 2px;
+		position:relative;
+	}
+	
+	.colors a:last-child {
+		margin-right: 0;
+	}
+	
+	.layout a {
+		display: block;
+		float: left;
+		width: 50%;
+		text-align: center;
+		background: none;
+	}
+	
+	.layout a img {
+		display: block;
+		margin: 0 auto;
+	}
+	
+	.patterns {
+		padding-bottom: 15px;
+	}
+	
+	.patterns a {
+		display: block;
+		width: 30px;
+		height: 30px;
+		float: left;
+		margin-right: 10px;
+		margin-bottom: 10px;
+	}
+
+/***********************************************************************************
+ *	 - COLORS
+ ***********************************************************************************/
+
+	#color1 {
+		background-color: #1abc9c;
+	}
+	#color2 {
+		background-color: #006b63;
+	}
+	#color3 {
+		background-color: #336E7B;
+	}
+	#color4  {
+		background-color: #e67e22;
+	}
+	#color5 {
+		background-color: #ff6a30;
+	}
+	#color6 {
+		background-color: #eaab00;
+	}	
+	#color7 {
+		background-color: #37479d;
+	}
+	#color8 {
+		background-color: #3498db;
+	}
+	#color9{
+		background-color: #32c5d2;
+	}
+	#color10{
+		background-color: #5893dd;
+	}
+	#color11 {
+		background-color: #e7505a;
+	}
+	#color12 {
+		background-color: #cdb083;
+	}
+	
+	.buy-button{
+		border-radius:2px;
+		-moz-border-radius:2px;
+		-webkit-border-radius:2px;
+		background:#323232;
+		color:#ffffff!important;	
+		font-size: 13px !important;
+        font-weight: 600 !important;
+		padding: 9px 25px !important;
+		vertical-align: middle;    
+		line-height: inherit;
+		text-transform:uppercase;
+		width:100%;
+		margin-bottom:20px;
+		letter-spacing:1px;
+		border:1px solid transparent;
+	}
+	.buy-button:hover{
+		background:transparent;
+		border:1px solid #323232;
+		color:#323232!important;	
+	}
+	.buy-button.c-btn{
+		background:transparent;
+		border:1px solid #323232;
+		color:#323232!important;	
+	}
+	.buy-button.c-btn:hover{
+		background:#323232;
+		color:#ffffff!important;	
+		border:1px solid transparent;
+	}
+ 
+	@media (max-width: 767px) {
+		
+		#theme-options, 
+		#select-demos { display: none; }
+		
+	}

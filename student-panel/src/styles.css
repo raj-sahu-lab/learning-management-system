@@ -1,0 +1,144 @@
+@font-face {
+  font-family: welcomeTitle;
+  src: url("./assets/font/montserrat/AbrilFatface-Regular.ttf")
+    format("truetype");
+  font-display: swap;
+}
+.welcomeFont {
+  font-family: welcomeTitle !important;
+  font-size: 2.75rem !important;
+}
+@font-face {
+  font-family: boldHeader;
+  src: url("./assets/font/montserrat/Montserrat-ExtraBold.ttf")
+    format("truetype");
+  font-display: swap;
+}
+.headerBold {
+  font-family: boldHeader !important;
+}
+@font-face {
+  font-family: semiBoldHeader;
+  src: url("./assets/font/montserrat/Montserrat-SemiBold.ttf")
+    format("truetype");
+  font-display: swap;
+}
+.headerSemiBold {
+  font-family: semiBoldHeader !important;
+}
+@font-face {
+  font-family: regularLabel;
+  src: url("./assets/font/montserrat/Montserrat-Regular.ttf") format("truetype");
+  font-display: swap;
+}
+.labelTitle {
+  font-family: regularLabel !important;
+}
+.progress-bar {
+  background-color: #09c09f !important;
+}
+.btn-secondary {
+  background-color: #ff7a59 !important;
+  border-color: #ff7a59 !important;
+}
+.nav-link.active {
+  color: #ff7a59 !important;
+}
+.nav-tabs .nav-link.active:before {
+  background: #ff7a59 !important;
+}
+.coral {
+  color: coral !important;
+}
+.rating {
+  color: #09c09f !important;
+}
+.scrollbar {
+  height: 60px;
+  overflow: hidden;
+}
+::-webkit-scrollbar {
+  width: 3px;
+  height: 3px;
+}
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+::-webkit-scrollbar-thumb {
+  background: #ff7a59;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+.pointer {
+  cursor: pointer;
+}
+.glyph {
+  width: auto !important;
+  height: auto !important;
+  color: #145388 !important;
+}
+.simple-line-icons .glyph .glyph-icon {
+  font-size: 20px !important;
+}
+.coral {
+  color: coral;
+}
+.green {
+  color: green;
+}
+.cursor {
+  cursor: pointer;
+}
+.review-slide {
+  width: 389.667px;
+  margin-left: 0px;
+  margin-right: 0px;
+}
+.live-btn-bak {
+  background-color: coral;
+  border-color: coral;
+  color: #fff;
+}
+.not-selected {
+  color: #d7d7d7 !important;
+}
+.selected {
+  color: #145388 !important;
+}
+.pre-line {
+  white-space: pre-line;
+}
+.welcomeFont-clr {
+  color: #3a3a3a;
+}
+.b-none {
+  border: none;
+  background: transparent;
+}
+.crimson {
+  color: crimson;
+}
+.pos-val {
+  position: relative;
+  left: 10%;
+}
+body {
+  overflow: auto !important;
+}
+.container-fluid {
+  padding-top: 20px;
+}
+.obj-cover {
+  object-fit: cover;
+}
+@media (max-width: 600px) {
+  .welcomeFont {
+    font-size: 2.1rem !important;
+  }
+}
+@media (min-width: 992px) {
+  .cent {
+    text-align: center;
+  }
+}

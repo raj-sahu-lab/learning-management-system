@@ -1,0 +1,119 @@
+<nav class="top_navbar">
+    <div class="container">
+        <div class="row clearfix">
+            <div class="col-12">
+                <div class="navbar-logo">
+                    <a href="javascript:void(0);" class="bars"></a>
+                    <a routerLink="/" routerLinkActive="active" class="navbar-brand">
+                        <span class="m-l-10 labelTitle">{{ account_title }}</span>
+                    </a>
+                </div>
+                <ul class="nav navbar-nav">
+                    <li [ngClass]="status ? 'dropdown profile show' : 'dropdown profile'">
+                        <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown" role="button" (click)="dropdown();">
+                            <img class="rounded-circle" src="{{ picture }}">
+                        </a>
+                        <ul class="dropdown-menu pullDown">
+                            <li>
+                                <div class="user-info">
+                                    <h6 class="user-name m-b-0 welcomeFont">Hello {{ account_title }}</h6>
+                                    <hr>
+                                </div>
+                            </li>
+                            <li>
+                                <a class="headerSemiBold" [routerLink]="['/password']" [routerLinkActive]="['router-link-active']">
+                                    <i class="icon-lock m-r-10"></i>Change Password 
+                                </a>
+                            </li>
+                            <li>
+                                <a class="headerSemiBold" (click)="onLoggedout()">
+                                    <i class="icon-power m-r-10"></i><span>Sign Out</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</nav>
+
+<aside id="leftsidebar" class="sidebar h_menu">
+    <div class="container">
+        <div class="row clearfix">
+            <div class="col-12">
+                <div class="menu">
+                    <ul class="list" *ngIf="role==1">
+                        <li class="active open"> 
+                            <a routerLink="/" routerLinkActive="active">
+                                <span class="headerSemiBold">Home</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="javascript:void(0);" class="menu-toggle">
+                                <span class="headerSemiBold">Plans</span>
+                            </a>
+                            <ul class="ml-menu">
+                                <li class="labelTitle"><a [routerLink]="['/term']" [routerLinkActive]="['router-link-active']">Plan Duration </a></li>
+                                <li class="labelTitle"><a [routerLink]="['/plan']" [routerLinkActive]="['router-link-active']">Plans</a></li>
+                                <li class="labelTitle"><a [routerLink]="['/plandetail']" [routerLinkActive]="['router-link-active']">Features</a></li>
+                                <li class="labelTitle"><a [routerLink]="['/emailSMSplan']" [routerLinkActive]="['router-link-active']">Email & SMS Plan</a></li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a [routerLink]="['/institute']" [routerLinkActive]="['router-link-active']">
+                                <span class="headerSemiBold">Manage Institute</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a [routerLink]="['/education']" [routerLinkActive]="['router-link-active']">
+                                <span class="headerSemiBold">Education</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="javascript:void(0);" class="menu-toggle">
+                                <span class="headerSemiBold">Curreny</span>
+                            </a>
+                            <ul class="ml-menu">
+                                <li class="labelTitle"><a [routerLink]="['/curreny']" [routerLinkActive]="['router-link-active']">Manage Curreny</a></li>
+                                <li class="labelTitle"><a [routerLink]="['/iOSPurchase']" [routerLinkActive]="['router-link-active']">iOS Purchase</a></li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="javascript:void(0);" class="menu-toggle">
+                                <span class="headerSemiBold">Marketing And Promotions</span>
+                            </a>
+                            <ul class="ml-menu">
+                                <li class="labelTitle"><a [routerLink]="['/smsSend']" [routerLinkActive]="['router-link-active']">Send SMS</a></li>
+                                <li class="labelTitle"><a [routerLink]="['/sms']" [routerLinkActive]="['router-link-active']">Manage SMS</a></li>
+                                <li class="labelTitle"><a [routerLink]="['/smsHistory']" [routerLinkActive]="['router-link-active']">SMS History</a></li>
+                                <li class="labelTitle"><a [routerLink]="['/email']" [routerLinkActive]="['router-link-active']">Manage Email</a></li>
+                                <li class="labelTitle"><a [routerLink]="['/emailHistory']" [routerLinkActive]="['router-link-active']">Email History</a></li>
+                                <li class="labelTitle"><a [routerLink]="['/emailTemplate']" [routerLinkActive]="['router-link-active']">Email Template</a></li>
+                                <li class="labelTitle"><a [routerLink]="['/offer']" [routerLinkActive]="['router-link-active']">Offers</a></li>
+                                <li class="labelTitle"><a [routerLink]="['/notification']" [routerLinkActive]="['router-link-active']">Notification</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+
+                    <ul class="list" *ngIf="role==2">
+                        <li class="active open"> 
+                            <a routerLink="/" routerLinkActive="active">
+                                <span class="headerSemiBold">Home</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="javascript:void(0);" class="menu-toggle">
+                                <span class="headerSemiBold">Plan Permissions</span>
+                            </a>
+                            <ul class="ml-menu">
+                                <li class="labelTitle"><a [routerLink]="['/menu']" [routerLinkActive]="['router-link-active']">Menu</a></li>
+                                <li class="labelTitle"><a [routerLink]="['/submenu']" [routerLinkActive]="['router-link-active']">Sub Menu</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</aside>

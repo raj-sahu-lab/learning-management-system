@@ -1,0 +1,449 @@
+<div [@routerTransition]>
+    <div class="container">
+
+        <div class="row clearfix">
+
+            <div class="col-lg-12">
+                <div class="card">
+                    <div class="body block-header">
+                        <div class="row">
+                            <div class="col-lg-6 col-md-8 col-sm-12">
+                                <h2 class="headerSemiBold">Welcome to Dashboard</h2>
+                                <ul class="breadcrumb p-l-0 p-b-0 ">
+                                    <li class="breadcrumb-item labelTitle">
+                                        <a class="linkColor" routerLink="/" routerLinkActive="active"><i
+                                                class="icon-home"></i></a>
+                                    </li>
+                                    <li class="breadcrumb-item active labelTitle">Dashboard</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="row clearfix">
+            <div class="col-lg-12 col-md-12 col-sm-12">
+                <div class="card">
+                    <div class="header headerSemiBold">
+                        <h2><span class="linkColor">Get</span> ready to launch your online classes </h2>
+                    </div>
+
+                    <div class="body">
+                        
+                        <div class="col-lg-12 col-md-12">
+                            <div class="input-group">
+                                <div class="checkbox">
+                                    <input id="step1" type="checkbox" [(ngModel)]="logoUpdate">
+                                    <label for="step1">
+                                        <a [routerLink]="['/logo']" [routerLinkActive]="['router-link-active']" class="mormalLink">
+                                            Step 1 : Upload your institute logo. (Optional)
+                                        </a>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-12 col-md-12">
+                            <div class="input-group">
+                                <div class="checkbox">
+                                    <input id="step2" type="checkbox" checked>
+                                    <label for="step2">
+                                        <a [routerLink]="['/branch']" [routerLinkActive]="['router-link-active']" class="mormalLink">
+                                            Step 2 : Fill in the branch name and address, it will give you a
+                                            unique code. (Required)
+                                        </a>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-12 col-md-12">
+                            <div class="input-group">
+                                <div class="checkbox">
+                                    <input id="step3" type="checkbox" [(ngModel)]="tutorCount">
+                                    <label for="step3">
+                                        <a [routerLink]="['/tutor']" [routerLinkActive]="['router-link-active']" class="mormalLink">
+                                            Step 3 : Add educator  (Required)
+                                        </a>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-12 col-md-12">
+                            <div class="input-group">
+                                <div class="checkbox">
+                                    <input id="step4" type="checkbox" [(ngModel)]="paymentGatewayCount">
+                                    <label for="step4">
+                                        <a [routerLink]="['/paymentgateway']" [routerLinkActive]="['router-link-active']" class="mormalLink">
+                                            Step 4 : Add payment gateway (Optional)
+                                        </a>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-12 col-md-12">
+                            <div class="input-group">
+                                <div class="checkbox">
+                                    <input id="step5" type="checkbox" [(ngModel)]="courseCount">
+                                    <label for="step5">
+                                        <a [routerLink]="['/subject']" [routerLinkActive]="['router-link-active']" class="mormalLink">
+                                            Step 5 : Add courses and tests by adding subject, topic and course
+                                            content (Required)
+                                        </a>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-12 col-md-12">
+                            <div class="input-group">
+                                <div class="checkbox">
+                                    <input id="step6" type="checkbox" [(ngModel)]="studentCount">
+                                    <label for="step6">
+                                        <a [routerLink]="['/learner']" [routerLinkActive]="['router-link-active']" class="mormalLink">
+                                            Step 6 : Add student from admission section or sign-up using unique
+                                            code from student.example.com (Optional)
+                                        </a>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-12 col-md-12">
+                            <div class="input-group">
+                                <div class="checkbox">
+                                    <input id="step7" type="checkbox" [(ngModel)]="courseSold">
+                                    <label for="step7">
+                                        <a [routerLink]="['/dashboard']" [routerLinkActive]="['router-link-active']" class="mormalLink">
+                                            Step 7 : View how course content and test material looks like as a
+                                            student (Optional)
+                                        </a>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-12 col-md-12">
+                            <div class="input-group">
+                                <div class="checkbox">
+                                    <input id="step8" type="checkbox" [(ngModel)]="courseSold">
+                                    <label for="step8">
+                                        <a [routerLink]="['/dashboard']" [routerLinkActive]="['router-link-active']" class="mormalLink">
+                                            Step 8 : Start teaching and selling
+                                        </a>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="row clearfix" *ngIf="userType == 1">
+        
+            <div class="col-lg-6 col-md-6 col-sm-12">
+                <div class="card">
+                    <div class="body">
+                        <div class="row">
+                            <div class="col-7">
+                                <h5 class="m-t-0">Student</h5>
+                                <small class="text-small">Total registered students</small>
+                            </div>
+                            <div class="col-5 text-right">
+                                <h2 class="m-b-0">{{dashboardData?.registeredStudent}}</h2>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-6 col-md-6 col-sm-12">
+                <div class="card">
+                    <div class="body">
+                        <div class="row">
+                            <div class="col-7">
+                                <h5 class="m-t-0">Educator </h5>
+                                <small class="text-small">Total registered educators</small>
+                            </div>
+                            <div class="col-5 text-right">
+                                <h2 class="m-b-0">{{dashboardData?.registeredTutor}}</h2>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+
+        <!-- https://www.freakyjolly.com/angular-chart-js-tutorial-using-ng2-charts-with-examples/#.X9bklVUzbIW -->
+        <div class="row clearfix" *ngIf="userType == 1">
+
+            <div class="col-lg-6 col-md-6 col-sm-6">
+                <div class="card">
+                    <div class="header headerSemiBold">
+                        <h2><span class="linkColor">Total </span>content sales report</h2>
+
+                        <ul class="header-dropdown" style="top: 2px !important;">
+                            <li class="dropdown">
+                                <select class="btn btn-secondary btn-simple" [(ngModel)]="contentType" (change)="contentLineChart()" style="color: #fff;height: 38px;">
+                                    <option value="weekly">Weekly</option>
+                                    <option value="monthly">Monthly</option>
+                                    <option value="yearly">Yearly</option>
+                                    <option value="all">All</option>
+                                </select>
+                            </li>
+                            <li class="remove">
+                                <select class="btn btn-secondary btn-simple" [(ngModel)]="contentCurrencyId" (change)="contentLineChart()" style="color: #fff;height: 38px;">
+                                    <option *ngFor="let currency of currencyList" value="{{currency.id}}">
+                                      {{currency.title}} ( {{currency.sign}} )
+                                    </option>
+                                </select>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="body">
+                        
+                        <div class="col-lg-12 col-md-12">
+                            <div class="chartjs-container" *ngIf="contentLineChartDisplay">
+                                <canvas baseChart 
+                                    [datasets]="contentLineChartData" 
+                                    [labels]="contentLineChartLabels" 
+                                    [options]="contentLineChartOptions"
+                                    [colors]="contentLineChartColors"
+                                    [chartType]="contentLineChartType">
+                                </canvas>
+                            </div>
+                        </div>
+                        
+                        <div class="row text-center">
+                            <div class="col-sm-3 col-6">
+                                <h4 class="margin-0">{{contentLineChartToday | number: '1.2'}}</h4>
+                                <p class="text-muted m-b-0"> Today's</p>
+                            </div>
+                            <div class="col-sm-3 col-6">
+                                <h4 class="margin-0">{{contentLineChartWeek | number: '1.2'}}</h4>
+                                <p class="text-muted m-b-0">This Week's</p>
+                            </div>
+                            <div class="col-sm-3 col-6">
+                                <h4 class="margin-0">{{contentLineChartMonth | number: '1.2'}}</h4>
+                                <p class="text-muted m-b-0">This Month's</p>
+                            </div>
+                            <div class="col-sm-3 col-6">
+                                <h4 class="margin-0">{{contentLineChartYear | number: '1.2'}}</h4>
+                                <p class="text-muted m-b-0">This Year's </p>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-6 col-md-6 col-sm-6">
+                <div class="card">
+                    <div class="header headerSemiBold">
+                        <h2><span class="linkColor">Total</span> active contents</h2>
+                    </div>
+                    <div class="body">
+                        <div class="col-lg-12 col-md-12">
+                            <div class="chartjs-container" *ngIf="contentPieChartDisplay">
+                                <canvas 
+                                    baseChart 
+                                    [data]="contentPieChartData" 
+                                    [labels]="contentPieChartLabels" 
+                                    [chartType]="contentPieChartType"
+                                    [options]="contentPieChartOptions"
+                                    [colors]="contentPieChartColors">
+                                </canvas>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row clearfix" *ngIf="userType == 1">
+
+            <div class="col-lg-6 col-md-6 col-sm-6">
+                <div class="card">
+                    <div class="header headerSemiBold">
+                        <h2><span class="linkColor">Total </span>file sales report</h2>
+
+                        <ul class="header-dropdown" style="top: 2px !important;">
+                            <li class="dropdown">
+                                <select class="btn btn-secondary btn-simple" [(ngModel)]="fileType" (change)="fileLineChart()" style="color: #fff;height: 38px;">
+                                    <option value="weekly">Weekly</option>
+                                    <option value="monthly">Monthly</option>
+                                    <option value="yearly">Yearly</option>
+                                    <option value="all">All</option>
+                                </select>
+                            </li>
+                            <li class="remove">
+                                <select class="btn btn-secondary btn-simple" [(ngModel)]="fileCurrencyId" (change)="fileLineChart()" style="color: #fff;height: 38px;">
+                                    <option *ngFor="let currency of currencyList" value="{{currency.id}}">
+                                      {{currency.title}} ( {{currency.sign}} )
+                                    </option>
+                                </select>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="body">
+                        
+                        <div class="col-lg-12 col-md-12">
+                            <div class="chartjs-container" *ngIf="fileLineChartDisplay">
+                                <canvas baseChart 
+                                    [datasets]="fileLineChartData" 
+                                    [labels]="fileLineChartLabels" 
+                                    [options]="fileLineChartOptions"
+                                    [colors]="fileLineChartColors"
+                                    [chartType]="fileLineChartType">
+                                </canvas>
+                            </div>
+                        </div>
+                        
+                        <div class="row text-center">
+                            <div class="col-sm-3 col-6">
+                                <h4 class="margin-0">{{fileLineChartToday | number: '1.2'}}</h4>
+                                <p class="text-muted m-b-0"> Today's</p>
+                            </div>
+                            <div class="col-sm-3 col-6">
+                                <h4 class="margin-0">{{fileLineChartWeek | number: '1.2'}}</h4>
+                                <p class="text-muted m-b-0">This Week's</p>
+                            </div>
+                            <div class="col-sm-3 col-6">
+                                <h4 class="margin-0">{{fileLineChartMonth | number: '1.2'}}</h4>
+                                <p class="text-muted m-b-0">This Month's</p>
+                            </div>
+                            <div class="col-sm-3 col-6">
+                                <h4 class="margin-0">{{fileLineChartYear | number: '1.2'}}</h4>
+                                <p class="text-muted m-b-0">This Year's </p>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-6 col-md-6 col-sm-6">
+                <div class="card">
+                    <div class="header headerSemiBold">
+                        <h2><span class="linkColor">Total</span> active files</h2>
+                    </div>
+
+                    <div class="body">
+                        
+                        <div class="col-lg-12 col-md-12">
+                            <div class="chartjs-container" *ngIf="fileDoughnutChartDisplay">
+                                <canvas baseChart 
+                                [data]="fileDoughnutChartData" 
+                                [labels]="fileDoughnutChartLabels" 
+                                [chartType]="fileDoughnutChartType">
+                                </canvas>
+                            </div>
+                        </div>
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row clearfix" *ngIf="userType == 1">
+
+            <div class="col-lg-6 col-md-6 col-sm-6">
+                <div class="card">
+                    <div class="header headerSemiBold">
+                        <h2><span class="linkColor">Total </span>test sales report </h2>
+
+                        <ul class="header-dropdown" style="top: 2px !important;">
+                            <li class="dropdown">
+                                <select class="btn btn-secondary btn-simple" [(ngModel)]="testType" (change)="testLineChart()" style="color: #fff;height: 38px;">
+                                    <option value="weekly">Weekly</option>
+                                    <option value="monthly">Monthly</option>
+                                    <option value="yearly">Yearly</option>
+                                    <option value="all">All</option>
+                                </select>
+                            </li>
+                            <li class="remove">
+                                <select class="btn btn-secondary btn-simple" [(ngModel)]="testCurrencyId" (change)="testLineChart()" style="color: #fff;height: 38px;">
+                                    <option *ngFor="let currency of currencyList" value="{{currency.id}}">
+                                      {{currency.title}} ( {{currency.sign}} )
+                                    </option>
+                                </select>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="body">
+                        
+                        <div class="col-lg-12 col-md-12">
+                            <div class="chartjs-container" *ngIf="testLineChartDisplay">
+                                <canvas baseChart 
+                                    [datasets]="testLineChartData" 
+                                    [labels]="testLineChartLabels" 
+                                    [options]="testLineChartOptions"
+                                    [colors]="testLineChartColors"
+                                    [chartType]="testLineChartType">
+                                </canvas>
+                            </div>
+                        </div>
+                        
+                        <div class="row text-center">
+                            <div class="col-sm-3 col-6">
+                                <h4 class="margin-0">{{testLineChartToday | number: '1.2'}}</h4>
+                                <p class="text-muted m-b-0"> Today's</p>
+                            </div>
+                            <div class="col-sm-3 col-6">
+                                <h4 class="margin-0">{{testLineChartWeek | number: '1.2'}}</h4>
+                                <p class="text-muted m-b-0">This Week's</p>
+                            </div>
+                            <div class="col-sm-3 col-6">
+                                <h4 class="margin-0">{{testLineChartMonth | number: '1.2'}}</h4>
+                                <p class="text-muted m-b-0">This Month's</p>
+                            </div>
+                            <div class="col-sm-3 col-6">
+                                <h4 class="margin-0">{{testLineChartYear | number: '1.2'}}</h4>
+                                <p class="text-muted m-b-0">This Year's </p>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-6 col-md-6 col-sm-6">
+                <div class="card">
+                    <div class="header headerSemiBold">
+                        <h2><span class="linkColor">Total</span> active practice, assignment,sets & bundles</h2>
+                    </div>
+
+                    <div class="body">
+                        
+                        <div class="col-lg-12 col-md-12">
+                            <div class="chartjs-container" *ngIf="testPieChartDisplay">
+                                <canvas 
+                                    baseChart 
+                                    [data]="testPieChartData" 
+                                    [labels]="testPieChartLabels" 
+                                    [chartType]="testPieChartType"
+                                    [options]="testPieChartOptions"
+                                    [colors]="testPieChartColors">
+                                </canvas>
+                            </div>
+                        </div>
+                        
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+</div>

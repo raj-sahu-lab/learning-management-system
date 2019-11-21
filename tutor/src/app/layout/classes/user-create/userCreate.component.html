@@ -1,0 +1,170 @@
+<div class="container">
+
+  <div class="row clearfix">
+    <div class="col-lg-12">
+      <div class="card">
+        <div class="body block-header">
+          <div class="row">
+            <div class="col-lg-6 col-md-8 col-sm-12">
+              <h2 class="headerSemiBold">Manage Users</h2>
+
+              <ul class="breadcrumb p-l-0 p-b-0 labelTitle">
+                <li class="breadcrumb-item">
+                  <a class="linkColor" routerLink="/" routerLinkActive="active"><i class="icon-home"></i></a>
+                </li>
+                <li class="breadcrumb-item active labelTitle">User</li>
+              </ul>
+            </div>
+
+            <div class="col-lg-6 col-md-4 col-sm-12">
+              <a routerLink="/setting" routerLinkActive="active"
+                class="btn btn-secondary headerSemiBold btn-simple float-right active">
+                <i class="icon-arrow-left"></i> BACK
+              </a>
+              <a routerLink="/zoomCredential" routerLinkActive="active" class="btn btn-secondary headerSemiBold btn-simple float-right" style="color:#FFF"><i class="icon-earphones-alt"></i> Zoom credentials</a>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row clearfix">
+    <div class="col-sm-12 col-md-12 col-lg-12">
+      <div class="card">
+
+        <div class="header headerSemiBold">
+          <h2><span class="linkColor">Manage</span> Users</h2>
+        </div>
+
+        <div class="body">
+          <div class="demo-masked-input labelTitle">
+            <div class="row clearfix">
+
+              <div class="col-lg-4 col-md-4">Select Live Meeting Company
+                <div class="input-group">
+                  <select class="form-control" [(ngModel)]="liveClassCompany" (change)="userChanged()">
+                    <option [ngValue]="undefined" disabled>Select Live Meeting Company</option>
+                    <option [ngValue]="1">BlueJeans</option>
+                    <option [ngValue]="2">Zoom</option>
+                  </select>
+                </div>
+              </div>
+
+              <div class="col-lg-4 col-md-4">Select Educator | <a class="linkColor" [routerLink]="['/tutor']" [routerLinkActive]="['router-link-active']">Create Educator </a>
+                <div class="input-group">
+                  <select class="form-control" [(ngModel)]="tutorId">
+                    <option [ngValue]="undefined" disabled>Select Educator</option>
+                    <option *ngFor="let tutor of tutorList" [ngValue]="tutor.id">
+                      {{tutor.name}}
+                    </option>
+                  </select>
+                </div>
+              </div>
+
+              <div class="col-lg-4 col-md-4"><b>&nbsp;</b>
+                <div class="input-group">
+                  <input type="button" class="btn btn-secondary headerSemiBold float-right" value="SUBMIT"
+                    style="margin:0px;" (click)="submitButtonClick();">
+                </div>
+              </div>
+
+            </div>
+            <div class="row clearfix" *ngIf="liveClassCompany == 2">
+              <div class="col-lg-4 col-md-4"></div>
+              <div class="col-lg-8 col-md-8">
+                1. Kindly login to your email address and approve the email to activate educator here.<br>
+                2. You will not be able to assign educator in live class section until email is approved. 
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row clearfix">
+
+    <div class="col-sm-6 col-md-6 col-lg-6">
+      <div class="card">
+
+        <div class="header headerSemiBold">
+          <h2><span class="linkColor">BlueJeans</span> Users</h2>
+        </div>
+
+        <div class="body">
+          <div class="table-responsive">
+            <table class="table table-bordered table-striped table-hover">
+              <thead class="headerSemiBold">
+                <tr>
+                  <th>S No</th>
+                  <th>Image</th>
+                  <th>Educator Name</th>
+                  <th>Educator Number</th>
+                  <th>Educator Email</th>      
+                </tr>
+              </thead>
+              <tbody class="labelTitle">
+                <tr *ngFor="let blueJeansLiveClassUser of blueJeansLiveClassUserList;let i=index;">
+                  <td>{{blueJeansLiveClassUserList.length - i}}</td>
+                  <td>
+                    <img src="{{blueJeansLiveClassUser?.tutor?.image}}" style="height:30px" />
+                  </td>
+                  <td>{{blueJeansLiveClassUser?.tutor?.name}}</td>
+                  <td>
+                    <span *ngIf="blueJeansLiveClassUser?.tutor?.phone">
+                      +{{blueJeansLiveClassUser?.tutor?.countryCode}} {{blueJeansLiveClassUser?.tutor?.phone}}
+                    </span>
+                  </td>
+                  <td>{{blueJeansLiveClassUser?.tutor?.email}}</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-sm-6 col-md-6 col-lg-6">
+      <div class="card">
+
+        <div class="header headerSemiBold">
+          <h2><span class="linkColor">Zoom</span> Users</h2>
+        </div>
+
+        <div class="body">
+          <div class="table-responsive">
+            <table class="table table-bordered table-striped table-hover">
+              <thead class="headerSemiBold">
+                <tr>
+                  <th>S No</th>
+                  <th>Image</th>
+                  <th>Educator Name</th>
+                  <th>Educator Number</th>
+                  <th>Educator Email</th>      
+                </tr>
+              </thead>
+              <tbody class="labelTitle">
+                <tr *ngFor="let zoomLiveClassUser of zoomLiveClassUserList;let i=index;">
+                  <td>{{zoomLiveClassUserList.length - i}}</td>
+                  <td>
+                    <img src="{{zoomLiveClassUser?.tutor?.image}}" style="height:30px" />
+                  </td>
+                  <td>{{zoomLiveClassUser?.tutor?.name}}</td>
+                  <td>
+                    <span *ngIf="zoomLiveClassUser?.tutor?.phone">
+                      +{{zoomLiveClassUser?.tutor?.countryCode}} {{zoomLiveClassUser?.tutor?.phone}}
+                    </span>
+                  </td>
+                  <td>{{zoomLiveClassUser?.tutor?.email}}</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>

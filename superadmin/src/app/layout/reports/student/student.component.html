@@ -1,0 +1,178 @@
+<div class="container">
+  
+  <div class="row clearfix">
+    <div class="col-lg-12">
+      <div class="card">
+        <div class="body block-header">
+          <div class="row">
+            <div class="col-lg-6 col-md-8 col-sm-12">
+              <h2 class="headerSemiBold">Student List</h2>
+
+              <ul class="breadcrumb p-l-0 p-b-0 labelTitle">
+                <li class="breadcrumb-item">
+                  <a class="linkColor" routerLink="/" routerLinkActive="active"><i class="icon-home"></i></a>
+                </li>
+                <li class="breadcrumb-item active labelTitle">student</li>
+              </ul>
+            </div>
+            <div class="col-lg-6 col-md-4 col-sm-12">
+
+              <a routerLink="/institute" routerLinkActive="active" class="btn btn-secondary headerSemiBold active btn-simple float-right">
+                <i class="icon-arrow-left"></i> BACK
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row clearfix" *ngIf="studentList">
+    <div class="col-lg-4 col-md-4">
+      <div class="card l-blue">
+        <div class="body">
+          <h4 class="m-t-0 m-b-0 welcomeFont">{{studentList?.count?.active}}</h4>
+          <p class="m-b-0 headerSemiBold">Active</p>
+        </div>
+      </div>
+    </div>
+    <div class="col-lg-4 col-md-4">
+      <div class="card l-parpl">
+        <div class="body">
+          <h4 class="m-t-0 m-b-0 welcomeFont">{{studentList?.count?.deactive}}</h4>
+          <p class="m-b-0 headerSemiBold">Deactive</p>
+        </div>
+      </div>
+    </div>
+    <div class="col-lg-4 col-md-4">
+      <div class="card l-seagreen">
+        <div class="body">
+          <h4 class="m-t-0 m-b-0 welcomeFont">{{studentList?.count?.deleted}}</h4>
+          <p class="m-b-0 headerSemiBold">Deleted</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row clearfix m-0" *ngIf="studentList?.list?.active.length>0">
+    <div class="card">
+      <div class="header headerSemiBold">
+        <h2><span class="linkColor">Active</span></h2>
+      </div>
+      <div class="body">
+        <div class="table-responsive">
+          <table class="table table-bordered table-striped table-hover dataTable js-exportable w-100">
+            <thead class="headerSemiBold">
+              <tr>
+                <th>Image</th>
+                <th>Branch</th>
+                <th>
+                  First name
+                </th>
+                <th>Last Name</th>
+                <th>Email</th>
+                <th>Phone</th>
+                <th>Education</th>
+              </tr>
+            </thead>
+            <tbody class="labelTitle">
+              <tr *ngFor="let student of studentList?.list?.active;let i=index;">
+                <td>
+                  <img class="rounded-circle usr-img" src="{{student?.image}}">
+                </td>
+                <td>{{student?.branch?.name}}</td>
+                <td>
+                  {{student?.firstName}}
+                </td>
+                <td>{{student?.lastName}}</td>
+                <td>{{student?.email}}</td>
+                <td>{{student?.countrycode}}-{{student?.phone}}</td>
+                <td>{{student?.education?.title}}</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row clearfix m-0" *ngIf="studentList?.list?.deactive.length>0">
+    <div class="card">
+      <div class="header headerSemiBold">
+        <h2><span class="linkColor">Deactive</span></h2>
+      </div>
+      <div class="body">
+        <div class="table-responsive">
+          <table class="table table-bordered table-striped table-hover">
+            <thead class="headerSemiBold">
+              <tr>
+                <th>Image</th>
+                <th>Branch</th>
+                <th>
+                  First name
+                </th>
+                <th>Last Name</th>
+                <th>Email</th>
+                <th>Phone</th>
+                <th>Education</th>
+              </tr>
+            </thead>
+            <tbody class="labelTitle">
+              <tr *ngFor="let student of studentList?.list?.deactive;let i=index;">
+                <td>
+                  <img class="rounded-circle usr-img" src="{{student?.image}}">
+                </td>
+                <td>{{student?.branch?.name}}</td>
+                <td>
+                  {{student?.firstName}}
+                </td>
+                <td>{{student?.lastName}}</td>
+                <td>{{student?.email}}</td>
+                <td>{{student?.countrycode}}-{{student?.phone}}</td>
+                <td>{{student?.education?.title}}</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row clearfix m-0" *ngIf="studentList?.list?.deleted.length>0">
+    <div class="card">
+      <div class="header headerSemiBold">
+        <h2><span class="linkColor">Deleted</span></h2>
+      </div>
+      <div class="body">
+        <div class="table-responsive">
+          <table class="table table-bordered table-striped table-hover">
+            <thead class="headerSemiBold">
+              <tr>
+                <th>Image</th>
+                <th>Branch</th>
+                <th>
+                  First name
+                </th>
+                <th>Last Name</th>
+                <th>Email</th>
+                <th>Phone</th>
+                <th>Education</th>
+              </tr>
+            </thead>
+            <tbody class="labelTitle">
+              <tr *ngFor="let student of studentList?.list?.deleted;let i=index;">
+                <td>
+                  <img class="rounded-circle usr-img" src="{{student?.image}}">
+                </td>
+                <td>{{student?.branch?.name}}</td>
+                <td>
+                  {{student?.firstName}}
+                </td>
+                <td>{{student?.lastName}}</td>
+                <td>{{student?.email}}</td>
+                <td>{{student?.countrycode}}-{{student?.phone}}</td>
+                <td>{{student?.education?.title}}</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

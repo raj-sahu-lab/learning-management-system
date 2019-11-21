@@ -1,0 +1,207 @@
+<section class="page-header minimal page-title-left">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 text-left">
+                <h2 class="text-uppercase" data-animated="fadeInLeftBig" data-animation-delay="400">Purchase courses</h2>
+                
+                <!-- <ul class="breadcrumb">
+                    <li>Home</li>
+                    <li class="active">Courses</li>
+                </ul> -->
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="shop-section">
+    <div class="container" style="min-height: 410px;">
+        <div class="row d-none">
+            <div class="col-md-6">
+                <div class="product-result-count">
+                    Showing 1–12 of 21 results
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="isotope-filters product-filter">
+                    <ul class="nav nav-pills nav-stacked">
+                        <li class="dropdown">
+                            <a class="dropdown-toggle" data-toggle="dropdown" href="#">Default Sorting
+                        <span class="caret"></span></a>
+                            <ul class="dropdown-menu">
+                                <li><a href="#" data-filter=".all" class="filter active">All</a></li>
+                                <li><a href="#" data-filter=".popular" class="filter">Popularity</a></li>
+                                <li><a href="#" data-filter=".high" class="filter">Low to high</a></li>
+                                <li><a href="#" data-filter=".low" class="filter">High to low</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+           
+            <div class="col-xs-12 col-sm-12 col-md-6 col-lg-4 col-12 bottom-padding-md" *ngFor="let course of courseLists">
+                <a class="pointer" (click)="navigateUrl(course)">
+                    <div class="bck-f1">
+                        <img class="img-responsive" src="{{course?.image}}" alt="course image"/>
+                        <div style="padding: 20px 20px 20px 20px;">
+                            <h6 class="headerSemiBold mb-10">
+                                {{course?.title | slice:0:25}}
+                                <span *ngIf="course?.title?.length>=25">...</span>
+                            </h6>
+                            <p class="justify text-justify labelTitle scrollbar mb-10 fnt-14">{{course?.description | slice:0:120}}
+                                <span *ngIf="course?.description?.length>=120">...</span>
+                            </p>
+
+                            <div class="fnt-14" *ngIf="course.isPaid && course.purchase == null">
+                                <span class="coral headerSemiBold">Valid for {{course?.validity}} days</span>
+                                <span class="coral headerSemiBold float-right">{{course?.currency?.sign}} {{course?.amount}}.00</span>
+                            </div>
+                            <div class="fnt-14" *ngIf="!course.isPaid || course.purchase !=null">
+                                <span class="blu headerSemiBold">Expires in  {{course?.purchase?.remainDays}} days</span>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+                <!-- <p *ngIf="!course.isPaid || course.purchase !=null" class="padding-bottom-20">
+                    <button class="btn btn-sm btn-dark btn-square btn-hv-theme btn-default headerSemiBold" type="button" (click)="navigateUrl(course)">Continue</button>
+                </p>
+                <p *ngIf="course.isPaid && course.purchase == null" class="padding-bottom-20">
+                    <button class="btn btn-sm btn-dark btn-square btn-hv-theme btn-default headerSemiBold" type="button" (click)="courseSelected(course);checkLogin()">Subscribe</button>
+                    <button id="subCourse" data-toggle="modal" data-target="#subject" style="display: none;"></button>
+                </p> -->
+            </div>
+
+            <div *ngIf="!courseLists?.length" style="padding: 0px 15px;">
+                <div class="card index-card brd">
+                    <div class="card-body text-center form-side">
+                        <p class="mb-3 text-center">
+                            <img src="../../../assets/images/book.png"
+                                class="img-thumbnail border-0 rounded-circle list-thumbnail align-self-center img-no-c" alt="book image">
+                        </p>
+                        <h6 class="headerSemiBold">No course available</h6>
+                        <p class="text-muted labelTitle">Coming soon!</p>
+                    </div>
+                </div>
+            </div>
+            <!-- <div class="c-col-5 bottom-padding-md text-center">
+                <a routerLink="/subject/1">
+                    <img class="img-responsive" src="http://zozothemes.com/html/epoint/demo/images/content/shop/p2.jpg" width="370" height="470"/>
+                    <h6 class="product-title headerBold">
+                        English Grammer
+                    </h6>
+
+                    <div>
+                        <span class="coral headerSemiBold">₹49</span>
+                    </div>
+                </a>
+                <p class="padding-bottom-20">
+                    <button class="btn btn-sm btn-dark btn-square btn-hv-theme btn-default headerSemiBold" type="button" data-toggle="modal" data-target="#subject">Subscribe</button>
+                </p>
+            </div>
+            <div class="c-col-5 bottom-padding-md text-center">
+                <a routerLink="/subject/1">
+                    <img class="img-responsive" src="http://zozothemes.com/html/epoint/demo/images/content/shop/p2.jpg" width="370" height="470"/>
+                    <h6 class="product-title headerBold">
+                        English Grammer
+                    </h6>
+
+                    <div>
+                        <span class="coral headerSemiBold">₹49</span>
+                    </div>
+                </a>
+                <p class="padding-bottom-20">
+                    <button class="btn btn-sm btn-dark btn-square btn-hv-theme btn-default headerSemiBold" type="button" data-toggle="modal" data-target="#subject">Subscribe</button>
+                </p>
+            </div>
+            <div class="c-col-5 bottom-padding-md text-center">
+                <a routerLink="/subject/1">
+                    <img class="img-responsive" src="http://zozothemes.com/html/epoint/demo/images/content/shop/p2.jpg" width="370" height="470"/>
+                    <h6 class="product-title headerBold">
+                        English Grammer
+                    </h6>
+
+                    <div>
+                        <span class="coral headerSemiBold">₹49</span>
+                    </div>
+                </a>
+                <p class="padding-bottom-20">
+                    <button class="btn btn-sm btn-dark btn-square btn-hv-theme btn-default headerSemiBold" type="button" data-toggle="modal" data-target="#subject">Subscribe</button>
+                </p>
+            </div>
+            <div class="c-col-5 bottom-padding-md text-center">
+                <a routerLink="/subject/1">
+                    <img class="img-responsive" src="http://zozothemes.com/html/epoint/demo/images/content/shop/p2.jpg" width="370" height="470"/>
+                    <h6 class="product-title headerBold">
+                        English Grammer
+                    </h6>
+
+                    <div>
+                        <span class="coral headerSemiBold">₹49</span>
+                    </div>
+                </a>
+                <p class="padding-bottom-20">
+                    <button class="btn btn-sm btn-dark btn-square btn-hv-theme btn-default headerSemiBold" type="button" data-toggle="modal" data-target="#subject">Subscribe</button>
+                </p>
+            </div>
+            <div class="c-col-5 bottom-padding-md text-center">
+                <a routerLink="/subject/1">
+                    <img class="img-responsive" src="http://zozothemes.com/html/epoint/demo/images/content/shop/p2.jpg" width="370" height="470"/>
+                    <h6 class="product-title headerBold">
+                        English Grammer
+                    </h6>
+
+                    <div>
+                        <span class="coral headerSemiBold">₹49</span>
+                    </div>
+                </a>
+                <p class="padding-bottom-20">
+                    <button class="btn btn-sm btn-dark btn-square btn-hv-theme btn-default headerSemiBold" type="button" data-toggle="modal" data-target="#subject">Subscribe</button>
+                </p>
+            </div> -->
+
+            <!-- <div class="c-col-5 bottom-padding-md">
+                <img class="img-responsive" src="http://zozothemes.com/html/epoint/demo/images/content/shop/p2.jpg" width="370" height="470"/>
+                <h6 class="product-title">
+                    <a class="product-name" href="#">Blue Trousers</a>
+                    <span class="product-price"> - $49</span>
+                </h6>
+                <p class="padding-bottom-20">
+                    <button class="btn btn-sm btn-dark btn-square btn-hv-theme btn-default" type="button">ADD TO CART</button>
+                </p>
+            </div> -->
+            
+        </div>
+    </div>
+</section>
+
+
+<div class="modal fade" id="subject" role="dialog" aria-labelledby="subject">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header text-center">
+                <button id="subjectClose" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <div class="margin-20">
+                    <h6 class="headerBold">{{courseSelectedDetails?.title}}</h6>
+                </div>
+            </div>
+            <div class="modal-body">
+                <!-- TEXT  -->
+                <p class="text-justify labelTitle pre-line">{{courseSelectedDetails?.description}}</p>
+                <div class="coral headerBold text-center">{{courseSelectedDetails?.currency?.sign}} {{courseSelectedDetails?.amount}}.00</div>
+                <!-- BUTTON  -->
+                <div data-animate="fadeInUp" data-animation-delay="1200" style="text-align: center;">
+                    <button *ngIf="(courseSelectedDetails?.payment_type?.title != 'OfflinePay') && !payPalPay" class="btn btn-lg btn-theme btn-hv-dark btn-rounded btn-default" (click)="payementDetails('subject', courseSelectedDetails)">Continue to pay</button>
+                    <app-payment-gate-way (payementDetails)="afterPayment($event)"></app-payment-gate-way>
+                    <p *ngIf="courseSelectedDetails?.payment_type?.title != 'OfflinePay'" class="labelTitle text-center">* By clicking on continue you agree to subscribe to the course</p>
+                    <div *ngIf="courseSelectedDetails?.payment_type?.title == 'OfflinePay'">
+                        <p class="headerSemiBold m-0">OfflinePay</p>
+                        <p class="text-center labelTitle m-0">Please contact your institute for more details</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

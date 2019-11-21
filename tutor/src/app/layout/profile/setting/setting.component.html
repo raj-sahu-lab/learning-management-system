@@ -1,0 +1,330 @@
+<div class="container">
+	<div class="row clearfix">
+		<div class="col-lg-12">
+			<div class="card">
+				<div class="body block-header">
+					<div class="row">
+						<div class="col-lg-6 col-md-8 col-sm-12">
+							<h2 class="headerSemiBold">Manage Profile</h2>
+							<ul class="breadcrumb p-l-0 p-b-0 labelTitle">
+								<li class="breadcrumb-item">
+									<a class="linkColor" routerLink="/" routerLinkActive="active"><i
+											class="icon-home"></i></a>
+								</li>
+								<li class="breadcrumb-item active labelTitle">Profile</li>
+							</ul>
+						</div>
+
+						<div class="col-lg-6 col-md-4 col-sm-12">
+							<a routerLink="/" routerLinkActive="active" class="btn btn-secondary headerSemiBold btn-simple float-right"><i class="icon-arrow-left"></i> BACK</a>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="row clearfix">
+		<div class="col-sm-12 col-md-6 col-lg-4">
+			<div class="card">
+				
+				<div class="header headerSemiBold">
+					<h2><span class="linkColor">Manage</span> Institute Information</h2>
+				</div>
+
+				<div class="body">
+					<div class="table-responsive social_media_table">
+						<table class="table table-hover">
+							<tbody>
+								<tr>
+									<td>
+										<span class="social_icon youtube">
+											<i class="icon-pointer"></i>
+										</span>
+									</td>
+									<td>
+										<a [routerLink]="['/branch']" [routerLinkActive]="['router-link-active']">
+											<span class="list-name headerSemiBold linkColor">Add multiple branches</span>
+											<span class="text-muted labelTitle">Add & Update Branch</span>
+										</a>
+									</td>
+								</tr>
+								<tr>
+									<td>
+										<span class="social_icon linkedin">
+											<i class="icon-credit-card"></i>
+										</span>
+									</td>
+									<td>
+										<a [routerLink]="['/paymentgateway']"
+											[routerLinkActive]="['router-link-active']">
+											<span class="list-name headerSemiBold linkColor">Add payment gateway 
+												<span tooltip="It will help you accept payment from students directly in your bank account. Necessary to add it if you are adding paid courses and test series." placement="top">
+													<i class="icon-info"></i>
+												</span>
+											</span>
+											<span class="text-muted labelTitle">Your way to pay</span>
+										</a>
+									</td>
+								</tr>
+								<tr>
+									<td>
+										<span class="social_icon youtube">
+											<i class="icon-wallet"></i> 
+										</span>
+									</td>
+									<td>
+                    				  	<a [routerLink]="['/primaryCurrency']" [routerLinkActive]="['router-link-active']">
+											<span class="list-name headerSemiBold linkColor">Primary Currency</span>
+											<span class="text-muted labelTitle">Set your primary primary currency</span>
+										</a>
+									</td>
+								</tr>
+								<tr>
+									<td>
+										<span class="social_icon linkedin">
+											<i class="icon-clock"></i> 
+										</span>
+									</td>
+									<td>
+                    				  	<a [routerLink]="['/timeZone']" [routerLinkActive]="['router-link-active']">
+											<span class="list-name headerSemiBold linkColor">Time zone</span>
+											<span class="text-muted labelTitle">Set your primary time zone</span>
+										</a>
+									</td>
+								</tr>
+								<tr>
+									<td>
+										<span class="social_icon google">
+											<i class="icon-users"></i> 
+										</span>
+									</td>
+									<td>
+                    				  	<a [routerLink]="['/userCreate']" [routerLinkActive]="['router-link-active']">
+											<span class="list-name headerSemiBold linkColor">Live Class
+												<span tooltip="Assigned tutors will be available in the live classes tutor dropdown." placement="top">
+													<i class="icon-info"></i>
+												</span>
+											</span>
+											<span class="text-muted labelTitle">Create user for live class</span>
+										</a>
+									</td>
+								</tr>
+								<tr>
+									<td>
+										<span class="social_icon youtube">
+											<i class="icon-picture"></i>
+										</span>
+									</td>
+									<td>
+										<a [routerLink]="['/logo']" [routerLinkActive]="['router-link-active']">
+											<span class="list-name headerSemiBold linkColor">Change Logo
+												<span tooltip="This logo will be visible to your students’ in mobile application and e-com website." placement="top">
+													<i class="icon-info"></i>
+												</span>
+											</span>
+											<span class="text-muted labelTitle">Update your logo</span>
+										</a>
+									</td>
+								</tr>
+								<tr>
+									<td>
+										<span class="social_icon linkedin">
+											<i class="icon-book-open"></i>
+										</span>
+									</td>
+									<td>
+										<a [routerLink]="['/aboutus']" [routerLinkActive]="['router-link-active']">
+											<span class="list-name headerSemiBold linkColor">About Institute 
+												<span tooltip="The description will be visible to your students in mobile application and e-com website." placement="top">
+													<i class="icon-info"></i>
+												</span>
+											</span>
+											<span class="text-muted labelTitle">Something about you</span>
+										</a>
+									</td>
+								</tr>
+								<tr>
+									<td>
+										<span class="social_icon youtube">
+											<i class="icon-pin"></i>
+										</span>
+									</td>
+									<td>
+										<a [routerLink]="['/privacypolicies']"
+											[routerLinkActive]="['router-link-active']">
+											<span class="list-name headerSemiBold linkColor">Privacy Policies
+												<span tooltip="Please add your privacy policy as per your country’s guidelines. It will be visible to your end-users through web and mobile applications." placement="top">
+													<i class="icon-info"></i>
+												</span>
+											</span>
+											<span class="text-muted labelTitle">Your policies</span>
+										</a>
+									</td>
+								</tr>
+								<tr>
+									<td>
+										<span class="social_icon linkedin">
+											<i class="icon-lock"></i>
+										</span>
+									</td>
+									<td>
+										<a [routerLink]="['/password']" [routerLinkActive]="['router-link-active']">
+											<span class="list-name headerSemiBold linkColor">Password</span>
+											<span class="text-muted labelTitle">Change your password</span>
+										</a>
+									</td>
+								</tr>
+								<tr>
+									<td>
+										<span class="social_icon google">
+											<i class="icon-globe"></i>
+										</span>
+									</td>
+									<td>
+										<a [routerLink]="['/domain']" [routerLinkActive]="['router-link-active']">
+											<span class="list-name headerSemiBold linkColor">Domain</span>
+											<span class="text-muted labelTitle">Manage your domain name</span>
+										</a>
+									</td>
+								</tr>
+								<tr>
+									<td>
+										<span class="social_icon linkedin">
+											<i class="icon-link"></i>
+										</span>
+									</td>
+									<td>
+										<a [routerLink]="['/thirdPartyIntegration']" [routerLinkActive]="['router-link-active']">
+											<span class="list-name headerSemiBold linkColor">Third Party App Integration</span>
+											<span class="text-muted labelTitle">Connect company to other apps</span>
+										</a>
+									</td>
+								</tr>
+								<!-- 
+								<tr>
+									<td>
+										<span class="social_icon google">
+											<i class="icon-share"></i> 
+										</span>
+									</td>
+									<td>
+                    				  	<a [routerLink]="['/social']" [routerLinkActive]="['router-link-active']">
+											<span class="list-name">Social</span>
+											<span class="text-muted">Updates your social links</span>
+										</a>
+									</td>
+								</tr>
+								 -->
+							</tbody>
+						</table>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="col-sm-12 col-md-6 col-lg-4">
+			<div class="card member-card">
+				<div class="header">
+					<!-- <h4 class="m-t-10">{{title}}</h4> -->
+				</div>
+				<div class="member-img">
+					<a routerLink="/" routerLinkActive="active" class="navbar-brand">
+						<img class="rounded-circle" src="{{picture}}" style="border: 0px;border-radius: 0px !important;">
+					</a>
+				</div>
+				<div class="body">
+					<div class="col-12">
+						<p class="text-muted">
+							<span *ngIf="phone!=''">
+								<i class="icon-screen-smartphone"></i> +{{countryCode}} {{phone}}
+							</span>
+							<br>
+							<i class="icon-envelope"></i> {{email}}
+						</p>
+					</div>
+					<hr>
+					<div class="row">
+						<div class="col-12">
+							<small class="labelTitle">subscription active till</small>
+							<h3 class="m-b-0 welcomeFont">{{endDate}}</h3>
+						</div>
+					</div>
+					<div class="row m-t-20">
+						<div class="col-md-12">
+							<a class="btn btn-secondary headerSemiBold btn-simple active" [routerLink]="['/planPurchase',token,title]"
+								[routerLinkActive]="['router-link-active']">
+								Click here to subscribe or upgrade or downgrade company plans
+							</a>
+							
+							<small *ngIf="razerPaySubscriptionId != null" class="labelTitle headerSemiBold linkColor" (click)="cancelSubscription()" style="cursor: pointer;">Cancel your subscription</small>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="col-sm-12 col-md-12 col-lg-4">
+			<div class="card">
+				
+				<div class="header headerSemiBold">
+					<h2><span class="linkColor">Latest</span> Invoice</h2>
+				</div>
+				
+				<div class="body">
+					<div class="row labelTitle">
+						<div class="col-md-12">
+							<address>
+								Invoice generated date
+								<small class="float-right">{{startDate}}</small>
+							</address>
+						</div>
+					</div>
+
+					<div class="table-responsive">
+						<table class="table table-hover">
+							<thead class="headerSemiBold" *ngIf="amount==0">
+								<tr>
+									<th>Plan</th>
+									<th>{{planTitle}} <sub>{{termTitle}}</sub></th>
+								</tr>
+							</thead>
+
+							<tbody class="labelTitle" *ngIf="amount!=0">
+								<tr>
+									<th>Plan</th>
+									<td>{{planTitle}} <sub>{{termTitle}}</sub></td>
+								</tr>
+								<tr>
+									<th>Amount</th>
+									<td>{{sign}} {{amount | number: '1.2'}}</td>
+								</tr>
+								<tr *ngIf="gst!=0">
+									<th>GST ({{gst}}%)</th>
+									<td>{{sign}} {{gstAmount | number: '1.2'}}</td>
+								</tr>
+								<tr>
+									<th>Total</th>
+									<td>{{sign}} {{total | number: '1.2'}}</td>
+								</tr>
+								<tr *ngIf="discount!=0">
+									<th>Discount</th>
+									<td>{{sign}} {{discount | number: '1.2'}}</td>
+								</tr>
+								<tr>
+									<th>Grand Total</th>
+									<td>{{sign}} {{grandTotal | number: '1.2'}}</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+					<div class="row">
+						<div class="col-md-12">
+							<a routerLink="/invoice" routerLinkActive="active"
+								class="btn btn-secondary headerSemiBold btn-simple active">View All</a>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+</div>

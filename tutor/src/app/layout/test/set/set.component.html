@@ -1,0 +1,229 @@
+<div class="container">
+    <div class="row clearfix">
+        <div class="col-lg-12">
+            <div class="card">
+                <div class="body block-header">
+                    <div class="row">
+                        <div class="col-lg-6 col-md-8 col-sm-12">
+                            <h2 class="headerSemiBold">Manage Set</h2>
+                            <ul class="breadcrumb p-l-0 p-b-0 ">
+                                <li class="breadcrumb-item">
+                                    <a class="linkColor" routerLink="/" routerLinkActive="active"><i
+                                            class="icon-home"></i></a>
+                                </li>
+                                <li class="breadcrumb-item active labelTitle">Set Details</li>
+                            </ul>
+                        </div>
+                        <div class="col-lg-6 col-md-4 col-sm-12">
+                            <a routerLink="/paper" class="btn btn-secondary headerSemiBold float-right active">
+                                <i class="icon-arrow-left"></i>
+                                BACK</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row clearfix">
+
+        <div class="col-sm-12 col-md-12 col-lg-12">
+            <div class="card">
+
+                <div class="header headerSemiBold">
+                    <h2><span class="linkColor">Add</span> Set</h2>
+                </div>
+
+                <div class="body">
+                    <div class="demo-masked-input labelTitle">
+                        <div class="row clearfix">
+
+                           
+                            <div class="col-lg-12 col-md-12"> Set Title
+                                <div class="input-group">
+                                    <input type="text" [(ngModel)]="title" class="form-control"
+                                        placeholder="Enter Set Title">
+                                </div>
+                            </div>
+
+                            <div class="col-lg-12 col-md-12 m-t-25 linkColor headerSemiBold">Select Series  <!-- *ngIf="learnerList.length>0" -->
+                            </div>
+
+                            <div class="col-lg-12 col-md-12">
+                                <div class="input-group">
+                                    <div class="checkbox">
+                                        <input id="selectAll" type="checkbox" (change)="selectAll($event)">
+                                        <label for="selectAll">Select All</label>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-lg-12 col-md-12" style="height: 250px;overflow-y: scroll;">
+                                <div class="input-group" *ngFor="let series of seriesLists;let i = index"> <!-- *ngFor="let learner of learnerList"-->
+
+                                    <div class="checkbox">
+                                        <input id="series{{series.id}}" type="checkbox" (click)="seriesChecked(series.id,$event)"> <!-- (click)="studentCheck(learner.id,$event)"-->
+                                        <label for="series{{series.id}}">
+                                            {{series?.title}}
+                                        </label>
+                                    </div>
+
+                                </div>
+                                <div *ngIf="seriesLists.length >= (seriesPage*limit)" class="text-center">
+                                    <div class="btn btn-secondary headerSemiBold" (click)="getSeries(seriesPage+1,limit)">View more</div>
+                                </div>
+                            </div>
+
+                            <div class="col-lg-1 col-md-1"><b>&nbsp;</b>
+                                <div class="input-group">
+                                    <input type="button" class="btn btn-secondary headerSemiBold float-right"
+                                        value="SUBMIT" style="margin:0px;" (click)="submitButtonClick();">
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-sm-12 col-md-12 col-lg-12" *ngIf="setList.length">
+            <div class="card">
+                <div class="header headerSemiBold">
+                    <h2>
+                        <span class="linkColor">Available</span> Set
+                    </h2>
+                </div>
+
+                <div class="body">
+                    <div class="table-responsive">
+                        <table class="table table-bordered table-striped table-hover dataTable js-exportable w-100">
+                            <thead class="headerSemiBold">
+                                <tr>
+                                    <th>#</th>
+                                    <th>S No</th>
+                                    <th>title</th>
+                                </tr>
+                            </thead>
+                            <tbody class="labelTitle">
+                                <tr *ngFor="let set of setList;let i=index;">
+                                    <td>
+                                        <span class="badge badge-success cursor" title="Update set" (click)="editButtonClick(set)">
+                                            <i class="icon-pencil"></i>
+                                          </span>
+                                        <span class="badge badge-success cursor" title="Series List" (click)="showSeriesList(set)">
+                                            <i class="icon-eye"></i>
+                                        </span>
+                                        <span class="badge badge-danger cursor" title="Delete set"
+                                            (click)="deleteSetButtonClick(set.id)" *ngIf="userType == 1">
+                                            <i class="icon-trash"></i>
+                                        </span>
+                                    </td>
+                                    <td>{{setList.length - i}}</td>
+                                    <td>{{ set?.title }}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div *ngIf="setList.length >= (page*limit)" class="text-center">
+                        <div class="btn btn-secondary headerSemiBold" (click)="getSet(page+1,limit)">View more</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+<!-- Modal -->
+<div class="modal" [style.display]="editSet ? 'block' : 'none'">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+  
+        <div class="modal-header">
+          <h6 class="headerBold">{{editSet?.title}}</h6>
+        </div>
+  
+        <div class="modal-body">
+            <div class="demo-masked-input labelTitle">
+                <div class="row clearfix">
+                    <div class="col-lg-12 col-md-12 headerSemiBold">Select Series
+                    </div>
+
+                    <div class="col-lg-12 col-md-12" style="height: 250px;overflow-y: scroll;">
+                        <div class="input-group" *ngFor="let series of seriesLists;let i = index">
+
+                            <div class="checkbox">
+                                <input id="editSeries{{series.id}}" type="checkbox" (click)="editSeriesChecked(series.id,$event)">
+                                <label for="editSeries{{series.id}}">
+                                    {{series?.title}}
+                                </label>
+                            </div>
+
+                        </div>
+                        <div *ngIf="seriesLists.length >= (seriesPage*limit)" class="text-center">
+                            <div class="btn btn-secondary headerSemiBold" (click)="getSeries(seriesPage+1,limit)">View more</div>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-1 col-md-1"><b>&nbsp;</b>
+                        <div class="input-group">
+                            <input type="button" class="btn btn-secondary headerSemiBold float-right"
+                                value="SUBMIT" style="margin:0px;" (click)="updateSubmitButtonClick();">
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+  
+        </div>
+  
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary headerSemiBold" data-dismiss="modal"
+            (click)="hideEditModal()">Close</button>
+        </div>
+  
+      </div>
+    </div>
+</div>
+<div class="modal" [style.display]="setSelected ? 'block' : 'none'">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+
+        <div class="modal-header">
+            <h6 class="headerBold">{{setSelected?.title}}</h6>
+        </div>
+
+        <div class="modal-body">
+            <table class="table table-bordered table-striped table-hover">
+            <thead class="headerSemiBold">
+                <tr>
+                <th>#</th>
+                <th>Series</th>
+                </tr>
+            </thead>
+            <tbody class="labelTitle">
+                <tr *ngFor="let series of setSelected?.seriesList;let i=index;">
+                <td>
+                    <span class="badge badge-danger cursor" title="Delete question"
+                        (click)="deleteSeriesButtonClick(series.id)" *ngIf="userType == 1">
+                        <i class="icon-trash"></i>
+                    </span>
+                </td>
+                <td>
+                    {{series?.series?.title}}
+                </td>
+                </tr>
+            </tbody>
+            </table>
+
+        </div>
+
+        <div class="modal-footer">
+            <button type="button" class="btn btn-secondary headerSemiBold" data-dismiss="modal"
+            (click)="hideDeleteModal()">Close</button>
+        </div>
+
+        </div>
+    </div>
+</div>
+<!-- End Modal -->

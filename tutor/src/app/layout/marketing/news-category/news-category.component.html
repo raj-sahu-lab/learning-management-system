@@ -1,0 +1,165 @@
+<div class="container">
+  <div class="row clearfix">
+    <div class="col-lg-12">
+      <div class="card">
+        <div class="body block-header">
+          <div class="row">
+            <div class="col-lg-6 col-md-8 col-sm-12">
+              <h2 class="headerSemiBold">Manage News Category</h2>
+              
+              <ul class="breadcrumb p-l-0 p-b-0 labelTitle">
+                <li class="breadcrumb-item">
+                  <a class="linkColor" routerLink="/" routerLinkActive="active"><i class="icon-home"></i></a>
+                </li>
+                <li class="breadcrumb-item active labelTitle">News Category</li>
+              </ul>
+            </div>
+            <div class="col-lg-6 col-md-4 col-sm-12">
+              <a routerLink="/" routerLinkActive="active" class="btn btn-secondary headerSemiBold float-right">
+                <i class="icon-arrow-left"></i> BACK
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row clearfix">
+
+    <div class="col-sm-12 col-md-12 col-lg-12">
+      <div class="card">
+        <div class="header headerSemiBold">
+          <h2><span class="linkColor">Manage</span> News</h2>
+        </div>
+        <div class="body">
+          <div class="demo-masked-input labelTitle">
+            <div class="row clearfix">
+
+              <div class="col-sm-1" *ngIf="selectedNewsCategoryImage"><b>&nbsp;</b>
+              <div class="input-group">
+                <img [src]="selectedNewsCategoryImage" alt="assets/images/my-image/choose-file.png"
+                  data-holder-rendered="true" id="ImagePreview" style="height:50px" />
+              </div>
+            </div>
+            <div class="col-lg-{{selectedNewsCategoryImage ? 3 : 4}} col-md-{{selectedNewsCategoryImage ? 3 : 4}}">Choose
+                Image
+              <div class="input-group">
+                <input type="file" class="form-control" [(ngModel)]="image" accept="image/jpeg, image/png"
+                  (change)="newsCategoryFileChanged($event)" ng-required="true">
+              </div>
+            </div>
+              <div class="col-lg-4 col-md-4">News category title
+                <div class="input-group">
+                  <input type="text" class="form-control" [(ngModel)]="title" placeholder="Enter title">
+                </div>
+              </div>
+              <div class="col-lg-12 col-md-12">Short category description
+                <div class="input-group">
+                    <textarea rows="6" class="form-control no-resize" [(ngModel)]="description"
+                    style="border: 1px solid #E3E3E3;border-radius: 10px;"
+                    maxlength="1000"></textarea>
+                </div>
+              </div>
+              <div class="col-lg-12 col-md-12">
+								<div class="input-group">
+									<span class="linkColor">{{1000 - description?.length}} character left</span>
+								</div>
+							</div>
+              <div class="col-lg-3 col-md-3" *ngIf="isEdit"> Status
+                <div class="input-group">
+                  <div class="radio inlineblock m-r-20" style="margin-top:10px;">
+                    <input type="radio" [(ngModel)]="status" name="status" id="active" class="with-gap" value="0">
+                    <label for="active">Active</label>
+                  </div>
+                  <div class="radio inlineblock" style="margin-top:10px;">
+                    <input type="radio" [(ngModel)]="status" name="status" id="inactive" class="with-gap" value="1">
+                    <label for="inactive">Inactive</label>
+                  </div>
+                </div>
+              </div>
+              <div class="col-lg-1 col-md-1"><b>&nbsp;</b>
+								<div class="input-group">
+									<input type="button" class="btn btn-secondary headerSemiBold float-right"
+										value="{{ isEdit ? 'UPDATE' : 'SUBMIT'}}" style="margin:0px;"
+										(click)="submitButtonClick();">
+								</div>
+							</div>
+							<div class="col-lg-1 col-md-1"><b>&nbsp;</b>
+								<div class="input-group">
+									<input type="button" class="btn btn-warning headerSemiBold float-right" *ngIf="isEdit"
+										value="CANCEL" style="margin:0px;" (click)="cancelEditClick();">
+								</div>
+							</div>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-sm-12 col-md-12 col-lg-12">
+      <div class="card">
+        <div class="header headerSemiBold">
+          <h2><span class="linkColor">Available</span> News</h2>
+            
+          <ul class="header-dropdown">
+            <li [ngClass]="filter ? 'dropdown show' : 'dropdown'">
+              <a href="javascript:void(0);" class="dropdown-toggle linkColor" data-toggle="dropdown" role="button" (click)="dropDownFilter();" aria-haspopup="true" aria-expanded="false">
+                  Manage Columns
+							</a>
+              <ul class="dropdown-menu dropdown-menu-right labelTitle">
+                <li style="padding:10px;">
+                  <input type="checkbox" [(ngModel)]="columImage"> Image <br>
+                  <input type="checkbox" [(ngModel)]="columTitle"> News category title <br>
+                  <input type="checkbox" [(ngModel)]="columDescription"> Short category description <br>
+                  <input type="checkbox" [(ngModel)]="columStatus"> Status
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+        <div class="body">
+          <div class="table-responsive">
+            <table class="table table-bordered table-striped table-hover dataTable js-exportable w-100">
+              <thead class="headerSemiBold">
+                <tr>
+                  <th>#</th>
+                  <th>No</th>
+                  <th [ngClass]="(columImage == false)?'d-none':''">Image</th>
+                  <th [ngClass]="(columTitle == false)?'d-none':''">News category title</th>
+                  <th [ngClass]="(columDescription == false)?'d-none':''">Short category description</th>
+                  <th [ngClass]="(columStatus == false)?'d-none':''">Status</th>
+                </tr>
+              </thead>
+              <tbody class="labelTitle">
+                <tr *ngFor="let newsCategory of newsCategoryList;let i=index;">
+                  <td>
+                    <span class="badge badge-success" title="Update news category" (click)="editButtonClick(i)">
+                      <i class="icon-pencil"></i>
+                    </span>
+                    <span class="badge badge-danger" title="Delete news category" (click)="deleteButtonClick(i)">
+                      <i class="icon-trash"></i>
+                    </span>
+                  </td>
+                  <td>1</td>
+                  <td [ngClass]="(columImage == false)?'d-none':''">
+                      <img src="{{newsCategory.image}}" id="MediaPreview" style="height:30px" ng-if="Subject.imagepriew != 1" />
+                  </td>
+                  <td [ngClass]="(columTitle == false)?'d-none':''">{{newsCategory.title}}</td>
+                  <td [ngClass]="(columDescription == false)?'d-none':''">{{newsCategory.description}}</td>
+                  <td [ngClass]="(columStatus == false)?'d-none':''">
+                    <span class="badge badge-{{newsCategory.status==0 ? 'success' : 'warning'}}">
+                      {{newsCategory.status==0 ? 'Active' : 'Inactive'}}
+                    </span>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>  
+
+  </div>
+</div>

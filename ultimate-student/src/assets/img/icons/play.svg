@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="60px" height="60px" viewBox="0 0 60 60" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 50.2 (55047) - http://www.bohemiancoding.com/sketch -->
+    <title>Shape</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Home" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" opacity="0.75">
+        <g id="Posts-Copy-2" transform="translate(-232.000000, -399.000000)" fill="#FFFFFF" fill-rule="nonzero">
+            <g id="play-button-(1)" transform="translate(232.000000, 399.000000)">
+                <path d="M30,0 C13.458,0 0,13.458 0,30 C0,46.542 13.458,60 30,60 C46.542,60 60,46.542 60,30 C60,13.458 46.542,0 30,0 Z M45.563,30.826 L23.563,45.826 C23.394,45.941 23.197,46 23,46 C22.84,46 22.679,45.962 22.533,45.884 C22.205,45.711 22,45.371 22,45 L22,15 C22,14.629 22.205,14.289 22.533,14.116 C22.861,13.942 23.257,13.966 23.564,14.174 L45.564,29.174 C45.836,29.36 46,29.669 46,30 C46,30.331 45.836,30.64 45.563,30.826 Z" id="Shape"></path>
+            </g>
+        </g>
+    </g>
+</svg>

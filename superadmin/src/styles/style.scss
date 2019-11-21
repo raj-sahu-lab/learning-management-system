@@ -1,0 +1,89 @@
+/* You can add global styles to this file, and also import other style files */
+@font-face {
+    font-family: welcomeTitle;
+    src: url("./../assets/fonts/montserrat/AbrilFatface-Regular.ttf") format("truetype");
+}
+
+.welcomeFont {
+    font-family: welcomeTitle !important;
+}
+
+@font-face {
+    font-family: boldHeader;
+    src: url("./../assets/fonts/montserrat/Montserrat-ExtraBold.ttf") format("truetype");
+}
+
+.headerBold {
+    font-family: boldHeader !important;
+}
+
+@font-face {
+    font-family: semiBoldHeader;
+    src: url("./../assets/fonts/montserrat/Montserrat-SemiBold.ttf") format("truetype");
+}
+
+.headerSemiBold {
+    font-family: semiBoldHeader !important;
+}
+
+@font-face {
+    font-family: regularLabel;
+    src: url("./../assets/fonts/montserrat/Montserrat-Regular.ttf") format("truetype");
+}
+
+.labelTitle {
+    font-family: regularLabel !important;
+}
+
+.btn-secondary {
+    background-color: #FF7A59 !important;
+    border-color: #FF7A59 !important;
+}
+
+.btn-primary{
+    border-radius: 0.1875rem !important;
+    font-weight: 400;
+    font-size: 0.8571em;
+    line-height: 1.35em;
+    border-width: 2px;
+    padding: 11px 22px;
+    font-family: semiBoldHeader !important;
+}
+
+.linkColor
+{
+    color: #FF7A59 !important;
+}
+
+.header h2:before {
+    background: #FF7A59 !important;
+    height: 3px !important;
+}
+
+.form-control:focus {
+    border-color: #FF7A59 !important;
+}
+
+.form-control:focus + .input-group-addon {
+    border-color: #FF7A59 !important;
+}
+
+.theme-purple .active-bg {
+    background: #191f28 !important;
+}
+
+// ::-webkit-scrollbar {
+//     width: 3px;
+//   }
+  
+//   ::-webkit-scrollbar-track {
+//     background: #f1f1f1; 
+//   }
+  
+//   ::-webkit-scrollbar-thumb {
+//     background: #FF7A59; 
+//   }
+  
+//   ::-webkit-scrollbar-thumb:hover {
+//     background: #555; 
+//   }

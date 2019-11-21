@@ -1,0 +1,34 @@
+
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+  RewriteCond %{HTTP_HOST} !utobo.ai$ [NC]
+  RewriteRule ^(.*)$ http://utobo.com/$1 [L,R=301]
+</IfModule>
+
+# 1 Month for most static assets
+<filesMatch ".(ico|pdf|flv|jpg|jpeg|png|gif|js|css|swf)$">
+    Header set Cache-Control "max-age=84600, public"
+</filesMatch>
+
+## EXPIRES CACHING ##
+<IfModule mod_expires.c>
+# Turn on the module.
+ExpiresActive on
+# Set the default expiry times.
+ExpiresDefault "access plus 30 days"
+ExpiresByType image/jpg "access plus 1 month"
+ExpiresByType image/gif "access plus 1 month"
+ExpiresByType image/jpeg "access plus 1 month"
+ExpiresByType image/png "access plus 1 month"
+ExpiresByType text/javascript "access plus 1 month"
+ExpiresByType application/javascript "access plus 1 month"
+ExpiresByType application/x-shockwave-flash "access plus 1 month"
+ExpiresByType text/css "now plus 1 month"
+ExpiresByType image/ico "access plus 1 month"
+ExpiresByType image/x-icon "access plus 1 month"
+ExpiresByType text/html "access plus 600 seconds"
+</IfModule>
+
+
+## EXPIRES CACHING ##
+

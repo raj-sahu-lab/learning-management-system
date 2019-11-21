@@ -1,0 +1,245 @@
+<div class="container">
+
+    <div class="row clearfix">
+        <div class="col-lg-12">
+            <div class="card">
+                <div class="body block-header">
+                    <div class="row">
+                        <div class="col-lg-6 col-md-8 col-sm-12">
+                            <h2 class="headerSemiBold">Send Bulk SMS</h2>
+
+                            <ul class="breadcrumb p-l-0 p-b-0 labelTitle">
+                                <li class="breadcrumb-item">
+                                    <a class="linkColor" routerLink="/" routerLinkActive="active"><i
+                                            class="icon-home"></i></a>
+                                </li>
+                                <li class="breadcrumb-item active labelTitle">SMS</li>
+                            </ul>
+                        </div>
+                        <div class="col-lg-6 col-md-4 col-sm-12">
+                            <a routerLink="/" routerLinkActive="active"
+                                class="btn btn-secondary headerSemiBold float-right">
+                                <i class="icon-arrow-left"></i> BACK
+                            </a>
+                            <a routerLink="/emailSMSplan/2" routerLinkActive="active"
+                                class="btn btn-primary headerSemiBold float-right">
+                                Buy SMS
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row clearfix" *ngIf="remainSMS==0">
+        <div class="col-lg-12">
+            <div class="alert alert-warning" role="alert">
+                <div class="container">
+                    <div class="alert-icon">
+                        <i class="zmdi zmdi-notifications"></i>
+                    </div>
+
+                    Hi ! You have to purchase SMS in order to send. Please email support@example.com to buy credits.
+
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">
+                            <i class="zmdi zmdi-close"></i>
+                        </span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row clearfix" *ngIf="totalSMS!=null">
+        <div class="col-lg-4 col-md-4">
+            <div class="card l-blue">
+                <div class="body">
+                    <h4 class="m-t-0 m-b-0 welcomeFont">{{ totalSMS }}</h4>
+                    <p class="m-b-0 headerSemiBold">Total Purchased SMS</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-4 col-md-4">
+            <div class="card l-parpl">
+                <div class="body">
+                    <h4 class="m-t-0 m-b-0 welcomeFont">{{ totalSentSMS }}</h4>
+                    <p class="m-b-0 headerSemiBold">Total sent SMS</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-4 col-md-4">
+            <div class="card l-seagreen">
+                <div class="body">
+                    <h4 class="m-t-0 m-b-0 welcomeFont">{{ remainSMS }}</h4>
+                    <p class="m-b-0 headerSemiBold">Total remaining SMS</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row clearfix">
+
+        <div class="col-sm-6 col-md-6 col-lg-6">
+            <div class="card">
+                <div class="header headerSemiBold">
+                    <h2><span class="linkColor">Select</span> Learners</h2>
+
+                    <ul class="header-dropdown">
+                        <li [ngClass]="filter ? 'dropdown show' : 'dropdown'">
+                            <a href="javascript:void(0);" class="dropdown-toggle linkColor" data-toggle="dropdown"
+                                role="button" (click)="dropDownFilter();" aria-haspopup="true" aria-expanded="false">
+                                <strong>Options</strong>
+                            </a>
+                            <ul class="dropdown-menu dropdown-menu-right labelTitle">
+                                <li style="padding:10px;">
+                                    <input type="radio" [(ngModel)]="smsType" name="smsType" value="0"> Registered <br>
+                                    <input type="radio" [(ngModel)]="smsType" name="smsType" value="1"> Paste
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+                <div class="body">
+                    <div class="table-responsive" *ngIf="smsType == '0'">
+                        <table class="table table-bordered table-striped table-hover dataTable js-exportable w-100">
+                            <thead class="headerSemiBold">
+                                <tr>
+                                    <th>
+                                        <div class="checkbox">
+                                            <input id="name" type="checkbox" (change)="allChecked($event)">
+                                            <label for="name">Name</label>
+                                        </div>
+                                    </th>
+                                    <th>Mobile</th>
+                                </tr>
+                            </thead>
+                            <tbody class="labelTitle" *ngIf="smsType == '0'">
+                                <tr *ngFor="let learner of learnerList;let i=index;">
+                                    <td>
+                                        <div class="checkbox">
+                                            <input id="{{ learner.phone }}" type="checkbox" [(ngModel)]="learner.selected"
+                                                (change)="numberChecked(learner.countrycode+learner.phone,$event)">
+                                            <!--learner.countrycode+ -->
+                                            <label for="{{ learner.phone }}">{{ learner.firstName }}
+                                                {{ learner.lastName }}</label>
+                                        </div>
+                                    </td>
+                                    <td>{{ learner.countrycode }}{{ learner.phone }}</td>
+                                </tr>
+                            </tbody>
+                            <!-- <tfoot class="labelTitle" *ngIf="smsType == '1'">
+                                <tr>
+                                    <td colspan="2">
+                                        <textarea rows="15" class="form-control no-resize" [(ngModel)]="copyNumber"
+                                            style="border: 1px solid #E3E3E3;border-radius: 10px;padding: 10px;"
+                                            placeholder="paste your numbers"></textarea>
+                                    </td>
+                                </tr>
+                            </tfoot> -->
+                        </table>
+                    </div>
+
+                    <textarea  *ngIf="smsType == '1'" rows="15" class="form-control no-resize" [(ngModel)]="copyNumber" style="border: 1px solid #E3E3E3;border-radius: 10px;padding: 10px;" placeholder="paste your numbers"></textarea>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-sm-6 col-md-6 col-lg-6">
+            <div class="card">
+
+                <div class="header headerSemiBold">
+                    <h2><span class="linkColor">Send</span> SMS</h2>
+                </div>
+
+                <div class="body">
+                    <div class="demo-masked-input labelTitle">
+                        <div class="row clearfix">
+                            <!-- <div class="col-lg-12 col-md-12">SMS Type
+                                <div class="input-group">
+                                    <select class="form-control cursor" [(ngModel)]="sendSMSType">
+                                        <option [ngValue]="undefined" disabled>Select Type</option>
+                                        <option value="dnd">Transactional</option>
+                                        <option value="ndnd">Promotional</option>
+                                    </select>
+                                </div>
+                            </div> -->
+                            <div class="col-lg-12 col-md-12">SMS title
+                                <div class="input-group">
+                                    <input type="text" class="form-control" [(ngModel)]="title"
+                                        placeholder="Enter SMS title">
+                                </div>
+                            </div>
+                            <div class="col-lg-12 col-md-12">Type SMS Content
+                                <div class="input-group">
+                                    <textarea rows="6" class="form-control no-resize" [(ngModel)]="description"
+                                        style="border: 1px solid #E3E3E3;border-radius: 10px;"
+                                        maxlength="918"></textarea>
+                                </div>
+                            </div>
+                            <div class="col-lg-3 col-md-3">
+                                <div class="input-group">
+                                    <span class="linkColor">{{ 918 - description?.length }} Char. left</span>
+                                </div>
+                            </div>
+                            <div class="col-lg-3 col-md-3">
+                                <div class="input-group">
+                                    <span class="linkColor">SMS Char. - {{ description?.length }}</span>
+                                </div>
+                            </div>
+                            <div class="col-lg-3 col-md-3">
+                                <div class="input-group">
+                                    <span class="linkColor" *ngIf="description?.length == 0">SMS Count - 0</span>
+                                    <span class="linkColor"
+                                        *ngIf="description?.length > 0 && description?.length <= 153">SMS Count -
+                                        1</span>
+                                    <span class="linkColor"
+                                        *ngIf="description?.length > 153 && description?.length <=313">SMS Count -
+                                        2</span>
+                                    <span class="linkColor"
+                                        *ngIf="description?.length > 313 && description?.length <=473">SMS Count -
+                                        3</span>
+                                    <span class="linkColor"
+                                        *ngIf="description?.length > 473 && description?.length <=633">SMS Count -
+                                        4</span>
+                                    <span class="linkColor"
+                                        *ngIf="description?.length > 633 && description?.length <=793">SMS Count -
+                                        5</span>
+                                    <span class="linkColor" *ngIf="description?.length > 793">SMS Count - 6</span>
+                                </div>
+                            </div>
+                            <div class="col-lg-3 col-md-3">
+                                <div class="input-group">
+                                    <span class="linkColor">154 Char. - 1 SMS</span>
+                                </div>
+                            </div>
+
+                            <div class="col-lg-1 col-md-1"><b>&nbsp;</b>
+                                <div class="input-group">
+                                    <input type="button" class="btn btn-secondary headerSemiBold float-right"
+                                        value="SEND" style="margin:0px;" (click)="submitButtonClick();">
+                                </div>
+                            </div>
+
+                            <div class="col-lg-12 col-md-12">
+                                <b>Instructions</b>: <br>
+                                1. Please Paste number with country code.<br>
+                                2. Please make sure that should not be any gap between two numbers.<br>
+                                3. Send Only 10,000 SMS At Once.<br><br>
+
+                                <b>Example </b>: <br>
+
+                                14157078933<br>
+                                14157078933
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+</div>

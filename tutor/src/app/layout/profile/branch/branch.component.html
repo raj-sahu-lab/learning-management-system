@@ -1,0 +1,249 @@
+<div class="container">
+  
+  <div class="row clearfix">
+    <div class="col-lg-12">
+      <div class="card">
+        <div class="body block-header">
+          <div class="row">
+            <div class="col-lg-6 col-md-8 col-sm-12">
+              <h2 class="headerSemiBold">Manage Branches</h2>
+
+              <ul class="breadcrumb p-l-0 p-b-0 labelTitle">
+                <li class="breadcrumb-item">
+                  <a class="linkColor" routerLink="/" routerLinkActive="active"><i class="icon-home"></i></a>
+                </li>
+                <li class="breadcrumb-item active labelTitle">Branches</li>
+              </ul>
+            </div>
+            <div class="col-lg-6 col-md-4 col-sm-12">
+              <a routerLink="/setting" routerLinkActive="active"
+                class="btn btn-secondary headerSemiBold btn-simple float-right active">
+                <i class="icon-arrow-left"></i> BACK
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row clearfix">
+
+    <div class="col-sm-12 col-md-5 col-lg-5">
+      <div class="card">
+
+        <div class="header headerSemiBold">
+          <h2><span class="linkColor">Manage</span> Branches</h2>
+        </div>
+
+        <div class="body">
+          <div class="table-responsive social_media_table">
+            <table class="table table-hover">
+              <tbody>
+                <tr *ngFor="let branch of branchList;let i=index;">
+                  <td>
+                    <span class="social_icon linkedin welcomeFont">{{branchList.length - i}}</span>
+                    <span class="list-name headerSemiBold" *ngIf="branch.manager!=''">
+                      <br>
+                      <i class="icon-user"></i> {{branch.manager}}
+                    </span>
+                  </td>
+                  <td>
+                    <span class="list-name headerSemiBold">
+                      {{branch.name}}
+                      <span class="badge badge-success" title="Update Branch" (click)="editButtonClick(i)">
+                        <i class="icon-pencil"></i>
+                      </span>
+
+                      <span class="badge badge-danger" title="Delete Branch" (click)="deleteButtonClick(i)">
+                        <i class="icon-trash"></i>
+                      </span>
+                    </span>
+
+                    <span class="list-name headerSemiBold" style="text-transform: none;">
+                      Branch Code : {{branch.CODE}} <i class="icon-share"></i>
+                    </span>
+
+                    <span class="list-name labelTitle" *ngIf="branch.contactCountryCode!=''">
+                      <i class="icon-earphones"></i>
+                        +{{branch.contactCountryCode}}
+                       {{branch.number}}
+                      <!-- {{branch.altcontactCountryCode}} {{branch.altNumber}} -->
+                    </span>
+                    <span class="list-name labelTitle">
+                      <i class="icon-envelope"></i> {{branch.email}}
+                    </span>
+                    <span class="list-name labelTitle" *ngIf="branch.address!=''">
+                      <i class="icon-pointer"></i> {{branch.address}}
+                    </span>
+                    <span class="list-name labelTitle">
+                      <i class="icon-question"></i> {{branch.status==0 ? 'Active' : 'Inactive'}}
+                    </span>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-sm-12 col-md-7 col-lg-7">
+      <div class="card">
+        
+        <div class="header headerSemiBold">
+          <h2><span class="linkColor">Manage</span> Branch</h2>
+        </div>
+        
+        <div class="body">
+          <div class="demo-masked-input labelTitle">
+            <div class="row clearfix">
+
+              <div class="col-lg-6 col-md-6">Institute/Company Branch Name
+                <div class="input-group">
+                  <input type="text" class="form-control" [(ngModel)]="branchName" placeholder="Stark Institute of Innovation"
+                    autofocus="true">
+                </div>
+              </div>
+
+              <div class="col-lg-6 col-md-6">Branch Manager Name
+                <div class="input-group">
+                  <input type="text" class="form-control" [(ngModel)]="managerName" placeholder="Tony Stark">
+                </div>
+              </div>
+
+              <div class="col-lg-6 col-md-6">Contact Number
+                <div class="input-group">
+                  <select class="form-control" [(ngModel)]="contactCountryCode">
+                    <option [ngValue]="undefined" disabled>Select Country</option>
+                    <option *ngFor="let country of countryList" [ngValue]="country.code">
+                      {{country.title}} (+{{country.code}})
+                   </option>
+                  </select>
+                  <input type="number" class="form-control" [(ngModel)]="contactNumber" placeholder="14157078933">
+                </div>
+              </div>
+
+              <!-- <div class="col-lg-6 col-md-6">Alternative Number
+                <div class="input-group">
+                  <select class="form-control" [(ngModel)]="altcontactCountryCode">
+                    <option [ngValue]="undefined" disabled>Select Country</option>
+                    <option *ngFor="let country of countryList" [ngValue]="country.code">
+                      {{country.title}} (+{{country.code}})
+                    </option>
+                  </select>
+                  <input type="number" class="form-control" [(ngModel)]="altContactNumber" placeholder="14157078933">
+                </div>
+              </div> -->
+
+              <div class="col-lg-6 col-md-6">Email Address
+                <div class="input-group">
+                  <input type="text" class="form-control" [(ngModel)]="branchEmail" placeholder="name@yourdomain.com" [disabled]="isEdit">
+                </div>
+              </div>
+
+              <div class="col-lg-6 col-md-6">Select Country
+                <div class="input-group">
+                  <select class="form-control" [(ngModel)]="countryId" (change)="countryChanged()">
+                    <option [ngValue]="undefined" disabled>Select Country</option>
+                    <option *ngFor="let country of countryList" [ngValue]="country.id">
+                      {{country.title}}
+                   </option>
+                  </select>
+                </div>
+              </div>
+
+              <div class="col-lg-6 col-md-6">Select City
+                <div class="input-group">
+                  <select class="form-control" [(ngModel)]="cityId">
+                    <option [ngValue]="undefined" disabled>Select City</option>
+                    <option *ngFor="let city of cityList" [ngValue]="city.id">
+                      {{city.title}}
+                   </option>
+                  </select>
+                </div>
+              </div>
+
+              <div class="col-lg-12 col-md-12">Communication Address
+                <div class="input-group">
+                  <textarea rows="3" placeholder="Walnut, California, USA" class="form-control" [(ngModel)]="address" style="border: 1px solid #E3E3E3;border-radius: 10px;"></textarea>
+                </div>
+              </div>
+
+              <div class="col-lg-4 col-md-4">PIN/ZIP Code
+                <div class="input-group">
+                  <input type="text" class="form-control" [(ngModel)]="pincode" placeholder="91789">
+                </div>
+              </div>
+
+              <div class="col-lg-4 col-md-4">PAN Number (optional)
+                <div class="input-group">
+                  <input type="text" class="form-control" [(ngModel)]="panNumber" placeholder="AAAPP2020L">
+                </div>
+              </div>
+
+              <div class="col-lg-4 col-md-4">GST Number / TAX ID
+                <div class="input-group">
+                  <input type="text" class="form-control" [(ngModel)]="gstNumber" placeholder="29ABSCDE1234F2Z5">
+                </div>
+              </div>
+
+              <div class="col-lg-12 col-md-12">Billing Address
+
+                <span class="badge badge-success" title="Delete Branch" (click)="communicationAsBillingClick()">
+                  <i class="icon-docs"></i>
+                </span>
+                Click here if billing address is same as the communication address
+
+                <div class="input-group">
+                  <textarea  rows="3"
+                    placeholder="Walnut, California, USA"
+                    class="form-control" [(ngModel)]="billingAddress"
+                    style="border: 1px solid #E3E3E3;border-radius: 10px;"></textarea>
+                </div>
+              </div>
+
+              <div class="col-lg-4 col-md-4" style="display: none">Latitude
+                <div class="input-group">
+                  <input type="number" class="form-control" [(ngModel)]="latitude" placeholder="Enter latitude">
+                </div>
+              </div>
+              <div class="col-lg-4 col-md-4" style="display: none">Longitude
+                <div class="input-group">
+                  <input type="number" class="form-control" [(ngModel)]="longitude" placeholder="Enter longitude">
+                </div>
+              </div>
+              <div class="col-lg-4 col-md-4" *ngIf="isEdit">Status
+                <div class="input-group">
+                  <div class="radio inlineblock m-r-20" style="margin-top:10px;">
+                    <input type="radio" [(ngModel)]="status" name="status" id="active" class="with-gap" value="0">
+                    <label for="active">Active</label>
+                  </div>
+                  <div class="radio inlineblock" style="margin-top:10px;">
+                    <input type="radio" [(ngModel)]="status" name="status" id="inactive" class="with-gap" value="1">
+                    <label for="inactive">Inactive</label>
+                  </div>
+                </div>
+              </div>
+              <div class="col-lg-2 col-md-2"><b>&nbsp;</b>
+                <div class="input-group">
+                  <input type="button" class="btn btn-secondary headerSemiBold float-right" value="{{ isEdit ? 'UPDATE' : 'SUBMIT'}}"
+                    style="margin:0px;" (click)="submitButtonClick();">
+                </div>
+              </div>
+              <div class="col-lg-1 col-md-1"><b>&nbsp;</b>
+                <div class="input-group">
+                  <input type="button" class="btn btn-warning headerSemiBold float-right" *ngIf="isEdit" value="CANCEL"
+                    style="margin:0px;" (click)="cancelEditClick();">
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+</div>

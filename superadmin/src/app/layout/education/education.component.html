@@ -1,0 +1,120 @@
+<div class="container" id="startForm">
+  <div class="row clearfix">
+    <div class="col-lg-12">
+      <div class="card">
+        <div class="body block-header">
+          <div class="row">
+            <div class="col-lg-6 col-md-8 col-sm-12">
+              <h2 class="headerSemiBold">Manage Education Level</h2>
+              
+              <ul class="breadcrumb p-l-0 p-b-0 labelTitle">
+                <li class="breadcrumb-item">
+                  <a class="linkColor" routerLink="/" routerLinkActive="active"><i class="icon-home"></i></a>
+                </li>
+                <li class="breadcrumb-item active labelTitle">Education Level</li>
+              </ul>
+            </div>
+            <div class="col-lg-6 col-md-4 col-sm-12">
+                <a routerLink="/" routerLinkActive="active" class="btn btn-secondary headerSemiBold btn-simple float-right">
+                  <i class="icon-arrow-left"></i> BACK
+                </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row clearfix">
+
+    <div class="col-sm-12 col-md-12 col-lg-12">
+      <div class="card">
+
+        <div class="header headerSemiBold">
+					<h2><span class="linkColor">Manage</span> Education Level</h2>
+        </div>
+        
+        <div class="body">
+          <div class="demo-masked-input labelTitle">
+            <div class="row clearfix">
+              <div class="col-lg-4 col-md-4">Education Title
+                <div class="input-group">
+                  <input type="text" class="form-control" [(ngModel)]="title" placeholder="MBA">
+                </div>
+              </div>
+              <div class="col-lg-3 col-md-3" *ngIf="isEdit">Status
+                <div class="input-group">
+                  <div class="radio inlineblock m-r-20" style="margin-top:10px;">
+                    <input type="radio" [(ngModel)]="status" name="status" id="active" class="with-gap" value="0">
+                    <label for="active">Active</label>
+                  </div>
+                  <div class="radio inlineblock" style="margin-top:10px;">
+                    <input type="radio" [(ngModel)]="status" name="status" id="inactive" class="with-gap" value="1">
+                    <label for="inactive">Inactive</label>
+                  </div>
+                </div>
+              </div>
+              <div class="col-lg-1 col-md-1"><b>&nbsp;</b>
+                <div class="input-group">
+                  <input type="button" class="btn btn-secondary headerSemiBold float-right" value="{{ isEdit ? 'UPDATE' : 'SUBMIT'}}" style="margin:0px;" (click)="submitButtonClick();">
+                 </div>
+              </div>
+              <div class="col-lg-1 col-md-1"><b>&nbsp;</b>
+                <div class="input-group">
+                <input type="button" class="btn btn-warning headerSemiBold float-right" *ngIf="isEdit" value="CANCEL" style="margin:0px;" (click)="cancelEditClick();">
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-sm-12 col-md-12 col-lg-12">
+      <div class="card">
+
+        <div class="header headerSemiBold">
+          <h2>
+            <span class="linkColor">Available</span> Educations Level
+          </h2>
+				</div>
+     
+        <div class="body">
+          <div class="table-responsive">
+            <table class="table table-bordered table-striped table-hover dataTable js-exportable w-100">
+              <thead class="headerSemiBold">
+                <tr>
+                  <th>#</th>
+                  <th>S No</th>
+                  <th>Education Title</th>
+                  <th>Status</th>
+                </tr>
+              </thead>
+              <tbody class="labelTitle">
+                <tr *ngFor="let education of educationList;let i=index;">
+                  
+                  <td>
+                    <span class="badge badge-success" title="Update education" (click)="editButtonClick(education.id)">
+                      <i class="icon-pencil"></i>
+                    </span>
+                    <span class="badge badge-danger" title="Delete education" (click)="deleteButtonClick(education.id)">
+                      <i class="icon-trash"></i>
+                    </span>
+                  </td>
+                  <td>{{educationList.length - i}}</td>
+                  <td>{{education.title}}</td>
+                  <td>
+                    <span class="badge badge-{{education.status==0 ? 'success' : 'warning'}}">
+                      {{education.status==0 ? 'Active' : 'Inactive'}}
+                    </span>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+  </div>
+</div>

@@ -1,0 +1,717 @@
+<main *ngIf="contentId" class="default-transition" style="opacity: 1;">
+    <div class="container-fluid disable-text-selection">
+
+        <div class="row">
+            <div class="col-xs-12 col-lg-12 col-12 mb-3">
+                <div class="row m-0 p-0">
+                    <div class="col-md-12 col-lg-1 col-sm-12 p-0">
+                        <h6>
+                            <a class="text-muted cursor" (click)="goBack()"><i class="iconsminds-up"></i> Back</a>
+                        </h6>
+                    </div>
+                    <div class="col-md-12 col-lg-10 col-sm-12 p-0">
+                        <h6 class="cent headerSemiBold">
+                            {{contentDetailsList?.title}}
+                        </h6>
+                    </div>
+                </div>
+            </div>
+            <!-- <div class="col-12 text-muted mt-4 mb-4">
+                <h4 *ngIf="fromType == 'topic'"><a class="text-muted" routerLink="/student/dashboard">Courses</a> > <a class="text-muted" routerLink="/student/topic">{{contentDetailsList?.subject?.title}}</a> > <a class="text-muted ponter" (click)="goToContent()">{{contentDetailsList?.topic?.title}}</a> > {{contentDetailsList?.title}}</h4>
+                <h4 *ngIf="fromType == 'subject'"><a class="text-muted" routerLink="/student/dashboard">Courses</a> > <a class="text-muted" routerLink="/student/subject">{{contentDetailsList?.subject?.title}}</a> > <a class="text-muted pointer" (click)="goToContent()">{{contentDetailsList?.topic?.title}}</a> > {{contentDetailsList?.title}}</h4>
+            </div> -->
+
+            <div class="col-12 col-md-12 col-xl-12 col-left mb-3">
+                <!-- <h2 class="h3 headerBold mb-3">
+                    {{contentDetailsList?.title}}
+                </h2> -->
+
+                <p *ngIf="contentDetailsList?.description" class="mb-5 text-justify labelTitle" [innerHTML]="contentDetailsList?.description" style="white-space: pre-line;"></p>
+
+                <div class="mb-2">
+                    <img src="{{contentDetailsList?.subject.tutor.image}}" class="img-thumbnail border-0 rounded-circle list-thumbnail xsmall">
+                    <span class="ml-2 headerSemiBold">{{contentDetailsList?.subject.tutor.name}}</span>  
+                </div>
+
+                <div class="col-lg-4 col-md-6 col-sm-12 p-0 mb-3">
+                    <p class="mb-3 labelTitle">Your Progress <span class="float-right text-muted">{{contentDetailsList?.progress}} %</span></p>
+                    <div class="progress">
+                        <div class="progress-bar" role="progressbar" [attr.aria-valuenow]="contentDetailsList?.progress" aria-valuemin="0" aria-valuemax="100" [ngStyle]="{'width': contentDetailsList?.progress+'%'}"></div>
+                    </div>
+                </div>
+                
+            </div>
+
+            <div class="col-12 col-md-12 col-xl-12 col-left">
+                <div class="headerBold mb-3">
+                    <ul class="nav nav-tabs card-header-tabs" role="tablist">
+                        <!-- <li class="nav-item"><a class="headerSemiBold nav-link active" id="content-tab" data-toggle="tab" href="#content" role="tab" aria-controls="content" aria-selected="true">Content</a></li> -->
+                        <li class="nav-item"><a class="headerSemiBold nav-link active" id="video-tab" data-toggle="tab" href="#video" role="tab" aria-controls="video" aria-selected="true">{{contentDetailsList?.videoCount}} Video</a></li>
+                        <li class="nav-item"><a class="headerSemiBold nav-link" id="pdf-tab" data-toggle="tab" href="#pdf" role="tab" aria-controls="pdf" aria-selected="false" (click)="setpage()">{{contentDetailsList?.pdfCount}} PDF</a></li>
+                        <li class="nav-item"><a class="headerSemiBold nav-link" id="audio-tab" data-toggle="tab" href="#audio" role="tab" aria-controls="audio" aria-selected="false">{{contentDetailsList?.audioCount}} Audio</a></li>
+                        <li class="nav-item"><a class="headerSemiBold nav-link" id="ppt-tab" data-toggle="tab" href="#ppt" role="tab" aria-controls="ppt" aria-selected="false">{{contentDetailsList?.pptCount}} PPT</a></li>
+                        <li class="nav-item"><a class="headerSemiBold nav-link" id="practiceTest-tab" data-toggle="tab" href="#practiceTest" role="tab" aria-controls="practiceTest" aria-selected="false">{{contentDetailsList?.practice?.length}} Practice Test</a></li>
+                        <li class="nav-item"><a class="headerSemiBold nav-link" id="test-tab" data-toggle="tab" href="#takeTest" role="tab" aria-controls="takeTest" aria-selected="false">{{contentDetailsList?.tests.length}} Test</a></li>
+                    </ul>
+                </div>
+
+                <div class="separator mb-5"></div>
+
+                <div class="headerBold">
+                    <div class="tab-content">
+
+                        <div class="tab-pane fade active show" id="video" role="tabpanel" aria-labelledby="video-tab">
+
+                            <div class="row mb-4" *ngIf="contentDetailsList?.video.length == 0">
+                                <div class="col-12 col-sm-12 col-md-12 mx-auto my-auto">
+                                    <div class="card index-card">
+                                        <div class="card-body text-center form-side">
+                                            <p class="mb-3 text-center">
+                                                <img src="../../../assets/img/icons/video.jpg" class="img-thumbnail border-0 list-thumbnail align-self-center xsmall">
+                                            </p>
+                                            <p class="mb-1 headerSemiBold">No Video posted yet</p>
+                                            <p class="labelTitle">Please visit after posted</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-6 col-sm-6 col-lg-4 col-12 mb-4" *ngFor="let video of contentDetailsList?.video; let i=index">                                        
+                                    
+                                    <div class="card pointer shadow-sm" data-toggle="modal" data-backdrop="static" data-target="#VideoPopup" (click)="VideoSelect(i);">
+                                        <div class="position-relative video-thumbnail">
+                                            <!-- <video class="vid-img" width="100%" [src]="video.url" tabindex="-1" controlsList="nodownload" *ngIf="video.type==0" (loadedmetadata)="getDuration($event,i)"></video> -->
+                                            <!-- <video class="vid-img" width="100%" [src]="video.url" tabindex="-1" controlsList="nodownload" *ngIf="video.type==0"></video> -->
+                                            <img class="card-img-top vid-img contain" [src]="instituteImage" *ngIf="video.type==0 && instituteImage"> 
+                                            <img class="card-img-top vid-img contain" src="../../../assets/img/company.png" *ngIf="video.type==0 && !instituteImage"> 
+
+                                            <img class="card-img-top vid-img contain" [src]="instituteImage" *ngIf="video.type==3 && instituteImage"> 
+                                            <img class="card-img-top vid-img contain" src="../../../assets/img/company.png" *ngIf="video.type==3 && !instituteImage"> 
+
+                                            <img class="card-img-top vid-img" [src]="video.vimeoImages?.link" *ngIf="video.type==2">
+                                            <img class="card-img-top vid-img" src="https://img.youtube.com/vi/{{video.youtubeId}}/hqdefault.jpg" *ngIf="video.type==1"> 
+                                        </div>
+                                        
+                                        <div class="card-body pad-card-15">
+                                            <h6 class="mb-5 headerSemiBold">
+                                                {{video.title | slice:0:20}}
+                                                <span *ngIf="video?.title.length>=20">...</span>
+                                            </h6>
+                    
+                                            <div class="btn-link text-muted">
+                                                
+                                                <span *ngIf="video?.hr">{{video?.hr}}:</span>
+                                                <span *ngIf="video?.min">{{video?.min}}:</span>
+                                                <span *ngIf="video?.sec">{{video?.sec}}</span>
+                    
+                                                <p class="mb-0 headerSemiBold float-right">
+                                                    <span *ngIf="video.isPaid==0">
+                                                        <img src="../../../assets/img/icons/toa@2x.png" style="height: 17px;"> Free
+                                                    </span>                                                    
+                                                    <span *ngIf="(video.isPaid==1) && ! (video?.purchase || contentDetailsList?.purchase || contentDetailsList?.subject?.purchase || contentDetailsList?.topic?.purchase)" style="color:#FF7A59">
+                                                        {{video?.currency?.sign}} {{ video.amount }}.00
+                                                    </span>
+                                                    <span class="float-right" *ngIf="(video?.purchase || contentDetailsList?.purchase || contentDetailsList?.subject?.purchase || contentDetailsList?.topic?.purchase) && video.isPaid">
+                                                        <span class="headerSemiBold">
+                                                            <div role="progressbar" class="progress-bar-circle position-relative" data-color="#FF7A59" data-trailcolor="#d7d7d7" aria-valuemax="100" [attr.aria-valuenow]="video?.videoPer" data-show-percent="true">
+                                                                <svg viewBox="0 0 110 110" style="display: block; width: 100%;">
+                                                                    <path d="M 50,50 m 0,-48 a 48,48 0 1 1 0,96 a 48,48 0 1 1 0,-96" stroke="#d7d7d7" stroke-width="10" fill-opacity="0"></path>
+                                                                    <path d="M 50,50 m 0,-48 a 48,48 0 1 1 0,96 a 48,48 0 1 1 0,-96" stroke="#FF7A59" stroke-width="10" fill-opacity="0" style="stroke-dasharray: 301.635, 301.635;" [ngStyle]="{'stroke-dashoffset': 301-(video?.videoPer*3)}"></path>
+                                                                </svg>
+                                                            </div>
+                                                            <span style="position:relative;right:120%"> {{video.videoPer}}%</span>
+                                                        </span>
+                                                    </span>
+                                                    <span *ngIf="video.isPaid && !(contentDetailsList?.purchase || contentDetailsList?.subject?.purchase || contentDetailsList?.topic?.purchase || video?.purchase)" class="coral headerSemiBold"> ( Valid for {{video?.validity}} days )</span>
+                                                    
+                                                    <span *ngIf="video.isPaid && (contentDetailsList?.purchase?.remainHours > 72)" class="selected headerSemiBold" style="right: 24%;position: relative;"> ( Expires in {{contentDetailsList?.purchase?.remainDays}} days )</span>
+                                                    <span *ngIf="video.isPaid && contentDetailsList?.purchase?.remainHours && (contentDetailsList?.purchase?.remainHours <= 72)" class="selected headerSemiBold" style="right: 24%;position: relative;"> ( Expires in {{contentDetailsList?.purchase?.remainTime}} hr )</span>
+                                                    <span *ngIf="video.isPaid && !contentDetailsList?.purchase && (contentDetailsList?.subject?.purchase?.remainHours > 72)" class="selected headerSemiBold" style="right: 24%;position: relative;"> ( Expires in {{contentDetailsList?.subject?.purchase?.remainDays}} days )</span>
+                                                    <span *ngIf="video.isPaid && !contentDetailsList?.purchase && contentDetailsList?.subject?.purchase?.remainHours && (contentDetailsList?.subject?.purchase?.remainHours <= 72)" class="selected headerSemiBold" style="right: 24%;position: relative;"> ( Expires in {{contentDetailsList?.subject?.purchase?.remainTime}} hr )</span>
+                                                    <span *ngIf="video.isPaid && !contentDetailsList?.purchase && !contentDetailsList?.subject?.purchase && (contentDetailsList?.topic?.purchase?.remainHours > 72)" class="selected headerSemiBold" style="right: 24%;position: relative;"> ( Expires in {{contentDetailsList?.topic?.purchase?.remainDays}} days )</span>
+                                                    <span *ngIf="video.isPaid && !contentDetailsList?.purchase && !contentDetailsList?.subject?.purchase && contentDetailsList?.topic?.purchase?.remainHours && (contentDetailsList?.topic?.purchase?.remainHours <= 72)" class="selected headerSemiBold" style="right: 24%;position: relative;"> ( Expires in {{contentDetailsList?.topic?.purchase?.remainTime}} hr )</span>
+                                                    <span *ngIf="video.isPaid && (video?.purchase?.remainHours > 72) && !contentDetailsList?.purchase && !contentDetailsList?.subject?.purchase && !contentDetailsList?.topic?.purchase" class="selected headerSemiBold" style="right: 24%;position: relative;"> ( Expires in {{video?.purchase?.remainDays}} days )</span>
+                                                    <span *ngIf="video.isPaid && video?.purchase?.remainHours && ((video?.purchase?.remainHours <= 72)) && !contentDetailsList?.purchase && !contentDetailsList?.subject?.purchase && !contentDetailsList?.topic?.purchase" class="selected headerSemiBold" style="right: 24%;position: relative;"> ( Expires in {{video?.purchase?.remainTime}} hr )</span>
+
+                                                </p>
+                                            </div>
+                                            
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+
+                        </div>
+
+                        <div class="tab-pane fade" id="pdf" role="tabpanel" aria-labelledby="pdf-tab">
+
+                            <div class="row mb-4" *ngIf="contentDetailsList?.pdf.length == 0">
+                                <div class="col-12 col-sm-12 col-md-12 mx-auto my-auto">
+                                    <div class="card index-card">
+                                        <div class="card-body text-center form-side">
+                                            <p class="mb-3 text-center">
+                                                <img src="../../../assets/img/icons/pdf.png" class="img-thumbnail border-0 list-thumbnail align-self-center xsmall">
+                                            </p>
+                                            <p class="mb-1 headerSemiBold">No PDF posted yet</p>
+                                            <p class="labelTitle">Please visit after posted</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-12 col-sm-12 col-xs-12 col-lg-4 col-12 mb-4" *ngFor="let pdf of contentDetailsList?.pdf; let i=index">                                        
+                                    <pdf-viewer id="set-none{{i}}" (click)="afterLoadComplete1($event, i)"  [src]="pdf?.blobUrl" 
+                                        (after-load-complete)="afterLoadComplete1($event, i)"
+                                        [render-text]="false"
+                                        [original-size]="true"
+                                        [fit-to-page]="true"
+                                        [show-all]="false"
+                                        [zoom]="zoom"
+                                        [page]="1"
+                                        style="display: block;"
+                                    ></pdf-viewer>
+                                    <div id="pdfCount" class="card shadow-sm">
+                                        <div class="position-relative pointer"  data-toggle="modal" data-backdrop="static" data-target="#PDFPopup" (click)="PDFSelect(i);">
+                                            <img class="card-img-top" src="../../../assets/img/icons/pdf-1.PNG"> 
+                                        </div>
+                                        <div class="card-body pad-card-15">
+                                            <h6 class="mb-3 headerSemiBold pointer"  data-toggle="modal" data-backdrop="static" data-target="#PDFPopup" (click)="PDFSelect(i);">
+                                                {{pdf.title | slice:0:20}}
+                                                <span *ngIf="pdf?.title.length>=20">...</span>
+                                            </h6>
+                    
+                                            <div class="btn-link text-muted">
+                                                <span *ngIf="loading">
+                                                    <img style="height: 30px;" src="./assets/img/icons/loading-gif.gif">
+                                                </span>
+                                                <span *ngIf="!loading">
+                                                    {{pdf.pageCount}} Pages
+                                                </span>
+                                                <a style="vertical-align: middle;font-size: 16px;" *ngIf="pdf?.downloadable && !pdf.isPaid" class="d-inline pl-2" href="{{pdf?.url}}" download target="_blank"><i class="simple-icon-cloud-download" data-toggle="tooltip"
+                                                    data-placement="right" title="download"></i></a>
+                                                <a style="vertical-align: middle;font-size: 16px" *ngIf="pdf?.downloadable && pdf.isPaid && (pdf?.purchase || contentDetailsList?.purchase || contentDetailsList?.subject?.purchase || contentDetailsList?.topic?.purchase)" class="d-inline pl-2" href="{{pdf?.url}}" download target="_blank"><i class="simple-icon-cloud-download" data-toggle="tooltip"
+                                                    data-placement="right" title="download"></i></a>
+                                                
+                                                <p class="mb-0 headerSemiBold float-right">
+                                                    <span *ngIf="pdf.isPaid==0">
+                                                        <img src="../../../assets/img/icons/toa@2x.png" style="height: 17px;"> Free
+                                                    </span>                                                    
+                                                    <span *ngIf="(pdf.isPaid==1) && !(pdf?.purchase || contentDetailsList?.purchase || contentDetailsList?.subject?.purchase || contentDetailsList?.topic?.purchase)" style="color:#FF7A59">
+                                                        {{pdf?.currency?.sign}} {{ pdf?.amount }}.00
+                                                    </span>
+                                                    <span class="float-right" *ngIf="(pdf?.purchase || contentDetailsList?.purchase || contentDetailsList?.subject?.purchase || contentDetailsList?.topic?.purchase) && pdf.isPaid">
+                                                        <span class="headerSemiBold">
+                                                            <div role="progressbar" class="progress-bar-circle position-relative" data-color="#FF7A59" data-trailcolor="#d7d7d7" aria-valuemax="100" [attr.aria-valuenow]="pdf?.per" data-show-percent="true">
+                                                                <svg viewBox="0 0 110 110" style="display: block; width: 100%;">
+                                                                    <path d="M 50,50 m 0,-48 a 48,48 0 1 1 0,96 a 48,48 0 1 1 0,-96" stroke="#d7d7d7" stroke-width="10" fill-opacity="0"></path>
+                                                                    <path d="M 50,50 m 0,-48 a 48,48 0 1 1 0,96 a 48,48 0 1 1 0,-96" stroke="#FF7A59" stroke-width="10" fill-opacity="0" style="stroke-dasharray: 301.635, 301.635;" [ngStyle]="{'stroke-dashoffset': 301-(pdf?.per*3)}"></path>
+                                                                </svg>
+                                                            </div>
+                                                            <span style="position:relative;right:120%"> {{pdf?.per}}%</span>
+                                                        </span>
+                                                    </span>
+                                                    <span *ngIf="pdf.isPaid && pdf.validity && !(pdf?.purchase || contentDetailsList?.purchase || contentDetailsList?.subject?.purchase || contentDetailsList?.topic?.purchase)" class="coral headerSemiBold"> ( Valid for {{pdf?.validity}} days )</span>
+                                                    
+                                                    <span *ngIf="pdf.isPaid && (contentDetailsList?.purchase?.remainHours > 72)" class="selected headerSemiBold" style="right: 25%;position: relative;"> ( Expires in {{contentDetailsList?.purchase?.remainDays}} days )</span>
+                                                    <span *ngIf="pdf.isPaid && contentDetailsList?.purchase?.remainHours && (contentDetailsList?.purchase?.remainHours <= 72)" class="selected headerSemiBold" style="right: 25%;position: relative;"> ( Expires in {{contentDetailsList?.purchase?.remainTime}} hr )</span>
+                                                    <span *ngIf="pdf.isPaid && !contentDetailsList?.purchase && (contentDetailsList?.subject?.purchase?.remainHours > 72)" class="selected headerSemiBold" style="right: 25%;position: relative;"> ( Expires in {{contentDetailsList?.subject?.purchase?.remainDays}} days )</span>
+                                                    <span *ngIf="pdf.isPaid && !contentDetailsList?.purchase && contentDetailsList?.subject?.purchase?.remainHours && (contentDetailsList?.subject?.purchase?.remainHours <= 72)" class="selected headerSemiBold" style="right: 25%;position: relative;"> ( Expires in {{contentDetailsList?.subject?.purchase?.remainTime}} hr )</span>
+                                                    <span *ngIf="pdf.isPaid && !contentDetailsList?.purchase && !contentDetailsList?.subject?.purchase && (contentDetailsList?.topic?.purchase?.remainHours > 72)" class="selected headerSemiBold" style="right: 25%;position: relative;"> ( Expires in {{contentDetailsList?.topic?.purchase?.remainDays}} days )</span>
+                                                    <span *ngIf="pdf.isPaid && !contentDetailsList?.purchase && !contentDetailsList?.subject?.purchase && contentDetailsList?.topic?.purchase?.remainHours && (contentDetailsList?.topic?.purchase?.remainHours <= 72)" class="selected headerSemiBold" style="right: 25%;position: relative;"> ( Expires in {{contentDetailsList?.topic?.purchase?.remainTime}} hr )</span>
+                                                    <span *ngIf="pdf.isPaid && (pdf?.purchase?.remainHours > 72) && !contentDetailsList?.purchase && !contentDetailsList?.subject?.purchase && !contentDetailsList?.topic?.purchase" class="selected headerSemiBold" style="right: 25%;position: relative;"> ( Expires in {{pdf?.purchase?.remainDays}} days )</span>
+                                                    <span *ngIf="pdf.isPaid && pdf?.purchase?.remainHours && (pdf?.purchase?.remainHours <= 72) && !contentDetailsList?.purchase && !contentDetailsList?.subject?.purchase && !contentDetailsList?.topic?.purchase" class="selected headerSemiBold" style="right: 25%;position: relative;"> ( Expires in {{pdf?.purchase?.remainTime}} hr )</span>
+
+                                                </p>
+                                            </div>
+                                            
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                            
+                        </div>
+                        
+                        <div class="tab-pane fade" id="audio" role="tabpanel" aria-labelledby="audio-tab">
+
+                            <div class="row mb-4" *ngIf="contentDetailsList?.audio.length == 0">
+                                <div class="col-12 col-sm-12 col-md-12 mx-auto my-auto">
+                                    <div class="card index-card">
+                                        <div class="card-body text-center form-side">
+                                            <p class="mb-3 text-center">
+                                                <img src="../../../assets/img/icons/audio.png" class="img-thumbnail border-0 list-thumbnail align-self-center xsmall">
+                                            </p>
+                                            <p class="mb-1 headerSemiBold">No Audio posted yet</p>
+                                            <p class="labelTitle">Please visit after posted</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-6 col-sm-6 col-lg-4 col-12 mb-4" *ngFor="let audio of contentDetailsList?.audio; let i=index">                                        
+                                    <div class="card pointer shadow-sm" data-toggle="modal" data-backdrop="static" data-target="#AudioPopup" (click)="AudioSelect(i);">
+                                        <div class="position-relative">
+                                            <img class="card-img-top" src="../../../assets/img/icons/audio-1.PNG"> 
+                                        </div>
+                                        
+                                        <div class="card-body pad-card-15">
+                                            <h6 class="mb-5 headerSemiBold">
+                                                {{audio?.title | slice:0:20}}
+                                                <span *ngIf="audio?.title.length>=20">...</span>
+                                            </h6>
+                    
+                                            <div class="btn-link text-muted">
+                                                
+                                                <span *ngIf="audio?.hr">{{audio?.hr}}:</span>
+                                                <span *ngIf="audio?.min">{{audio?.min}}:</span>
+                                                <span *ngIf="audio?.sec">{{audio?.sec}}</span>
+                    
+                                                <p class="mb-0 headerSemiBold float-right">
+                                                    <span *ngIf="audio.isPaid==0">
+                                                        <img src="../../../assets/img/icons/toa@2x.png" style="height: 17px;"> Free
+                                                    </span>                                                    
+                                                    <span *ngIf="(audio.isPaid==1) && ! (audio?.purchase || contentDetailsList?.purchase || contentDetailsList?.subject?.purchase || contentDetailsList?.topic?.purchase)" style="color:#FF7A59">
+                                                        {{audio?.currency?.sign}} {{ audio?.amount }}.00
+                                                    </span>
+                                                    <span class="float-right" *ngIf="(audio?.purchase || contentDetailsList?.purchase || contentDetailsList?.subject?.purchase|| contentDetailsList?.topic?.purchase) && audio.isPaid">
+                                                        <span class="headerSemiBold">
+                                                            <div role="progressbar" class="progress-bar-circle position-relative" data-color="#FF7A59" data-trailcolor="#d7d7d7" aria-valuemax="100" [attr.aria-valuenow]="audio?.audioPer" data-show-percent="true">
+                                                                <svg viewBox="0 0 110 110" style="display: block; width: 100%;">
+                                                                    <path d="M 50,50 m 0,-48 a 48,48 0 1 1 0,96 a 48,48 0 1 1 0,-96" stroke="#d7d7d7" stroke-width="10" fill-opacity="0"></path>
+                                                                    <path d="M 50,50 m 0,-48 a 48,48 0 1 1 0,96 a 48,48 0 1 1 0,-96" stroke="#FF7A59" stroke-width="10" fill-opacity="0" style="stroke-dasharray: 301.635, 301.635;" [ngStyle]="{'stroke-dashoffset': 301-(audio?.audioPer*3)}"></path>
+                                                                </svg>
+                                                            </div>
+                                                            <span style="position:relative;right:120%"> {{audio.audioPer}}%</span>
+                                                        </span>
+                                                    </span>
+                                                    <span *ngIf="audio.isPaid && audio.validity && !(audio?.purchase || contentDetailsList?.purchase || contentDetailsList?.subject?.purchase || contentDetailsList?.topic?.purchase)" class="coral headerSemiBold"> ( Valid for {{audio?.validity}} days )</span>
+
+                                                    <span *ngIf="audio.isPaid && (contentDetailsList?.purchase?.remainHours > 72)" class="selected headerSemiBold" style="right: 24%;position: relative;"> ( Expires in {{contentDetailsList?.purchase?.remainDays}} days )</span>
+                                                    <span *ngIf="audio.isPaid && contentDetailsList?.purchase?.remainHours && (contentDetailsList?.purchase?.remainHours <= 72)" class="selected headerSemiBold" style="right: 24%;position: relative;"> ( Expires in {{contentDetailsList?.purchase?.remainTime}} hr )</span>
+                                                    <span *ngIf="audio.isPaid && !contentDetailsList?.purchase && (contentDetailsList?.subject?.purchase?.remainHours > 72)" class="selected headerSemiBold" style="right: 24%;position: relative;"> ( Expires in {{contentDetailsList?.subject?.purchase?.remainDays}} days )</span>
+                                                    <span *ngIf="audio.isPaid && !contentDetailsList?.purchase && contentDetailsList?.subject?.purchase?.remainHours && (contentDetailsList?.subject?.purchase?.remainHours <= 72)" class="selected headerSemiBold" style="right: 24%;position: relative;"> ( Expires in {{contentDetailsList?.subject?.purchase?.remainTime}} hr )</span>
+                                                    <span *ngIf="audio.isPaid && !contentDetailsList?.purchase && !contentDetailsList?.subject?.purchase && (contentDetailsList?.topic?.purchase?.remainHours > 72)" class="selected headerSemiBold" style="right: 24%;position: relative;"> ( Expires in {{contentDetailsList?.topic?.purchase?.remainDays}} days )</span>
+                                                    <span *ngIf="audio.isPaid && !contentDetailsList?.purchase && !contentDetailsList?.subject?.purchase && contentDetailsList?.topic?.purchase?.remainHours && (contentDetailsList?.topic?.purchase?.remainHours <= 72)" class="selected headerSemiBold" style="right: 24%;position: relative;"> ( Expires in {{contentDetailsList?.topic?.purchase?.remainTime}} hr )</span>
+                                                    <span *ngIf="audio.isPaid && (audio?.purchase?.remainHours > 72) && !contentDetailsList?.purchase && !contentDetailsList?.subject?.purchase && !contentDetailsList?.topic?.purchase" class="selected headerSemiBold" style="right: 24%;position: relative;"> ( Expires in {{audio?.purchase?.remainDays}} days )</span>
+                                                    <span *ngIf="audio.isPaid && audio?.purchase?.remainHours && (audio?.purchase?.remainHours <= 72) && !contentDetailsList?.purchase && !contentDetailsList?.subject?.purchase && !contentDetailsList?.topic?.purchase" class="selected headerSemiBold" style="right: 24%;position: relative;"> ( Expires in {{audio?.purchase?.remainTime}} hr )</span>
+
+                                                </p>
+                                            </div>
+                                            
+                                        </div>
+                                    </div>
+                                    
+                                </div>
+                            </div>
+
+                        </div>
+
+                        <div class="tab-pane fade" id="ppt" role="tabpanel" aria-labelledby="ppt-tab">
+
+                            <div class="row mb-4" *ngIf="contentDetailsList?.ppt.length == 0">
+                                <div class="col-12 col-sm-12 col-md-12 mx-auto my-auto">
+                                    <div class="card index-card">
+                                        <div class="card-body text-center form-side">
+                                            <p class="mb-3 text-center">
+                                                <img src="../../../assets/img/icons/ppt.png" class="img-thumbnail border-0 list-thumbnail align-self-center xsmall">
+                                            </p>
+                                            <p class="mb-1 headerSemiBold">No PPT posted yet</p>
+                                            <p class="labelTitle">Please visit after posted</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-6 col-sm-6 col-lg-4 col-12 mb-4" *ngFor="let ppt of contentDetailsList?.ppt; let i=index">                                        
+                                    
+                                    <div class="card pointer shadow-sm" data-toggle="modal" data-backdrop="static" data-target="#PPTPopup" (click)="PPTSelect(i);">
+                                        <div class="position-relative">
+                                            <img class="card-img-top" src="../../../assets/img/icons/ppt-1.PNG"> 
+                                        </div>
+                                        
+                                        <div class="card-body pad-card-15">
+                                            <h6 class="mb-5 headerSemiBold">
+                                                {{ppt?.title | slice:0:20}}
+                                                <span *ngIf="ppt?.title.length>=20">...</span>
+                                            </h6>
+                    
+                                            <div class="btn-link text-muted">
+                                                
+                                                <!-- 12 Pages  -->
+                    
+                                                <p class="mb-0 headerSemiBold float-right">
+                                                    <span *ngIf="ppt.isPaid==0">
+                                                        <img src="../../../assets/img/icons/toa@2x.png" style="height: 17px;"> Free
+                                                    </span>                                                    
+                                                    <span *ngIf="(ppt.isPaid==1) && !(ppt?.purchase || contentDetailsList?.purchase || contentDetailsList?.subject?.purchase || contentDetailsList?.topic?.purchase)" style="color:#FF7A59">
+                                                        {{ppt?.currency?.sign}} {{ ppt?.amount }}.00
+                                                    </span>
+                                                    <span class="float-right" *ngIf="(ppt?.purchase || contentDetailsList?.purchase || contentDetailsList?.subject?.purchase || contentDetailsList?.topic?.purchase) && ppt.isPaid">
+                                                        <span class="headerSemiBold">
+                                                            <div role="progressbar" class="progress-bar-circle position-relative" data-color="#FF7A59" data-trailcolor="#d7d7d7" aria-valuemax="100" aria-valuenow="64" data-show-percent="true">
+                                                                <svg viewBox="0 0 110 110" style="display: block; width: 100%;">
+                                                                    <path d="M 50,50 m 0,-48 a 48,48 0 1 1 0,96 a 48,48 0 1 1 0,-96" stroke="#d7d7d7" stroke-width="10" fill-opacity="0"></path>
+                                                                    <path d="M 50,50 m 0,-48 a 48,48 0 1 1 0,96 a 48,48 0 1 1 0,-96" stroke="#FF7A59" stroke-width="10" fill-opacity="0" style="stroke-dasharray: 301.635, 301.635; stroke-dashoffset: 108.589;"></path>
+                                                                </svg>
+                                                            </div>
+                                                            <span style="position:relative;right:120%">64%</span>
+                                                        </span>
+                                                    </span>
+                                                    <span *ngIf="ppt.isPaid && ppt.validity && !(ppt?.purchase || contentDetailsList?.purchase || contentDetailsList?.subject?.purchase|| contentDetailsList?.topic?.purchase)" class="coral headerSemiBold"> ( Valid for {{ppt?.validity}} days )</span>
+                                                    
+                                                    <span *ngIf="ppt.isPaid && (contentDetailsList?.purchase?.remainHours > 72)" class="selected headerSemiBold" style="right: 24%;position: relative;"> ( Expires in {{contentDetailsList?.purchase?.remainDays}} days )</span>
+                                                    <span *ngIf="ppt.isPaid && contentDetailsList?.purchase?.remainHours && (contentDetailsList?.purchase?.remainHours <= 72)" class="selected headerSemiBold" style="right: 24%;position: relative;"> ( Expires in {{contentDetailsList?.purchase?.remainTime}} hr )</span>
+                                                    <span *ngIf="ppt.isPaid && !contentDetailsList?.purchase && (contentDetailsList?.subject?.purchase?.remainHours > 72)" class="selected headerSemiBold" style="right: 24%;position: relative;"> ( Expires in {{contentDetailsList?.subject?.purchase?.remainDays}} days )</span>
+                                                    <span *ngIf="ppt.isPaid && !contentDetailsList?.purchase && contentDetailsList?.subject?.purchase?.remainHours && (contentDetailsList?.subject?.purchase?.remainHours <= 72)" class="selected headerSemiBold" style="right: 24%;position: relative;"> ( Expires in {{contentDetailsList?.subject?.purchase?.remainTime}} hr )</span>
+                                                    <span *ngIf="ppt.isPaid && !contentDetailsList?.purchase && !contentDetailsList?.subject?.purchase && (contentDetailsList?.topic?.purchase?.remainHours > 72)" class="selected headerSemiBold" style="right: 24%;position: relative;"> ( Expires in {{contentDetailsList?.topic?.purchase?.remainDays}} days )</span>
+                                                    <span *ngIf="ppt.isPaid && !contentDetailsList?.purchase && !contentDetailsList?.subject?.purchase && contentDetailsList?.topic?.purchase?.remainHours && (contentDetailsList?.topic?.purchase?.remainHours <= 72)" class="selected headerSemiBold" style="right: 24%;position: relative;"> ( Expires in {{contentDetailsList?.topic?.purchase?.remainTime}} hr )</span>
+                                                    <span *ngIf="ppt.isPaid && (ppt?.purchase?.remainHours > 72) && !contentDetailsList?.purchase && !contentDetailsList?.subject?.purchase && !contentDetailsList?.topic?.purchase" class="selected headerSemiBold" style="right: 24%;position: relative;"> ( Expires in {{ppt?.purchase?.remainDays}} days )</span>
+                                                    <span *ngIf="ppt.isPaid && ppt?.purchase?.remainHours && (ppt?.purchase?.remainHours <= 72) && !contentDetailsList?.purchase && !contentDetailsList?.subject?.purchase && !contentDetailsList?.topic?.purchase" class="selected headerSemiBold" style="right: 24%;position: relative;"> ( Expires in {{ppt?.purchase?.remainTime}} hr )</span>
+                                                </p>
+                                            </div>
+                                            
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+
+                        </div>
+
+                        <div class="tab-pane fade" id="practiceTest" role="tabpanel" aria-labelledby="practiceTest-tab">
+                            <div class="row" *ngIf="contentDetailsList?.practice?.length == 0">
+                                <div class="col-12 col-sm-12 col-md-12 mx-auto my-auto">
+                                    <div class="card index-card">
+                                        <div class="card-body text-center form-side">
+                                            <p class="mb-3 text-center">
+                                                <img src="../../../assets/img/icons/takeTest.png" class="img-thumbnail border-0 list-thumbnail align-self-center xsmall">
+                                            </p>
+                                            <p class="mb-1 headerSemiBold">No practice test posted yet</p>
+                                            <p class="labelTitle">Please visit after posted</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row" *ngIf="contentDetailsList?.practice?.length > 0">
+                                <div class="col-md-6 col-sm-6 col-lg-4 col-12 mb-4" *ngFor="let practice of contentDetailsList?.practice; let i=index">                                        
+                                    <a class="cursor" (click)="practiceTestNavigation(practice)">
+                                        
+                                        <div class="card shadow mb-4">
+                                            <div class="card-body">
+                                                <p class="mb-3 h6 headerSemiBold">{{practice.title}}</p>
+
+                                                <div class="btn-link mb-2">
+                                                    <p>
+                                                        <span class="labelTitle text-muted">
+                                                            <img src="../../../assets/img/icons/comm.png" style="height:15px;"> 
+                                                            {{practice.practiceQuestionCount}} Questions
+                                                        </span>
+                                                    </p>
+                                                    <div class="mb-0 float-right">
+                                                        <span class="ml-2 mt-1 headerSemiBold cursor" style="color:#FF7A59">
+                                                            Practice test
+                                                        </span>
+                                                    </div>
+                                                    
+                                                </div>
+
+                                                <!-- <div class="btn-link">
+                            
+                                                    <span class="headerSemiBold">
+                                                        <img src="../../../assets/img/icons/comm.png" style="height:15px;"> 
+                                                        <p class="labelTitle">{{practice.practiceQuestionCount}} Questions</p>
+                                                    </span>
+                        
+                                                    <p class="mb-0 float-right">
+                                                        <span class="ml-2 mt-1 headerSemiBold" style="color:#FF7A59">
+                                                            TAKE TEST
+                                                        </span>
+                                                    </p>
+                                                </div> -->
+                                            </div>
+                                        </div>
+                                        
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="tab-pane fade" id="takeTest" role="tabpanel" aria-labelledby="test-tab">
+                            <div class="row" *ngIf="contentDetailsList?.tests.length == 0">
+                                <div class="col-12 col-sm-12 col-md-12 mx-auto my-auto">
+                                    <div class="card index-card">
+                                        <div class="card-body text-center form-side">
+                                            <p class="mb-3 text-center">
+                                                <img src="../../../assets/img/icons/takeTest.png" class="img-thumbnail border-0 list-thumbnail align-self-center xsmall">
+                                            </p>
+                                            <p class="mb-1 headerSemiBold">No Test posted yet</p>
+                                            <p class="labelTitle">Please visit after posted</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row contentDetailsList?.tests.length">
+                                <div class="col-md-6 col-sm-6 col-lg-4 col-12 mb-4" *ngFor="let test of contentDetailsList?.tests; let i=index">
+                                    <div class="cursor" (click)="testNavigate(test)">
+
+                                        <div class="card shadow mb-4">
+                                            
+                                            <div class="card-body">
+                                                <h6 class="mb-3 headerSemiBold">
+                                                    {{test.title | slice:0:25}}
+                                                    
+                                                    <span *ngIf="test.title.length>=25">...</span>
+                                                </h6>
+                                                <!-- <p class="text-justify scrollbar  labelTitle">
+                                                    {{test.description | slice:0:100}}
+                                                    <span *ngIf="test.description.length>=100">...</span>
+                                                </p> -->
+                                                <div class="btn-link mb-2">
+                                                    <p>
+                                                        <span class="labelTitle text-muted">
+                                                            <img src="../../../assets/img/icons/comm.png" style="height:15px;"> 
+                                                            {{test.questionCount}} Questions | {{test.timedTest? test.duration + ' Min' : ' Untimed Test' }}
+                                                        </span>
+                                                    </p>
+                                                    
+                                                </div>
+                                                <div *ngIf="!test.isPaid" class="float-right headerSemiBold rating">
+                                                    <span class="headerSemiBold text-muted">
+                                                        <img src="../../../assets/img/icons/toa@2x.png" style="height: 17px; width: 15px;"> Free
+                                                    </span>
+                                                </div>
+                                                <div *ngIf="test.isPaid && test.purchase==null && test.amount" class="float-right headerSemiBold rating">
+                                                    <span class="headerSemiBold" style="color:#FF7A59"  >
+                                                        {{test?.currency?.sign}} {{ test?.amount }}.00
+                                                    </span>
+                                                </div>
+                                                <div *ngIf="test.testResult==null" class="float-left headerSemiBold rating">
+                                                    <span *ngIf="!(test.isPaid && test.purchase==null)" class="headerSemiBold" style="color:#FF7A59"  >
+                                                        Take test
+                                                    </span>
+                                                    <span *ngIf="test.isPaid && test.purchase==null" class="headerSemiBold" style="color:#FF7A59"  >
+                                                        Buy now
+                                                    </span>
+                                                </div>
+                                                <div *ngIf="test.testResult!=null" class="float-left headerSemiBold rating">
+                                                    <span class="headerSemiBold" style="color:#FF7A59"  >
+                                                        View result
+                                                    </span>
+                                                </div>
+                                                
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                    <div id="testModalTraget" class="d-none" data-toggle="modal" data-backdrop="static" data-target="#testPopup"></div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+                
+
+            </div>
+        </div>
+    </div>
+</main>
+
+<div class="modal fade modal-top" id="VideoPopup" tabindex="-1" role="dialog" aria-labelledby="VideoPopup"
+    aria-hidden="true" style="display: none;">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h6 class="headerBold">{{videoSelected.title}}</h6>
+                <button id="closeVideoPayment" type="button" class="close" data-dismiss="modal" aria-label="Close" (click)="payementModalClose();closeVideo(videoSelected);"><span aria-hidden="true">×</span></button>
+            </div>
+            <div class="modal-body overflow-h pd">
+                <div *ngIf="isMp4">
+                    <video id="vid" class="video-js" *ngIf="videoSelected.paymentStatus == 0 && videoSelected.videoType==0 && isMp4 && videoUrl" width="100%" controlsList="nodownload" tabindex="-1" preload="auto" autoplay controls style="border-radius: 0rem !important;">
+                        <source [src]="videoUrl" type='video/mp4'>
+                    </video>
+                    <!-- <iframe *ngIf="videoSelected.paymentStatus == 0 && videoSelected.videoType==0 && isMp4" style="height:400px;" width="100%" [src]="videoUrl" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen controls controlsList="nodownload"></iframe> -->
+                </div>
+
+                <div *ngIf="videoSelected.paymentStatus == 0 && videoSelected.videoType==0 && !isMp4" class="">
+                    <div id="player" class="vid-wrapper videre-container paused">
+                    </div>
+                </div>
+
+                <div *ngIf="videoSelected.paymentStatus == 0 && videoSelected.videoType==3 && !isMp4" class="">
+                    <div id="player" class="vid-wrapper videre-container paused">
+                    </div>
+                </div>
+
+                <div *ngIf="videoSelected.paymentStatus == 0 && videoSelected.videoType==1">
+                    <div id="ytplayer" class="w-100"></div>
+                    <!-- <iframe id="youtubeVideo" style="height:400px;" width="100%" [src]="youtubeUrl" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe> -->
+                </div>
+                <!-- <div *ngIf="videoSelected.paymentStatus == 0 && videoSelected.videoType==1" id="ytplayer"></div> -->
+                <!-- <iframe id="youtubeVideo" *ngIf="videoSelected.paymentStatus == 0 && videoSelected.videoType==1" style="height:400px;" width="100%" [src]="youtubeUrl" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe> -->
+
+                <iframe id="vimeoVideo" *ngIf="videoSelected.paymentStatus == 0 && videoSelected.videoType==2" style="height:400px;" width="100%" [src]="vimeoUrl" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                
+                <p *ngIf="videoSelected.paymentStatus == 1" class="text-justify labelTitle" [innerHTML]="videoSelected.preview"></p>
+            </div>
+            <div *ngIf="videoSelected.paymentStatus == 1" class="modal-footer text-center" style="display: block;">
+                <p *ngIf="videoSelected?.paymentGateWayName != 'OfflinePay'" class="text-justify labelTitle">By clicking on continue you agree to subscribe to the course</p>
+                <button *ngIf="(videoSelected?.paymentGateWayName != 'OfflinePay') && !payPalPay" type="button" class="btn btn-secondary default headerSemiBold" (click)="payementDetails('video',videoSelected)">
+                    CONTINUE TO PAY {{videoSelected.currency.sign}} {{videoSelected.amount}}.00
+                </button>
+                <div *ngIf="videoSelected?.paymentGateWayName == 'OfflinePay'">
+                    <p class="headerSemiBold m-0">OfflinePay</p>
+                    <p class="text-center labelTitle m-0">Please contact your institute for more details</p>
+                </div>
+                <app-payment-gate-way (payementDetails)="afterPayment($event)"></app-payment-gate-way>
+            </div>
+        </div>
+    </div>
+    
+</div>
+
+<div class="modal fade modal-top" id="PDFPopup" tabindex="-1" role="dialog" aria-labelledby="PDFPopup"
+    aria-hidden="true" style="display: none;">
+    <div class="modal-dialog modal-lg mt-0" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h6 class="headerBold pr-4">{{PDFSelected?.title}}</h6>
+                <button id="closePdfPayment" type="button" class="close" data-dismiss="modal" aria-label="Close" (click)="payementModalClose();pdfPageRead(PDFSelected)"><span aria-hidden="true">×</span></button>
+            </div>
+            <div *ngIf="isLoaded && !PDFSelected.paymentStatus">
+                <div class="text-center headerSemiBold p-2">
+                    <span class="pr-2 pointer"  (click)="prevPage()">Previous</span>
+                    <span class="pr-2">
+                        <input min="1" type="number" style="width:6%; border: none;border-bottom: 1px solid #CCC;" [(ngModel)]="page">/ {{totalPages}}
+                    </span>
+                    <span class="pr-4 pointer" (click)="nextPage()">Next</span>
+                    <span class="pr-1 pointer" (click)="zoomNeg()"><i class="simple-icon-minus"></i></span>
+                    <span class="pr-1">{{zoom}}</span>
+                    <span class="pr-4 pointer" (click)="zoomPos()"><i class="simple-icon-plus"></i></span>
+                    <a *ngIf="PDFSelected?.downloadable" class="d-inline" href="{{PDFSelected?.url}}" download target="_blank"><i class="simple-icon-cloud-download"><span class="pl-1 headerSemiBold">Download</span></i></a>
+                </div>
+            </div>
+            <div class="modal-body">
+                <div class="text-center" *ngIf="!isLoaded && (PDFSelected.paymentStatus == 0)">
+                    <img style="height: 50px;" src="./assets/img/icons/loading.gif">
+                </div>
+                <pdf-viewer *ngIf="PDFSelected.paymentStatus == 0" [src]="PDFUrl" 
+                            (after-load-complete)="afterLoadComplete($event)"
+                            [render-text]="false"
+                            [original-size]="true"
+                            [fit-to-page]="true"
+                            [show-all]="false"
+                            [zoom]="zoom"
+                            [(page)]="page"
+                            style="display: block;"
+                ></pdf-viewer>
+                <!-- <iframe *ngIf="PDFSelected.paymentStatus == 0" style="height:400px;" width="100%" frameborder="0" [src]="PDFUrl"></iframe> -->
+
+                <p *ngIf="PDFSelected.paymentStatus == 1" class="text-justify labelTitle" [innerHTML]="PDFSelected.preview"></p>
+            </div>
+            <div *ngIf="PDFSelected.paymentStatus == 1" class="modal-footer text-center" style="display: block;">
+                <p *ngIf="PDFSelected?.paymentGateWayName != 'OfflinePay'" class="text-justify labelTitle">By clicking on continue you agree to subscribe to the course</p>
+                <button *ngIf="(PDFSelected?.paymentGateWayName != 'OfflinePay') && !payPalPay" type="button" class="btn btn-secondary default headerSemiBold" (click)="payementDetails('pdf', PDFSelected)">
+                    CONTINUE TO PAY {{PDFSelected?.currency?.sign}} {{PDFSelected?.amount}}.00
+                </button>
+                <div *ngIf="PDFSelected?.paymentGateWayName == 'OfflinePay'">
+                    <p class="headerSemiBold m-0">OfflinePay</p>
+                    <p class="text-center labelTitle m-0">Please contact your institute for more details</p>
+                </div>
+				<app-payment-gate-way (payementDetails)="afterPayment($event)"></app-payment-gate-way>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade modal-top" id="AudioPopup" tabindex="-1" role="dialog" aria-labelledby="AudioPopup"
+    aria-hidden="true" style="display: none;">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h6 class="headerBold">{{audioSelected.title}}</h6>
+                <button id="closeAudioPayment" type="button" class="close" data-dismiss="modal" aria-label="Close" (click)="payementModalClose();closeAudio(audioSelected)"><span aria-hidden="true">×</span></button>
+            </div>
+            <div class="modal-body">
+                <div *ngIf="audioSelected.paymentStatus== 0" class="position-relative mb-2">
+                    <img class="card-img-top" src="../../../assets/img/icons/audio-1.PNG"> 
+                </div>
+                <audio id="audio-play" *ngIf="audioSelected.paymentStatus== 0" controls [src]="audioUrl" controlsList="nodownload" class="w-100"></audio>
+
+                <p *ngIf="audioSelected.paymentStatus == 1" class="text-justify labelTitle" [innerHTML]="audioSelected.preview"> </p>
+            </div>
+
+            <div *ngIf="audioSelected.paymentStatus == 1" class="modal-footer text-center" style="display: block;">
+                <p *ngIf="audioSelected?.paymentGateWayName != 'OfflinePay'" class="text-justify labelTitle">By clicking on continue you agree to subscribe to the course</p>
+                <button *ngIf="(audioSelected?.paymentGateWayName != 'OfflinePay') && !payPalPay" type="button" class="btn btn-secondary default headerSemiBold" (click)="payementDetails('audio', audioSelected)">
+                    CONTINUE TO PAY {{audioSelected.currency.sign}} {{audioSelected.amount}}.00
+                </button>
+                <div *ngIf="audioSelected?.paymentGateWayName == 'OfflinePay'">
+                    <p class="headerSemiBold m-0">OfflinePay</p>
+                    <p class="text-center labelTitle m-0">Please contact your institute for more details</p>
+                </div>
+				<app-payment-gate-way (payementDetails)="afterPayment($event)"></app-payment-gate-way>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade modal-top" id="PPTPopup" tabindex="-1" role="dialog" aria-labelledby="PPTPopup"
+    aria-hidden="true" style="display: none;">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h6 class="headerBold">{{PPTSelected.title}}</h6>
+                <button id="closePptPayment" type="button" class="close" data-dismiss="modal" aria-label="Close" (click)="payementModalClose();closePpt(PPTSelected)"><span aria-hidden="true">×</span></button>
+            </div>
+            <div class="modal-body">
+                <ngx-doc-viewer *ngIf="PPTSelected.paymentStatus == 0" disableContent="popout" [url]="PPTUrl" viewer="google" style="width:100%;height:450px;"></ngx-doc-viewer>
+                <!-- <iframe *ngIf="PPTSelected.paymentStatus == 0" style="height:400px;" width="100%" frameborder="0" [src]="PPTUrl"></iframe> -->
+                <p *ngIf="PPTSelected.paymentStatus == 1" class="text-justify labelTitle" [innerHTML]="PPTSelected.preview"> </p>
+            </div>
+            <div *ngIf="PPTSelected.paymentStatus == 1" class="modal-footer text-center" style="display: block;">
+                <p *ngIf="PPTSelected?.paymentGateWayName != 'OfflinePay'" class="text-justify labelTitle">By clicking on continue you agree to subscribe to the course</p>
+                <button *ngIf="(PPTSelected?.paymentGateWayName != 'OfflinePay') && !payPalPay" type="button" class="btn btn-secondary default headerSemiBold" (click)="payementDetails('ppt', PPTSelected)">
+                    CONTINUE TO PAY {{PPTSelected?.currency?.sign}} {{PPTSelected?.amount}}.00
+                </button>
+                <div *ngIf="PPTSelected?.paymentGateWayName == 'OfflinePay'">
+                    <p class="headerSemiBold m-0">OfflinePay</p>
+                    <p class="text-center labelTitle m-0">Please contact your institute for more details</p>
+                </div>
+                <app-payment-gate-way (payementDetails)="afterPayment($event)"></app-payment-gate-way>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade modal-top" id="testPopup" tabindex="-1" role="dialog" aria-labelledby="testPopup"
+    aria-hidden="true" style="display: none;">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h6 class="headerBold">{{testPayDetails.title}}</h6>
+                <button id="closeTestPayment" type="button" class="close" data-dismiss="modal" aria-label="Close" (click)="payementModalClose()"><span aria-hidden="true">×</span></button>
+            </div>
+            <div class="modal-body">
+                <p *ngIf="testPayDetails.paid == 1" class="text-justify labelTitle" [innerHTML]="testPayDetails.preview"> </p>
+            </div>
+            <div *ngIf="testPayDetails.paid == 1" class="modal-footer text-center" style="display: block;">
+                <p *ngIf="testPayDetails?.paymentGateWayName != 'OfflinePay'" class="text-justify labelTitle">By clicking on continue you agree to subscribe to the course</p>
+                <button *ngIf="(testPayDetails?.paymentGateWayName != 'OfflinePay') && !payPalPay" type="button" class="btn btn-secondary default headerSemiBold" (click)="payementDetails('test', testPayDetails)">
+                    CONTINUE TO PAY {{testPayDetails?.currency?.sign}} {{testPayDetails?.amount}}.00
+                </button>
+                <div *ngIf="testPayDetails?.paymentGateWayName == 'OfflinePay'">
+                    <p class="headerSemiBold m-0">OfflinePay</p>
+                    <p class="text-center labelTitle m-0">Please contact your institute for more details</p>
+                </div>
+                <app-payment-gate-way (payementDetails)="afterPayment($event)"></app-payment-gate-way>
+            </div>
+        </div>
+    </div>
+</div>

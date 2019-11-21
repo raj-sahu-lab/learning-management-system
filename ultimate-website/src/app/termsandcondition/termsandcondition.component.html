@@ -1,0 +1,43 @@
+
+  <section class="page-header minimal page-title-left">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 text-left">
+                <h2 class="text-uppercase" data-animated="fadeInLeftBig" data-animation-delay="400">TERMS OF SERVICE AGREEMENT</h2>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="bottom-padding">
+<div class="background show-spinner">
+    <div class="fixed-background" style="overflow-y: scroll;">
+      <main class="default-transition">
+        <div class="container">
+          <div class="row h-100">
+            <div *ngIf="terms" class="col-12 col-sm-8 col-md-10 mx-auto my-auto">
+              <div class="card index-card">
+                <div class="card-body form-side text-justify labelTitle">
+                  <h6 class="headerSemiBold text-center">{{terms?.title}}</h6>
+
+                  <p class="wht-pr-ln">{{terms?.description}}</p>
+                </div>
+              </div>
+            </div>
+            <div *ngIf="!terms" class="col-12" style="padding: 15px 15px;">
+              <div class="card index-card brd">
+                  <div class="card-body text-center form-side">
+                      <p class="mb-3 text-center">
+                          <img src="../../../assets/images/book.png"
+                              class="img-thumbnail border-0 rounded-circle list-thumbnail align-self-center img-no-c" alt="book image">
+                      </p>
+                      <h6 class="headerSemiBold">No Terms added</h6>
+                      <p class="text-muted labelTitle">will be added soon!</p>
+                  </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </main>
+    </div>
+  </div>
+</section>

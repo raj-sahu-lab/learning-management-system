@@ -1,0 +1,116 @@
+<section class="page-header minimal page-title-left">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 text-left">
+                <h2 class="text-uppercase" data-animated="fadeInLeftBig" data-animation-delay="400">{{subject?.title}}</h2>
+                
+                <!-- <ul class="breadcrumb">
+                    <li>Home</li>
+                    <li class="active">Courses details</li>
+                </ul> -->
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="about-us" class="bottom-padding-md" style="background-color:#fff">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4 bottom-margin-sm">
+                
+                <!-- IMAGE-->
+                <div>
+                    <img style="height: 350px;object-fit: cover;" class="img-responsive" src="{{subject?.image}}" alt="subject image" width="750" height="500" />
+                </div>
+            </div>
+            <div class="col-md-8 bottom-margin-sm left-padding pad-md">
+                <h4 class="product-title">
+                    <a class="product-name headerSemiBold">{{subject?.title}}</a>
+                    <span class="product-rating"><i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star-half-full"></i></span>
+                </h4>
+                <hr class="style11">
+                <!-- TEXT  -->
+                <p class="text-justify labelTitle pre-line">{{subject?.description}}</p>
+                <div class="d-flex flex-row">
+
+                    <img *ngIf="subject?.tutor?.image" src="{{subject?.tutor?.image}}" class="img-thumbnail border-0 rounded-circle list-thumbnail align-self-center xsmall pr-img" alt="tutor image">
+                    <img *ngIf="!subject?.tutor?.image" src="assets/images/default_profile_small.png" class="img-thumbnail border-0 rounded-circle list-thumbnail align-self-center xsmall pr-img" alt="profile pic">
+
+                    <div class="pl-2">
+                        <p data-toggle="modal" data-target="#userInfo" class="headerSemiBold pointer">{{subject?.tutor?.name}}, {{subject?.tutor?.qualification}}</p>
+                    </div>
+                </div>
+                <div class="coral headerSemiBold mr-t-5" *ngIf="subject?.isPaid && subject?.purchase == null">{{subject?.currency?.sign}} {{subject?.amount}}.00</div>
+                <div class="mr-t-5 fnt-14" *ngIf="subject?.isPaid && subject?.purchase == null">Valid for {{subject?.validity}} days</div>
+                <div class="blu mr-t-5 fnt-14" *ngIf="!subject?.isPaid || subject?.purchase !=null">Expires in {{subject?.purchase?.remainDays}} days</div>
+                <!-- BUTTON  -->
+                <p *ngIf="!subject?.isPaid || subject?.purchase !=null" data-animate="fadeInUp" data-animation-delay="1200">
+                    <button class="btn btn-dark btn-md btn-square btn-hv-theme btn-default" (click)="navigateUrl(subject)">Continue</button>
+                </p>
+                <p *ngIf="subject?.isPaid && subject?.purchase == null" data-animate="fadeInUp" data-animation-delay="1200">
+                    <button class="btn btn-dark btn-md btn-square btn-hv-theme btn-default" (click)="checkLogin()">Subscribe</button>
+                    <button id="subSubsribe" data-toggle="modal" data-target="#subjectDetails" style="display: none;"></button>
+                    <button id="subSubsribeInfo" data-toggle="modal" data-target="#subjectDetailsInfo" style="display: none;"></button>
+                </p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<div class="modal fade" id="subjectDetails" role="dialog" aria-labelledby="subjectDetails">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header text-center">
+                <button id="closeSubjectDetails" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <div class="margin-20">
+                    <h5 class="headerBold">{{subject?.title}}</h5>
+                </div>
+            </div>
+            <div class="modal-body">
+                <!-- TEXT  -->
+                <p class="text-justify labelTitle pre-line">{{subject?.preview}}</p>
+                <div class="coral headerBold text-center mb-10">{{subject?.currency?.sign}} {{subject?.amount - discountAmount}}.00</div>
+                <!-- BUTTON  -->
+                <div data-animate="fadeInUp" data-animation-delay="1200" style="text-align: center;">
+                    <div *ngIf="subject?.payment_type?.title != 'OfflinePay'">
+                        <div class="labelTitle text-center">* By clicking on continue you agree to subscribe to the course</div>
+                        <input class="inp" type="text" placeholder="Enter Coupon Code" [(ngModel)]="coupon">
+                        <button class="btn btn-success default p-2" (click)="checkCoupon()">Apply Coupon</button>
+                        <p [ngClass]="discountSuccess ? 'green' : 'red'" *ngIf="discountMessage != ''">* {{discountMessage}}</p>
+                    </div>
+                    <button *ngIf="(subject?.payment_type?.title != 'OfflinePay') && !payPalPay"  class="btn btn-dark btn-md btn-square btn-hv-theme btn-default" (click)="payementDetails('subject', subject)">Continue to pay</button>
+                    <app-payment-gate-way (payementDetails)="afterPayment($event)"></app-payment-gate-way>
+                    <!-- <div *ngIf="subject?.payment_type?.title != 'OfflinePay'">
+                        <p class="labelTitle text-center">* By clicking on continue you agree to subscribe to the course</p>
+                        <input class="p-2 mr-1" type="text" placeholder="Enter Coupon Code" [(ngModel)]="coupon">
+                        <button class="btn btn-success default p-2" (click)="checkCoupon()">Apply Coupon</button>
+                        <p class="red" *ngIf="discountMessage != ''">* {{discountMessage}}</p>
+                    </div> -->
+                    <div *ngIf="subject?.payment_type?.title == 'OfflinePay'">
+                        <p class="headerSemiBold m-0">OfflinePay</p>
+                        <p class="text-center labelTitle m-0">Please contact your institute for more details</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal fade" id="subjectDetailsInfo" role="dialog" aria-labelledby="subjectDetailsInfo">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header text-center">
+                <button id="closeSubjectDetailsInfo" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <div class="margin-20">
+                    <h5 class="headerBold">Please signup if you don't have an account with us or login now to subscribe</h5>
+                </div>
+            </div>
+            <div class="modal-body">
+                <!-- BUTTON  -->
+                <div data-animate="fadeInUp" data-animation-delay="1200" style="text-align: center;">
+                    <button class="btn btn-dark btn-md btn-square btn-hv-theme btn-default" (click)="navigateToLogIn('register')" style="margin-right: 10px;">Signup</button>
+                    <button class="btn btn-dark btn-md btn-square btn-hv-theme btn-default" (click)="navigateToLogIn('login')">Login</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,139 @@
+<section class="page-header minimal page-title-left">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 text-left">
+                <h2 class="text-uppercase" data-animated="fadeInLeftBig" data-animation-delay="400">Contact Us</h2>
+
+                <!-- <ul class="breadcrumb">
+                    <li>Home</li>
+                    <li class="active">Contact Us</li>
+                </ul> -->
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="theme-bg no-padding typo-light">
+    <div class="container top-padding">
+        <div class="row">
+            <div class="col-md-4 col-sm-4 bottom-padding-sm">
+                <div class="text-center animated fadeInUp visible" data-animation="fadeInUp" data-delay="100"
+                    style="animation-delay: 100ms;">
+                    <!-- ICON -->
+                    <i class="fa fa-map-marker fa-2x"></i>
+                    <!-- TITLE -->
+                    <h6 class="cta-icon-title"><span *ngIf="contactDetails?.city?.title">{{contactDetails?.city?.title}}, </span><span *ngIf="contactDetails?.city?.country?.title">{{contactDetails?.city?.country?.title}}, </span><span *ngIf="contactDetails?.pinCode">{{contactDetails?.pinCode}}</span></h6>
+                </div>
+            </div>
+            <div class="col-md-4 col-sm-4 bottom-padding-sm">
+                <div class="text-center animated fadeInUp visible" data-animation="fadeInUp" data-delay="200"
+                    style="animation-delay: 200ms;">
+                    <!-- ICON -->
+                    <i class="fa fa-phone fa-2x"></i>
+                    <!-- TITLE -->
+                    <h6 class="cta-icon-title">+{{contactDetails?.countryCode}} {{contactDetails?.phone}}</h6>
+                </div>
+            </div>
+            <div class="col-md-4 col-sm-4 bottom-padding-sm">
+                <div class="text-center animated fadeInUp visible" data-animation="fadeInUp" data-delay="300"
+                    style="animation-delay: 300ms;">
+                    <!-- ICON -->
+                    <i class="fa fa-envelope fa-2x"></i>
+                    <!-- TITLE -->
+                    <h6 class="cta-icon-title">{{contactDetails?.email}}</h6>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="contact" class="bottom-padding-md">
+    <div class="container">
+        
+        <div class="row">
+
+            <div *ngFor="let contactDetail of contactDetails?.branches" class="col-md-4 bottom-margin-md">
+                <h6 class="text-uppercase headerSemiBold">{{contactDetail?.name}}</h6>
+                <address>
+                    <div class="feature-box style-3">
+                        <div class="icon-wrapper">
+                            <!-- ICON -->
+                            <i class="fa fa-map-marker"></i>
+                        </div>
+                        <div class="inner-wrapper">
+                            <!-- ADDRESS -->
+                            <p class="feature-description">
+                                {{contactDetail?.address}}
+                            </p>
+                        </div>
+                    </div>
+                    <div class="feature-box style-3">
+                        <div class="icon-wrapper">
+                            <!-- ICON -->
+                            <i class="fa fa-phone"></i>
+                        </div>
+                        <div class="inner-wrapper">
+                            <!--  PHONE NUMBER -->
+                            <p class="feature-description"> +{{contactDetail?.contactCountryCode}} {{contactDetail?.number}}</p>
+                        </div>
+                    </div>
+                    <div *ngIf="contactDetail?.altNumber" class="feature-box style-3">
+                        <div class="icon-wrapper">
+                            <!-- ICON -->
+                            <i class="fa fa-fax"></i>
+                        </div>
+                        <div class="inner-wrapper">
+                            <!--  PHONE NUMBER -->
+                            <p class="feature-description"> +{{contactDetail?.altcontactCountryCode}} {{contactDetail?.altNumber}}</p>
+                        </div>
+                    </div>
+                    <div class="feature-box style-3">
+                        <div class="icon-wrapper">
+                            <!-- ICON -->
+                            <i class="fa fa-user"></i>
+                        </div>
+                        <div class="inner-wrapper">
+                            <!--  PHONE NUMBER -->
+                            <p class="feature-description"> {{contactDetail?.manager}}</p>
+                        </div>
+                    </div>
+                    <button *ngIf="contactDetail?.CODE" class="btn btn-dark btn-md btn-square btn-hv-theme btn-default" data-toggle="modal" data-target="#copyCode" (click)="branchSelected(contactDetail.CODE)">Click here for branch code</button>
+
+                </address>
+            </div>
+
+        </div>
+        
+    </div>
+</section>
+
+<div class="modal fade modal-top" id="copyCode" tabindex="-1" role="dialog" aria-labelledby="subjectPayment" aria-hidden="true" style="display: none;">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <div class="input-group display-flex">
+                    <input
+                        type="text"
+                        class="form-control m7 headerSemiBold"
+                        [(ngModel)]="selectedBranch"
+                        #inputTarget
+                        readonly
+                    />
+                    <span class="input-group-append">
+                        <button
+                            class="btn btn-default headerSemiBold btn-secondary white"
+                            type="button"
+                            [ngxClipboard]="inputTarget"
+                            (cbOnSuccess)="isCopied1 = true"
+                            (cbOnError)="onCopyFailure()"
+                            [class.btn-success]="isCopied1"
+                        >
+                            copy
+                        </button>
+                    </span>
+                </div>
+                <!-- <button id="closeSubPayment" type="button" class="close" data-dismiss="modal" aria-label="Close" (click)="payementModalClose()"><span aria-hidden="true">×</span></button> -->
+            </div>
+        </div>
+    </div>
+</div>

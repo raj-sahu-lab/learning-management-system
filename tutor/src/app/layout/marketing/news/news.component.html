@@ -1,0 +1,175 @@
+<div class="container">
+    <div class="row clearfix">
+      <div class="col-lg-12">
+        <div class="card">
+          <div class="body block-header">
+            <div class="row">
+              <div class="col-lg-6 col-md-8 col-sm-12">
+                <h2 class="headerSemiBold">Manage News</h2>
+
+                <ul class="breadcrumb p-l-0 p-b-0 labelTitle">
+                  <li class="breadcrumb-item">
+                  <a class="linkColor" routerLink="/" routerLinkActive="active"><i class="icon-home"></i></a>
+                </li>
+                <li class="breadcrumb-item active labelTitle">News</li>
+                </ul>
+              </div>
+              <div class="col-lg-6 col-md-4 col-sm-12">
+                <a routerLink="/" routerLinkActive="active" class="btn btn-secondary headerSemiBold float-right">
+                  <i class="icon-arrow-left"></i> BACK
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <div class="row clearfix">
+  
+      <div class="col-sm-12 col-md-12 col-lg-12">
+        <div class="card">
+          
+          <div class="header headerSemiBold">
+            <h2><span class="linkColor">Manage</span> News Category</h2>
+          </div>
+
+          <div class="body">
+            <div class="demo-masked-input labelTitle">
+              <div class="row clearfix">
+  
+                <div class="col-sm-1" *ngIf="selectedNewsImage"><b>&nbsp;</b>
+                  <div class="input-group">
+                    <img [src]="selectedNewsImage" alt="assets/images/my-image/choose-file.png"
+                      data-holder-rendered="true" id="ImagePreview" style="height:50px" />
+                  </div>
+                </div>
+                <div class="col-lg-{{selectedNewsImage ? 2 : 3}} col-md-{{selectedNewsImage ? 2 : 3}}">Choose Image
+                  <div class="input-group">
+                    <input type="file" class="form-control" [(ngModel)]="image" accept="image/jpeg, image/png"
+                      (change)="newsFileChanged($event)" ng-required="true">
+                  </div>
+                </div>
+                <div class="col-lg-3 col-md-3">Select News Category
+                  <div class="input-group">
+                    <select class="form-control" [(ngModel)]="newsCategoryId">
+                      <option [ngValue]="undefined" disabled>Select News Category</option>
+                      <option *ngFor="let newsCategory of newsCategoryList" [ngValue]="newsCategory.id">
+                        {{newsCategory.title}}
+                      </option>
+                    </select>
+                  </div>
+                </div>
+                <div class="col-lg-3 col-md-3">News Title
+                  <div class="input-group">
+                    <input type="text" class="form-control" [(ngModel)]="title" placeholder="Enter title">
+                  </div>
+                </div>
+                
+                <div *ngIf="!isCustomDatePicker" class="col-lg-3 col-md-3">Publish Date
+                  <div class="input-group">
+                    <input type="datetime-local" class="form-control" [(ngModel)]="dateTime">
+                  </div>
+                </div>
+
+                <div *ngIf="isCustomDatePicker" class="col-lg-3 col-md-3">Publish Date
+                  <div class="input-group form-control">
+                    <input [min]="todayDate" [owlDateTime]="dt2" placeholder="Publish Date" style="border-width:0px;border:none;" readonly="readonly" [(ngModel)]="dateTime">
+                    <span [owlDateTimeTrigger]="dt2" style="position: absolute;right: 20px;"><i class="fa fa-calendar fa-2x"></i></span>
+                    <owl-date-time #dt2></owl-date-time>
+                  </div>                
+                </div>
+
+                <div class="col-lg-12 col-md-12">News body content
+                  <div class="input-group">
+                      <textarea rows="6" class="form-control no-resize" [(ngModel)]="description"
+                      style="border: 1px solid #E3E3E3;border-radius: 10px;"
+                      maxlength="1000"></textarea>
+                  </div>
+                </div>
+                <div class="col-lg-12 col-md-12">
+                  <div class="input-group">
+                    <span class="linkColor">{{1000 - description?.length}} character left</span>
+                  </div>
+                </div>
+                
+                <div class="col-lg-1 col-md-1"><b>&nbsp;</b>
+                  <div class="input-group">
+                    <input type="button" class="btn btn-secondary headerSemiBold float-right"
+                      value="{{ isEdit ? 'UPDATE' : 'SUBMIT'}}" style="margin:0px;"
+                      (click)="submitButtonClick();">
+                  </div>
+                </div>
+                <div class="col-lg-1 col-md-1"><b>&nbsp;</b>
+                  <div class="input-group">
+                    <input type="button" class="btn btn-warning headerSemiBold float-right" *ngIf="isEdit"
+                      value="CANCEL" style="margin:0px;" (click)="cancelEditClick();">
+                  </div>
+                </div>
+  
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+  
+      <div class="col-sm-12 col-md-12 col-lg-12">
+        <div class="card">
+          <div class="header headerSemiBold">
+            <h2><span class="linkColor">Available</span> News</h2>
+            <ul class="header-dropdown">
+              <li [ngClass]="filter ? 'dropdown show' : 'dropdown'">
+                <a href="javascript:void(0);" class="dropdown-toggle linkColor" data-toggle="dropdown" role="button" (click)="dropDownFilter();" aria-haspopup="true" aria-expanded="false">
+                  Manage Columns
+                </a>
+                <ul class="dropdown-menu dropdown-menu-right labelTitle">
+                  <li style="padding:10px;">
+                    <input type="checkbox" [(ngModel)]="columImage"> Image <br>
+                    <input type="checkbox" [(ngModel)]="columTitle"> News Title <br>
+                    <input type="checkbox" [(ngModel)]="columNewsDate">Publish Date <br>
+                    <input type="checkbox" [(ngModel)]="columDescription"> News body content 
+                  </li>
+                </ul>
+              </li>
+            </ul>
+          </div>
+          <div class="body">
+            <div class="table-responsive">
+              <table class="table table-bordered table-striped table-hover dataTable js-exportable w-100">
+                <thead class="headerSemiBold">
+                  <tr>
+                    <th>#</th>
+                    <th>No</th>
+                    <th [ngClass]="(columImage == false)?'d-none':''">Image</th>
+                    <th [ngClass]="(columTitle == false)?'d-none':''">News Title</th>
+                    <th [ngClass]="(columNewsDate == false)?'d-none':''">Publish Date</th>
+                    <th [ngClass]="(columDescription == false)?'d-none':''">News body content </th>
+                  </tr>
+                </thead>
+                <tbody class="labelTitle">
+                  <tr *ngFor="let news of newsList;let i=index;">
+                    <td>
+                      <span class="badge badge-success" title="Update news" (click)="editButtonClick(i)">
+                        <i class="icon-pencil"></i>
+                      </span>
+                      <span class="badge badge-danger" title="Delete news" (click)="deleteButtonClick(i)">
+                        <i class="icon-trash"></i>
+                      </span>
+                    </td>
+                    <td>{{i}}</td>
+                    <td [ngClass]="(columImage == false)?'d-none':''">
+                      <img src="{{news.image}}" id="MediaPreview" style="height:30px"/>
+                    </td>
+                    <td [ngClass]="(columTitle == false)?'d-none':''">{{news.title}}</td>
+                    <td [ngClass]="(columNewsDate == false)?'d-none':''">{{news.date | date:'dd-MM-yyyy h:mm a'}}</td>
+                    <td [ngClass]="(columDescription == false)?'d-none':''">{{news.description}}</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>  
+  
+    </div>
+  </div>

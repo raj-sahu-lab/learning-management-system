@@ -1,0 +1,219 @@
+<div class="container">
+
+    <div class="row clearfix">
+      <div class="col-lg-12">
+        <div class="card">
+          <div class="body block-header">
+            <div class="row">
+              <div class="col-lg-6 col-md-8 col-sm-12">
+                <h2 class="headerSemiBold">Groups For Live Classes</h2>
+                <ul class="breadcrumb p-l-0 p-b-0 ">
+                  <li class="breadcrumb-item">
+                    <a class="linkColor" routerLink="/" routerLinkActive="active"><i class="icon-home"></i></a>
+                  </li>
+                  <li class="breadcrumb-item active labelTitle">Groups</li>
+                </ul>
+              </div>
+              <div class="col-lg-6 col-md-4 col-sm-12">
+                <a routerLink="/liveClass" class="btn btn-secondary headerSemiBold float-right active">
+                  <i class="icon-arrow-left"></i>
+                  BACK</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  
+  
+    <div class="row clearfix">
+  
+      <div class="col-sm-12 col-md-12 col-lg-12">
+        <div class="card">
+  
+          <div class="header headerSemiBold">
+            <h2><span class="linkColor">Create</span> Live Classe Groups</h2>
+          </div>
+  
+          <div class="body">
+            <div class="demo-masked-input labelTitle">
+              <div class="row clearfix">
+  
+                
+                <div class="col-lg-4 col-md-4">Title
+                  <div class="input-group">
+                    <input type="text" class="form-control" [(ngModel)]="title" placeholder="Enter group title">
+                  </div>
+                </div>
+  
+                <div class="col-lg-12 col-md-12" *ngIf="learnerList.length>0">
+                  <table class="table table-bordered table-striped table-hover dataTable js-exportable w-100">
+                    <thead class="headerSemiBold">
+                      <tr>
+                        <th>
+                          <div class="checkbox">
+                            <input id="selectAll" type="checkbox" (change)="selectAll($event)">
+                            <label for="selectAll">Name</label>
+                          </div>
+                        </th>
+                        <th>Mobile</th>
+                      </tr>
+                    </thead>
+                    <tbody class="labelTitle">
+                      <tr *ngFor="let learner of learnerList;let i=index;">
+                        <td>
+                          <div class="checkbox">
+                            <input id="learner{{learner.id}}" type="checkbox" [(ngModel)]="learner.selected"
+                              (click)="studentCheck(learner.id,$event)">
+                            <label for="learner{{learner.id}}"> {{learner.firstName}} {{learner.lastName}}</label>
+                          </div>
+                        </td>
+                        <td>{{ learner.countrycode }}{{ learner.phone }}</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+  
+                <div class="col-lg-1 col-md-1"><b>&nbsp;</b>
+                  <div class="input-group">
+                    <input type="button" class="btn btn-secondary headerSemiBold float-right" value="SUBMIT"
+                      style="margin:0px;" (click)="submitButtonClick();">
+                  </div>
+                </div>
+  
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+  
+      <div class="col-sm-12 col-md-12 col-lg-12">
+        <div class="card">
+  
+          <div class="header headerSemiBold">
+            <h2><span class="linkColor">Available</span> Groups</h2>
+          </div>
+  
+          <div class="body">
+            <div class="table-responsive">
+              <table class="table table-bordered table-striped table-hover dataTable js-exportable">
+                <thead class="headerSemiBold">
+                  <tr>
+                    <th>S No</th>
+                    <th>Group Title</th>
+                    <th>Group Student</th>
+                    <th>Add Student</th>
+                  </tr>
+                </thead>
+                <tbody class="labelTitle">
+  
+                  <tr *ngFor="let group of groupList; let i=index">                    
+                    <td>{{groupList.length - i}}</td>
+                    <td>{{group.group_name}}</td>
+                    <td>
+                      <span class="badge badge-info" title="Student List" (click)="showPreview(i)">
+                        <i class="icon-users"></i>
+                      </span>
+                    </td>
+                    <td>
+                      <span class="badge badge-warning" title="Add Student" (click)="showDescription(i)">
+                        <i class="icon-user-follow"></i>
+                      </span>
+                    </td>
+                  </tr>
+  
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  
+  </div>
+  
+  <!--Modal Popup -->
+  <div class="modal" [style.display]="selectedPreview ? 'block' : 'none'">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+  
+        <div class="modal-header">
+          <h6 class="headerBold">Group's Student</h6>
+        </div>
+  
+        <div class="modal-body labelTitle">
+          <table class="table table-bordered table-striped table-hover">
+            <thead class="headerSemiBold">
+              <tr>
+                <th>S No</th>
+                <th>Name</th>
+                <th>Phone</th>
+              </tr>
+            </thead>
+            <tbody class="labelTitle">
+              <tr *ngFor="let student of selectedPreview; let i=index">
+                <td>
+                  <div class="checkbox">
+                    <input id="groupStudent{{student.id}}" type="checkbox" [(ngModel)]="student.selected"
+                      (click)="deleteStudentCheck(student.student.id,$event)">
+                      <label for="groupStudent{{student.id}}">{{selectedPreview.length - i}}</label>
+                  </div>
+                </td>
+                <td>{{student.student.first_name}} {{student.student.last_name}}</td>
+                <td>{{student.student.phone}}</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+  
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary headerSemiBold" (click)="deleteButtonClick()">
+            Delete
+          </button>
+          <button type="button" class="btn btn-secondary headerSemiBold" data-dismiss="modal"
+            (click)="hidePreview()">Close</button>
+        </div>
+  
+      </div>
+    </div>
+  </div>
+
+  <div class="modal" [style.display]="selectedDescription ? 'block' : 'none'">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+  
+        <div class="modal-header">
+          <h6 class="headerBold">Add student in group</h6>
+        </div>
+  
+        <div class="modal-body labelTitle">
+          <table class="table table-bordered table-striped table-hover">
+            <thead class="headerSemiBold">
+              <tr>
+                <th>Name</th>
+                <th>Phone</th>
+              </tr>
+            </thead>
+            <tbody class="labelTitle">
+              <tr *ngFor="let learner of selectedDescription; let i=index">
+                <td>
+                  <div class="checkbox">
+                    <input id="editLearner{{learner.id}}" type="checkbox" [(ngModel)]="learner.selected"
+                      (click)="editStudentCheck(learner.id,$event)">
+                    <label for="editLearner{{learner.id}}"> {{learner.firstName}} {{learner.lastName}}</label>
+                  </div>
+                </td>
+                <td>{{ learner.countrycode }}{{ learner.phone }}</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+  
+        <div class="modal-footer">
+          <input type="button" class="btn btn-secondary headerSemiBold float-right" value="SUBMIT" style="margin:0px;" (click)="editButtonClick();">
+          <button type="button" class="btn btn-secondary headerSemiBold" data-dismiss="modal" (click)="hideDescription()">Close</button>
+        </div>
+  
+      </div>
+    </div>
+  </div>

@@ -1,0 +1,334 @@
+<div [@routerTransition]>
+    <div class="container">
+        <div class="row clearfix">
+            <div class="col-lg-12">
+                <div class="card">
+                    <div class="body block-header">
+                        <div class="row">
+                            <div class="col-lg-6 col-md-8 col-sm-12">
+                                <h2 class="headerSemiBold">Welcome to Dashboard</h2>
+                                <ul class="breadcrumb p-l-0 p-b-0 ">
+                                    <li class="breadcrumb-item labelTitle">
+                                        <a class="linkColor" routerLink="/" routerLinkActive="active"><i
+                                                class="icon-home"></i></a>
+                                    </li>
+                                    <li class="breadcrumb-item active labelTitle">Dashboard</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row clearfix">
+
+            <div class="col-lg-6 col-md-6 col-sm-12">
+                <div class="card">
+                    <div class="header headerSemiBold">
+                        <h2><span class="linkColor">Institute </span>Income</h2>
+                        <ul class="header-dropdown" style="top: 2px !important;">
+                            <li class="dropdown">
+                                <select class="btn btn-secondary btn-simple" [(ngModel)]="instituteIncomeYear" (change)="instituteIncome()" style="color: #fff;height: 38px;">
+                                    <option value="2020">2020</option>
+                                    <option value="2021">2021</option>
+                                </select>
+                            </li>
+                            <li class="remove">
+                                <select class="btn btn-secondary btn-simple" [(ngModel)]="instituteIncomeCurrency" (change)="instituteIncome()" style="color: #fff;height: 38px;">
+                                    <option *ngFor="let currency of currencyList" value="{{currency.id}}">
+                                      {{currency.title}} ( {{currency.sign}} )
+                                    </option>
+                                </select>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="body">
+                        <div class="col-lg-12 col-md-12">
+                            <div class="chartjs-container" *ngIf="instituteIncomeChartDisplay">
+                                <canvas baseChart 
+                                    [datasets]="instituteIncomeChartData" 
+                                    [labels]="instituteIncomeChartLabels" 
+                                    [options]="instituteIncomeChartOptions"
+                                    [colors]="instituteIncomeChartColors"
+                                    [chartType]="instituteIncomeChartType">
+                                </canvas>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-6 col-md-6 col-sm-12">
+                <div class="row clearfix">
+        
+                    <div class="col-lg-12 col-md-12 col-sm-12">
+                        <div class="card">
+                            <div class="body">
+                                <div class="row">
+                                    <div class="col-7">
+                                        <h5 class="m-t-0">Institute</h5>
+                                        <small class="text-small">Total registered institute</small>
+                                    </div>
+                                    <div class="col-5 text-right">
+                                        <h2 class="m-b-0">{{instituteCount}}</h2>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+        
+                    <div class="col-lg-12 col-md-12 col-sm-12">
+                        <div class="card">
+                            <div class="body">
+                                <div class="row">
+                                    <div class="col-7">
+                                        <h5 class="m-t-0">Institute</h5>
+                                        <small class="text-small">Total registered institute</small>
+                                    </div>
+                                    <div class="col-5 text-right">
+                                        <h2 class="m-b-0">{{instituteCount}}</h2>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+
+        <div class="row clearfix">
+
+            <div class="col-lg-6 col-md-6 col-sm-6">
+                <div class="card">
+                    <div class="header headerSemiBold">
+                        <h2><span class="linkColor">Students </span>Income</h2>
+                        <ul class="header-dropdown" style="top: 2px !important;">
+                            <li class="dropdown">
+                                <select class="btn btn-secondary btn-simple" [(ngModel)]="studentIncomeYear" (change)="studentIncome()" style="color: #fff;height: 38px;">
+                                    <option value="2020">2020</option>
+                                    <option value="2021">2021</option>
+                                </select>
+                            </li>
+                            <li class="remove">
+                                <select class="btn btn-secondary btn-simple" [(ngModel)]="studentIncomeCurrency" (change)="studentIncome()" style="color: #fff;height: 38px;">
+                                    <option *ngFor="let currency of currencyList" value="{{currency.id}}">
+                                      {{currency.title}} ( {{currency.sign}} )
+                                    </option>
+                                </select>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="body">
+                        
+                        <div class="col-lg-12 col-md-12">
+                            <div class="chartjs-container" *ngIf="studentIncomeChartDisplay">
+                                <canvas baseChart 
+                                    [datasets]="studentIncomeChartData" 
+                                    [labels]="studentIncomeChartLabels" 
+                                    [options]="studentIncomeChartOptions"
+                                    [colors]="studentIncomeChartColors"
+                                    [chartType]="studentIncomeChartType">
+                                </canvas>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-6 col-md-6 col-sm-6">
+                <div class="card">
+                    <div class="header headerSemiBold">
+                        <h2><span class="linkColor">Students </span>Registered</h2>
+                        <ul class="header-dropdown" style="top: 2px !important;">
+                            <li class="dropdown">
+                                <select class="btn btn-secondary btn-simple" [(ngModel)]="studentRegisterYear" (change)="studentRegistered()" style="color: #fff;height: 38px;">
+                                    <option value="2020">2020</option>
+                                    <option value="2021">2021</option>
+                                </select>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="body">
+                        
+                        <div class="col-lg-12 col-md-12">
+                            <div class="chartjs-container" *ngIf="studentRegisterChartDisplay">
+                                <canvas baseChart 
+                                    [datasets]="studentRegisterChartData" 
+                                    [labels]="studentRegisterChartLabels" 
+                                    [options]="studentRegisterChartOptions"
+                                    [colors]="studentRegisterChartColors"
+                                    [chartType]="studentRegisterChartType">
+                                </canvas>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        
+        <div class="row clearfix">
+            
+            <div class="col-xl-6 col-lg-6 col-md-12">
+                <div class="card user-account">
+                    <div class="header headerSemiBold">
+                        <h2><span class="linkColor">SMS</span> Credit</h2>
+                    </div>
+                    <div class="body">
+                        <div class="table-responsive">
+                            <table class="table m-b-0">
+                                <thead class="headerSemiBold">
+                                    <tr>
+                                        <th>S No</th>
+                                        <th>Institute</th>
+                                        <th>Total SMS</th>
+                                        <th>Consume SMS</th>                                        
+                                        <th>Available SMS</th>
+                                    </tr>
+                                </thead>
+                                <tbody class="labelTitle">
+                                    <tr *ngFor="let sms of smsCount;let i=index;">
+                                        <td>{{smsCount.length - i}}</td>
+                                        <td>{{sms.account_title}}</td>
+                                        <td>{{sms.total_sms}}</td>
+                                        <td>{{sms.consume_sms}}</td>
+                                        <td>{{sms.total_sms - sms.consume_sms}}</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-xl-6 col-lg-6 col-md-12">
+                <div class="card user-account">
+                    <div class="header headerSemiBold">
+                        <h2><span class="linkColor">Email</span> Credit</h2>
+                    </div>
+                    <div class="body">
+                        <div class="table-responsive">
+                            <table class="table m-b-0">
+                                <thead class="headerSemiBold">
+                                    <tr>
+                                        <th>S No</th>
+                                        <th>Institute</th>
+                                        <th>Total Email</th>
+                                        <th>Consume Email</th>
+                                        <th>Available Email</th>
+                                    </tr>
+                                </thead>
+                                <tbody class="labelTitle">
+                                    <tr *ngFor="let email of emailCount;let i=index;">
+                                        <td>{{emailCount.length - i}}</td>
+                                        <td>{{email.account_title}}</td>
+                                        <td>{{email.total_email}}</td>
+                                        <td>{{email.consume_email}}</td>
+                                        <td>{{email.total_email - email.consume_email}}</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        
+        <div class="row clearfix">
+
+            <div class="col-lg-6 col-md-6 col-sm-6">
+                <div class="card">
+                    <div class="header headerSemiBold">
+                        <h2><span class="linkColor">Expired </span>Institute</h2>
+                    </div>
+                    <div class="body">
+
+                        <div class="table-responsive" style="height: 500px;">
+                            <table class="table m-b-0">
+                                <thead class="headerSemiBold">
+                                    <tr>
+                                        <th>S No</th>
+                                        <th>Institute</th>
+                                        <th>Details</th>
+                                        <th>Date</th>
+                                    </tr>
+                                </thead>
+                                <tbody class="labelTitle">
+                                    <tr *ngFor="let expiredInstitute of expiredInstitutes;let i=index;">
+                                        <td>{{expiredInstitutes.length - i}}</td>
+                                        <td>{{expiredInstitute.account.account_title}}</td>
+                                        <td>{{expiredInstitute.term.term_title}}
+                                            
+                                            <span *ngIf="expiredInstitute.plan_amount!=0">
+                                                -
+                                                {{expiredInstitute.plan.plan_title}}
+                                            </span>
+                                            
+                                            <span *ngIf="expiredInstitute.plan_amount!=0">
+                                                -
+                                                {{expiredInstitute.currency.sign}} {{expiredInstitute.plan_amount}}
+                                            </span>
+                                        </td>
+                                        <td>{{expiredInstitute.plan_sdate}} - {{expiredInstitute.plan_edate}}</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-lg-162 col-md-6 col-sm-6">
+                <div class="card">
+                    <div class="header headerSemiBold">
+                        <h2><span class="linkColor">Expire </span>Institute in this week</h2>
+                    </div>
+                    <div class="body">
+
+                        <div class="table-responsive" style="height: 500px;">
+                            <table class="table m-b-0">
+                                <thead class="headerSemiBold">
+                                    <tr>
+                                        <th>S No</th>
+                                        <th>Institute</th>
+                                        <th>Details</th>
+                                        <th>Date</th>
+                                    </tr>
+                                </thead>
+                                <tbody class="labelTitle">
+                                    <tr *ngFor="let expiredInstitute of expiredInstituteInWeek;let i=index;">
+                                        <td>{{expiredInstituteInWeek.length - i}}</td>
+                                        <td>{{expiredInstitute.account.account_title}}</td>
+                                        <td>{{expiredInstitute.term.term_title}}
+                                            
+                                            <span *ngIf="expiredInstitute.plan_amount!=0">
+                                                -
+                                                {{expiredInstitute.plan.plan_title}}
+                                            </span>
+                                            
+                                            <span *ngIf="expiredInstitute.plan_amount!=0">
+                                                -
+                                                {{expiredInstitute.currency.sign}} {{expiredInstitute.plan_amount}}
+                                            </span>
+                                        </td>
+                                        <td>{{expiredInstitute.plan_sdate}} - {{expiredInstitute.plan_edate}}</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+
+    </div>
+</div>

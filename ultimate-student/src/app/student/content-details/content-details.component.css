@@ -1,0 +1,146 @@
+.card .card-body {
+    padding: 1.75rem;
+}
+
+.btn-sm {
+    padding: .1rem 1rem;
+}
+
+.form-container{
+    padding: 1rem !important;
+    height: auto;
+    box-shadow: 0px 5px 5px 0px rgba(0,0,0,.04);
+}
+
+.dashboard-search {
+    height: auto;
+    background-repeat: no-repeat !important;
+    background-size: contain !important;
+}
+
+.progress-bar-circle{
+    width: 25px !important;
+    height: 0px !important;
+  }
+
+/* 
+.progress-banner {
+    height: auto;
+}
+
+.progress-banner i {
+    font-size: medium;
+    margin-bottom: 0px;
+}
+
+.list-thumbnail-letters {
+    border: 1px solid #145388;
+    color: #145388;
+    background: transparent;
+} */
+
+
+/* Important part */
+/* .modal-dialog{
+    overflow-y: initial !important
+} */
+.modal-body{
+    max-height: 650px;
+    overflow-y: auto;
+}
+
+input[type="number"]::placeholder {  
+    text-align: right; 
+}
+
+input[type="number"] {
+    text-align:right;
+}
+
+
+.vid-img{
+    height: 200px;
+    object-fit: cover;
+}
+
+.video-thumbnail:before {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    -webkit-transform: translate(-50%, -50%);
+    content: url("src/assets/img/icons/play.svg");
+    font-family: FontAwesome;
+    font-size: 100px;
+    color: #fff;
+    opacity: 0.8;
+    text-shadow: 0px 0px 30px rgba(0, 0, 0, 0.5);
+  }
+  .video-thumbnail:hover:before {
+    color: #eee;
+  }
+
+  .contain {
+      object-fit: contain;
+  }
+
+  .overflow-h{
+      overflow: hidden;
+  }
+
+  .pad-card-15{
+    padding: 15px !important;
+}
+.iconsminds-up {
+    transform: rotate(-90deg);
+}
+.iconsminds-up:before {
+    transform: rotate(-90deg);
+    font-size: 20px;
+}
+.xsmall{
+    width: 40px;
+}
+
+.vid-dimensions {
+    width: 100% !important;
+    height: 450px !important;
+}
+@media (min-width:992px){
+    .cent{
+        text-align: center;
+    }
+    .rght{
+        float: right !important;
+    }
+}
+@media (max-width:991px){
+    .cent{
+        padding: 15px 0px;
+    }
+    .vid-dimensions {
+        width: 100% !important;
+        height: 250px !important;
+    }
+}
+  
+
+  @media (max-width:320px){
+      .pad-card-15{
+          padding: 15px !important;
+      }
+      .vid-dimensions {
+        width: 100% !important;
+        height: 150px !important;
+    }
+  }
+
+  @media (max-width:600px){
+      .pd{
+        padding : 0.75rem;
+      }
+      .vid-dimensions {
+        width: 100% !important;
+        height: 200px !important;
+    }
+  }

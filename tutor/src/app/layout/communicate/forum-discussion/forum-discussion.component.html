@@ -1,0 +1,84 @@
+<div class="container">
+    <div class="row clearfix">
+      <div class="col-lg-12">
+        <div class="card">
+          <div class="body block-header">
+            <div class="row">
+              <div class="col-lg-6 col-md-8 col-sm-12">
+                <h2 class="headerSemiBold">Formu Discussion</h2>
+                <ul class="breadcrumb p-l-0 p-b-0 labelTitle">
+                  <li class="breadcrumb-item">
+                    <a class="linkColor" routerLink="/" routerLinkActive="active"><i class="icon-home"></i></a>
+                  </li>
+                  <li class="breadcrumb-item active labelTitle">Discussion History</li>
+                </ul>
+              </div>
+              <div class="col-lg-6 col-md-4 col-sm-12">
+                <a routerLink="/forum/articles" routerLinkActive="active" class="btn btn-secondary headerSemiBold float-right">
+                  <i class="icon-arrow-left"></i> BACK
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  
+    <div class="row clearfix">
+
+      <div class="col-lg-12 col-xl-12">
+        <div class="card chat-app">
+          <div class="chat ml-0">
+            <div class="chat-header clearfix">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="chat-about">
+                            <h6 class="m-b-0">{{articleDiscussion?.article?.title}}</h6>
+                            <small>{{articleDiscussion?.article?.description}}</small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="chat-history">
+              
+              <ul class="m-b-0">
+                
+                <li class="clearfix" *ngFor="let article of articleDiscussion?.data; let i=index">
+                    <span>
+                        <div class="message-data">
+                            <img src="{{article?.student.image}}" alt="avatar">
+                            &nbsp;&nbsp;
+                            <span class="message-data-time">{{article?.student?.first_name}} {{article?.student?.last_name}} {{article?.createdAt | date:'short'}}</span> 
+                        </div>
+                        <div class="message my-message">
+                            {{article?.message}}
+                        </div>
+                    </span>
+                    
+                    <ul class="m-b-0">
+                        <li *ngFor="let replyMsg of article?.reply; let i=index" style="padding-bottom: 50px;">
+                            <span *ngIf="replyMsg!=null">
+                                <div class="message-data text-right">
+                                    <span class="message-data-time">{{replyMsg?.createdAt | date:'short'}} {{replyMsg?.student?.first_name}} {{replyMsg.student.last_name}}</span>
+                                    &nbsp;&nbsp;
+                                    <img src="{{replyMsg.student.image}}" alt="avatar">
+                                </div>
+                                <div class="message other-message float-right">
+                                    {{replyMsg?.message}}
+                                    &nbsp;                            
+                                    <i class="zmdi zmdi-delete" (click)="deleteButtonClick(replyMsg.id)"></i>                            
+                                </div>
+                            </span>
+                        </li>
+                    </ul>
+  
+                </li>
+
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  
+  </div>

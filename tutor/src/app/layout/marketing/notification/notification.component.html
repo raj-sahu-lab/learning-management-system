@@ -1,0 +1,202 @@
+<div class="container">
+  <div class="row clearfix">
+    <div class="col-lg-12">
+      <div class="card">
+        <div class="body block-header">
+          <div class="row">
+            <div class="col-lg-6 col-md-8 col-sm-12">
+              <h2 class="headerSemiBold">Manage Notification</h2>
+
+              <ul class="breadcrumb p-l-0 p-b-0 labelTitle">
+                <li class="breadcrumb-item">
+                  <a class="linkColor" routerLink="/" routerLinkActive="active"><i class="icon-home"></i></a>
+                </li>
+                <li class="breadcrumb-item active labelTitle">Notification</li>
+              </ul>
+            </div>
+            <div class="col-lg-6 col-md-4 col-sm-12">
+              <a routerLink="/" routerLinkActive="active" class="btn btn-secondary headerSemiBold float-right">
+                <i class="icon-arrow-left"></i> BACK
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <div class="row clearfix">
+
+    <div class="col-sm-12 col-md-12 col-lg-12">
+      <div class="card">
+        <div class="header headerSemiBold">
+          <h2><span class="linkColor">Send</span> Notification</h2>
+        </div>
+        <div class="body">
+          <div class="demo-masked-input labelTitle">
+            <div class="row clearfix">
+
+              <div class="col-lg-4 col-md-4"> Select Type
+                <div class="input-group">
+                  <select class="form-control" [(ngModel)]="notificationType" (change)="typeChanged()">
+                    <option [ngValue]="undefined" disabled>Select Type</option>
+                    <option [ngValue]="1">General</option>
+                    <option [ngValue]="2">Individual</option>
+                  </select>
+                </div>
+              </div>
+
+              <div class="col-sm-1" *ngIf="selectedNotificationImage"><b>&nbsp;</b>
+                <div class="input-group">
+                  <img [src]="selectedNotificationImage" alt="assets/images/my-image/choose-file.png"
+                    data-holder-rendered="true" id="ImagePreview" style="height:50px" autofocus="true"/>
+                </div>
+              </div>
+
+              <div class="col-lg-{{selectedNotificationImage ? 3 : 4}} col-md-{{selectedNotificationImage ? 3 : 4}}">Choose Image (Optional)
+                <div class="input-group">
+                  <input type="file" class="form-control" [(ngModel)]="image" accept="image/jpeg, image/png"
+                    (change)="notificationFileChanged($event)">
+                </div>
+              </div>
+
+              <div class="col-lg-4 col-md-4">Title
+                <div class="input-group">
+                  <input type="text" class="form-control" [(ngModel)]="title" placeholder="Enter title">
+                </div>
+              </div>
+
+              <div class="col-lg-12 col-md-12">Notification content
+                <div class="input-group">
+                  <textarea rows="6" class="form-control no-resize" [(ngModel)]="content"
+                    style="border: 1px solid #E3E3E3;border-radius: 10px;" maxlength="200"></textarea>
+                </div>
+              </div>
+
+              <div class="col-lg-12 col-md-12">
+                <div class="input-group">
+                  <span class="linkColor">{{200 - content?.length}} character left</span>
+                </div>
+              </div>
+              <div class="col-lg-12 col-md-12 alert alert-warning" *ngIf="notificationType==2">
+                <div class="container" style="font-size: 14px;color:black;">
+                  Notification will go to all the students enrolled in this course.
+                </div>
+              </div>
+              <div class="col-lg-4 col-md-4" *ngIf="notificationType==2"> Select Branch
+								<div class="input-group">
+									<select class="form-control" [(ngModel)]="branchId" (change)="typeList()">
+										<option [ngValue]="undefined" disabled>Select Branch</option>
+										<option *ngFor="let branch of branchList;" [ngValue]="branch.id">
+                        {{branch.name}}
+										</option>
+									</select>
+								</div>
+              </div>
+
+              <div class="col-lg-4 col-md-4" *ngIf="notificationType==2"> Select Type
+                <div class="input-group">
+                  <select class="form-control" [(ngModel)]="type" (change)="typeChanged()">
+                    <option [ngValue]="undefined" disabled>Select Type</option>
+                    <option *ngFor="let types of typesList" [ngValue]="types.type">
+                      {{types.title}}
+                    </option>
+                  </select>
+                </div>
+              </div>
+
+              <div class="col-lg-4 col-md-4" *ngIf="notificationType==2"> Select Course
+                <div class="input-group">
+                  <select class="form-control" [(ngModel)]="course" (change)="learnerListGet()">
+                    <option [ngValue]="undefined" disabled>Select Course</option>
+                    <option *ngFor="let course of courseList" [ngValue]="course.id">
+                      {{course.title}}
+                    </option>
+                  </select>
+                </div>
+              </div>
+
+              <div class="col-lg-12 col-md-12" *ngIf="learnerList.length>0 && notificationType==2">                
+                <table class="table table-bordered table-striped table-hover dataTable js-exportable w-100">
+                    <thead class="headerSemiBold">
+                        <tr>
+                            <th>
+                                <div class="checkbox">
+                                    <input id="selectAll" type="checkbox" (change)="selectAll($event)">
+                                    <label for="selectAll">Name</label>
+                                </div>
+                            </th>
+                            <th>Mobile</th>
+                        </tr>
+                    </thead>
+                    <tbody class="labelTitle">
+                        <tr *ngFor="let learner of learnerList;let i=index;">
+                            <td>
+                              <div class="checkbox">
+                                <input id="learner{{learner.id}}" type="checkbox" [(ngModel)]="learner.selected" (click)="studentCheck(learner.id,$event)">
+                                <label for="learner{{learner.id}}"> {{learner.firstName}} {{learner.lastName}}</label>
+                              </div>
+                            </td>
+                            <td>{{ learner.countrycode }}{{ learner.phone }}</td>
+                        </tr>
+                    </tbody>
+                </table>
+              </div>
+
+              <div class="col-lg-1 col-md-1"><b>&nbsp;</b>
+                <div class="input-group">
+                  <input type="button" class="btn btn-secondary headerSemiBold float-right" value="SUBMIT"
+                    style="margin:0px;" (click)="submitButtonClick();">
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- <div class="col-sm-12 col-md-12 col-lg-12">
+      <div class="card">
+        <div class="header headerSemiBold">
+          <h2><span class="linkColor">Sent</span> Notification</h2>
+          
+          <ul class="header-dropdown">
+            <li [ngClass]="filter ? 'dropdown show' : 'dropdown'">
+              <a href="javascript:void(0);" class="dropdown-toggle linkColor" data-toggle="dropdown" role="button" (click)="dropDownFilter();" aria-haspopup="true" aria-expanded="false">
+								Filter
+							</a>
+              <ul class="dropdown-menu dropdown-menu-right labelTitle">
+                <li style="padding:10px;">
+                  <input type="checkbox" [(ngModel)]="columTitle" value="0"> Title <br>
+                  <input type="checkbox" [(ngModel)]="columDescription" value="1"> Notification content
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+        <div class="body">
+          <div class="table-responsive">
+            <table class="table table-bordered table-striped table-hover">
+              <thead class="headerSemiBold">
+                <tr>
+                  <th>#</th>
+                  <th *ngIf="columTitle">Title</th>
+                  <th *ngIf="columDescription">Notification content</th>
+                </tr>
+              </thead>
+              <tbody class="labelTitle">
+                <tr>
+                  <td>1</td>
+                  <td *ngIf="columTitle">First Notification</td>
+                  <td *ngIf="columDescription">Hello learners</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div> -->
+
+  </div>
+</div>

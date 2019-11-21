@@ -1,0 +1,106 @@
+<div class="container">
+
+  <div class="row clearfix">
+    <div class="col-lg-12">
+      <div class="card">
+        <div class="body block-header">
+          <div class="row">
+            <div class="col-lg-6 col-md-8 col-sm-12">
+              <h2 class="headerSemiBold">Manage Admission</h2>
+
+              <ul class="breadcrumb p-l-0 p-b-0 ">
+                <li class="breadcrumb-item">
+                  <a class="linkColor" routerLink="/" routerLinkActive="active"><i class="icon-home"></i></a>
+                </li>
+                <li class="breadcrumb-item active labelTitle">Admission</li>
+              </ul>
+            </div>
+            <div class="col-lg-6 col-md-4 col-sm-12">
+              <a routerLink="./../fees" class="btn btn-secondary headerSemiBold btn-simple float-right active"><i
+                  class="icon-arrow-left"></i> BACK</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row clearfix">
+
+    <div class="col-sm-12 col-md-12 col-lg-12">
+      <div class="card">
+        
+        <div class="header headerSemiBold">
+          <div class="row clearfix">
+
+            <div class="col-sm-6 col-md-6 col-lg-6">
+
+              <h2><span class="linkColor">Admission</span> Details</h2>
+
+            </div>
+
+            <div class="col-sm-6 col-md-6 col-lg-6">
+
+              <ul class="header-dropdown" style="top: 0px;">
+
+                <li [ngClass]="filter ? 'dropdown show' : 'dropdown'">
+
+                  <a href="javascript:void(0);" class="dropdown-toggle mr-4 linkColor" data-toggle="dropdown"
+                    role="button" (click)="dropDownFilter();" aria-haspopup="true" aria-expanded="false">
+                    Manage columns
+                  </a>
+
+                  <ul class="dropdown-menu dropdown-menu-right labelTitle mangeColumn">
+
+                    <li style="padding:10px;">
+                      <input type="checkbox" data-target="1" [(ngModel)]="columBranch"><span class="pl-2">Branch Name</span> <br>
+                      <input type="checkbox" data-target="2" [(ngModel)]="columFirstName"><span class="pl-2">First Name</span> <br>
+                      <input type="checkbox" data-target="3" [(ngModel)]="columLastName"><span class="pl-2">Last Name</span> <br>
+                      <input type="checkbox" data-target="4" [(ngModel)]="columPhone"><span class="pl-2">Number</span> <br>
+                      <input type="checkbox" data-target="5" [(ngModel)]="columEmail"><span class="pl-2">Email</span>
+                    </li>
+
+                  </ul>
+
+                </li>
+
+              </ul>
+
+            </div>
+
+          </div>
+        </div>
+        
+        <div class="body">
+          <div class="table-responsive">
+            
+            <table class="table table-bordered table-striped table-hover dataTable js-exportable w-100">
+              <thead class="headerSemiBold">
+                <tr>
+                  <th>S No</th>
+                  <th [ngClass]="(columBranch == false)?'d-none':''">Branch Name</th>
+                  <th [ngClass]="(columFirstName == false)?'d-none':''">First Name</th>
+                  <th [ngClass]="(columLastName == false)?'d-none':''">Last Name</th>
+                  <th [ngClass]="(columPhone == false)?'d-none':''">Number</th>
+                  <th [ngClass]="(columEmail == false)?'d-none':''">Email</th>
+                </tr>
+              </thead>
+              <tbody class="labelTitle">
+                <tr *ngFor="let learner of learnerList;let i=index;">                  
+                  <td>{{learnerList.length - i}}</td>
+                  <td [ngClass]="(columBranch == false)?'d-none':''">{{learner?.instituteList?.branch?.name}}</td>
+                  <td [ngClass]="(columFirstName == false)?'d-none':''">{{learner?.firstName}}</td>
+                  <td [ngClass]="(columLastName == false)?'d-none':''">{{learner?.lastName}}</td>
+                  <td [ngClass]="(columPhone == false)?'d-none':''">{{learner?.countrycode}} {{learner?.phone}}</td>
+                  <td [ngClass]="(columEmail == false)?'d-none':''">{{learner?.email}}</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+</div>

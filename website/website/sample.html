@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.0/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+
+</head>
+<body>
+
+    <script type="text/javascript">
+
+
+                    var xhr = new XMLHttpRequest();
+                    // xhr.open('GET', 'https://ta-s3.s3.ap-south-1.amazonaws.com/bot.png', true);
+                    // xhr.open('GET', 'https://ta-s3.s3.ap-south-1.amazonaws.com/EdTech Platform.pdf', true);
+                    xhr.open('GET', 'https://your-cloudfront-id.cloudfront.net/3/pdf/TOA_PPT_1568028632210.ppt?Expires=1568078674&Policy=eyJTdGF0ZW1lbnQiOlt7IlJlc291cmNlIjoiaHR0cHM6Ly9kMmFmbTgxZzJyNmF2LmNsb3VkZnJvbnQubmV0LzMvcGRmL1RPQV9QUFRfMTU2ODAyODYzMjIxMC5wcHQiLCJDb25kaXRpb24iOnsiRGF0ZUxlc3NUaGFuIjp7IkFXUzpFcG9jaFRpbWUiOjE1NjgwNzg2NzR9fX1dfQ__&Signature=YGF5bn3A2K0wbJECx9pWPnBEyjJHqzLLK6owowzMbTU2wYKEbLZDVHY3V1bPWuP9yIZy7NdxRD2DQ4cRL78Wf7hIWuW0DyNcarAHNBTSK2VomVA1p-hgqoByNkREzYGs~XOkj2bJJpwFCuA5-Nlvo6aK2sj9FrTFI3AJtv9NaegVjXGqdB~UAbdqp0lPfbvA14Hd7oXg8Vi-a3C3EfWfOHRsskJQQ~5Gwi1we9KkltDPELSrf2eR3aSLUEJQ~AvnFuvP1TBY-CclfufVKDOTQfJJvsVQZRJ~fQVGAhL1qoi0V7SQFx2dPcDgqxQRb4CBqfxUvP2wR-crGaVpdd6bcQ__&Key-Pair-Id=APKAXXXXXXXXEXAMPLE5', true);
+
+                    xhr.responseType = 'blob';
+                    xhr.onload = function(e) {
+                    if (this.status == 200) {
+                        var blob = this.response;
+                        console.log(blob);
+
+                        var blob = new Blob([this.response], {type: 'application/vnd.ms-powerpoint'}),
+                        url = URL.createObjectURL(blob),                
+                        _iFrame = document.createElement('iframe');
+                        _iFrame.setAttribute('src', url);
+                        _iFrame.setAttribute('style', 'visibility:hidden;');
+                        $('#pdfFile').append(_iFrame)        
+                        console.log(url);
+                        
+
+                        }
+                    };
+
+                    xhr.onerror = function(e) {
+                    alert("Error " + e.target.status + " occurred while receiving the document.");
+                    };
+
+                    xhr.send();
+
+                // var req = new XMLHttpRequest();
+                // req.open("GET", "https://ta-s3.s3.ap-south-1.amazonaws.com/EdTech Platform.pdf", true);
+                // // req.responseType = "blob";
+                // req.responseType = 'arraybuffer';
+
+                // req.onload = function (event) {
+                //     console.log(req);
+                    
+                //     var blob = req.response;
+
+                //     // console.log(blob.size);
+                //     // var link=document.createElement('a');
+                //     // link.href=window.URL.createObjectURL(blob);
+                //     // link.download="Dossier_" + new Date() + ".pdf";
+                //     // link.click();
+                // };
+
+                // req.send();
+
+            // var request = new XMLHttpRequest();
+            // request.open('GET', 'https://ta-s3.s3.ap-south-1.amazonaws.com/EdTech Platform.pdf', true);
+            // request.responseType = 'blob';
+            // request.onload = function() {
+                
+            //     var reader = new FileReader();
+            //     reader.readAsDataURL(request.response);
+            //     reader.onload =  function(e){
+            //         console.log('DataURL:', e.target.result);
+            //     };
+            // };
+            // request.send();
+
+        
+            // var xhr = new XMLHttpRequest();
+            // xhr.open('GET', 'https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf', true);
+            // // xhr.responseType = 'arraybuffer';
+
+            // xhr.onload = function(e) {
+            //     if (this.status == 200) {
+
+            //         console.log("pdf loaded successfully");
+            //         console.log(this);
+
+            //         console.log(base64ArrayBuffer(e.currentTarget.response));
+
+            //         // Note: .response instead of .responseText
+                    // var blob = new Blob([this.response], {type: 'application/pdf'}),
+                    // url = URL.createObjectURL(blob),                
+                    // _iFrame = document.createElement('iframe');
+                    // _iFrame.setAttribute('src', url);
+                    // _iFrame.setAttribute('style', 'visibility:hidden;');
+                    // $('#pdfFile').append(_iFrame)        
+            //         // console.log(url);
+            //     }
+            // };
+
+            // xhr.send();
+    </script>
+
+    <div id="pdfFile"></div>
+
+    <!-- <object data=”https://your-cloudfront-id.cloudfront.net/4/pdf/TOA_PDF_1568034165063.pdf?Expires=1568070170&Policy=eyJTdGF0ZW1lbnQiOlt7IlJlc291cmNlIjoiaHR0cHM6Ly9kMmFmbTgxZzJyNmF2LmNsb3VkZnJvbnQubmV0LzQvcGRmL1RPQV9QREZfMTU2ODAzNDE2NTA2My5wZGYiLCJDb25kaXRpb24iOnsiRGF0ZUxlc3NUaGFuIjp7IkFXUzpFcG9jaFRpbWUiOjE1NjgwNzAxNzB9fX1dfQ__&Signature=LRL-WVP2NLvrxOwXgoCNTIDn~f0h9zkZP9P8rfmH0BMEoehGSbiomLc3gl9vxkUv4lqyjFVkzbIyO4mv68KeL5jXprZOo-skN1uRB7V1mliBUe2WYJp4XPuUnKyYD-ZaGklmla1~iuevAkq9vBDz~VX0CZoUh49W1ggDUMhIQBiGnUWPhk-JFJ0ptRP-zBg5vtDaE1-agL0M49nVGglPA8Dalvr3vAoEjVUxJ9slMELll2qwsjRIQuqhtEf0gyqfNjCAzXVEIPoM2yDOY5~2095NZo7zDsyNjetjJa9MMW7DWFdVxjZ~iT~wKlAj3uJ69tR8HEbmoaC-B8C3aIxogg__&Key-Pair-Id=APKAXXXXXXXXEXAMPLE5" type=”application/pdf” width=”100%” height=”100%”></object>
+    <br/>
+    <iframe src=”https://your-cloudfront-id.cloudfront.net/4/pdf/TOA_PDF_1568034165063.pdf?Expires=1568070170&Policy=eyJTdGF0ZW1lbnQiOlt7IlJlc291cmNlIjoiaHR0cHM6Ly9kMmFmbTgxZzJyNmF2LmNsb3VkZnJvbnQubmV0LzQvcGRmL1RPQV9QREZfMTU2ODAzNDE2NTA2My5wZGYiLCJDb25kaXRpb24iOnsiRGF0ZUxlc3NUaGFuIjp7IkFXUzpFcG9jaFRpbWUiOjE1NjgwNzAxNzB9fX1dfQ__&Signature=LRL-WVP2NLvrxOwXgoCNTIDn~f0h9zkZP9P8rfmH0BMEoehGSbiomLc3gl9vxkUv4lqyjFVkzbIyO4mv68KeL5jXprZOo-skN1uRB7V1mliBUe2WYJp4XPuUnKyYD-ZaGklmla1~iuevAkq9vBDz~VX0CZoUh49W1ggDUMhIQBiGnUWPhk-JFJ0ptRP-zBg5vtDaE1-agL0M49nVGglPA8Dalvr3vAoEjVUxJ9slMELll2qwsjRIQuqhtEf0gyqfNjCAzXVEIPoM2yDOY5~2095NZo7zDsyNjetjJa9MMW7DWFdVxjZ~iT~wKlAj3uJ69tR8HEbmoaC-B8C3aIxogg__&Key-Pair-Id=APKAXXXXXXXXEXAMPLE5" width=”100%” height=”100%”></iframe>
+    <br/> -->
+    <!-- <embed src="https://your-cloudfront-id.cloudfront.net/4/pdf/TOA_PDF_1568035758423.pdf?Expires=1568073321&Policy=eyJTdGF0ZW1lbnQiOlt7IlJlc291cmNlIjoiaHR0cHM6Ly9kMmFmbTgxZzJyNmF2LmNsb3VkZnJvbnQubmV0LzQvcGRmL1RPQV9QREZfMTU2ODAzNTc1ODQyMy5wZGYiLCJDb25kaXRpb24iOnsiRGF0ZUxlc3NUaGFuIjp7IkFXUzpFcG9jaFRpbWUiOjE1NjgwNzMzMjF9fX1dfQ__&Signature=UeRT6O8RxSi4BJkh09YqFxYDALyKRxX~qJYPya~bkSkEooya211rTXhwTd2PJNH20aHOTG7ZzxCqy2a40dj3SE59k185hikUCSFn1AqBpGe6r70Roc12DB50btiwA~ccy4dcY92N3hqFglIkcu0EGx2DS9YWcuXUx1HDA32JwmQDVfOjxGBm74WZZ3X7s5jUUrbB48i1LXj-8UswqgBo6HBOSylnPdYLN8qJ9JO75qUFziUuQhRJI3vZZPm4q4EQFXxVVKrvkahgYZz7SOcabW~c8OOUo0pWtwqvF-E0RYncAAJhjU9t3pbM7dM9JPBLUR24MX2EkuLv7jTwQFJTXA__&Key-Pair-Id=APKAXXXXXXXXEXAMPLE5#toolbar=0" type="application/pdf" width="100%" height="500px"> -->
+
+</body>
+</html>

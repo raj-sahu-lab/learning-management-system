@@ -1,0 +1,85 @@
+<div class="container">
+	<div class="row clearfix">
+		<div class="col-lg-12">
+			<div class="card">
+				<div class="body block-header">
+					<div class="row">
+						<div class="col-lg-6 col-md-8 col-sm-12">
+							<h2 class="headerSemiBold">Manage Forum</h2>
+							<ul class="breadcrumb p-l-0 p-b-0 labelTitle">
+								<li class="breadcrumb-item">
+									<a class="linkColor" routerLink="/" routerLinkActive="active"><i
+											class="icon-home"></i></a>
+								</li>
+								<li class="breadcrumb-item active labelTitle">Forum</li>
+							</ul>
+						</div>
+						<div class="col-lg-6 col-md-4 col-sm-12">
+							<a routerLink="/" routerLinkActive="active"
+								class="btn btn-secondary headerSemiBold float-right">
+								<i class="icon-arrow-left"></i> BACK
+							</a>
+						</div>
+
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="alert alert-warning" role="alert">
+		<div class="container" style="font-size: 14px;color:black;">
+			Forum is a great way to keep your audience engaged. Here is an example how you can come up with an amazing
+			forum. <br>
+			Add a category such as an MBA preparation, define what subject you want to discuss it can be GMAT Exam,
+			topics can be related to Quant, Verbal and then finally add the articles.
+		</div>
+	</div>
+
+	<div class="row clearfix">
+		<div class="col-lg-3 col-md-6">
+			<div class="card l-pink">
+				<a class="labelTitle" routerLink="/forum/category">
+					<div class="body">
+						<h4 class="welcomeFont m-t-0 m-b-0">{{categoryTotal}}</h4>
+						<span class="m-b-0">Category </span>
+						<span class="m-b-0 float-right">Click here <i class=" icon-arrow-right"></i></span>
+					</div>
+				</a>
+			</div>
+		</div>
+		<div class="col-lg-3 col-md-6">
+			<div class="card l-blue">
+				<a class="labelTitle" routerLink="/forum/subject">
+					<div class="body">
+						<h4 class="welcomeFont m-t-0 m-b-0">{{subjectTotal}}</h4>
+						<span class="m-b-0">Subject </span>
+						<span class="m-b-0 float-right">Click here <i class=" icon-arrow-right"></i></span>
+					</div>
+				</a>
+			</div>
+		</div>
+		<div class="col-lg-3 col-md-6">
+			<div class="card l-seagreen">
+				<a class="labelTitle" routerLink="/forum/topic">
+					<div class="body">
+						<h4 class="welcomeFont m-t-0 m-b-0">{{topicTotal}}</h4>
+						<span class="m-b-0">Topic </span>
+						<span class="m-b-0 float-right">Click here <i class=" icon-arrow-right"></i></span>
+					</div>
+				</a>
+			</div>
+		</div>
+		<div class="col-lg-3 col-md-6">
+			<div class="card l-parpl">
+				<a class="labelTitle" routerLink="/forum/articles">
+					<div class="body">
+						<h4 class="welcomeFont m-t-0 m-b-0">{{articleTotal}}</h4>
+						<span class="m-b-0">Articles </span>
+						<span class="m-b-0 float-right">Click here <i class=" icon-arrow-right"></i></span>
+					</div>
+				</a>
+			</div>
+		</div>
+	</div>
+</div>

@@ -1,0 +1,70 @@
+<div id="sidebar" class="menu">
+    <div class="main-menu">
+        <div class="scroll">
+            <ul class="list-unstyled labelTitle">
+                <li>
+                    <a class="pointer" (click)="aboutInstitute()">
+                        <img src="../../../assets/img/icons/institute.png" class="xsmall">
+
+                        <span class="headerSemiBold mt-1">INSTITUTE</span>
+                    </a>
+                </li>
+                <li>
+                    <a class="pointer" (click)="navigateUrl('dashboard')">
+                        <img src="../../../assets/img/icons/course.png" class="xsmall">
+
+                        <span class="headerSemiBold mt-1">COURSES</span>
+                    </a>
+                </li>
+                <li>
+                    <a class="pointer" (click)="navigateUrl('test')">
+                        <img src="../../../assets/img/icons/test.png" class="xsmall">
+
+                        <span class="headerSemiBold mt-1">ASSIGNMENTS</span>
+                    </a>
+                </li>
+                <li>
+                    <a class="pointer" (click)="navigateUrl('testBundle')">
+                        <img src="../../../assets/img/icons/test.png" class="xsmall">
+
+                        <span class="headerSemiBold mt-1">SETS & BUNDLES</span>
+                    </a>
+                </li>
+                <li>
+                    <a class="pointer" (click)="navigateUrl('communication')">
+                        <img src="../../../assets/img/icons/comm.png" class="xsmall">
+
+                        <span class="headerSemiBold mt-1">COMM.</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <div *ngIf="displayNavigation" class="sub-menu" style="display: block;transform: translateX(0);">
+        <div class="scroll">
+            <ul class="list-unstyled" data-link="pages" style="display: block;">
+                <li>
+                    <a routerLink="/student/aboutus">
+                        <span class="d-inline-block headerSemiBold h6">About Us</span>
+                    </a>
+                </li>
+                <li>
+                    <a routerLink="/student/privacypolicies">
+                        <span class="d-inline-block headerSemiBold h6">Privacy Policies</span>
+                    </a>
+                </li>
+                <li class="d-none">
+                    <a routerLink="/student/contactus">
+                        <span class="d-inline-block headerSemiBold h6">Contactus</span>
+                    </a>
+                </li>
+                <li>
+                    <a routerLink="/student/faq">
+                        <span class="d-inline-block headerSemiBold h6">Help and Support</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>

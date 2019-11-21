@@ -1,0 +1,158 @@
+<main *ngIf="supportRequest" class="default-transition" style="opacity: 1;">
+        <div class="container-fluid disable-text-selection">
+            <div class="row mb-3">
+                <div class="col-md-12 col-lg-4 col-sm-12 cursor">
+                    <h6><a class="text-muted" (click)="goBack()"><i class="iconsminds-up"></i> Back</a></h6>
+                </div>
+                <div class="col-md-12 col-lg-4 col-sm-12">
+                    <h6 class="cent headerSemiBold">
+                        Support Request
+                    </h6>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-12">               
+    
+                    <div class="row mb-4">                    
+    
+                        <div class="col-xs-12 col-lg-6 col-12 mb-4">
+                            <div class="card">
+                                <div class="card-body">
+                                    <table class="table table-sm table-borderless">
+                                        <tbody>
+                                            <tr>
+                                                <td colspan="2">
+                                                    <p class="headerSemiBold">Topic Name</p>
+                                                    <p class="text-muted labelTitle mb-3">{{supportRequest?.name}}</p>                                                
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    <p class="headerSemiBold">Type</p>
+                                                    <p *ngIf="supportRequest?.type == 1" class="text-muted labelTitle mb-3">Subject</p>
+                                                    <p *ngIf="supportRequest?.type == 2" class="text-muted labelTitle mb-3">Topic</p>
+                                                    <p *ngIf="supportRequest?.type == 3" class="text-muted labelTitle mb-3">Content</p>
+                                                    <p *ngIf="supportRequest?.type == 4" class="text-muted labelTitle mb-3">Test</p>
+                                                    <p *ngIf="supportRequest?.type == 5" class="text-muted labelTitle mb-3">Practice</p>
+                                                    <p *ngIf="supportRequest?.type == 6" class="text-muted labelTitle mb-3">PDF</p>
+                                                    <p *ngIf="supportRequest?.type == 7" class="text-muted labelTitle mb-3">PPT</p>
+                                                    <p *ngIf="supportRequest?.type == 8" class="text-muted labelTitle mb-3">Audio</p>
+                                                    <p *ngIf="supportRequest?.type == 9" class="text-muted labelTitle mb-3">Video</p>
+                                                </td>
+                                                <td>
+                                                    <p class="headerSemiBold">Date</p>
+                                                    <p class="text-muted labelTitle">{{supportRequest?.lastUpdated | date}}</p>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td colspan="2">
+                                                    <p class="headerSemiBold">Course Name</p>
+                                                    <p class="text-muted labelTitle mb-3">{{supportRequest?.detail?.title}}</p>
+                                                </td>
+                                            </tr>
+                                             <tr>
+                                                <td colspan="2">
+                                                    <p class="headerSemiBold">Description</p>
+                                                    <p class="text-muted labelTitle mb-3">{{supportRequest?.description}}</p>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+    
+                        <div class="col-xs-12 col-lg-6 col-12 mb-4">
+                            <div class="card w-m-150">
+                                <div class="card-body">
+                                    <h6 class="mb-2 headerSemiBold">
+                                        Request Status
+                                        <div class="float-right headerSemiBold coral cursor" (click)="toggleChat()">
+                                            <i class="simple-icon-bubbles" style="font-weight: 900;"></i>  View conversation
+                                        </div>
+                                    </h6>
+    
+                                    <ol class="progtrckr d-none d-md-block" data-progtrckr-steps="2">
+                                        <li class="progtrckr-done progtrckr-done-bar">Created</li>
+                                        <li class="" [ngClass]="(supportRequest.currentStatus > 0) ? 'progtrckr-done progtrckr-done-bar':'progtrckr-todo-bar'">Assigned</li>
+                                        <li class="" [ngClass]="(supportRequest.currentStatus > 1) ? 'progtrckr-done progtrckr-done-bar':'progtrckr-todo-bar'">In progress</li>
+                                        <li class="" [ngClass]="(supportRequest.currentStatus > 2) ? 'progtrckr-done progtrckr-done-bar':'progtrckr-todo-bar progtrckr-todo'">Solved</li>
+                                    </ol>
+                                    <ol class="progtrckr d-sm-block d-xs-block d-md-none" data-progtrckr-steps="2">
+                                        <li class="progtrckr-done progtrckr-done-bar">Created</li>
+                                        <li class="" [ngClass]="(supportRequest.currentStatus > 0) ? 'progtrckr-done progtrckr-done-bar':'progtrckr-todo-bar'">Assigned</li>
+                                        <li class="" [ngClass]="(supportRequest.currentStatus > 1) ? 'progtrckr-done progtrckr-done-bar':'progtrckr-todo-bar'">Progress</li>
+                                        <li class="" [ngClass]="(supportRequest.currentStatus > 2) ? 'progtrckr-done progtrckr-done-bar':'progtrckr-todo-bar progtrckr-todo'">Solved</li>
+                                    </ol>
+                                </div>
+    
+                                <div class="card-body" *ngIf="chatConversation">
+                                    <div class="scroll ps ps--active-y p-4">
+                                        <div class="scroll-content" >
+                                            <div *ngIf="!supportChats" class="headerSemiBold text-center h6">Start Chatting</div>
+                                            <div *ngIf="length > 9" class="coral headerSemiBold text-center p-3" (click)="getChat(page+1)">View more</div>
+                                            <div *ngFor="let supportChat of supportChats">
+                                                <div class="card d-inline-block mb-3 mr-2" style="min-width: 50%;" [ngClass]="(supportChat.student) ? 'float-right':'float-left'">
+                                                    <div class="position-absolute pt-1 pr-2 r-0"><span class="labelTitle text-muted">{{supportChat?.date | date:'shortTime'}}</span></div>
+                                                    <div class="card-body">
+                                                        <div class="d-flex flex-row pb-2">
+                                                            <div *ngIf="supportChat.student" class="d-flex" ><img alt="Profile Picture" src="{{supportChat?.student?.image}}" class="img-thumbnail list-thumbnail" (error)="defaultImage($event)"></div>
+                                                            <div *ngIf="supportChat.account" class="d-flex" ><img alt="Profile Picture" src="{{supportChat?.account?.image}}" class="list-thumbnail img-thumbnail" style="height: auto;" (error)="defaultImage($event)"></div>
+                                                            <div *ngIf="supportChat.authority" class="d-flex" ><img alt="Profile Picture" src="{{supportChat?.authority?.image}}" class="img-thumbnail list-thumbnail" (error)="defaultImage($event)"></div>
+                                                            <div class="d-flex flex-grow-1 min-width-zero">
+                                                                <div class="m-2 pl-0 align-self-center d-flex flex-column flex-lg-row justify-content-between min-width-zero">
+                                                                    <div class="min-width-zero">
+                                                                        <p *ngIf="supportChat.student" class="mb-0 truncate list-item-heading headerSemiBold">{{supportChat?.student?.first_name}} {{supportChat?.student?.last_name}}</p>
+                                                                        <p *ngIf="supportChat.account" class="mb-0 truncate list-item-heading headerSemiBold">Admin</p>
+                                                                        <p *ngIf="supportChat.authority" class="mb-0 truncate list-item-heading headerSemiBold">{{supportChat?.authority?.name}}</p>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="chat-text-left">
+                                                            <p class="mb-0 text-semi-muted labelTitle pre-line">{{supportChat?.message}}</p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="clearfix"></div>
+                                            </div>
+                                            <!-- <div class="clearfix"></div>
+                                            <div class="card d-inline-block mb-3 float-right mr-2">
+                                                <div class="position-absolute pt-1 pr-2 r-0"><span class="labelTitle text-muted">09:41</span></div>
+                                                <div class="card-body">
+                                                    <div class="d-flex flex-row pb-2">
+                                                        <a class="d-flex" href="#"><img alt="Profile Picture" src="http://student.learnonapp.in/assets/img/profile-pic-l-4.jpg" class="img-thumbnail border-0 rounded-circle mr-3 list-thumbnail align-self-center xsmall"></a>
+                                                        <div class="d-flex flex-grow-1 min-width-zero">
+                                                            <div class="m-2 pl-0 align-self-center d-flex flex-column flex-lg-row justify-content-between min-width-zero">
+                                                                <div class="min-width-zero">
+                                                                    <p class="mb-0 list-item-heading truncate headerSemiBold">Mimi Carreira</p>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="chat-text-left">
+                                                        <p class="mb-0 text-semi-muted labelTitle">I would suggest you discuss this further with the advertising team.</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="clearfix"></div> -->
+                                        </div>
+                                        <div *ngIf="supportRequest.currentStatus != 3" class="input-group mb-3 mt-3">
+                                            <input class="form-control hash flex-grow-1 labelTitle" type="text" [(ngModel)]="message" (keyup.enter)="postChat(message)" placeholder="Say something...">
+                                            <div>
+                                                <button type="button" class="btn btn-primary icon-button large rtat" (click)="postChat(message)"><i class="simple-icon-paper-plane pln"></i></button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            
+                            </div>
+                        </div>
+    
+                    </div>
+                </div>
+            </div>
+         
+        </div>
+    </main>
+    

@@ -1,0 +1,97 @@
+<main class="default-transition" style="opacity: 1;">
+  <div class="container-fluid disable-text-selection">
+
+    <div class="row mt-2">
+      <div class="col-md-12 col-lg-4 col-sm-12">
+          <h6 class="mb-3 pointer">
+              <a class="text-muted" (click)="goBack()"><i class="iconsminds-up"></i> Back</a>
+          </h6>
+      </div>
+      <div class="col-md-12 col-lg-4 col-sm-12">
+          <h6 class="headerSemiBold cent mb-4">
+              Notifications
+          </h6>
+      </div>
+    </div>
+
+    <div class="row mb-4" *ngIf="!notifications">
+        <div class="col-12 col-sm-12 col-md-12 mx-auto my-auto">
+            <div class="card index-card">
+                <div class="card-body text-center form-side">
+                    <p class="mb-3 text-center">
+                      <img *ngIf="instituteLogo" src="{{instituteLogo}}"
+                          class="img-thumbnail border-0 list-thumbnail align-self-center xsmall">
+                      <img *ngIf="!instituteLogo" src="../../../assets/img/favicon.png"
+                          class="img-thumbnail border-0 rounded-circle list-thumbnail align-self-center xsmall">
+                    </p>
+                    <h5 class="card-title labelTitle">No notification available</h5>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row" *ngIf="notifications">
+        <div class="col-md-12 col-sm-12 col-lg-12 col-12 mb-4">
+
+          <div class="card mb-4" *ngFor="let notification of notifications">
+              <div class="card-body">
+                  <p class="mb-1 headerSemiBold">
+                    <!-- <span class="not-seen-circle"></span> -->
+                    <span class=""> {{notification?.title}} </span>
+                    <!-- <span class="coral">Check Now</span> -->
+                  </p>
+                  <img *ngIf="notification?.image_url" class="card-img mt-2 mb-2" src="{{notification?.image_url}}">
+                  <!-- <p class="mb-3 text-muted pl-4"> 12 Jun, 11:00AM</p> -->
+                  <p class="mb-1 text-muted"> {{notification?.content}} </p>
+              </div>
+          </div>
+
+          <!-- <div class="card mb-4">
+            <div class="card-body">
+                <p class="mb-1 headerSemiBold"><span class="not-seen-circle"></span>
+                  <span class="pl-3">Upcoming live session on GRE Qunt preparation </span>
+                  <span class="coral">Check Now</span>
+                </p>
+                <img *ngIf="false" class="card-img ml-4 mt-2 mb-2" src="../../../assets/img/balloon-1.jpg">
+                <p class="mb-3 text-muted pl-4"> 12 Jun, 11:00AM</p>
+            </div>
+          </div>
+
+          <div class="card mb-4">
+            <div class="card-body">
+                <p class="mb-1 headerSemiBold"><span class="seen-circle"></span>
+                  <span class="pl-3">Upcoming live session on GRE Qunt preparation </span>
+                  <span *ngIf="false" class="coral">Check Now</span>
+                </p>
+                <img *ngIf="false" class="card-img ml-4 mt-2 mb-2" src="../../../assets/img/balloon-1.jpg">
+                <p class="mb-3 text-muted pl-4"> 12 Jun, 11:00AM</p>
+            </div>
+          </div>
+
+          <div class="card mb-4">
+            <div class="card-body">
+                <p class="mb-1 headerSemiBold"><span class="seen-circle"></span>
+                  <span *ngIf="false" class="pl-3">Upcoming live session on GRE Qunt preparation </span>
+                  <span *ngIf="false" class="coral">Check Now</span>
+                  <img *ngIf="true" class="card-img ml-4 mt-2 mb-2" src="../../../assets/img/balloon-1.jpg">
+                </p>
+                <img *ngIf="false" class="card-img ml-4 mt-2 mb-2" src="../../../assets/img/balloon-1.jpg">
+                <p class="mb-3 text-muted pl-4"> 12 Jun, 11:00AM</p>
+            </div>
+          </div>
+
+          <div class="card mb-4">
+            <div class="card-body">
+                <p class="mb-1 headerSemiBold"><span class="seen-circle"></span>
+                  <span class="pl-3">Upcoming live session on GRE Qunt preparation </span>
+                  <span class="coral">Check Now</span>
+                </p>
+                <img class="card-img ml-4 mt-2 mb-2" src="../../../assets/img/balloon-1.jpg">
+                <p class="mb-3 text-muted pl-4"> 12 Jun, 11:00AM</p>
+            </div>
+          </div> -->
+
+        </div>
+      </div>
+    </div>
+  </main>

@@ -1,0 +1,188 @@
+<div class="container">
+	
+	<div class="row clearfix">
+		<div class="col-lg-12">
+			<div class="card">
+				<div class="body block-header">
+					<div class="row">
+
+						<div class="col-lg-6 col-md-8 col-sm-12">
+							<h2 class="headerSemiBold">Manage Poll</h2>
+							<ul class="breadcrumb p-l-0 p-b-0 labelTitle">
+								<li class="breadcrumb-item">
+									<a class="linkColor" routerLink="/" routerLinkActive="active"><i
+											class="icon-home"></i></a>
+								</li>
+								<li class="breadcrumb-item active labelTitle">Poll</li>
+							</ul>
+						</div>
+						<div class="col-lg-6 col-md-4 col-sm-12">
+							<a routerLink="/" routerLinkActive="active"
+								class="btn btn-secondary headerSemiBold float-right">
+								<i class="icon-arrow-left"></i> BACK
+							</a>
+						</div>
+
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="row clearfix">
+		<div class="col-sm-12 col-md-12 col-lg-12">
+			<div class="card">
+
+				<div class="header headerSemiBold">
+					<h2><span class="linkColor">Manage</span> Poll</h2>
+				</div>
+
+				<div class="body">
+					<div class="demo-masked-input labelTitle">
+						<div class="row clearfix">
+							<div class="col-lg-6 col-md-6">Poll title
+								<div class="input-group">
+									<input type="text" class="form-control" [(ngModel)]="title"
+										placeholder="Enter poll title">
+								</div>
+							</div>
+							<div class="col-lg-6 col-md-6" *ngFor="let pollsOption of pollsOptionList; let i = index">
+								Option
+								<div class="input-group">
+									<input type="text" class="form-control" [(ngModel)]="options[i]"
+										placeholder="Enter option">
+
+									<input type="button" class="btn btn-danger float-right" value="-"
+										style="margin:0px;" (click)="removeButtonClick(i);">
+								</div>
+							</div>
+						</div>
+						<div class="row clearfix">
+							<div class="col-lg-2 col-md-2"><b>&nbsp;</b>
+								<div class="input-group">
+									<input type="button" class="btn btn-warning headerSemiBold float-right"
+										value="Add Poll Options" style="margin:0px;" (click)="addButtonClick();">
+								</div>
+							</div>
+							<div class="col-lg-3 col-md-3" *ngIf="isEdit">Status
+								<div class="input-group">
+									<div class="radio inlineblock m-r-20" style="margin-top:10px;">
+										<input type="radio" [(ngModel)]="status" name="status" id="active"
+											class="with-gap" value="0">
+										<label for="active">Active</label>
+									</div>
+									<div class="radio inlineblock" style="margin-top:10px;">
+										<input type="radio" [(ngModel)]="status" name="status" id="inactive"
+											class="with-gap" value="1">
+										<label for="inactive">Inactive</label>
+									</div>
+								</div>
+							</div>
+
+							<div class="col-lg-1 col-md-1"><b>&nbsp;</b>
+								<div class="input-group">
+									<input type="button" class="btn btn-secondary headerSemiBold float-right"
+										value="{{ isEdit ? 'UPDATE' : 'SUBMIT'}}" style="margin:0px;"
+										(click)="submitButtonClick();">
+								</div>
+							</div>
+							<div class="col-lg-1 col-md-1"><b>&nbsp;</b>
+								<div class="input-group">
+									<input type="button" class="btn btn-warning headerSemiBold float-right"
+										*ngIf="isEdit" value="CANCEL" style="margin:0px;" (click)="cancelEditClick();">
+								</div>
+							</div>
+
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="col-sm-12 col-md-12 col-lg-12">
+			<div class="card">
+				<div class="header headerSemiBold">
+					<h2>
+						<span class="linkColor">Available</span> Polls
+					</h2>
+				</div>
+				<div class="body">
+					<div class="table-responsive">
+						<table class="table table-bordered table-striped table-hover dataTable js-exportable">
+							<thead class="headerSemiBold">
+								<tr>
+									<th>#</th>
+									<th>S No</th>
+									<th>Poll Title</th>
+									<th>Poll Option</th>
+								</tr>
+							</thead>
+							<tbody class="labelTitle">
+								<tr *ngFor="let polls of pollsList;let i=index;">
+									<td>
+										<span class="badge badge-danger" title="Delete polls"
+											(click)="deleteButtonClick(polls.id)">
+											<i class="icon-trash"></i>
+										</span>
+									</td>
+									<td>{{pollsList.length - i}}</td>
+									<td>{{polls.title}}</td>
+									<td>
+										<span class="badge badge-success" title="Polls List"
+											(click)="showDescription(polls.id)">
+											<i class="icon-eye"></i>
+										</span>
+									</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+				</div>
+			</div>
+		</div>
+
+	</div>
+
+</div>
+
+<!--Modal Popup -->
+<div class="modal" [style.display]="selectedDescription ? 'block' : 'none'">
+	<div class="modal-dialog">
+		<div class="modal-content">
+
+			<div class="modal-header">
+				<h6 class="headerBold">{{selectedDescription?.title}}</h6>
+			</div>
+
+			<div class="modal-body">
+
+				<table class="table table-bordered table-striped table-hover">
+					<thead class="headerSemiBold">
+						<tr>
+							<th>S No</th>
+							<th>Option</th>
+							<th>Votes</th>
+							<th>%</th>
+						</tr>
+					</thead>
+					<tbody class="labelTitle">
+						<tr *ngFor="let optionList of selectedDescription?.pollOptions;let i=index;">
+							<td>{{selectedDescription.pollOptions.length - i}}</td>
+							<td>{{optionList.option}}</td>
+							<td>{{optionList.optionCount}}</td>
+							<td>{{optionList.per | number : fractionSize}}</td>
+						</tr>
+					</tbody>
+				</table>
+
+			</div>
+
+			<div class="modal-footer">
+				<button type="button" class="btn btn-secondary headerSemiBold" data-dismiss="modal"
+					(click)="hideDescription()">Close</button>
+			</div>
+
+		</div>
+	</div>
+</div>
+<!--Modal Popup -->

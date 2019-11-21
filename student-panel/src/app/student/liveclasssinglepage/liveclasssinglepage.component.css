@@ -1,0 +1,77 @@
+.coral{
+    color:coral;
+}
+.im-lv-cls{
+    max-height: 350px;
+    object-fit: cover;
+}
+.play{
+    position:absolute;
+    width:50px;
+    height:50px;
+    border:3px solid #fff;
+    top: 28%;
+    left: 50%;
+    margin: -25px 0 0 -25px;
+    border-radius:30px;
+    box-shadow:1px 1px 2px rgba(0,0,0,.2);
+}
+.play span{
+    position:absolute;
+    width:0;
+    height:0;
+    border-top:12px solid transparent;
+    border-bottom:12px solid transparent;
+    border-left:20px solid #fff;
+    top:12px;
+    left:16px;
+}
+.iconsminds-up{
+    transform: rotate(-90deg);
+}
+.iconsminds-up:before{
+    transform: rotate(-90deg);
+    font-size: 20px;
+}
+.updateTimezone{
+    position:absolute;
+    border:3px solid #fff;
+    top: 28%;
+    left: 50%;
+    margin: -25px 0 0 -25px;
+    border-radius:30px;
+    box-shadow:1px 1px 2px rgba(0,0,0,.2);  
+}
+@media (max-width:340px){
+    .play{
+        top: 19%;
+    }
+}
+@media (min-width:341px) and (max-width:600px){
+    .play{
+        top: 22%;
+    }
+}
+@media (min-width:641px) and (max-width:690px){
+    .play{
+        top: 25%;
+    }
+}
+@media (min-width:691px) and (max-width:1023px){
+    .play{
+        top: 27%;
+    }
+}
+@media (min-width:992px){
+    .cent{
+        text-align: center;
+    }
+    .rght{
+        float: right !important;
+    }
+  }
+  @media (max-width:991px){
+    .cent{
+        padding: 15px 0px;
+    }
+  }

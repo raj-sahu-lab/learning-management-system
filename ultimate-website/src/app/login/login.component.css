@@ -1,0 +1,10 @@
+.bck-img{
+    background-image: url("../../assets/images/content/bg/elements/12.jpg");
+    background-position: 50% 0%;
+  }
+.display{
+  display: block !important;
+}
+.d-none{
+  display: none !important;
+}

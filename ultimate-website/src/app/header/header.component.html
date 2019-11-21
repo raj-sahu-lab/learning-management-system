@@ -1,0 +1,167 @@
+<header class="header-details-toggle header-light header-sticky-light">
+  <div class="header-top-section header-typo-light dark-bg navbar hidden-xs hidden-sm" id="header-top-bar">
+      <div class="container">
+          <div class="navbar-header nav-respons">
+              <button data-target=".topnavbar-collapse" data-toggle="collapse" class="navbar-toggle collapsed" aria-expanded="false" type="button">
+                  <span class="sr-only">Toggle navigation</span>
+                  <span class="icon-bar"></span>
+                  <span class="icon-bar"></span>
+                  <span class="icon-bar"></span>
+              </button>
+          </div>
+          <!-- <div class="navbar-collapse topnavbar-collapse collapse">
+              <ul class="nav navbar-nav top-left">
+                  <li>
+                      <p class="header-text-block typo-light">Welcome to the creative template for Industries.</p>
+                  </li>
+              </ul>
+              <ul class="nav navbar-nav navbar-right">
+                  <li>
+                      <ul class="header-social-icons">
+                          <li class="facebook"><a href="#" target="_blank"><i class="fa fa-facebook"></i></a></li>
+                          <li class="twitter"><a href="#" target="_blank"><i class="fa fa-twitter"></i></a></li>
+                          <li class="linkedin"><a href="#" target="_blank"><i class="fa fa-linkedin"></i></a></li>
+                          <li class="pinterest"><a href="#" target="_blank"><i class="fa fa-pinterest"></i></a></li>
+                          <li class="google-plus"><a href="#" target="_blank"><i class="fa fa-google-plus"></i></a></li>
+                          <li class="youtube"><a href="#" target="_blank"><i class="fa fa-youtube"></i></a></li>
+                          <li class="dribbble"><a href="#" target="_blank"><i class="fa fa-dribbble"></i></a></li>
+                      </ul>
+                  </li>
+              </ul>
+          </div> -->
+      </div>
+  </div>
+  
+  <div class="white-bg hidden-sm hidden-xs">
+      <div class="container">
+          <div class="navbar-header logo-contact-details">
+              <a class="navbar-toggle cursor" href="#nav-menu">
+                  <span class="sr-only">Toggle navigation</span>
+                  <span class="icon-bar"></span>
+                  <span class="icon-bar"></span>
+                  <span class="icon-bar"></span>
+              </a>
+              <a class="navbar-brand hidden-xs hidden-sm no-left-padding" [routerLink]="['./']" [routerLinkActive]="['router-link-active']">
+                <!-- <img src="assets/images/logo-light.png" alt="logo" width="85" height="19"> -->
+                <img src="{{account?.image}}" class="sticky-logo" alt="logo" width="60" height="60" style="display:inline-block;object-fit: contain;" alt="institute image">
+              </a>
+          </div>
+          
+          <div class="header-widgets navbar-right">
+              <div *ngIf="account?.city" class="widget widget-icon-box">
+                <a class="icon-box" href="tel:+{{account?.countryCode}}{{account?.phone}}" style="border: none;">
+                    <i class="fa fa-home fa-3x black"></i>
+                    <div class="icon-box-text">
+                        <h4 class="icon-box-title black">{{account?.city?.title}}</h4>
+                        <span class="icon-box-subtitle black">{{account?.city?.country?.title}} </span>
+                        <span class="black" *ngIf="account?.pinCode">{{account?.pinCode}}</span>
+                    </div>
+                </a>
+              </div>
+              <div class="widget widget-icon-box" style="margin-left: 120px;">
+                <a class="icon-box" href="tel:+{{account?.countryCode}}{{account?.phone}}">
+                    <i class="fa fa-phone fa-3x black"></i>
+                    <div class="icon-box-text">
+                        <h4 class="icon-box-title black">+{{account?.countryCode}} {{account?.phone}}</h4>
+                        <span class="icon-box-subtitle black">{{account?.email}}</span>
+                    </div>
+                </a>
+              </div>
+              <!-- <div class="widget widget-icon-box">
+                  <a class="icon-box" href="tel:+917697439839">
+                      <i class="fa fa-clock-o fa-3x"></i>
+                      <div class="icon-box-text">
+                          <h4 class="icon-box-title">Mon - Sat 8.00 - 18.00</h4>
+                          <span class="icon-box-subtitle">Sunday CLOSED</span>
+                      </div>
+                  </a>
+              </div> -->
+          </div>
+      </div>
+  </div>
+  
+  <div id="sticker" class="header-main sticky-navigation s-header">
+      <nav id="hd" class="navbar navbar-default fixed light-bg">
+          <div class="container">
+              <div class="navbar-header">
+                  <a class="navbar-toggle cursor hidden-md hidden-lg" (click)="toogleSidebar()">
+                      <span class="sr-only">Toggle navigation</span>
+                      <span class="icon-bar"></span>
+                      <span class="icon-bar"></span>
+                      <span class="icon-bar"></span>
+                  </a>
+                  
+                  <a class="navbar-brand hidden-md hidden-lg" [routerLink]="['./']" [routerLinkActive]="['router-link-active']">
+                    <img src="{{account?.image}}" alt="logo" width="40" height="25" style="object-fit: contain;" alt="institute image">
+                    <img src="{{account?.image}}" class="sticky-logo" alt="logo" width="40" height="25" style="object-fit: contain;" alt="institute image">
+                  </a>
+              </div>
+              
+              <div id="extra-nav" class="extra-nav">
+                  <ul class="nav navbar-nav navbar-right">
+                        <li *ngIf="!isLogedIn">
+                            <a [routerLink]="['./login']" [routerLinkActive]="['router-link-active']" class="fnt-15">Login</a>
+                        </li>
+                        <li *ngIf="isLogedIn">
+                            <!-- <a (click)="logOut()">Logout</a> -->
+                            <button class="d-flex bc" type="button" data-toggle="dropdown">
+                                <span class="name fnt-15" style="font-weight: 600;">{{ studentData?.firstName }} {{studentData?.lastName}}</span>
+                                <span>
+                                    <img *ngIf="studentData?.image" class="prof mar-img-lf-0" alt="Profile" src="{{ studentData?.image }}" alt="student image"/>
+                                    <img *ngIf="isLogedIn && !studentData?.image" class="prof mar-img-lf-0" alt="Profile" src="assets/images/default_profile_small.png" alt="student image"/>
+                                </span>
+                            </button>
+                
+                            <div class="dropdown-menu dropdown-menu-right mt-3 labelTitle" style="min-height: 40px;background: #fff;
+                            border-color: rgba(58, 58, 58, .15);border-radius: 8px;">
+                                <div class="dropdown-item cursor fnt-15" style="padding: 20px;color: black;" (click)="logOut()">Sign out</div>
+                            </div>
+                        </li>
+                        <li *ngIf="!isLogedIn">
+                            <a [routerLink]="['./register']" [routerLinkActive]="['router-link-active']" class="fnt-15">Register</a>
+                        </li>
+
+                        <!-- <li class="dropdown search-dropdown">
+                            <a id="search-toggle" class="header-toggle-icon" href="#"> <span class="flaticon-magnifying-glass"></span></a>
+                        </li>
+                      
+                        <li class="dropdown search-dropdown">
+                            <a id="menu-toggle" href="#"><span class="fa fa-bars"></span></a>
+                        </li>
+
+                        <li id="extra-toggle-search" class="container header-toggle-content">
+                            <form>
+                                <input type="text" class="form-control" id="search-form" name="search-form" placeholder="TYPE AND HIT ENTER..">
+                            </form>
+                            <a id="toggle-close-search" class="toggle-close" href="#"><span class="fa fa-times"></span></a>
+                        </li> -->
+                  </ul>
+              </div>
+              
+              <div id="nav-menu1" class="pop-close">
+                  <ul class="nav f-child navbar-nav navbar hover-dropdown">
+                      <!-- <li><a [routerLink]="['./dashboard']" [routerLinkActive]="['router-link-active']">Home</a></li> -->
+                      <li (click)="closePopSmall()"><a [routerLink]="['./']" [routerLinkActive]="['router-link-active']" class="fnt-15">Course</a></li>
+                      <li><a [routerLink]="['./about']" [routerLinkActive]="['router-link-active']" class="fnt-15">About</a></li>
+                      <li><a [routerLink]="['./contact']" [routerLinkActive]="['router-link-active']" class="fnt-15">Contact</a></li>
+                      <li class="d-none"><a [routerLink]="['./faq']" [routerLinkActive]="['router-link-active']" class="fnt-15">F.A.Q</a></li>
+                      
+                      <!-- <li class="dropdown">
+                          <a href="#" class="dropdown-toggle">Shop</a>
+                          <ul class="dropdown-menu">                              
+                              <li><a href="shop-3-column-sidebar.html">With Sidebar</a></li>
+                              <li class="dropdown">
+                                  <a href="#" class="dropdown-toggle">Shop Page</a>
+                                  <ul class="dropdown-menu sub-menu">
+                                      <li><a href="index-shop.html">Shop Layout 1</a></li>
+                                  </ul>
+                              </li>
+                          </ul>
+                      </li> -->
+                      
+                  </ul>
+              </div>
+          </div>
+      </nav>
+  </div>
+</header>

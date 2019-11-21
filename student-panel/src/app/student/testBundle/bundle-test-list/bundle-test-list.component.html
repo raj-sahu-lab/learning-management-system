@@ -1,0 +1,118 @@
+<main class="default-transition" style="opacity: 1;">
+  <div class="container-fluid disable-text-selection">
+      <div class="row">
+          <div class="col-12">
+
+              <div class="row">
+                  <div class="col-xs-12 col-lg-12 col-12 mb-3">
+                      <div class="row m-0 p-0">
+                          <div class="col-md-12 col-lg-4 col-sm-12 p-0">
+                              <h6>
+                                  <a class="text-muted cursor" (click)="goBack()"><i class="iconsminds-up"></i> Back</a>
+                              </h6>
+                          </div>
+                          <div class="col-md-12 col-lg-4 col-sm-12 p-0">
+                              <h6 class="cent headerSemiBold">
+                                  Test Bundle List
+                              </h6>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+
+              <div class="row mb-4" *ngIf="!bundleList?.length">
+                  <div class="col-12 col-sm-12 col-md-12 mx-auto my-auto">
+                      <div class="card index-card">
+                          <div class="card-body text-center form-side">
+                              <p class="mb-3 text-center">
+                                  <img *ngIf="instituteLogo" src="{{instituteLogo}}"
+                                      class="img-thumbnail border-0 list-thumbnail align-self-center xsmall">
+                                  <img *ngIf="!instituteLogo" src="../../../assets/img/favicon.png"
+                                      class="img-thumbnail border-0 rounded-circle list-thumbnail align-self-center xsmall">
+                              </p>
+                              <h6 class="headerSemiBold">No test bundle list yet</h6>
+                              <p class="text-muted labelTitle">Coming soon!</p>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+
+              <div class="row" *ngIf="bundleList?.length">
+                  
+                  <div class="col-md-6 col-sm-6 col-lg-4 col-12 mb-4" *ngFor="let bundle of bundleList; let i=index">
+
+                      <div (click)="requestNavigate(bundle)" class="card pointer shadow mb-4">
+                          <div class="card-body m-170">
+                              <h6 class="mb-3 headerSemiBold">
+                                  {{bundle?.title | slice:0:65}}
+                                  <span *ngIf="bundle?.title?.length>=65">...</span>
+                              </h6>
+                              <div class="btn-link mb-2">
+                                <p>
+                                    <span class="labelTitle text-muted">
+                                        <img src="../../../assets/img/icons/comm.png" style="height:15px;"> 
+                                        {{bundle?.setCount}} Set
+                                    </span>
+                                </p>
+                              </div>
+                              <div *ngIf="!bundle.isPaid" class="float-right headerSemiBold rating">
+                                <span class="headerSemiBold text-muted">
+                                    <img src="../../../assets/img/icons/toa@2x.png" style="height: 17px; width: 15px;"> Free
+                                </span>
+                            </div>
+                            <div *ngIf="bundle.isPaid && bundle?.purchase==null && bundle?.amount" class="float-right headerSemiBold rating">
+                                <span class="headerSemiBold" style="color:#FF7A59"  >
+                                    {{bundle?.currency?.sign}} {{ bundle.amount }}.00
+                                </span>
+                            </div>
+                            <div class="float-left headerSemiBold rating">
+                                <span *ngIf="bundle?.isPaid && bundle?.purchase==null && bundle?.validity" class="headerSemiBold" style="color:#FF7A59"  >
+                                    Valid for {{bundle?.validity}} day
+                                </span>
+                                <span *ngIf="!(bundle?.purchase==null) && bundle?.isPaid && (bundle?.purchase?.remainHours > 72)" class="selected headerSemiBold">
+                                    Expires in {{bundle?.purchase?.remainDays}} days
+                                </span>
+                                <span *ngIf="!(bundle?.purchase==null) && bundle?.isPaid && (bundle?.purchase?.remainHours <= 72)" class="selected headerSemiBold">
+                                    Expires in {{bundle?.purchase?.remainTime}} hr
+                                </span>
+                            </div>
+                          </div>
+                      </div>
+                      <button class="d-none" id="testBundleModalBtn" data-toggle="modal" data-backdrop="static" data-target="#testBundlePayment">Subscribe</button>
+
+                  </div>
+                  <div class="text-center col-12" *ngIf="bundleList?.length >= page*10">
+                    <button class="btn btn-secondary default headerSemiBold" (click)="testBundle(page+1,limit)">View more</button>
+                  </div>
+              </div>
+              
+          </div>
+      </div>
+  </div>
+</main>
+<!-- payment modal -->
+<div class="modal fade modal-top" id="testBundlePayment" tabindex="-1" role="dialog" aria-labelledby="testBundlePayment" aria-hidden="true" style="display: none;">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h6 class="headerSemiBold">{{bundleInfo?.title}}</h6>
+                <button id="closeTestpay" type="button" class="close" data-dismiss="modal" aria-label="Close" (click)="payementModalClose()"><span aria-hidden="true">×</span></button>
+            </div>
+            <div class="modal-body">
+                <p class="text-justify labelTitle" [innerHTML]="bundleInfo?.preview"></p>
+            </div>
+            <div class="modal-footer text-center" style="display: block;">
+                <p *ngIf="bundleInfo?.paymentGateWayName != 'OfflinePay'" class="text-justify labelTitle">By clicking on continue you agree to subscribe to the course</p>
+                <button *ngIf="(bundleInfo?.paymentGateWayName != 'OfflinePay') && !payPalPay" type="button" class="btn btn-secondary default headerSemiBold" (click)="payementDetails('bundle',bundleInfo)">
+                    CONTINUE TO PAY {{bundleInfo?.currency?.sign}} {{bundleInfo?.amount}}.00
+                </button>
+                <div *ngIf="bundleInfo?.paymentGateWayName == 'OfflinePay'">
+                    <p class="headerSemiBold m-0">OfflinePay</p>
+                    <p class="text-center labelTitle m-0">Please contact your institute for more details</p>
+                </div>
+                <app-payment-gate-way (payementDetails)="afterPayment($event)"></app-payment-gate-way>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- End payment modal -->

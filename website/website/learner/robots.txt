@@ -1,0 +1,7 @@
+User-agent: *
+Allow: /index.php
+Allow: /about-us.php
+Allow: /contact-us.php
+Allow: /utobo-pricing.php
+Allow: /sitemap.xml
+Allow: /img

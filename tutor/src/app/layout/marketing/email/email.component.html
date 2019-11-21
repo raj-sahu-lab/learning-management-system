@@ -1,0 +1,314 @@
+<div class="container">
+
+  <div class="row clearfix">
+    <div class="col-lg-12">
+      <div class="card">
+        <div class="body block-header">
+          <div class="row">
+            <div class="col-lg-6 col-md-8 col-sm-12">
+              <h2 class="headerSemiBold">Send Bulk Email</h2>
+
+              <ul class="breadcrumb p-l-0 p-b-0 labelTitle">
+                <li class="breadcrumb-item">
+                  <a class="linkColor" routerLink="/" routerLinkActive="active"><i class="icon-home"></i></a>
+                </li>
+                <li class="breadcrumb-item active labelTitle">Email</li>
+              </ul>
+            </div>
+            <div class="col-lg-6 col-md-4 col-sm-12">
+              <a routerLink="/" routerLinkActive="active" class="btn btn-secondary headerSemiBold float-right">
+                <i class="icon-arrow-left"></i> BACK
+              </a>
+              <a routerLink="/emailSMSplan/1" routerLinkActive="active"
+                  class="btn btn-primary headerSemiBold float-right">
+                  Buy Email
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row clearfix" *ngIf="remainMails==0">
+    <div class="col-lg-12">
+      <div class="alert alert-warning" role="alert">
+        <div class="container">
+          <div class="alert-icon">
+            <i class="zmdi zmdi-notifications"></i>
+          </div>
+
+          Hi ! You have to purchase Emails in order to send. Please email support@example.com to buy credits.
+
+          <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">
+              <i class="zmdi zmdi-close"></i>
+            </span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row clearfix" *ngIf="totalMails!=null">
+    <div class="col-lg-4 col-md-4">
+      <div class="card l-blue">
+        <div class="body">
+          <h4 class="m-t-0 m-b-0 welcomeFont">{{totalMails}}</h4>
+          <p class="m-b-0 headerSemiBold">Total Purchased Emails</p>
+        </div>
+      </div>
+    </div>
+    <div class="col-lg-4 col-md-4">
+      <div class="card l-parpl">
+        <div class="body">
+          <h4 class="m-t-0 m-b-0 welcomeFont">{{totalSentMails}}</h4>
+          <p class="m-b-0 headerSemiBold">Total sent Emails</p>
+        </div>
+      </div>
+    </div>
+    <div class="col-lg-4 col-md-4">
+      <div class="card l-seagreen">
+        <div class="body">
+          <h4 class="m-t-0 m-b-0 welcomeFont">{{remainMails}}</h4>
+          <p class="m-b-0 headerSemiBold">Total remaining Emails</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row clearfix">
+
+    <div class="col-sm-6 col-md-6 col-lg-6">
+      <div class="card">
+        <div class="header headerSemiBold">
+          <h2><span class="linkColor">Select</span> Users</h2>
+
+          <ul class="header-dropdown">
+            <li [ngClass]="options ? 'dropdown show' : 'dropdown'">
+              <a href="javascript:void(0);" class="dropdown-toggle linkColor" data-toggle="dropdown" role="button"
+                (click)="dropDownOptions();" aria-haspopup="true" aria-expanded="false">
+                <strong>Options</strong>
+              </a>
+              <ul class="dropdown-menu dropdown-menu-right labelTitle">
+                <li style="padding:10px;">
+                  <input type="radio" [(ngModel)]="emailType" name="emailType" value="0"> Registered <br>
+                  <input type="radio" [(ngModel)]="emailType" name="emailType" value="1"> Paste
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+        <div class="body">
+          <div class="table-responsive" *ngIf="emailType == '0'">
+            <table class="table table-bordered table-striped table-hover dataTable js-exportable w-100">
+              <thead class="headerSemiBold">
+                <tr>
+                  <th>
+                    <div class="checkbox">
+                      <input id="name" type="checkbox" (change)="allChecked($event)">
+                      <label for="name">Name</label>
+                    </div>
+                  </th>
+                  <th>Email</th>
+                </tr>
+              </thead>
+              <tbody class="labelTitle" *ngIf="emailType == '0'">
+                <tr *ngFor="let learner of learnerList;let i=index;">
+                  <td>
+                    <div class="checkbox">
+                      <input id="{{learner.email}}" type="checkbox" [(ngModel)]="learner.selected" (change)="emailChecked(learner.email,$event)">
+                      <label for="{{learner.email}}">{{learner.firstName}} {{learner.lastName}}</label>
+                    </div>
+                  </td>
+                  <td>{{learner.email}}</td>
+                </tr>
+              </tbody>
+              <tfoot class="labelTitle" *ngIf="emailType == '1'">
+                <tr>
+                  <td colspan="2">
+                    <textarea rows="6" class="form-control no-resize" [(ngModel)]="copyEmail"
+                      style="border: 1px solid #E3E3E3;border-radius: 10px;padding: 10px;" maxlength="200"
+                      placeholder="paste your numbers"></textarea>
+                  </td>
+                </tr>
+              </tfoot>
+            </table>
+          </div>
+
+          <textarea *ngIf="emailType == '1'" rows="15" class="form-control no-resize" [(ngModel)]="copyEmail"
+                      style="border: 1px solid #E3E3E3;border-radius: 10px;padding: 10px;" maxlength="200"
+                      placeholder="paste your numbers"></textarea>
+                      
+        </div>
+      </div>
+    </div>
+   
+
+    <div class="col-sm-6 col-md-6 col-lg-6">
+      <div class="card">
+        <div class="header headerSemiBold">
+          <h2><span class="linkColor">Send</span> Email</h2>
+        </div>
+        <div class="body">
+          <div class="demo-masked-input labelTitle">
+            <div class="row clearfix">
+              <div class="col-lg-6 col-md-6">Attachment
+                <div class="input-group">
+                  <input type="file" class="form-control" [(ngModel)]="attachment" (change)="FileChanged($event)">
+                </div>
+              </div>
+              <div class="col-lg-6 col-md-6">Email Campaign Title
+                <div class="input-group">
+                  <input type="text" class="form-control" [(ngModel)]="title" placeholder="Enter email title">
+                </div>
+              </div>
+              <div class="col-lg-12 col-md-12">Email Subject
+                <div class="input-group">
+                  <input type="text" class="form-control" [(ngModel)]="subject" placeholder="Enter email subject">
+                </div>
+              </div>
+              <div class="col-lg-12 col-md-12">Type Email Content
+                <div class="input-group">
+                  <div id="summernote">&nbsp;</div>
+
+                  <!-- <textarea rows="6" class="form-control no-resize" [(ngModel)]="description" style="border: 1px solid #E3E3E3;border-radius: 10px;"></textarea> -->
+                </div>
+              </div>
+              <!-- <div class="col-lg-12 col-md-12">
+                <div class="input-group">
+                  <span class="linkColor">{{description?.length}} character left</span>
+                </div>
+              </div> -->              
+
+              <div class="col-lg-1 col-md-1"><b>&nbsp;</b>
+                <div class="input-group">
+                  <input type="button" class="btn btn-secondary headerSemiBold float-right" value="SEND"
+                    style="margin:0px;" (click)="submitButtonClick();">
+                </div>
+              </div>
+
+              <div class="col-lg-12 col-md-12">
+                <b>Instructions</b>: <br>
+                1. Please make sure that should not be any gap between two email.<br><br>
+
+                <b>Example </b>: <br>
+
+                name@yourdomain.com<br>
+                name@yourdomain.com<br>
+                name@yourdomain.com
+            </div>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-sm-12 col-md-12 col-lg-12">
+      <div class="card">
+        <div class="header headerSemiBold">
+          <h2>
+            <span class="linkColor">Campaign </span> Lists
+          </h2>
+        </div>
+        <div class="body">
+          <div class="table-responsive">
+            <table id="datatableRows" class="table table-bordered table-striped table-hover dataTable ">
+              <thead class="headerSemiBold">
+                <tr>
+                  <th>No</th>
+                  <th>Campaign Title</th>
+                  <th>Subject</th>
+                  <th>Content</th>
+                  <th>Recipients</th>
+                </tr>
+              </thead>
+              <tbody class="labelTitle">
+                <tr *ngFor="let campaign of campaignList;let i=index;">
+                  <td>{{campaignList.length - i }}</td>
+                  <td>{{campaign.title}}</td>
+                  <td>{{campaign.subject}}</td>
+                  <td>
+                    <span class="badge badge-success" title="Description" (click)="showDescription(campaign.id)">
+                      <i class="icon-eye"></i>
+                    </span>
+                  </td>
+                  <td>
+                    <span class="badge badge-warning" title="Preview" (click)="showPreview(campaign.id)">
+                      <i class="icon-speech"></i>
+                    </span>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+  
+</div>
+
+<!--Modal Popup -->
+<div class="modal" [style.display]="selectedPreview ? 'block' : 'none'">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+
+      <div class="modal-header">
+        <h6 class="headerBold">{{selectedPreview?.title}}</h6>
+      </div>
+
+      <div class="modal-body labelTitle">
+        <table class="table table-bordered table-striped table-hover">
+          <thead class="headerSemiBold">
+            <tr>
+              <th>Sent</th>
+              <th>Delivered</th>
+              <th>SoftBounces</th>
+              <th>HardBounces</th>
+            </tr>
+          </thead>
+          <tbody class="labelTitle">
+            <tr>
+              <td>{{recipientsReport?.sent}}</td>
+              <td>{{recipientsReport?.delivered}}</td>
+              <td>{{recipientsReport?.softBounces}}</td>
+              <td>{{recipientsReport?.hardBounces}}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary headerSemiBold" data-dismiss="modal"
+          (click)="hidePreview()">Close</button>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<div class="modal" [style.display]="selectedDescription ? 'block' : 'none'">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+
+      <div class="modal-header">
+        <h6 class="headerBold">{{selectedDescription?.title}}</h6>
+      </div>
+
+      <div class="modal-body labelTitle">
+        <p class="text-justify labelTitle" [innerHTML]="selectedDescription?.content" style="white-space: pre-line;">
+        </p>
+      </div>
+
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary headerSemiBold" data-dismiss="modal"
+          (click)="hideDescription()">Close</button>
+      </div>
+
+    </div>
+  </div>
+</div>
+<!--Modal Popup -->

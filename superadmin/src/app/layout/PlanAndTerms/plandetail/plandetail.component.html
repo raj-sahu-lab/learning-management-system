@@ -1,0 +1,127 @@
+<div class="container" id="startForm">
+	<div class="row clearfix">
+		<div class="col-lg-12">
+			<div class="card">
+				<div class="body block-header">
+					<div class="row">
+						<div class="col-lg-6 col-md-8 col-sm-12">
+							<h2 class="headerSemiBold">Manage Plan Features</h2>
+							
+							<ul class="breadcrumb p-l-0 p-b-0 labelTitle">
+								<li class="breadcrumb-item">
+									<a class="linkColor" routerLink="/" routerLinkActive="active"><i class="icon-home"></i></a>
+								</li>
+								<li class="breadcrumb-item active labelTitle">Plan Features </li>
+							</ul>
+						</div>
+						<div class="col-lg-6 col-md-4 col-sm-12">
+							<a routerLink="/" routerLinkActive="active" class="btn btn-secondary headerSemiBold btn-simple float-right">
+								<i class="icon-arrow-left"></i> BACK
+							</a>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="row clearfix">
+		<div class="col-sm-12 col-md-12 col-lg-12">
+			<div class="card">
+				
+				<div class="header headerSemiBold">
+					<h2><span class="linkColor">Create</span> Plan Features</h2>
+				</div>
+					
+				<div class="body">
+					<div class="demo-masked-input labelTitle">
+						<div class="row clearfix">
+							<div class="col-lg-4 col-md-4">Select Plan Duration
+								<div class="input-group">
+									<select class="form-control" [(ngModel)]="termandplanId" (change)="termChanged()" autofocus="true">
+										<option [ngValue]="undefined" disabled>Select Plan Duration</option>
+										<option *ngFor="let termandplan of termandplanList" [ngValue]="termandplan.id">
+											{{termandplan.title}}
+										</option>
+									</select>
+								</div>
+							</div>
+							<div class="col-lg-4 col-md-4">Select Plan
+								<div class="input-group">
+									<select class="form-control" [(ngModel)]="planId">
+										<option [ngValue]="undefined" disabled>Select Plan</option>
+										<option *ngFor="let plan of planList" [ngValue]="plan.id">
+											{{plan.title}}
+										</option>
+									</select>
+								</div>
+							</div>
+							<div class="col-lg-4 col-md-4">Plan Features
+								<div class="input-group">
+									<input type="text" class="form-control" [(ngModel)]="title"
+										placeholder="Enter plan features">
+								</div>
+							</div>
+
+							<div class="col-lg-1 col-md-1"><b>&nbsp;</b>
+								<div class="input-group">
+									<input type="button" class="btn btn-secondary headerSemiBold float-right"
+										value="{{ isEdit ? 'UPDATE' : 'SUBMIT'}}" style="margin:0px;"
+										(click)="submitButtonClick();">
+								</div>
+							</div>
+							<div class="col-lg-1 col-md-1"><b>&nbsp;</b>
+								<div class="input-group">
+									<input type="button" class="btn btn-warning headerSemiBold float-right" *ngIf="isEdit"
+										value="CANCEL" style="margin:0px;" (click)="cancelEditClick();">
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="col-sm-12 col-md-12 col-lg-12">
+			<div class="card">
+				
+				<div class="header headerSemiBold">
+					<h2>
+						<span class="linkColor">Available</span> Plan Features
+					</h2>
+				</div>
+				
+				<div class="body">
+					<div class="table-responsive">
+						<table class="table table-bordered table-striped table-hover dataTable js-exportable w-100">
+							<thead class="headerSemiBold">
+								<tr>
+									<th>#</th>
+									<th>Plan Duration</th>
+									<th>Plan</th>
+									<th>Features</th>
+								</tr>
+							</thead>
+							<tbody class="labelTitle">
+								<tr *ngFor="let plandetail of plandetailList;let i=index;">
+									<td>
+										<span class="badge badge-success" title="Update plan detail"
+											(click)="editButtonClick(plandetail.id)">
+											<i class="icon-pencil"></i>
+										</span>
+										<span class="badge badge-danger" title="Delete plan detail"
+											(click)="deleteButtonClick(plandetail.id)">
+											<i class="icon-trash"></i>
+										</span>
+									</td>
+									<td>{{plandetail.term.title}}</td>
+									<td>{{plandetail.plan.title}}</td>
+									<td>{{plandetail.title}}</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

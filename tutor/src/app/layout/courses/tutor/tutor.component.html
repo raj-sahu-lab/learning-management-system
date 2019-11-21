@@ -1,0 +1,265 @@
+<div class="container" id="startForm">
+
+  <div class="row clearfix">
+    <div class="col-lg-12">
+      <div class="card">
+        <div class="body block-header">
+          <div class="row">
+            <div class="col-lg-6 col-md-8 col-sm-12">
+
+              <h2 class="headerSemiBold">Manage Educators</h2>
+
+              <ul class="breadcrumb p-l-0 p-b-0 ">
+                <li class="breadcrumb-item labelTitle">
+                  <a class="linkColor" routerLink="/" routerLinkActive="active"><i class="icon-home"></i></a>
+                </li>
+                <li class="breadcrumb-item active labelTitle">Educators</li>
+              </ul>
+            </div>
+
+            <div class="col-lg-6 col-md-4 col-sm-12">
+							<a routerLink="/" routerLinkActive="active" class="btn btn-secondary headerSemiBold btn-simple float-right"><i class="icon-arrow-left"></i>
+								BACK</a>
+            </div>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row clearfix">
+
+    <div class="col-sm-12 col-md-12 col-lg-12">
+      <div class="card">
+
+        <div class="header headerSemiBold">
+          <h2><span class="linkColor">Manage</span> Educator</h2>
+        </div>
+        
+        <div class="body">
+          <div class="demo-masked-input labelTitle">
+
+            <div class="row clearfix">
+
+              <div class="col-sm-1" *ngIf="selectedTutorImage"><b>&nbsp;</b>
+                <div class="input-group">
+                  <img [src]="selectedTutorImage" alt="assets/images/my-image/choose-file.png" data-holder-rendered="true" id="ImagePreview" style="height:50px" />
+                </div>
+              </div>
+
+              <div class="col-lg-{{selectedTutorImage ? 3 : 4}} col-md-{{selectedTutorImage ? 3 : 4}}">Choose Image ( 250 x 250 px )
+                <div class="input-group">
+                  <input type="file" class="form-control" [(ngModel)]="image" accept="image/jpeg, image/png" (change)="tutorFileChanged($event)" autofocus="true">
+                </div>
+              </div>
+
+              <div class="col-lg-2 col-md-2"> Select Gender
+								<div class="input-group">
+									<select class="form-control" [(ngModel)]="gender">
+										<option [ngValue]="undefined" disabled>Select Gender</option>
+										<option value="male">Male</option>
+                    <option value="female">Female</option>
+                    <option value="others">Others</option>
+									</select>
+								</div>
+              </div>
+
+              <div class="col-lg-3 col-md-3"> Select Branch | <a class="linkColor" [routerLink]="['/branch']" [routerLinkActive]="['router-link-active']">Create Branch</a>
+								<div class="input-group">
+									<select class="form-control" [(ngModel)]="branchId">
+										<option [ngValue]="undefined" disabled>Select Branch</option>
+										<option *ngFor="let branch of branchList;" [ngValue]="branch.id">
+                        {{branch.name}}
+										</option>
+									</select>
+								</div>
+              </div>
+              
+              <div class="col-lg-3 col-md-3">Educator Name
+                <div class="input-group">
+                  <input type="text" class="form-control" [(ngModel)]="name" placeholder="Tony Stark">
+                </div>
+              </div>
+
+              <div class="col-lg-4 col-md-4">Mobile Number
+                <div class="input-group">
+                   <select class="form-control" [(ngModel)]="countryCode">
+                    <option [ngValue]="undefined" disabled>Select Country</option>
+                    <option *ngFor="let country of countryList" [ngValue]="country.code">
+                      {{country.title}} (+{{country.code}})
+                    </option>
+                  </select>
+                  <input type="number" class="form-control" [(ngModel)]="contactnumber" placeholder="+14157078933">
+                </div>
+              </div>
+
+              <div class="col-lg-2 col-md-2">Email
+                <div class="input-group">
+                  <input type="email" class="form-control" [(ngModel)]="email" placeholder="name@yourdomain.com" [disabled]="isEdit">
+                </div>
+              </div>
+
+              <div class="col-lg-2 col-md-2">Qualification
+                <div class="input-group">
+                  <input type="text" class="form-control" [(ngModel)]="qualification" placeholder="BE Mechanical Engineering">
+                </div>
+              </div>
+
+              <div class="col-lg-2 col-md-2">Experience
+                <div class="input-group">
+                  <input type="text" class="form-control" [(ngModel)]="experience" placeholder="4.5 years">
+                </div>
+              </div>
+
+              <div class="col-lg-2 col-md-2" *ngIf="isEdit? false : true">Password
+                <div class="input-group">
+                  <input type="password" class="form-control" [(ngModel)]="password" placeholder="Enter password">
+                </div>
+              </div>
+
+              <div class="col-lg-12 col-md-12">Bio Data
+                <div class="input-group">
+                  <textarea rows="2" class="form-control no-resize" [(ngModel)]="bio" style="border: 1px solid #E3E3E3;border-radius: 10px;"></textarea>
+                </div>
+              </div>
+
+              <div class="col-lg-3 col-md-3" *ngIf="isEdit">Status
+                <div class="input-group">
+                  <div class="radio inlineblock m-r-20" style="margin-top:10px;">
+                    <input type="radio" [(ngModel)]="status" name="status" id="active" class="with-gap" value="0">
+                    <label for="active">Active</label>
+                  </div>
+                  <div class="radio inlineblock" style="margin-top:10px;">
+                    <input type="radio" [(ngModel)]="status" name="status" id="inactive" class="with-gap" value="1">
+                    <label for="inactive">Inactive</label>
+                  </div>
+                </div>
+              </div>
+
+              <div class="col-lg-1 col-md-1"><b>&nbsp;</b>
+                <div class="input-group">
+                  <input type="button" class="btn btn-secondary headerSemiBold float-right" value="{{ isEdit ? 'UPDATE' : 'SUBMIT'}}" style="margin:0px;" (click)="submitButtonClick();">
+                 </div>
+              </div>
+
+              <div class="col-lg-1 col-md-1"><b>&nbsp;</b>
+                <div class="input-group">
+                <input type="button" class="btn btn-warning headerSemiBold float-right" *ngIf="isEdit" value="CANCEL" style="margin:0px;" (click)="cancelEditClick();">
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <div class="col-sm-12 col-md-12 col-lg-12">
+      <div class="card">
+
+        <div class="header headerSemiBold">
+
+            <div class="row clearfix">
+
+              <div class="col-sm-6 col-md-6 col-lg-6">
+
+                <h2><span class="linkColor">Available</span> Educators</h2>
+
+              </div>
+
+              <div class="col-sm-6 col-md-6 col-lg-6">
+
+                <ul class="header-dropdown" style="top: 0px;">
+
+                  <li [ngClass]="filter ? 'dropdown show' : 'dropdown'">
+
+                    <a href="javascript:void(0);" class="dropdown-toggle mr-4 linkColor" data-toggle="dropdown" role="button" (click)="dropDownFilter();" aria-haspopup="true" aria-expanded="false">
+                      Manage columns
+                    </a>
+
+                    <ul class="dropdown-menu dropdown-menu-right labelTitle mangeColumn">
+
+                      <li class="p-2">
+                        <input type="checkbox" data-target="2" [(ngModel)]="columImage"><span class="pl-2">Image</span>  <br>
+                        <input type="checkbox" data-target="3" [(ngModel)]="columBranch"><span class="pl-2">Branch</span>  <br>
+                        <input type="checkbox" data-target="4" [(ngModel)]="columGender"><span class="pl-2">Educator Gender</span>  <br>
+                        <input type="checkbox" data-target="4" [(ngModel)]="columName"><span class="pl-2">Educator Name</span>  <br>
+                        <input type="checkbox" data-target="5" [(ngModel)]="columNumber"><span class="pl-2">Educator Number</span>  <br>
+                        <input type="checkbox" data-target="6" [(ngModel)]="columEmail"><span class="pl-2">Educator Email</span>  <br>
+                        <input type="checkbox" data-target="7" [(ngModel)]="columQualification"><span class="pl-2">Qualification</span>  <br>
+                        <input type="checkbox" data-target="8" [(ngModel)]="columExperience"><span class="pl-2">Experience</span>  <br>
+                        <input type="checkbox" data-target="9" [(ngModel)]="columStatus"><span class="pl-2">Status</span> 
+                      </li>
+
+                    </ul>
+
+                  </li>
+
+                </ul>
+
+              </div>
+              
+          </div>
+        </div>
+
+        <div class="body">
+          <div class="table-responsive">
+            <table class="table table-bordered table-striped table-hover dataTable js-exportable w-100">
+              <thead class="headerSemiBold">
+                <tr>
+                  <th>#</th>
+                  <th>S No</th>
+                  <th [ngClass]="(columImage == false)?'d-none':''">Image</th>
+                  <th [ngClass]="(columBranch == false)?'d-none':''">Branch</th>
+                  <th [ngClass]="(columGender == false)?'d-none':''">Educator Gender</th>
+                  <th [ngClass]="(columName == false)?'d-none':''">Educator Name</th>
+                  <th [ngClass]="(columNumber == false)?'d-none':''">Educator Number</th>
+                  <th [ngClass]="(columEmail == false)?'d-none':''">Educator Email</th>               
+                  <th [ngClass]="(columQualification == false)?'d-none':''">Qualification</th>               
+                  <th [ngClass]="(columExperience == false)?'d-none':''">Experience</th>
+                  <th [ngClass]="(columStatus == false)?'d-none':''">Status</th>
+                </tr>
+              </thead>
+              <tbody class="labelTitle">
+                <tr *ngFor="let tutor of tutorList;let i=index;">
+                  <td>
+                    <span class="badge badge-success" title="Update Tutor" (click)="editButtonClick(tutor.id)">
+                      <i class="icon-pencil"></i>
+                    </span>
+                    <span class="badge badge-danger" title="Delete Tutor" (click)="deleteButtonClick(tutor.id)">
+                      <i class="icon-trash"></i>
+                    </span>
+                  </td>
+                  <td>{{tutorList.length - i}}</td>
+                  <td [ngClass]="(columImage == false)?'d-none':''">
+                    <img src="{{tutor.image}}" id="MediaPreview" style="height:30px" ng-if="Subject.imagepriew != 1" />
+                  </td>
+                  <td [ngClass]="(columBranch == false)?'d-none':''">{{tutor.branch.name}}</td>
+                  <td [ngClass]="(columGender == false)?'d-none':''">{{tutor.gender | titlecase}}</td>
+                  <td [ngClass]="(columName == false)?'d-none':''">{{tutor.name}}</td>
+                  <td [ngClass]="(columNumber == false)?'d-none':''">
+                    <span *ngIf="tutor.phone!=''">
+                      +{{tutor.countryCode}} {{tutor.phone}}
+                    </span> 
+                  </td>
+                  <td [ngClass]="(columEmail == false)?'d-none':''">{{tutor.email}}</td>
+                  <td [ngClass]="(columQualification == false)?'d-none':''">{{tutor.qualification}}</td>              
+                  <td [ngClass]="(columExperience == false)?'d-none':''">{{tutor.experience}}</td>              
+                  <td [ngClass]="(columStatus == false)?'d-none':''">
+                    <span class="badge badge-{{tutor.status==0 ? 'success' : 'warning'}}">
+                      {{tutor.status==0 ? 'Active' : 'Inactive'}}
+                    </span>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+  
+</div>

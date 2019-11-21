@@ -1,0 +1,117 @@
+<div class="container" id="startForm">
+  <div class="row clearfix">
+    <div class="col-lg-12">
+      <div class="card">
+        <div class="body block-header">
+          <div class="row">
+            <div class="col-lg-6 col-md-8 col-sm-12">
+              <h2 class="headerSemiBold">Manage Plan Duration</h2>
+              
+              <ul class="breadcrumb p-l-0 p-b-0 labelTitle">
+                <li class="breadcrumb-item">
+                  <a class="linkColor" routerLink="/" routerLinkActive="active"><i class="icon-home"></i></a>
+                </li>
+                <li class="breadcrumb-item active labelTitle">Plan Duration</li>
+              </ul>
+            </div>
+            <div class="col-lg-6 col-md-4 col-sm-12">
+              <a routerLink="/" routerLinkActive="active" class="btn btn-secondary headerSemiBold btn-simple float-right">
+                <i class="icon-arrow-left"></i> BACK
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row clearfix">
+    <div class="col-sm-12 col-md-12 col-lg-12">
+      <div class="card">
+
+        <div class="header headerSemiBold">
+          <h2><span class="linkColor">Manage</span> Plan Duration</h2>
+        </div>
+
+        <div class="body">
+          <div class="demo-masked-input labelTitle">
+            <div class="row clearfix">
+              <div class="col-lg-3 col-md-3">Title
+                <div class="input-group">
+                  <input type="text" class="form-control" [(ngModel)]="title" placeholder="Enter title" autofocus="true">
+                </div>
+              </div>
+              <div class="col-lg-3 col-md-3">Month
+                <div class="input-group">
+                  <input type="text" class="form-control" [(ngModel)]="month" placeholder="Enter month">
+                </div>
+              </div>
+              <div class="col-lg-3 col-md-3">Days
+                <div class="input-group">
+                  <input type="text" class="form-control" [(ngModel)]="days" placeholder="Enter days">
+                </div>
+              </div>          
+
+              <div class="col-lg-1 col-md-1"><b>&nbsp;</b>
+                <div class="input-group">
+                  <input type="button" class="btn btn-secondary headerSemiBold float-right" value="{{ isEdit ? 'UPDATE' : 'SUBMIT'}}"
+                    style="margin:0px;" (click)="submitButtonClick();">
+                </div>
+              </div>
+              <div class="col-lg-1 col-md-1"><b>&nbsp;</b>
+                <div class="input-group">
+                  <input type="button" class="btn btn-warning headerSemiBold float-right" *ngIf="isEdit" value="CANCEL"
+                    style="margin:0px;" (click)="cancelEditClick();">
+                </div>
+              </div>
+              
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-sm-12 col-md-12 col-lg-12">
+      <div class="card">
+
+        <div class="header headerSemiBold">
+          <h2><span class="linkColor">Available</span> Plan Duration</h2>
+        </div>
+
+        <div class="body">
+          <div class="table-responsive">
+            <table class="table table-bordered table-striped table-hover dataTable js-exportable w-100">
+              <thead class="headerSemiBold">
+                <tr>
+                  <th>#</th>
+                  <th>S No</th>
+                  <th>Title</th>
+                  <th>Month</th>
+                  <th>Days</th>
+                </tr>
+              </thead>
+              <tbody class="labelTitle">
+                <tr *ngFor="let term of termList;let i=index;">                  
+                  <td>
+                    <span class="badge badge-success" title="Update term" (click)="editButtonClick(term.id)">
+                      <i class="icon-pencil"></i>
+                    </span>
+
+                    <span class="badge badge-danger" title="Delete term" (click)="deleteButtonClick(term.id)">
+                      <i class="icon-trash"></i>
+                    </span>
+                  </td>
+                  <td>{{termList.length - i}}</td>
+                  <td>{{term.title}}</td>
+                  <td>{{term.month}}</td>
+                  <td>{{term.days}}</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>

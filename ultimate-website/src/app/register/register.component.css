@@ -1,0 +1,42 @@
+button.truncate {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.down {
+    transform: rotate(45deg);
+    -webkit-transform: rotate(45deg);
+}
+
+i {
+    border: solid black;
+    border-width: 0 2px 2px 0;
+    display: inline-block;
+    padding: 2px;
+    margin-bottom: 2px;
+  }
+
+  .form-control{
+      border-radius: 4px;
+  }
+
+  .drp-srch{
+    height: 300px;
+    overflow-y: scroll;
+  }
+
+  .bck-img{
+    background-image: url("../../assets/images/content/bg/elements/12.jpg");
+    background-position: 50% 0%;
+  }
+
+  .display{
+    display: block !important;
+  }
+  .d-none{
+    display: none !important;
+  }
+  .fnt-14{
+    font-size: 14px;
+  }

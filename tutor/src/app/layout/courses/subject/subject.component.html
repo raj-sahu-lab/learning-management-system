@@ -1,0 +1,374 @@
+<div class="container" id="startForm">
+
+  <div class="row clearfix">
+    <div class="col-lg-12">
+      <div class="card">
+        <div class="body block-header">
+          <div class="row">
+            <div class="col-lg-6 col-md-8 col-sm-12">
+              <h2 class="headerSemiBold">Manage Course Bundles</h2>
+
+              <ul class="breadcrumb p-l-0 p-b-0 labelTitle">
+                <li class="breadcrumb-item">
+                  <a class="linkColor" routerLink="/" routerLinkActive="active"><i class="icon-home"></i></a>
+                </li>
+                <li class="breadcrumb-item active labelTitle">Course Bundles</li>
+              </ul>
+            </div>
+
+            <div class="col-lg-6 col-md-4 col-sm-12">
+              <a routerLink="/" routerLinkActive="active"
+                class="btn btn-secondary headerSemiBold btn-simple float-right"><i class="icon-arrow-left"></i> BACK</a>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row clearfix">
+
+    <div class="col-sm-12 col-md-12 col-lg-12">
+      <div class="card">
+
+        <div class="header headerSemiBold">
+          <h2><span class="linkColor">Manage</span> Course Bundles</h2>
+        </div>
+
+        <div class="body">
+          <div class="demo-masked-input labelTitle">
+            <div class="row clearfix">
+
+              <div class="col-sm-1" *ngIf="selectedSubjectImage"><b>&nbsp;</b>
+                <div class="input-group">
+                  <img [src]="selectedSubjectImage" alt="assets/images/my-image/choose-file.png"
+                    data-holder-rendered="true" id="ImagePreview" style="height:50px" />
+                </div>
+              </div>
+
+              <div class="col-lg-{{selectedSubjectImage ? 3 : 4}} col-md-{{selectedSubjectImage ? 3 : 4}}">Choose Image ( 945 x 615 px )
+                <div class="input-group">
+                  <input type="file" class="form-control" [(ngModel)]="image" accept="image/jpeg, image/png"
+                    (change)="subjectFileChanged($event)" autofocus="true">
+                </div>
+              </div>
+
+              <div class="col-lg-4 col-md-4">Select Educator
+                <div class="input-group">
+                  <select class="form-control" [(ngModel)]="tutor">
+                    <option [ngValue]="undefined" disabled>Select Educator</option>
+                    <option *ngFor="let tutor of tutorList" [ngValue]="tutor.id">
+                      {{tutor.name}}
+                    </option>
+                  </select>
+                </div>
+              </div>
+
+              <div class="col-lg-4 col-md-4">Course Bundle Name
+                <div class="input-group">
+                  <input type="text" class="form-control" [(ngModel)]="title" placeholder="Enter course bundle name">
+                </div>
+              </div>
+
+              <div class="col-lg-12 col-md-12">Course Bundle Description 
+                <span tooltip="It will be visible on the website and mobile app as a short description of course bundle." placement="top">
+                  <i class="icon-info"></i>
+                </span>
+
+                <div class="input-group">
+                  <textarea rows="6" class="form-control no-resize" [(ngModel)]="description"
+                    style="border: 1px solid #E3E3E3;border-radius: 10px;" maxlength="500"></textarea>
+                </div>
+              </div>
+              <div class="col-lg-12 col-md-12">
+                <div class="input-group">
+                  <span class="linkColor">{{500 - description?.length}} character left</span>
+                </div>
+              </div>
+
+              <!-- Paymentgatway Start-->
+              <div class="col-lg-2 col-md-2">Payment Type
+                <div class="input-group">
+                  <div class="radio inlineblock m-r-20" style="margin-top:10px;">
+                    <input type="radio" [(ngModel)]="paymentTypeFree" name="paymentType" id="free" class="with-gap"
+                      value="0">
+                    <label for="free">Free</label>
+                  </div>
+                  <div class="radio inlineblock" style="margin-top:10px;">
+                    <input type="radio" [(ngModel)]="paymentTypeFree" name="paymentType" id="paid" class="with-gap"
+                      value="1">
+                    <label for="paid">Paid</label>
+                  </div>
+                </div>
+              </div>
+
+              <div class="col-lg-2 col-md-2" *ngIf="paymentTypeFree == '1'">Payment Gateway
+                <div class="input-group">
+                  <select class="form-control" [(ngModel)]="paymentGateWayId">
+                    <option [ngValue]="undefined" disabled>Payment Gateway</option>
+                    <option *ngFor="let paymentGateWay of paymentGateWayList" value="{{paymentGateWay.id}}">
+                      {{paymentGateWay.title}}
+                    </option>
+                  </select>
+                </div>
+              </div>
+
+              <div class="col-lg-2 col-md-2" *ngIf="paymentTypeFree == '1'">iOS Amount
+                <span tooltip="It is pricing for iOS mobile application as per Apple’s guidelines." placement="top">
+                  <i class="icon-info"></i>
+                </span>
+
+                <div class="input-group">
+                  <select class="form-control" [(ngModel)]="iosPaymentGateWayid">
+                    <option [ngValue]="undefined" disabled>iOS Amount</option>
+                    <option *ngFor="let iOSInApp of iOSInAppList" value="{{iOSInApp.id}}">
+                      {{iOSInApp.title}} ( {{iOSInApp.inAppamount}} $)
+                    </option>
+                  </select>
+                </div>
+              </div>
+
+              <div class="col-lg-2 col-md-2" *ngIf="paymentTypeFree == '1'">Currency
+                <div class="input-group">
+                  <select class="form-control" [(ngModel)]="currencyId">
+                    <option [ngValue]="undefined" disabled>Currency</option>
+                    <option *ngFor="let currency of currencyList" value="{{currency.id}}">
+                      {{currency.title}} ( {{currency.sign}} )
+                    </option>
+                  </select>
+                </div>
+              </div>
+
+              <div class="col-lg-2 col-md-2" *ngIf="paymentTypeFree == '1'">Amount
+                <div class="input-group">
+                  <input type="number" class="form-control" [(ngModel)]="amount" placeholder="Enter amount" min="0" pattern="/^-?\d+\.?\d*$/" onKeyPress="if(this.value.length==6) return false;">
+                </div>
+              </div>
+
+              <div class="col-lg-2 col-md-2" *ngIf="paymentTypeFree == '1'">Day's of validity
+                <span tooltip="After validity ends, students won’t be able to access it." placement="top">
+                  <i class="icon-info"></i>
+                </span>
+
+                <div class="input-group">
+                  <input type="number" class="form-control" [(ngModel)]="validity" placeholder="Enter validity" min="0" pattern="/^-?\d+\.?\d*$/" onKeyPress="if(this.value.length==3) return false;">
+                </div>
+              </div>
+
+              <div class="col-lg-12 col-md-12" *ngIf="paymentTypeFree == '1'">Payment Preview
+                <span tooltip="It will be visible on the website and mobile app when a student clicks on pay for course bundle." placement="top">
+                  <i class="icon-info"></i>
+                </span>
+                
+                <div class="input-group">
+                  <textarea rows="6" class="form-control no-resize" [(ngModel)]="previewText" style="border: 1px solid #E3E3E3;border-radius: 10px;" maxlength="500"></textarea>
+                </div>
+              </div>
+              <div class="col-lg-12 col-md-12" *ngIf="paymentTypeFree == '1'">
+                <div class="input-group">
+                  <span class="linkColor">{{500 - previewText?.length}} character left</span>
+                </div>
+              </div>
+              <!-- Paymentgatway End-->
+
+              <div class="col-lg-4 col-md-4" *ngIf="isEdit"> <b>Status</b>
+                <div class="input-group">
+                  <div class="radio inlineblock m-r-20" style="margin-top:10px;">
+                    <input type="radio" [(ngModel)]="status" name="status" id="active" class="with-gap" value="0">
+                    <label for="active">Active</label>
+                  </div>
+                  <div class="radio inlineblock" style="margin-top:10px;">
+                    <input type="radio" [(ngModel)]="status" name="status" id="inactive" class="with-gap" value="1">
+                    <label for="inactive">Inactive</label>
+                  </div>
+                </div>
+              </div>
+
+              <div class="col-lg-1 col-md-1"><b>&nbsp;</b>
+                <div class="input-group">
+                  <input type="button" class="btn btn-secondary headerSemiBold float-right"
+                    value="{{ isEdit ? 'UPDATE' : 'SUBMIT'}}" style="margin:0px;" (click)="submitButtonClick();">
+                </div>
+              </div>
+
+              <div class="col-lg-1 col-md-1"><b>&nbsp;</b>
+                <div class="input-group">
+                  <input type="button" class="btn btn-warning headerSemiBold float-right" *ngIf="isEdit" value="CANCEL"
+                    style="margin:0px;" (click)="cancelEditClick();">
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-sm-12 col-md-12 col-lg-12">
+      <div class="card">
+
+        <div class="header headerSemiBold">
+
+          <div class="row clearfix">
+            
+            <div class="col-sm-6 col-md-6 col-lg-6">
+
+              <h2><span class="linkColor">Available</span> Course Bundles</h2>
+
+            </div>
+
+            <div class="col-sm-6 col-md-6 col-lg-6">
+
+              <ul class="header-dropdown" style="top: 0px;">
+
+                <li [ngClass]="filter ? 'dropdown show' : 'dropdown'">
+
+                  <a href="javascript:void(0);" class="dropdown-toggle mr-4 linkColor" data-toggle="dropdown"
+                    role="button" (click)="dropDownFilter();" aria-haspopup="true" aria-expanded="false">
+                    Manage columns
+                  </a>
+
+                  <ul class="dropdown-menu dropdown-menu-right labelTitle mangeColumn">
+
+                    <li class="p-2">
+                      <input type="checkbox" data-target="2" [(ngModel)]="columImage"><span class="pl-2">Image</span>  <br>
+                      <input type="checkbox" data-target="3" [(ngModel)]="columBranch"><span class="pl-2">Branch Name</span><br>
+                      <input type="checkbox" data-target="4" [(ngModel)]="columTutor"><span class="pl-2">Educator Name</span> <br>
+                      <input type="checkbox" data-target="5" [(ngModel)]="columName"><span class="pl-2">Course Bundle Name</span> <br>
+                      <input type="checkbox" data-target="6" [(ngModel)]="columDescription"><span class="pl-2">Description</span> <br>
+                      <input type="checkbox" data-target="7" [(ngModel)]="columPayment"><span class="pl-2">Gateway</span> <br>
+                      <input type="checkbox" data-target="8" [(ngModel)]="columAmount"><span class="pl-2">Amount</span><br>
+                      <input type="checkbox" data-target="9" [(ngModel)]="columValidity"><span class="pl-2">Day's of validity</span><br>
+                      <input type="checkbox" data-target="10" [(ngModel)]="columPreview"><span class="pl-2">Preview</span><br>
+                      <input type="checkbox" data-target="11" [(ngModel)]="columStatus"><span class="pl-2">Status</span>
+                    </li>
+
+                  </ul>
+
+                </li>
+
+              </ul>
+
+            </div>
+
+          </div>
+        </div>
+        
+        <div class="body">
+          <div class="table-responsive">
+            <table class="table table-bordered table-striped table-hover dataTable js-exportable w-100">
+              <thead class="headerSemiBold">
+                <tr>
+                  <th>#</th>
+                  <th>S No</th>
+                  <th [ngClass]="(columImage == false)?'d-none':''">Image</th>
+                  <th [ngClass]="(columBranch == false)?'d-none':''">Branch Name</th>
+                  <th [ngClass]="(columTutor == false)?'d-none':''">Educator Name</th>
+                  <th [ngClass]="(columName == false)?'d-none':''">Course Bundle Name</th>
+                  <th [ngClass]="(columDescription == false)?'d-none':''">Description</th>
+                  <th [ngClass]="(columPayment == false)?'d-none':''">Gateway</th>
+                  <th [ngClass]="(columAmount == false)?'d-none':''">Amount</th>
+                  <th [ngClass]="(columValidity == false)?'d-none':''">Day's of validity</th>
+                  <th [ngClass]="(columPreview == false)?'d-none':''">Preview</th>
+                  <th [ngClass]="(columStatus == false)?'d-none':''">Status</th>
+                </tr>
+              </thead>
+              <tbody class="labelTitle">
+                <tr *ngFor="let subject of subjectList;let i=index;">
+                  <td>
+                    <span class="badge badge-success" title="Update Subject" (click)="editButtonClick(subject.id)">
+                      <i class="icon-pencil"></i>
+                    </span>
+                    <span class="badge badge-danger" title="Delete Subject" (click)="deleteButtonClick(subject.id)">
+                      <i class="icon-trash"></i>
+                    </span>
+                  </td>
+                  <td>{{subjectList.length - i}}</td>
+                  <td [ngClass]="(columImage == false)?'d-none':''">
+                    <img src="{{subject.image}}" id="MediaPreview" style="height:30px"
+                      ng-if="Subject.imagepriew != 1" />
+                  </td>
+                  <td [ngClass]="(columBranch == false)?'d-none':''">{{subject.tutor.branch.name}}</td>
+                  <td [ngClass]="(columTutor == false)?'d-none':''">{{subject.tutor.name}}</td>
+                  <td [ngClass]="(columName == false)?'d-none':''">{{subject.title}}</td>
+                  <td [ngClass]="(columDescription == false)?'d-none':''">
+                    <span class="badge badge-success" title="Description" (click)="showDescription(subject.id)">
+                      <i class="icon-eye"></i>
+                    </span>
+                  </td>
+                  <td [ngClass]="(columPayment == false)?'d-none':''">
+                      {{subject.payment_type?.title}} 
+                      {{subject.iosPaymentGateWay == null ? '' : '/' }} 
+                      {{subject.iosPaymentGateWay?.title}}
+                  </td>
+                  <td [ngClass]="(columAmount == false)?'d-none':''">
+                      <span *ngIf="subject.isPaid">{{subject.currency.sign}}</span>
+                       {{subject.amount | number: '1.2'}}
+                    </td>
+                  <td [ngClass]="(columValidity == false)?'d-none':''">{{subject.validity}}</td>
+                  <td [ngClass]="(columPreview == false)?'d-none':''">
+                    <span class="badge badge-success" title="Preview" *ngIf="subject.isPaid" (click)="showPreview(subject.id)">
+                      <i class="icon-eye"></i>
+                    </span>
+                  </td>
+                  <td [ngClass]="(columStatus == false)?'d-none':''">
+                    <span class="badge badge-{{subject.status==0 ? 'success' : 'warning'}}">
+                      {{subject.status==0 ? 'Active' : 'Inactive'}}
+                    </span>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+  
+</div>
+
+<!--Modal Popup -->
+<div class="modal" [style.display]="selectedPreview ? 'block' : 'none'">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+
+      <div class="modal-header">
+        <h6 class="headerBold">{{selectedPreview?.title}}</h6>
+      </div>
+
+      <div class="modal-body labelTitle">
+        {{selectedPreview?.preview}}
+      </div>
+
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary headerSemiBold" data-dismiss="modal"
+          (click)="hidePreview()">Close</button>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<div class="modal" [style.display]="selectedDescription ? 'block' : 'none'">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+
+      <div class="modal-header">
+        <h6 class="headerBold">{{selectedDescription?.title}}</h6>
+      </div>
+
+      <div class="modal-body labelTitle">
+        {{selectedDescription?.description}}
+      </div>
+
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary headerSemiBold" data-dismiss="modal"
+          (click)="hideDescription()">Close</button>
+      </div>
+
+    </div>
+  </div>
+</div>
+<!--Modal Popup -->

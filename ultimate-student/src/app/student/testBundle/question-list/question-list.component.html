@@ -1,0 +1,261 @@
+<main class="default-transition" style="opacity: 1;">
+  <div class="container-fluid disable-text-selection">
+      <div class="row">
+          <div class="col-12">
+
+              <div class="row">
+                  <div class="col-xs-12 col-lg-12 col-12 mb-3">
+                      <div class="row m-0 p-0">
+                          <div class="col-md-12 col-lg-1 col-sm-12 p-0">
+                              <h6 *ngIf="!startNow">
+                                  <a class="text-muted cursor" (click)="goBack()"><i class="iconsminds-up"></i> Back</a>
+                              </h6>
+                          </div>
+                          <div class="col-md-12 col-lg-8 col-sm-12 p-0">
+                              <h6 class="cent headerSemiBold">
+                                  {{series?.series?.title}}
+                              </h6>
+                          </div>
+                          <div class="col-md-12 col-lg-3 col-sm-12 p-0">
+                            <h6>
+                                <div class="labelTitle rating rght">
+                                    <i class="simple-icon-list pr-2"></i>{{questionList?.length}}
+                                    Questions
+                                    <span *ngIf="series?.series?.timed" class="ml-4"><i
+                                        class="iconsminds-sand-watch-2 pr-2"></i>{{series?.series?.duration}}
+                                    min</span>
+                                </div>
+                            </h6>
+                        </div>
+                      </div>
+                  </div>
+                  <div *ngIf="!startNow" class="col-12">
+                
+                    <div class="mb-4 pre-line">
+                        <p class="labelTitle">{{series?.series?.preview}}</p>
+                    </div>
+                    <div class="mb-4">
+                        <div class="text-center">
+                            <button type="button" class="btn headerSemiBold white coral-bk default" (click)="startTest()">Start now</button>
+                        </div>
+                    </div>
+                  </div>
+              </div>
+
+              <div class="row mb-4" *ngIf="!questionList?.length && startNow">
+                  <div class="col-12 col-sm-12 col-md-12 mx-auto my-auto">
+                      <div class="card index-card">
+                          <div class="card-body text-center form-side">
+                              <p class="mb-3 text-center">
+                                  <img *ngIf="instituteLogo" src="{{instituteLogo}}"
+                                      class="img-thumbnail border-0 list-thumbnail align-self-center xsmall">
+                                  <img *ngIf="!instituteLogo" src="../../../assets/img/favicon.png"
+                                      class="img-thumbnail border-0 rounded-circle list-thumbnail align-self-center xsmall">
+                              </p>
+                              <h6 class="headerSemiBold">No bundle question list yet</h6>
+                              <p class="text-muted labelTitle">Coming soon!</p>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+
+              <div class="row mb-4" *ngIf="questionList?.length && startNow">
+                <div class="col-12 col-sm-12 col-md-12 mx-auto my-auto">
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="row m-0 p-0">
+                                <div class="col-md-12 col-sm-12 col-lg-5 col-12 mb-3 m-0 p-0">
+                                    <div>
+                                        <h6 class="headerSemiBold">
+                                            <span>Intergrated Reasoning</span>
+                                        </h6>
+                                    </div>
+                                </div>
+                                <div class="col-md-12 col-sm-12 col-lg-7 col-12 mb-3 m-0 p-0">
+                                    <div class="row headerSemiBold">
+                                        <div class="col-md-6 col-sm-6 col-xs-8 col-lg-6 col-12">
+                                        <h6>
+                                            <span>Question Answered ({{answeredCount}}/{{pager.count}})</span>
+                                        </h6>
+                                        </div>
+                                        <div class="col-md-6 col-sm-6 col-xs-4 col-lg-6 col-12">
+                                            <div class="font-weight-bold float-right coral cursor" data-toggle="modal" data-target="#reviewmodal">
+                                                <h6 class="d-inline-block pr-4">Review</h6>
+                                                <span *ngIf="series?.series?.timed" class="coral font-weight-normal h6">Time : {{ellapsedTime}}/{{duration}}</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div *ngFor="let testQuestion of questionList;let questionIndex = index">
+                                <div *ngIf="questionIndex == pager.index">
+                                    <h6 class="headerSemiBold">
+                                        <span>Q{{pager.index + 1}}</span>
+                                        <span class="ml-2">
+                                            <img style="height: 30px;" src="{{testQuestion.questionMedia}}" class="cursor pr-2" data-toggle="modal" data-target="#viewImage" (click)="showImage(testQuestion.questionMedia)">
+                                            <div class="d-inline" [innerHTML]="testQuestion.question"></div>
+                                        </span>
+                                    </h6>
+                                    <p class="mb-4 text-muted">Choose you answer</p>
+                                    <div class="mb-2 headerSemiBold" *ngFor="let option of testQuestion.options">
+                                        <label [ngClass]="option.optionSelected ? 'select-ans-bk' : 'nt-select-ans'" class="w-100 option-bx m-0 check" attr.for="{{testQuestion.id}}-{{option.id}}">
+                                            <span *ngIf="option?.optionMedia" style="left: 3%;font-size: 16px;">
+                                                <img src="{{option?.optionMedia}}" style="height: 30px;" class="cursor" data-toggle="modal" data-target="#viewImage" (click)="showImage(option.optionMedia)">
+                                            </span>
+                                            <span *ngIf="!option?.optionMedia" style="left: 3%;font-size: 16px;">
+                                                <div class="d-inline" [innerHTML]="option.option"></div>
+                                            </span>
+                                            <input type="checkbox" id="{{testQuestion.id}}-{{option.id}}" [(ngModel)]="option.optionSelected" (change)="onSelect(option, testQuestion);">
+                                            <span class="checkmark"></span>
+                                        </label>
+                                    </div>
+                                </div>
+                                <div *ngIf="questionIndex == pager.index" class="text-center">
+                                    <button type="button" [ngClass]="{'marked': testQuestion.marked}" class="btn headerSemiBold white mr-2 default" (click)="markForReview(testQuestion)" data-toggle="tooltip" title="Mark for review" style="background-color: #eaeaea"><i [ngClass]="{'marked': testQuestion.marked}" class="iconsminds-bookmark blue"></i></button>
+                                    <button type="button" class="btn headerSemiBold white mr-2 default" (click)="goTo(pager.index - 1);" [ngClass]="{'selected-bk': pager.index!=0}" style="display: none;">Previous</button>
+                                    <button *ngIf="pager.index+1 < pager.count" type="button" class="btn headerSemiBold coral-bk white default" (click)="goTo(pager.index + 1)">Next</button>
+                                    <button *ngIf="pager.index+1 == pager.count" type="button" class="btn headerSemiBold coral-bk white default" data-toggle="modal" data-target="#reviewmodal">Review and Submit</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+              </div>
+          </div>
+      </div>
+  </div>
+</main>
+<!-- Modal -->
+<div class="modal fade modal-top" id="reviewmodal" tabindex="-1" role="dialog" aria-labelledby="userInfo" aria-hidden="true" style="display: none;">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header" style="border: 0;">
+                    <h6 id="review" class="modal-title">Review and Submit</h6>
+                    <button id="closeSubmit" type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+            </div>
+            <div class="modal-body">
+                <div class="card">
+                    <div class="card-header p-0">
+                        <ul class="nav nav-tabs card-header-tabs" role="tablist">
+                            <li class="nav-item"><a class="nav-link active pr-2" id="first-tab" data-toggle="tab" href="#first" role="tab" aria-controls="first" aria-selected="true">All ({{pager.count}})</a></li>
+                            <li class="nav-item"><a class="nav-link pr-2" id="second-tab" data-toggle="tab" href="#second" role="tab" aria-controls="second" aria-selected="false">Answered ({{answeredCount}})</a></li>
+                            <li class="nav-item"><a class="nav-link pr-2" id="third-tab" data-toggle="tab" href="#third" role="tab" aria-controls="third" aria-selected="false">Unanswered ({{pager.count-answeredCount}})</a></li>
+                            <li class="nav-item"><a class="nav-link pr-2" id="fourth-tab" data-toggle="tab" href="#fourth" role="tab" aria-controls="fourth" aria-selected="false">Marked for review ({{reviewCount}})<span><i class="iconsminds-bookmark ml-2 marked"></i></span></a></li>
+                        </ul>
+                    </div>
+                    <div class="card-body">
+                        <div class="tab-content">
+                            <div class="tab-pane fade active show" id="first" role="tabpanel" aria-labelledby="first-tab">
+                                <div class="cursor" (click)="goTo(testQuestion.index)" *ngFor="let testQuestion of questionList;let reviewIndex = index">
+                                    <h6 class="mb-4">Q{{reviewIndex+1}} 
+                                        <span *ngIf="testQuestion.marked"><i class="iconsminds-bookmark marked"></i></span>
+                                        <span>
+                                            <img style="height: 30px;" src="{{testQuestion?.questionMedia}}" class="pl-2 pr-2">
+                                            <div class="d-inline" [innerHTML]="testQuestion.question"></div>
+                                        </span>
+                                    </h6>
+                                    <div *ngFor="let option of testQuestion.options">
+                                        <p class="lt-gr" *ngIf="option?.optionSelected">
+                                            <span>Answered : </span>
+                                            <span *ngIf="option?.optionMedia" style="left: 3%;font-size: 16px;">
+                                                <img src="{{option?.optionMedia}}" style="height: 30px;" class="pl-2 pr-2">
+                                            </span>
+                                            <span *ngIf="!option?.optionMedia" style="left: 3%;font-size: 16px;">
+                                                <div class="d-inline" [innerHTML]="option.option"></div>
+                                            </span>
+                                        </p>
+                                    </div>
+                                    <div class="separator mt-4 mb-4"></div>
+                                </div>
+                            </div>
+                            <div class="tab-pane fade" id="second" role="tabpanel" aria-labelledby="second-tab">
+                                <div class="cursor" (click)="goTo(testQuestion.index)" *ngFor="let testQuestion of questionList;let reviewIndex = index">
+                                    <div *ngIf="testQuestion.answered">
+                                        <h6 class="mb-4">Q{{reviewIndex+1}} 
+                                            <span *ngIf="testQuestion.marked"><i class="iconsminds-bookmark marked"></i></span>
+                                            <span>
+                                                <img style="height: 30px;" src="{{testQuestion?.questionMedia}}" class="pl-2 pr-2">
+                                                <div class="d-inline" [innerHTML]="testQuestion.question"></div>
+                                            </span>
+                                        </h6>
+                                        <div *ngFor="let option of testQuestion.options">
+                                            <p class="lt-gr" *ngIf="option?.optionSelected">
+                                                <span>Answered : </span>
+                                                <span *ngIf="option?.optionMedia" style="left: 3%;font-size: 16px;">
+                                                    <img src="{{option?.optionMedia}}" style="height: 30px;" class="pl-2 pr-2">
+                                                </span>
+                                                <span *ngIf="!option?.optionMedia" style="left: 3%;font-size: 16px;">
+                                                    <div class="d-inline" [innerHTML]="option.option"></div>
+                                                </span>
+                                            </p>
+                                        </div>
+                                        <div class="separator mt-4 mb-4"></div>
+                                    </div>
+                                    
+                                </div>
+                            </div>
+                            <div class="tab-pane fade" id="third" role="tabpanel" aria-labelledby="third-tab">
+                                <div class="cursor" (click)="goTo(testQuestion.index)" *ngFor="let testQuestion of questionList;let reviewIndex = index">
+                                    <div *ngIf="!testQuestion.answered">
+                                        <h6 class="mb-4">Q{{reviewIndex+1}} 
+                                            <span *ngIf="testQuestion.marked"><i class="iconsminds-bookmark marked"></i></span>
+                                            <span>
+                                                <img style="height: 30px;" src="{{testQuestion?.questionMedia}}" class="pl-2 pr-2">
+                                                <div class="d-inline" [innerHTML]="testQuestion.question"></div>
+                                            </span>
+                                        </h6>
+                                        <p>Answered :</p>
+                                        <div class="separator mt-4 mb-4"></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="tab-pane fade" id="fourth" role="tabpanel" aria-labelledby="fourth-tab">
+                                <div class="cursor" (click)="goTo(testQuestion.index)" *ngFor="let testQuestion of questionList;let reviewIndex = index">
+                                    <div *ngIf="testQuestion.marked">
+                                        <h6 class="mb-4">Q{{reviewIndex+1}} 
+                                            <span *ngIf="testQuestion.marked"><i class="iconsminds-bookmark marked"></i></span>
+                                            <span>
+                                                <img style="height: 30px;" src="{{testQuestion?.questionMedia}}" class="pl-2 pr-2">
+                                                <div class="d-inline" [innerHTML]="testQuestion.question"></div>
+                                            </span>
+                                        </h6>
+                                        <div *ngFor="let option of testQuestion.options">
+                                            <p class="lt-gr" *ngIf="option?.optionSelected">
+                                                <span>Answered : </span>
+                                                <span *ngIf="option?.optionMedia" style="left: 3%;font-size: 16px;">
+                                                    <img src="{{option?.optionMedia}}" style="height: 30px;" class="pl-2 pr-2">
+                                                </span>
+                                                <span *ngIf="!option?.optionMedia" style="left: 3%;font-size: 16px;">
+                                                    <div class="d-inline" [innerHTML]="option.option"></div>
+                                                </span>
+                                            </p>
+                                        </div>
+                                        <div class="separator mt-4 mb-4"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer text-center" style="display: block;border: 0;">
+                <button type="button" class="btn headerSemiBold coral-bk white default" (click)="submitButtonClicked();">
+                   Submit
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal fade modal-top" id="viewImage" tabindex="-1" role="dialog" aria-labelledby="viewImage" aria-hidden="true" style="display: none;">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-body">
+                <img src={{viewImage}} style="width: 100%;object-fit:contain;">
+            </div>
+            <div class="modal-footer">
+                <button id="closeImage" type="button" class="cursor btn headerSemiBold coral-bk white default float-right" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">Close</span></button>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- End Modal -->

@@ -1,0 +1,81 @@
+<main *ngIf="topicId" class="default-transition" style="opacity: 1;">
+  <div class="container-fluid disable-text-selection">
+    <div class="row">
+      <div class="col-12 mb-3">
+        <div class="row m-0 p-0">
+          <div class="col-md-12 col-lg-1 col-sm-12 p-0">
+              <h6>
+                  <a class="text-muted cursor" (click)="goBack()"><i class="iconsminds-up"></i> Back</a>
+              </h6>
+          </div>
+          <div class="col-md-12 col-lg-10 col-sm-12 p-0">
+              <h6 class="cent headerSemiBold">
+                  {{articleLists?.title}}
+              </h6>
+          </div>
+      </div>
+      </div>
+    </div>
+      
+      <!-- <div *ngIf="articleLists?.articals?.length" class="row mb-4">
+          <div class="col-xs-12 col-lg-12 col-12 mb-4">
+            <div class="card">
+                <img class="card-img" src="../../../assets/img/icons/background.png" style="border-radius: 0px;">
+                <div class="card-img-overlay text-center" style="color:#3a3a3a">
+                    <h1 class="welcomeFont mt-4">{{articleLists?.title}}</h1>
+                </div>
+            </div>
+          </div>
+      </div> -->
+
+      <div class="row mb-4" *ngIf="!articleLists?.articals?.length">
+        <div class="col-12 col-sm-12 col-md-12 mx-auto my-auto">
+            <div class="card index-card">
+                <div class="card-body text-center form-side">
+                    <p class="mb-3 text-center">
+                      <img *ngIf="instituteLogo" src="{{instituteLogo}}"
+                          class="img-thumbnail border-0 list-thumbnail align-self-center xsmall">
+                      <img *ngIf="!instituteLogo" src="../../../assets/img/favicon.png"
+                          class="img-thumbnail border-0 rounded-circle list-thumbnail align-self-center xsmall">
+                    </p>
+                    <h6 class="card-title labelTitle">No details found</h6>
+                    <p class="text-muted headerSemiBold">come after some time</p>
+
+                </div>
+            </div>
+        </div>
+    </div>
+      
+      <div class="row" *ngIf="articleLists?.articals?.length">
+
+          <div *ngFor="let article of articleLists.articals" (click)="requestNavigate(article.id)" class="col-md-6 col-sm-6 col-lg-4 col-12 mb-4">
+            <div class="card shadow d-flex flex-row pointer">
+              <div class="row w-100 p-4">
+                <div class="w-20 pl-3">
+                  <div class="align-self-center list-thumbnail-letters small headerSemiBold">
+                    <i class="iconsminds-newspaper"></i>
+                  </div>
+                </div>
+                <div class="w-75 pl-4">
+                  <div class="d-flex flex-grow-1 min-width-zero">
+                    <div class="card-body p-0 align-self-center d-flex flex-column flex-lg-row justify-content-between min-width-zero">
+                        <div class="min-width-zero">
+                            <p class="headerSemiBold mb-2">{{article?.title}}</p>
+                            <p class="mb-0">
+                              <img src="{{article.author.image}}"
+                                  class="rounded-circle list-thumbnail xsmall imageSubscriber ht-25">
+                              <span class="ml-2 mt-1 text-muted">{{article.author.name}}</span>
+                          </p>
+                        </div>
+                    </div>
+                </div>
+                </div>
+              </div>
+                
+                
+            </div>
+          </div>
+
+      </div>
+  </div>
+</main>

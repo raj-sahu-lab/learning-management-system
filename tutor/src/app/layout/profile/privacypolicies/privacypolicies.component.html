@@ -1,0 +1,70 @@
+<div class="container">
+	<div class="row clearfix">
+		<div class="col-lg-12">
+			<div class="card">
+				<div class="body block-header">
+					<div class="row">
+						<div class="col-lg-6 col-md-8 col-sm-12">
+							<h2 class="headerSemiBold">Manage Privacy policies</h2>
+
+							<ul class="breadcrumb p-l-0 p-b-0 labelTitle">
+								<li class="breadcrumb-item">
+									<a class="linkColor" routerLink="/" routerLinkActive="active"><i
+											class="icon-home"></i></a>
+								</li>
+								<li class="breadcrumb-item active labelTitle">Privacy policies</li>
+							</ul>
+						</div>
+						<div class="col-lg-6 col-md-4 col-sm-12">
+							<a routerLink="/setting" routerLinkActive="active"
+								class="btn btn-secondary headerSemiBold btn-simple float-right active">
+								<i class="icon-arrow-left"></i> BACK
+							</a>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="row clearfix">
+		<div class="col-sm-12 col-md-12 col-lg-12">
+			<div class="card">
+				
+				<div class="header headerSemiBold">
+					<h2><span class="linkColor">Manage</span> Payment Privacy policies</h2>
+				</div>
+				
+				<div class="body">
+					<div class="demo-masked-input labelTitle">
+						<div class="row clearfix">
+
+							<div class="col-lg-12 col-md-12">Title
+								<div class="input-group">
+									<input type="text" class="form-control" [(ngModel)]="title"
+										placeholder="Enter title">
+								</div>
+							</div>
+							<div class="col-lg-12 col-md-12">Description
+								<div class="input-group">
+									<textarea rows="6" class="form-control no-resize"
+										placeholder="Please type what you want..." [(ngModel)]="description"
+										style="border: 1px solid #E3E3E3;border-radius: 10px;"></textarea>
+								</div>
+							</div>
+							<div class="col-lg-1 col-md-1"><b>&nbsp;</b>
+								<div class="input-group">
+									<input type="button" class="btn btn-secondary headerSemiBold float-right"
+										value="{{ isEdit ? 'UPDATE' : 'SUBMIT'}}" style="margin:0px;"
+										(click)="submitButtonClick();">
+								</div>
+							</div>
+
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+	</div>
+</div>

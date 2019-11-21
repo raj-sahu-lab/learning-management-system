@@ -1,0 +1,164 @@
+<div class="container" id="startForm">
+  <div class="row clearfix">
+    <div class="col-lg-12">
+      <div class="card">
+        <div class="body block-header">
+          <div class="row">
+            <div class="col-lg-6 col-md-8 col-sm-12">
+              <h2 class="headerSemiBold">Manage Plans</h2>
+              
+              <ul class="breadcrumb p-l-0 p-b-0 labelTitle">
+                <li class="breadcrumb-item">
+                  <a class="linkColor" routerLink="/" routerLinkActive="active"><i class="icon-home"></i></a>
+                </li>
+                <li class="breadcrumb-item active labelTitle">Plans</li>
+              </ul>
+            </div>
+            <div class="col-lg-6 col-md-4 col-sm-12">
+              <a routerLink="/" routerLinkActive="active" class="btn btn-secondary headerSemiBold btn-simple float-right"><i
+                  class="icon-arrow-left"></i> BACK</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row clearfix">
+    <div class="col-sm-12 col-md-12 col-lg-12">
+      <div class="card">
+
+        <div class="header headerSemiBold">
+          <h2><span class="linkColor">Create</span> Plans</h2>
+        </div>
+        
+        <div class="body">
+          <div class="demo-masked-input labelTitle">
+            <div class="row clearfix">
+              
+              <div class="col-lg-4 col-md-4">Select Plan Duration
+                <div class="input-group">
+                  <select class="form-control" [(ngModel)]="termandplanId" autofocus="true">
+                    <option [ngValue]="undefined" disabled>Select Plan Duration</option>
+                    <option *ngFor="let termandplan of termandplanList" [ngValue]="termandplan.id">
+                      {{termandplan.title}}
+                    </option>
+                  </select>
+                </div>
+              </div>
+              <div class="col-lg-4 col-md-4">Plan Title
+                <div class="input-group">
+                  <input type="text" class="form-control" [(ngModel)]="title" placeholder="Enter title">
+                </div>
+              </div>
+              <div class="col-lg-2 col-md-2">Amount (₹)
+                <div class="input-group">
+                  <input type="number" class="form-control" [(ngModel)]="amount" placeholder="Enter amount">
+                </div>
+              </div>
+              <div class="col-lg-2 col-md-2">Amount ($)
+                <div class="input-group">
+                  <input type="number" class="form-control" [(ngModel)]="amountUSD" placeholder="Enter amount">
+                </div>
+              </div>
+              <div class="col-lg-12 col-md-12">Email Subject
+                <div class="input-group">
+                  <input type="text" class="form-control" [(ngModel)]="emailSubject" placeholder="Enter email subject">
+                </div>
+              </div>
+              <div class="col-lg-12 col-md-12">Email Content
+                <div class="input-group">
+                  <textarea rows="12" class="form-control no-resize" [(ngModel)]="emailContent" style="border: 1px solid #E3E3E3;border-radius: 10px;"></textarea>
+                </div>
+              </div>
+            </div>
+
+            <!--
+            <div class="row clearfix mt-4">
+              <div class="col-lg-3 col-md-3 table-responsive" *ngFor="let menu of menuList;let i=index;">
+
+                <div class="checkbox linkColor headerSemiBold">
+                    <input id="menu{{menu.id}}" type="checkbox" (click)="mainmenuChange(menu.id,$event.target.checked)">
+                    <label for="menu{{menu.id}}"> {{menu.title}}</label>
+                </div>
+
+                <table class="table">
+                    <tr *ngFor="let submenu of menu.subMenu;let i=index;">
+                      <td style="border: 0px !important;">
+                          <div class="checkbox">
+                              <input id="submenu{{submenu.id}}" type="checkbox" (click)="menuCheck(menu.id,submenu.id,$event.target.checked)">
+                              <label for="submenu{{submenu.id}}"> {{submenu.title}}</label>
+                          </div>
+                      </td>
+                    </tr>
+                </table>
+
+              </div>
+            </div>
+            -->
+
+            <div class="row clearfix">
+              <div class="col-lg-1 col-md-1"><b>&nbsp;</b>
+                <div class="input-group">
+                  <input type="button" class="btn btn-secondary headerSemiBold float-right" value="{{ isEdit ? 'UPDATE' : 'SUBMIT'}}"
+                    style="margin:0px;" (click)="submitButtonClick();">
+                </div>
+              </div>
+              <div class="col-lg-1 col-md-1"><b>&nbsp;</b>
+                <div class="input-group">
+                  <input type="button" class="btn btn-warning headerSemiBold float-right" *ngIf="isEdit" value="CANCEL"
+                    style="margin:0px;" (click)="cancelEditClick();">
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-sm-12 col-md-12 col-lg-12">
+      <div class="card">
+
+        <div class="header headerSemiBold">
+          <h2><span class="linkColor">Available</span> Plans
+          </h2>
+        </div>
+        
+        <div class="body">
+          <div class="table-responsive">
+            <table class="table table-bordered table-striped table-hover dataTable js-exportable w-100">
+              <thead class="headerSemiBold">
+                <tr>
+                  <th>#</th>
+                  <th>S No</th>
+                  <th>Plan Duration</th>
+                  <th>Title</th>
+                  <th>Amount (₹)</th>
+                  <th>Amount ($)</th>
+                </tr>
+              </thead>
+              <tbody class="labelTitle">
+                <tr *ngFor="let plan of planList;let i=index;">                  
+                  <td>
+                    <span class="badge badge-success" title="Update Plan" (click)="editButtonClick(plan.id)">
+                      <i class="icon-pencil"></i>
+                    </span>
+                    <span class="badge badge-danger" title="Delete Plan" (click)="deleteButtonClick(plan.id)">
+                      <i class="icon-trash"></i>
+                    </span>
+                  </td>
+                  <td>{{planList.length - i}}</td>
+                  <td>{{plan.term.title}}</td>
+                  <td>{{plan.title}}</td>
+                  <td>{{plan.amount}}</td>
+                  <td>{{plan.amountUSD}}</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>

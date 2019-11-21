@@ -1,0 +1,161 @@
+<div class="container">
+  <div class="row clearfix">
+    <div class="col-lg-12">
+      <div class="card">
+        <div class="body block-header">
+          <div class="row">
+            <div class="col-lg-6 col-md-8 col-sm-12">
+              <h2 class="headerSemiBold">Manage Payment Gateway</h2>
+
+              <ul class="breadcrumb p-l-0 p-b-0 labelTitle">
+                <li class="breadcrumb-item">
+                  <a class="linkColor" routerLink="/" routerLinkActive="active"><i class="icon-home"></i></a>
+                </li>
+                <li class="breadcrumb-item active labelTitle">Payment Gateway</li>
+              </ul>
+            </div>
+            <div class="col-lg-6 col-md-4 col-sm-12">
+              <a routerLink="/setting" routerLinkActive="active"
+                class="btn btn-secondary headerSemiBold btn-simple float-right active">
+                <i class="icon-arrow-left"></i> BACK
+              </a>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row clearfix">
+    <div class="col-sm-12 col-md-3 col-lg-3">
+      <div class="card">
+
+        <div class="header headerSemiBold">
+          <h2><span class="linkColor">Manage</span> Payment Gateway</h2>
+        </div>
+        
+        <div class="body">
+          <div class="demo-masked-input labelTitle">
+            <div class="row clearfix">
+
+              <div class="col-lg-12 col-md-12">Select Paymentgateway
+
+                <div class="input-group">
+                  <select class="form-control" [(ngModel)]="title">
+                    <option [ngValue]="undefined" disabled>Select Paymentgateway</option>
+                    <option *ngFor="let PaymentgatewayTitle of PaymentgatewayTitleList" [ngValue]="PaymentgatewayTitle.name">
+                      {{PaymentgatewayTitle.name}}
+                    </option>
+                  </select>
+                </div>
+              </div>
+
+              <!-- <div class="col-lg-12 col-md-12">Title
+                <div class="input-group">
+                  <input type="text" class="form-control" [(ngModel)]="title" placeholder="Enter paymentgateway title">
+                </div>
+              </div> -->
+              
+              <div class="col-lg-12 col-md-12" *ngIf="title!='OfflinePay'">Private API Key
+                <div class="input-group">
+                  <input type="text" class="form-control" [(ngModel)]="key" placeholder="Enter paymentgateway key">
+                </div>
+              </div>
+
+              <div class="col-lg-12 col-md-12" *ngIf="title!='OfflinePay'">Private Secret Key
+                <div class="input-group">
+                  <input type="text" class="form-control" [(ngModel)]="secret"
+                    placeholder="Enter paymentgateway secret">
+                </div>
+              </div>
+
+              <div class="col-lg-12 col-md-12">
+
+                <div class="input-group" *ngIf="title=='PayPal'">
+                  Please refer following links to see where to find API Key and Secret Key in your payment gateway account. If you don’t have one right now, we recommend you to create an account first.
+                  <br><br>
+                  <span class="text-primary">https://www.xcoobee.com/docs/how-to/find-paypal-api-keys/</span>
+                </div>
+
+                <div class="input-group" *ngIf="title=='Razorpay'">
+                  Please refer following links to see where to find API Key and Secret Key in your payment gateway account. If you don’t have one right now, we recommend you to create an account first.
+                  <br><br>
+                  <span class="text-primary">https://razorpay.com/docs/payment-gateway/dashboard-guide/settings/api-keys/</span>
+                </div>
+
+              </div>
+
+
+              <div class="col-lg-6 col-md-6"><b>&nbsp;</b>
+                <div class="input-group">
+                  <input type="button" class="btn btn-secondary headerSemiBold float-right" value="{{ isEdit ? 'UPDATE' : 'SUBMIT'}}"
+                    style="margin:0px;" (click)="submitButtonClick();">
+                </div>
+              </div>
+              <div class="col-lg-6 col-md-6"><b>&nbsp;</b>
+                <div class="input-group">
+                  <input type="button" class="btn btn-warning headerSemiBold float-right" *ngIf="isEdit" value="CANCEL"
+                    style="margin:0px;" (click)="cancelEditClick();">
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-sm-12 col-md-9 col-lg-9">
+      <div class="card">
+        
+        <div class="header headerSemiBold">
+          <h2><span class="linkColor">Manage</span> Payment Gateway</h2>
+        </div>
+
+        <div class="body">
+          <div class="table-responsive">
+            <table class="table table-bordered table-striped table-hover">
+              <thead class="headerSemiBold">
+                <tr>
+                  <!-- <th>#</th> -->
+                  <th>S No</th>
+                  <th>Title</th>
+                  <th>Private API Key</th>
+                  <th>Private Auth Token</th>
+                </tr>
+              </thead>
+              <tbody class="labelTitle">
+                <tr *ngFor="let paymentgateway of paymentgatewayList;let i=index;">
+                  <!-- <td>
+                    <span class="badge badge-success" title="Update paymentGateWay" (click)="editButtonClick(i)">
+                      <i class="icon-pencil"></i>
+                    </span>
+                    
+                      <span class="badge badge-danger" title="Delete paymentGateWay"
+                        (click)="deleteButtonClick(i)">
+                        <i class="icon-trash"></i>
+                      </span>
+                  </td>
+                   -->
+                  <td>{{paymentgatewayList.length - i}}</td>
+                  <td>{{paymentgateway.title}}</td>
+                  <td>
+                      <!-- {{paymentgateway.key}} -->
+                      *************************
+                  </td>
+                  <td>
+                      <!-- {{paymentgateway.secret}} -->
+                      *************************
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+</div>

@@ -1,0 +1,142 @@
+<div class="container">
+  <div class="row clearfix">
+    <div class="col-lg-12">
+      <div class="card">
+        <div class="body block-header">
+          <div class="row">
+            <div class="col-lg-6 col-md-8 col-sm-12">
+              <h2 class="headerSemiBold">Manage Tutor Sub Menu</h2>
+              
+              <ul class="breadcrumb p-l-0 p-b-0 labelTitle">
+                <li class="breadcrumb-item">
+                  <a class="linkColor" routerLink="/" routerLinkActive="active"><i class="icon-home"></i></a>
+                </li>
+                <li class="breadcrumb-item active labelTitle">Sub Menu</li>
+              </ul>
+            </div>
+            <div class="col-lg-6 col-md-4 col-sm-12">
+                <a routerLink="/" routerLinkActive="active" class="btn btn-secondary headerSemiBold btn-simple float-right">
+                  <i class="icon-arrow-left"></i> BACK
+                </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row clearfix">
+    <div class="col-sm-12 col-md-12 col-lg-12">
+      <div class="card">
+
+        <div class="header headerSemiBold">
+					<h2><span class="linkColor">Manage</span> Sub Menu</h2>
+        </div>
+        
+        <div class="body">
+          <div class="demo-masked-input labelTitle">
+            <div class="row clearfix">
+               <div class="col-lg-4 col-md-4">Select Menu
+                <div class="input-group">
+                  <select class="form-control" [(ngModel)]="menuId">
+                    <option [ngValue]="undefined" disabled>Select Menu</option>
+                    <option *ngFor="let menu of menuList" [ngValue]="menu.id">
+                      {{menu.title}}
+                    </option>
+                  </select>
+                </div>
+              </div>
+              <div class="col-lg-4 col-md-4">Sub Menu Title
+                <div class="input-group">
+                  <input type="text" class="form-control" [(ngModel)]="title" placeholder="Subject">
+                </div>
+              </div>
+              <div class="col-lg-4 col-md-4">Description
+                <div class="input-group">
+                  <input type="text" class="form-control" [(ngModel)]="description" placeholder="upgrade to premium">
+                </div>
+              </div>
+              <div class="col-lg-8 col-md-8">Navigation Link
+                <div class="input-group">
+                  <input type="text" class="form-control" [(ngModel)]="navLink" placeholder="html link">
+                </div>
+              </div>
+              <div class="col-lg-2 col-md-2" *ngIf="isEdit">Status
+                <div class="input-group">
+                  <div class="radio inlineblock m-r-20" style="margin-top:10px;">
+                    <input type="radio" [(ngModel)]="status" name="status" id="active" class="with-gap" value="1">
+                    <label for="active">Active</label>
+                  </div>
+                  <div class="radio inlineblock" style="margin-top:10px;">
+                    <input type="radio" [(ngModel)]="status" name="status" id="inactive" class="with-gap" value="0">
+                    <label for="inactive">Inactive</label>
+                  </div>
+                </div>
+              </div>
+              <div class="col-lg-1 col-md-1"><b>&nbsp;</b>
+                <div class="input-group">
+                  <input type="button" class="btn btn-secondary headerSemiBold float-right" value="{{ isEdit ? 'UPDATE' : 'SUBMIT'}}" style="margin:0px;" (click)="submitButtonClick();">
+                 </div>
+              </div>
+              <div class="col-lg-1 col-md-1"><b>&nbsp;</b>
+                <div class="input-group">
+                <input type="button" class="btn btn-warning headerSemiBold float-right" *ngIf="isEdit" value="CANCEL" style="margin:0px;" (click)="cancelEditClick();">
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-sm-12 col-md-12 col-lg-12">
+      <div class="card">
+
+        <div class="header headerSemiBold">
+					<h2><span class="linkColor">Available</span> Sub Menu</h2>
+				</div>
+     
+        <div class="body">
+          <div class="table-responsive">
+            <table class="table table-bordered table-striped table-hover dataTable js-exportable w-100">
+              <thead class="headerSemiBold">
+                <tr>
+                  <th>#</th>
+                  <th>S No</th>
+                  <th>Menu</th>
+                  <th>Sub Menu</th>
+                  <th>Description</th>
+                  <th>Navigation Link</th>
+                  <th>Status</th>
+                </tr>
+              </thead>
+              <tbody class="labelTitle">
+                <tr *ngFor="let submenu of submenuList;let i=index;">
+                  
+                  <td>
+                    <span [ngClass]="submenu.status ? 'badge badge-success' : 'badge badge-danger'" title="Update sub menu" (click)="editButtonClick(i)">
+                      <i class="icon-pencil"></i>
+                    </span>
+                    
+                    <span class="badge badge-danger" title="Delete sub menu" (click)="deleteButtonClick(i)">
+                      <i class="icon-trash"></i>
+                    </span>
+                  </td>
+                  <td>{{submenuList.length - i}}</td>
+                  <td>{{submenu.menu.title}}</td>
+                  <td>{{submenu.title}}</td>
+                  <td>{{submenu.description}}</td>
+                  <td>{{submenu.nav_link}}</td>
+                  <td>
+                    <span class="badge badge-{{submenu.status==0 ?  'warning' : 'success'}}">
+                      {{submenu.status==0 ? 'Inactive' : 'Active'}}
+                    </span>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

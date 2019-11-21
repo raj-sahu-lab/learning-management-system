@@ -1,0 +1,37 @@
+.clr-crcl-0{
+    border-radius: 50%;
+    width : 12px;
+    height: 12px;
+    background-color: red;
+}
+.clr-crcl-1{
+    border-radius: 50%;
+    width : 12px;
+    height: 12px;
+    background-color: blue;
+}
+.clr-crcl-2{
+    border-radius: 50%;
+    width : 12px;
+    height: 12px;
+    background-color: green;
+}
+.clr-crcl-3{
+    border-radius: 50%;
+    width : 12px;
+    height: 12px;
+    background-color: yellow;
+}
+.clr-crcl-4{
+    border-radius: 50%;
+    width : 12px;
+    height: 12px;
+    background-color: orange;
+}
+.iconsminds-up{
+    transform: rotate(-90deg);
+}
+.iconsminds-up:before{
+    transform: rotate(-90deg);
+    font-size: 20px;
+}

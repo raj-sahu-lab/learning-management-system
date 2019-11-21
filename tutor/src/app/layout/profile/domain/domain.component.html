@@ -1,0 +1,100 @@
+<div class="container">
+  <div class="row clearfix">
+    <div class="col-lg-12">
+      <div class="card">
+        <div class="body block-header">
+          <div class="row">
+            <div class="col-lg-6 col-md-8 col-sm-12">
+
+              <h2 class="headerSemiBold">Manage your domain</h2>
+
+              <ul class="breadcrumb p-l-0 p-b-0 labelTitle">
+                <li class="breadcrumb-item">
+                  <a class="linkColor" routerLink="/" routerLinkActive="active"><i class="icon-home"></i></a>
+                </li>
+                <li class="breadcrumb-item active labelTitle">Domain</li>
+              </ul>
+            </div>
+            <div class="col-lg-6 col-md-4 col-sm-12">
+              <a routerLink="/setting" routerLinkActive="active"
+                class="btn btn-secondary headerSemiBold btn-simple float-right active">
+                <i class="icon-arrow-left"></i> BACK
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row clearfix">
+    <div class="col-sm-12 col-md-12 col-lg-12">
+      <div class="card">
+
+        <div class="header headerSemiBold">
+          <h2><span class="linkColor">Set</span> your domain</h2>
+        </div>
+
+        <div class="body">
+          <div class="demo-masked-input labelTitle">
+            <div class="row clearfix">
+
+              <div class="col-lg-6 col-md-6">Your e-commerce domain name to sell courses and test series.
+                <div class="input-group">
+                  <input type="text" class="form-control" [(ngModel)]="domain" placeholder="Domain name">
+                </div>
+              </div>
+
+              <div class="col-lg-1 col-md-1"><b>&nbsp;</b>
+                <div class="input-group">
+                  <input type="button" class="btn btn-secondary headerSemiBold float-right" value="UPDATE"
+                    style="margin:0px;" (click)="submitButtonClick();">
+                </div>
+              </div>
+
+              <div class="col-lg-12 col-md-12">
+                <div class="input-group mormalLink headerSemiBold">
+                    <span class="linkColor">Follow</span> &nbsp; steps to setup domain
+                </div>
+              </div>
+
+              <div class="col-lg-12 col-md-12">
+                <div class="input-group mormalLink">
+                    Step 1 : Please send us your sub-domain name at <b>&nbsp;support@example.com&nbsp;</b> which you have submitted above. 
+                </div>
+              </div>
+
+              <div class="col-lg-12 col-md-12">
+                <div class="input-group mormalLink">
+                  Step 2 : Once we receive your email, our technical team will set up your sub-domain and will send you domain set-up information as per your hosting service provider. 
+                </div>
+              </div>
+
+              <div class="col-lg-12 col-md-12">
+                <div class="input-group mormalLink">
+                  Step 3 : Once you follow the instruction given in the email, it will reflect the changes within <b>&nbsp;72 hours&nbsp;</b> as per your domain service provider's policy.
+                </div>
+              </div>
+
+              <div class="col-lg-12 col-md-12">
+                <div class="input-group mormalLink">
+                  Step 4 : <b>&nbsp;Congratulations!&nbsp;</b> you are done with your domain setup, now you can sell your courses online under your brand name.
+                </div>
+              </div>
+
+              <div class="col-lg-12 col-md-12">
+                <div class="input-group mormalLink">
+                  Step 5 : In case you need any further assistance, please feel free to drop us an email at <b>&nbsp;support@example.com&nbsp;</b>, we will be happy to help you.
+                </div>
+              </div>
+
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+</div>

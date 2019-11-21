@@ -1,0 +1,71 @@
+<main class="default-transition" style="opacity: 1;">
+    <div class="container-fluid disable-text-selection">
+        <div class="row">
+            <div class="col-12">
+
+                <div class="row">
+                    <div class="col-xs-12 col-lg-12 col-12 mb-3">
+                        <div class="row m-0 p-0">
+                            <div class="col-md-12 col-lg-4 col-sm-12 p-0">
+                                <h6>
+                                    <a class="text-muted cursor" (click)="goBack()"><i class="iconsminds-up"></i>
+                                        Back</a>
+                                </h6>
+                            </div>
+                            <div class="col-md-12 col-lg-4 col-sm-12 p-0">
+                                <h6 class="cent headerSemiBold">
+                                    Sets List
+                                </h6>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row mb-4" *ngIf="!setList?.length">
+                    <div class="col-12 col-sm-12 col-md-12 mx-auto my-auto">
+                        <div class="card index-card">
+                            <div class="card-body text-center form-side">
+                                <p class="mb-3 text-center">
+                                    <img *ngIf="instituteLogo" src="{{instituteLogo}}"
+                                        class="img-thumbnail border-0 list-thumbnail align-self-center xsmall">
+                                    <img *ngIf="!instituteLogo" src="../../../assets/img/favicon.png"
+                                        class="img-thumbnail border-0 rounded-circle list-thumbnail align-self-center xsmall">
+                                </p>
+                                <h6 class="headerSemiBold">No sets list yet</h6>
+                                <p class="text-muted labelTitle">Coming soon!</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row" *ngIf="setList?.length">
+                    <div class="col-md-6 col-sm-6 col-lg-4 col-12 mb-4" *ngFor="let set of setList; let i=index">
+
+                        <div (click)="requestNavigate(set)" class="card pointer shadow mb-4">
+                            <div class="card-body m-150">
+                                <h6 class="mb-3 headerSemiBold">
+                                    {{set?.set?.title | slice:0:65}}
+
+                                    <span *ngIf="set?.set?.title?.length>=65">...</span>
+                                </h6>
+                                <div class="btn-link">
+                                    <p>
+                                        <span class="labelTitle text-muted">
+                                            <img src="../../../assets/img/icons/comm.png" style="height:15px;"> 
+                                            {{set?.set?.seriesCount}} Test
+                                        </span>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="text-center col-12" *ngIf="setList?.length >= page*10">
+                        <button class="btn btn-secondary default headerSemiBold" (click)="bundleSet(page+1,limit)">View
+                            more</button>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</main>

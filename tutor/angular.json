@@ -1,0 +1,253 @@
+{
+  "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
+  "version": 1,
+  "newProjectRoot": "projects",
+  "projects": {
+    "test-ng7": {
+      "root": "",
+      "sourceRoot": "src",
+      "projectType": "application",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "options": {
+            "allowedCommonJsDependencies": [
+              "firebase/app",
+              "xlsx",
+              "@firebase/auth",
+              "@firebase/database",
+              "aws-sdk/clients/s3",
+              "@firebase/app",
+              "@firebase/util",
+              "@firebase/component",
+              "html2pdf.js",
+              "@zoomus/websdk",
+              "mux.js/lib/tools/ts-inspector.js",
+              "global/document",
+              "videojs-vtt.js",
+              "@videojs/xhr",
+              "@babel/runtime/helpers/inherits",
+              "mux.js/lib/tools/mp4-inspect",
+              "mux.js/lib/mp4/probe",
+              "mux.js/lib/mp4/caption-parser",
+              "@babel/runtime/helpers/construct",
+              "@babel/runtime/helpers/possibleConstructorReturn",
+              "mux.js/lib/tools/mp4-inspector"
+            ],
+            "aot": true,
+            "outputPath": "dist",
+            "index": "src/index.html",
+            "main": "src/main.ts",
+            "tsConfig": "src/tsconfig.app.json",
+            "polyfills": "src/polyfills.ts",
+            "assets": [
+              "src/assets",
+              "src/favicon.ico",
+              "src/firebase-messaging-sw.js",
+              "src/manifest.json",
+              {
+                "glob": "**/*",
+                "input": "./node_modules/@zoomus/websdk/dist/lib/",
+                "output": "./node_modules/@zoomus/websdk/dist/lib/"
+              }
+            ],
+            "styles": [
+              "node_modules/bootstrap/dist/css/bootstrap.min.css",
+              "node_modules/ng-snotify/styles/material.scss",
+              "src/assets/plugins/jvectormap/jquery-jvectormap-2.0.3.min.css",
+              "src/assets/plugins/morrisjs/morris.min.css",
+              "node_modules/font-awesome/css/font-awesome.css",
+              "node_modules/simple-line-icons/scss/simple-line-icons.scss",
+              "src/styles/app.scss",
+              "src/styles/style.scss",
+              "src/assets/css/color_skins.css",
+              "src/assets/css/chatapp.css",
+              "src/assets/plugins/jquery-datatable/dataTables.bootstrap4.min.css",
+              "node_modules/video.js/dist/video-js.min.css"
+            ],
+            "scripts": [
+              "src/assets/bundles/libscripts.bundle.js",
+              "src/assets/bundles/vendorscripts.bundle.js",
+              "node_modules/particlesjs/dist/particles.min.js",
+              "node_modules/jquery/dist/jquery.min.js",
+              "node_modules/bootstrap/dist/js/bootstrap.min.js",
+              "src/assets/bundles/datatablescripts.bundle.js",
+              "src/assets/plugins/jquery-datatable/buttons/jquery-datatable.js",
+              "src/assets/plugins/jquery-datatable/buttons/dataTables.buttons.min.js",
+              "src/assets/plugins/jquery-datatable/buttons/buttons.bootstrap4.min.js",
+              "src/assets/plugins/jquery-datatable/buttons/buttons.colVis.min.js",
+              "src/assets/plugins/jquery-datatable/buttons/buttons.html5.min.js",
+              "src/assets/plugins/jquery-datatable/buttons/buttons.print.min.js",
+              "src/assets/summerNote/summernote-bs4.min.js",
+              "node_modules/html2canvas/dist/html2canvas.min.js",
+              "node_modules/jspdf/dist/jspdf.min.js",
+              "node_modules/html2pdf.js/dist/html2pdf.js",
+              "node_modules/video.js/dist/video.min.js"
+            ]
+          },
+          "configurations": {
+            "production": {
+              "fileReplacements": [
+                {
+                  "replace": "src/environments/environment.ts",
+                  "with": "src/environments/environment.prod.ts"
+                }
+              ],
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "extractCss": true,
+              "namedChunks": false,
+              "aot": true,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "buildOptimizer": true,
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "4mb",
+                  "maximumError": "5mb"
+                }
+              ]
+            },
+            "stage": {
+              "fileReplacements": [
+                {
+                  "replace": "src/environments/environment.ts",
+                  "with": "src/environments/environment.stage.ts"
+                }
+              ],
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "extractCss": true,
+              "namedChunks": false,
+              "aot": true,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "buildOptimizer": true,
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "4mb",
+                  "maximumError": "5mb"
+                }
+              ]
+            }
+          }
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "options": {
+            "browserTarget": "test-ng7:build"
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "test-ng7:build:production"
+            }
+          }
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "test-ng7:build"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "src/test.ts",
+            "polyfills": "src/polyfills.ts",
+            "tsConfig": "src/tsconfig.spec.json",
+            "karmaConfig": "src/karma.conf.js",
+            "styles": [
+              "node_modules/bootstrap/dist/css/bootstrap.min.css",
+              "node_modules/ng-snotify/styles/material.scss",
+              "src/assets/plugins/jvectormap/jquery-jvectormap-2.0.3.min.css",
+              "src/assets/plugins/morrisjs/morris.min.css",
+              "node_modules/font-awesome/css/font-awesome.css",
+              "node_modules/simple-line-icons/scss/simple-line-icons.scss",
+              "src/styles/app.scss",
+              "src/styles/style.scss",
+              "src/assets/css/color_skins.css",
+              "src/assets/css/chatapp.css",
+              "src/assets/plugins/jquery-datatable/dataTables.bootstrap4.min.css"
+            ],
+            "scripts": [
+              "src/assets/bundles/libscripts.bundle.js",
+              "src/assets/bundles/vendorscripts.bundle.js",
+              "node_modules/particlesjs/dist/particles.min.js",
+              "node_modules/jquery/dist/jquery.js",
+              "node_modules/bootstrap/dist/js/bootstrap.min.js",
+              "src/assets/bundles/datatablescripts.bundle.js",
+              "src/assets/plugins/jquery-datatable/buttons/jquery-datatable.js",
+              "src/assets/plugins/jquery-datatable/buttons/dataTables.buttons.min.js",
+              "src/assets/plugins/jquery-datatable/buttons/buttons.bootstrap4.min.js",
+              "src/assets/plugins/jquery-datatable/buttons/buttons.colVis.min.js",
+              "src/assets/plugins/jquery-datatable/buttons/buttons.html5.min.js",
+              "src/assets/plugins/jquery-datatable/buttons/buttons.print.min.js",
+              "src/assets/summerNote/summernote-bs4.min.js",
+              "node_modules/html2canvas/dist/html2canvas.min.js",
+              "node_modules/jspdf/dist/jspdf.min.js",
+              "node_modules/html2pdf.js/dist/html2pdf.js"
+            ],
+            "assets": [
+              "src/assets",
+              "src/favicon.ico"
+            ]
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "src/tsconfig.app.json",
+              "src/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
+    },
+    "test-ng7-e2e": {
+      "root": "e2e/",
+      "projectType": "application",
+      "prefix": "",
+      "architect": {
+        "e2e": {
+          "builder": "@angular-devkit/build-angular:protractor",
+          "options": {
+            "protractorConfig": "e2e/protractor.conf.js",
+            "devServerTarget": "test-ng7:serve"
+          },
+          "configurations": {
+            "production": {
+              "devServerTarget": "test-ng7:serve:production"
+            }
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": "e2e/tsconfig.e2e.json",
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
+    }
+  },
+  "defaultProject": "test-ng7",
+  "schematics": {
+    "@schematics/angular:component": {
+      "prefix": "app",
+      "style": "scss"
+    },
+    "@schematics/angular:directive": {
+      "prefix": "app"
+    }
+  }
+}

@@ -1,0 +1,58 @@
+<main class="default-transition" style="opacity: 1;">
+    <div class="container-fluid disable-text-selection">
+      <div class="row mt-2">
+        <div class="col-md-12 col-lg-4 col-sm-12 text-muted mb-3 cursor">
+          <h6><a class="text-muted" (click)="goBack()"><i class="iconsminds-up"></i> Back</a></h6>
+        </div>
+        <div class="col-md-12 col-lg-4 col-sm-12">
+          <h6 class="headerSemiBold cent mb-3">
+            Public Polls
+          </h6>
+        </div>
+      </div>
+  
+      <div class="row mb-4" *ngIf="!pollsList">
+        <div class="col-12 col-sm-12 col-md-12 mx-auto my-auto">
+          <div class="card index-card">
+            <div class="card-body text-center form-side">
+              <p class="mb-3 text-center">
+                <img src="../../../assets/img/icons/warning.png" class="img-thumbnail list-thumbnail align-self-center">
+              </p>
+              <h5 class="card-title labelTitle">No polls posted yet</h5>
+              <p class="text-muted headerSemiBold">Please visit after posted</p>
+  
+            </div>
+          </div>
+        </div>
+      </div>
+  
+      <!-- <div class="row mb-4" *ngIf="pollsList">
+        <div class="col-xs-12 col-lg-12 col-12 mb-4">
+          <div class="card">
+              <img class="card-img" src="../../../assets/img/icons/background.png" style="border-radius: 0px;">
+              <div class="card-img-overlay text-center" style="color:#3a3a3a">
+                  <h1 class="welcomeFont mt-4">Public Polls</h1>
+              </div>
+          </div>
+        </div>
+      </div> -->
+  
+      <div class="row">
+        <div *ngFor="let poll of polls" class="col-md-6 col-sm-6 col-lg-4 col-12 mb-4">
+          <div class="card mb-3">
+            <div class="card-body">
+              <a class="pointer" (click)="navigateUrl(poll)">
+                <div class="mb-2 headerSemiBold">{{poll.title}}</div>
+                <ol type="A" class="pl-3">
+                  <li *ngFor="let options of poll.pollOptions; let optionIndex = index" class="mb-2 pl-2 headerSemiBold">{{options.option}}
+                    <span [ngClass]="'clr-crcl-'+optionIndex" class="float-right"></span>
+                  </li>
+                </ol>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+    </div>
+  </main>

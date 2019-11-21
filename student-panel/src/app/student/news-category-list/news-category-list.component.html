@@ -1,0 +1,79 @@
+<main class="default-transition" style="opacity: 1;">
+  <div class="container-fluid disable-text-selection">
+    <div class="row">
+      <div class="col-12 mb-3">
+        <div class="row m-0 p-0">
+          <div class="col-md-12 col-lg-1 col-sm-12 p-0">
+            <h6>
+              <a class="text-muted cursor" (click)="goBack()"><i class="iconsminds-up"></i> Back</a>
+            </h6>
+          </div>
+          <div class="col-md-12 col-lg-10 col-sm-12 p-0">
+            <h6 class="cent headerSemiBold">
+              {{newsCat?.title}}
+            </h6>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div *ngIf="!news" class="col-12 col-sm-12 col-md-12 mx-auto my-auto">
+        <div class="card index-card">
+            <div class="card-body text-center form-side">
+                <p class="mb-3 text-center">
+                  <img *ngIf="instituteLogo" src="{{instituteLogo}}"
+                      class="img-thumbnail border-0 list-thumbnail align-self-center xsmall">
+                  <img *ngIf="!instituteLogo" src="../../../assets/img/favicon.png"
+                      class="img-thumbnail border-0 rounded-circle list-thumbnail align-self-center xsmall">
+                </p>
+                <h6 class="text-muted headerSemiBold">No news posted yet</h6>
+                <p class="card-title labelTitle">Will be added soon</p>
+            </div>
+        </div>
+      </div>
+      <div *ngIf="news" class="col-12 p-0">
+        <div class="row p-0 m-0">
+          <div *ngFor="let newList of news" class="col-12 col-xs-12 col-sm-6 col-md-6 col-lg-4 mb-4 cursor" data-toggle="modal" data-target="#viewNews" (click)="newsSelected(newList)">
+            <div class="card shadow-sm">
+              <div class="position-relative">
+                  <img class="card-img-top obj-cover" src="{{newList?.image}}" style="height: 128px;object-fit: contain;">
+              </div>
+              
+              <div class="card-body">
+                  <p class="labelTitle mb-2"><i class="simple-icon-calendar"><span> {{newList?.date | date : 'mediumDate'}}</span></i></p>
+                  <h6 class="mb-2 headerSemiBold">
+                      {{newList?.title | slice:0:25}}
+                      <span *ngIf="newList?.title.length>=25">...</span>
+                  </h6>
+                  <p class="mb-0 text-justify scrollbar labelTitle">
+                      {{newList?.description | slice:0:135}}
+                      <span *ngIf="newList?.description.length>=135">...</span>
+                  </p>
+              </div>
+          </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>
+
+<div class="modal fade modal-top" id="viewNews" tabindex="-1" role="dialog" aria-labelledby="viewNews"
+    aria-hidden="true" style="display: none;">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+              <h6 class="headerBold pr-4">{{newsSeleData?.title}}</h6>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+            </div>
+            <div class="modal-body">
+                <img class="card-img-top obj-cover pb-2" src="{{newsSeleData?.image}}" style="height: 250px;object-fit: contain;"> 
+                <p *ngIf="newsSeleData?.date" class="labelTitle mb-2"><i class="simple-icon-calendar"><span> {{newsSeleData?.date | date :'mediumDate'}}</span></i></p>
+                <p class="mb-0 text-justify labelTitle pre-line">
+                  {{newsSeleData?.description}}
+                </p>
+            </div>
+        </div>
+    </div>
+</div>

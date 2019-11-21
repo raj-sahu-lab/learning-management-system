@@ -1,0 +1,29 @@
+.pointer{
+    cursor: pointer;
+}
+.iconsminds-up {
+    transform: rotate(-90deg);
+}
+.iconsminds-up:before {
+    transform: rotate(-90deg);
+    font-size: 20px;
+}
+.m-170{
+    min-height: 170px;
+}
+.border-0{
+    border-radius: 0px;
+}
+@media (min-width:992px){
+    .cent{
+        text-align: center;
+    }
+    .rght{
+        float: right !important;
+    }
+}
+@media (max-width:991px){
+    .cent{
+        padding: 10px 0px;
+    }
+}

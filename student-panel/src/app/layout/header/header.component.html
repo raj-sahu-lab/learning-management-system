@@ -1,0 +1,58 @@
+<nav class="navbar fixed-top" style="border-bottom: 1px solid #d7d7d7;">
+   
+    <div class="d-flex align-items-center navbar-left">
+        <a (click)="toggleSiderbar()" class="menu-button d-none d-md-block pointer">
+            <img src="../../../assets/img/icons/menuHide.png" class="xsmall">
+        </a>
+
+        <a (click)="mobileSiderbar()" class="menu-button-mobile d-xs-block d-sm-block d-md-none pointer">
+            <img src="../../../assets/img/icons/menuHide.png" class="xsmall" width="25">
+        </a>
+        <a routerLink="/student/dashboard">
+            <img *ngIf="instituteImage" [src]="instituteImage" class="img-thumbnail list-thumbnail xsmall d-none d-md-block">
+            <img *ngIf="!instituteImage" src="../../../assets/img/company.png" class="img-thumbnail list-thumbnail xsmall d-none d-md-block">
+        </a>
+
+        <!-- <img [src]="instituteImage" class="img-thumbnail list-thumbnail xsmall d-sm-block d-xs-block d-md-none ml-3 mar-img-lf-0"> -->
+
+    </div>
+
+    <!-- <div *ngIf="instituteSelected?.account?.is_MarketplaceEnable == 1" class="dropdown mar-inst">
+        <button type="button" class="headerSemiBold h6 navbar-logo b-none dropdown-toggle d-none d-md-block" data-toggle="dropdown">
+          {{instituteSelected.name}}
+        </button>
+        <button type="button" class="headerSemiBold h6 navbar-logo b-none dropdown-toggle d-sm-block d-xs-block d-md-none" data-toggle="dropdown">
+            {{instituteSelected.name| slice: 0: 17}}<span *ngIf="instituteSelected?.name?.length>=17">...</span>
+        </button>
+        <div id="search" class="dropdown-menu headerSemiBold h6 navbar-logo">
+            <input class="srch" type="text" placeholder="Search.." id="myInput" (keyup)="filterFunction()" autocomplete="off">
+            <a class="dropdown-item headerSemiBold h6 navbar-logo" [ngClass]="{'tutor-selected' : institute.branch.id==instituteSelected.id}" (click)="instituteChanged(institute.branch)" *ngFor="let institute of instituteList">{{institute.branch.name}}</a>
+        </div>
+    </div> -->
+
+    <!-- <div *ngIf="!(instituteSelected?.account?.is_MarketplaceEnable == 1)" class="headerSemiBold h6">{{instituteSelected.name}}</div> -->
+    <!-- <div class="headerSemiBold h6">{{instituteSelected?.name}}</div> -->
+
+    <div class="navbar-right">
+        <div class="user d-inline-block">
+            <button class="header-icon btn btn-empty labelBell" type="button" [routerLink]="['/student/notifications']">
+                <i class="simple-icon-bell"></i>
+            </button>
+            <button class="btn btn-empty p-0" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <span class="name labelTitle">{{ firstName }} {{lastName}}</span>
+                <span>
+                    <img class="prof mar-img-lf-0" alt="Profile" src="{{ image }}" />
+                </span>
+            </button>
+
+            <div class="dropdown-menu dropdown-menu-right mt-3 labelTitle">
+                <a class="dropdown-item" [routerLink]="['/student/setting']" [routerLinkActive]="['router-link-active']" >Setting</a>
+                <!-- <a class="dropdown-item" [routerLink]="['/student/notifications']" [routerLinkActive]="['router-link-active']" >Notifications</a> -->
+                <a class="dropdown-item" [routerLink]="['/student/faq']" [routerLinkActive]="['router-link-active']" >Help and Support</a>
+
+                <div class="dropdown-item" (click)="onLogOutClick()">Sign out</div>
+            </div>
+        </div>
+    </div>
+
+</nav>

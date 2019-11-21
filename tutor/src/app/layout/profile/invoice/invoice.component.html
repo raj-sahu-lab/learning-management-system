@@ -1,0 +1,244 @@
+<div class="container">
+  <div class="row clearfix">
+    <div class="col-lg-12">
+      <div class="card">
+        <div class="body block-header">
+          <div class="row">
+            <div class="col-lg-6 col-md-8 col-sm-12">
+              <h2 class="headerSemiBold">Manage Invoice</h2>
+              <ul class="breadcrumb p-l-0 p-b-0 labelTitle">
+                <li class="breadcrumb-item">
+                  <a class="linkColor" routerLink="/" routerLinkActive="active"><i class="icon-home"></i></a>
+                </li>
+                <li class="breadcrumb-item active labelTitle">Invoice</li>
+              </ul>
+            </div>
+
+            <div class="col-lg-6 col-md-4 col-sm-12">
+              <a routerLink="/setting" routerLinkActive="active"
+                class="btn btn-secondary headerSemiBold btn-simple float-right active"><i class="icon-arrow-left"></i> BACK</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row clearfix">
+
+    <div class="col-sm-12 col-md-12 col-lg-4" *ngFor="let invoice of invoiceList;let i=index;">
+      <div class="card">
+
+        <div class="header headerSemiBold">
+          <h2><span class="linkColor">Invoice no</span> {{invoiceList.length - i}}</h2>
+        </div>
+
+        <div class="body">
+          <div class="row labelTitle">
+            <div class="col-md-12">
+              <address>
+                Invoice date
+                <small class="float-right">{{invoice.startDate}} to {{invoice.endDate}}</small>
+              </address>
+            </div>
+          </div>
+          <div class="table-responsive">
+            <table class="table table-hover">
+              <thead class="headerSemiBold" *ngIf="invoice.amount==0">
+                <tr>
+                  <th>Plan</th>
+                  <th>{{invoice.title}} <sub>{{invoice.term.title}}</sub></th>
+                </tr>
+              </thead>
+              <tbody class="labelTitle" *ngIf="invoice.amount!=0">
+                <tr>
+                  <th>Plan</th>
+                  <td>{{invoice.title}} <sub>{{invoice.term.title}}</sub></td>
+                </tr>
+                <tr>
+                  <th>Amount</th>
+                  <td>{{invoice.currency.sign}} {{invoice.amount | number: '1.2'}}</td>
+                </tr>
+                <tr *ngIf="(user?.country_id == 1) && (!isChhattisgarh) && invoice?.gst!=0">
+                  <th>GST ({{invoice?.gst}}%)</th>
+                  <td>{{invoice.currency.sign}} {{invoice?.gstAmount}}</td>
+                </tr>
+                <tr *ngIf="(user?.country_id == 1) && (isChhattisgarh) && invoice?.gst!=0">
+                  <th>CGST ({{invoice?.cgst}}%)</th>
+                  <td>{{invoice.currency.sign}} {{invoice?.cgstAmount | number: '1.2'}}</td>
+                </tr>
+                <tr *ngIf="(user?.country_id == 1) && (isChhattisgarh) && invoice?.gst!=0">
+                  <th>SGST ({{invoice?.sgst}}%)</th>
+                  <td>{{invoice.currency.sign}} {{invoice?.sgstAmount | number: '1.2'}}</td>
+                </tr>
+                <tr>
+                  <th>Total</th>
+                  <td>{{invoice.currency.sign}} {{invoice.total | number: '1.2'}}</td>
+                </tr>
+                <tr *ngIf="invoice?.discount!=0">
+                  <th>Discount</th>
+                  <td>{{invoice.currency.sign}} {{invoice.discount | number: '1.2'}}</td>
+                </tr>
+                <tr>
+                  <th>Grand Total</th>
+                  <td>{{invoice.currency.sign}} {{invoice.grandTotal | number: '1.2'}}</td>
+                </tr>
+              </tbody>
+            </table>
+            <div class="text-center">
+              <a class="btn btn-secondary headerSemiBold btn-simple white" (click)="printInvoice(invoice)">Download</a>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<div [ngClass]="showInvoice ? '': 'd-none'" style="margin: 20px 60px 0px 60px;" id="invoice">
+  <div style="text-align: center;">
+      <h4>TAXINVOICE</h4>
+  </div>
+  <div >
+      <table style="width: 100%;margin-bottom: 30px;">
+          <tbody>
+              <tr>
+                  <td style="width: 50%;border: 1px solid black;padding: 20px;">
+                      <h6>Company</h6>
+                      <div>340 S Lemon Ave,#9894 Walnut,</div>
+                      <div>Ca 91789</div>
+                      <div>Web : <a href="https://www.example.com/"></a>www.example.com</div>
+                      <div>Phone : +14157078933</div>
+                      <!-- <div>CIN : U72200CT2012PTC000581</div>
+                      <div>GST : 22AASCS2580E1ZB</div> -->
+                  </td>
+                  <td style="text-align: center;width: 50%;border: 1px solid black;">
+                      <img style="height:100px;border: 1px solid black;padding: 10px;" src="../../assets/images/company.png">
+                  </td>
+              </tr>
+              <tr>
+                  <td style="width: 50%;border: 1px solid black;padding: 20px;">
+                      <h6>Buyer:</h6>
+                      <div>{{user?.account_title}},</div>
+                      <div>{{user?.account_email}}</div>
+                      <div>{{user?.city?.title}}, {{user?.pin_code}}</div>
+                  </td>
+                  <td style="width: 50%;border: 1px solid black;text-align: center;">
+                      <div style="text-align: center;">
+                          <table style="margin: 0 auto;">
+                              <tr>
+                                  <td style="border: 1px solid black;padding: 0px 10px;">Invoice No</td>
+                                  <td style="border: 1px solid black;padding: 0px 10px;">{{invoice?.id}}</td>
+                              </tr>
+                              <tr>
+                                  <td style="border: 1px solid black;padding: 0px 10px;">Date</td>
+                                  <td style="border: 1px solid black;padding: 0px 10px;">{{invoice?.startDate}}</td>
+                              </tr>
+                              <tr>
+                                  <td style="border: 1px solid black;padding: 0px 10px;">Currency</td>
+                                  <td style="border: 1px solid black;padding: 0px 10px;">{{invoice?.currency.code}}</td>
+                              </tr>
+                          </table>
+                      </div>
+                  </td>
+              </tr>
+          </tbody>
+      </table>
+      <table style="width: 100%;">
+          <thead>
+              <tr style="text-align: center;">
+                  <th style="border: 1px solid black;padding: 5px;">Description</th>
+                  <th style="border: 1px solid black;padding: 5px;">Quantity</th>
+                  <th style="border: 1px solid black;padding: 5px;">Rate</th>
+                  <th style="border: 1px solid black;padding: 5px;">Total</th>
+              </tr>
+          </thead>
+          <tbody>
+              <tr style="text-align: center;">
+                  <td style="border: 1px solid black;">Company {{invoice?.title}} plan {{invoice?.term?.title}}</td>
+                  <td style="border: 1px solid black;">1</td>
+                  <td style="border: 1px solid black;">{{invoice?.amount | number: '1.2'}}</td>
+                  <td style="border: 1px solid black;">{{invoice?.amount | number: '1.2'}}</td>
+              </tr>
+              <tr style="text-align: center;" *ngIf="invoice?.discount!=0">
+                  <td style="border: 1px solid black;" colspan="2"></td>
+                  <td style="border: 1px solid black;">{{invoice?.discount}}% Discount</td>
+                  <td style="border: 1px solid black;">{{discountAmount | number: '1.2'}}</td>
+              </tr>
+              <tr style="text-align: center;">
+                  <td style="border: 1px solid black;" colspan="2"></td>
+                  <td style="border: 1px solid black;">Total</td>
+                  <td style="border: 1px solid black;">{{invoice?.amount - discountAmount | number: '1.2'}}</td>
+              </tr>
+              <tr *ngIf="(user?.country_id == 1) && (!isChhattisgarh) && invoice?.gst!=0" style="text-align: center;">
+                  <td style="border: 1px solid black;" colspan="2"></td>
+                  <td style="border: 1px solid black;">IGST {{invoice?.gst}}%</td>
+                  <td style="border: 1px solid black;">{{invoice?.gstAmount | number: '1.2'}}</td>
+              </tr>
+              <tr *ngIf="(user?.country_id == 1) && (isChhattisgarh) && invoice?.cgst!=0" style="text-align: center;">
+                  <td style="border: 1px solid black;" colspan="2"></td>
+                  <td style="border: 1px solid black;">CGST {{invoice?.cgst}}%</td>
+                  <td style="border: 1px solid black;">{{invoice?.cgstAmount | number: '1.2'}}</td>
+              </tr>
+              <tr *ngIf="(user?.country_id == 1) && (isChhattisgarh) && invoice?.sgst!=0" style="text-align: center;">
+                  <td style="border: 1px solid black;" colspan="2"></td>
+                  <td style="border: 1px solid black;">SGST {{invoice?.sgst}}%</td>
+                  <td style="border: 1px solid black;">{{invoice?.sgstAmount | number: '1.2'}}</td>
+              </tr>
+              <tr style="text-align: center;">
+                  <td style="border: 1px solid black;" colspan="2"></td>
+                  <td style="border: 1px solid black;">Grand Total</td>
+                  <td style="border: 1px solid black;">{{invoice?.total | number: '1.2'}}</td>
+              </tr>
+              <tr>
+                  <td style="border: 1px solid black;padding: 20px;" colspan="4">
+                      <div>
+                          <strong>Amount in Words:</strong>
+                      </div>
+                      <div>
+                          {{amountInWords}}
+                      </div>
+                  </td>
+              </tr>
+              <tr>
+                  <td style="border: 1px solid black;padding: 20px;" colspan="4">
+                      <div>
+                          <strong>Terms&Conditions:</strong>
+                      </div>
+                      <div>
+                          <ol style="padding: 0px 20px 0px 20px;margin: 0px;">
+                              <!-- <li>
+                                  All payments must be drawn in favor of [Company Name] only. A/c Name: [Company Name] only.
+                                  <br>A/c No.: 50200002822888
+                                  <br>Branch: Shankar Nagar, Raipur, 492007, C.G. 
+                                  <br>NEFT/RTGS/IFSC Code – HDFC0002496.
+                              </li>
+                              <li>
+                                  Or pay using this link : - <a href="https://www.instamojo.com/@example-sms">https://www.instamojo.com/@example-sms</a>.
+                              </li> -->
+                              <li>
+                                  All disputes are subject to Delaware USA jurisdiction.
+                              </li>
+                          </ol>
+                      </div>
+                  </td>
+              </tr>
+          </tbody>
+      </table>
+      
+      <div style="text-align: center;border: 1px solid black;padding: 5px;margin-bottom: 20px;">
+          <div>This is an automated Invoice, hence doesn't requires signature</div>
+      </div>
+      
+      <div style="text-align: center;">
+          <div>
+              [Company Name] Pvt Ltd,Ground Floor, 133, Peepal,CHEB Colony,Boriyakala, Raipur,492015, CG, India.
+          </div>
+          <div>
+              Web - <a href="https://www.example-sms.com/">www.example-sms.com</a> Email - info@example-sms.com
+          </div>
+      </div>
+  </div>
+</div>

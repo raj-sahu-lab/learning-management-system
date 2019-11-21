@@ -1,0 +1,1079 @@
+<?php
+require('script/constant.php');
+?>
+
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <link rel="canonical" href="https://utobo.com/index.php" />
+    <meta http-equiv='Content-Type' content='Type=text/html; charset=utf-8'>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="author" content="utobo">
+    <meta name="title" content="utobo | Automated eLearning Mobile Application | eLearning App" />
+    <title>utobo | Online teaching applications for institutes</title>
+    <meta name="keywords" content="Digital marketing course online, Online corses free, online courses free with certificate, Online tutor site, Online teaching, eLearning, e-Learning in india, Live class, Android application for education, iOS application for education, Chatbot for education" />
+    <meta name="description" content="utobo is the software as a service platform to create website Android and iOS application to teach and sell courses and test series online." />
+
+    <link rel="alternate" href="https://utobo.com/" media="only screen and (max-width 640px)">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="rating" content="General" />
+    <meta name="robots" content="index, follow" />
+    <meta name="revisit-after" content="01 days" />
+    <meta name="city" content="Banglore" />
+    <meta name="State" content="Karnataka" />
+    <meta name="country" content="India" />
+    <meta name="distribution" content="Global" />
+    <meta name="Copyright" content="utobo" />
+    <meta property="og:locale" content="en_US" />
+    <meta property="og:image" content="https://utobo.com/img/logo/logo.png" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="utobo | Online teaching applications for institutes" />
+    <meta property="og:site_name" content="utobo" />
+    <meta property="og:url" content="https://utobo.com" />
+    <meta property="og:description" content="utobo is the software as a service platform to create website Android and iOS application to teach and sell courses and test series online." />
+    <meta name="twitter:card" content="summary"></meta>
+    <meta name="twitter:title" content="utobo | Online teaching applications for institutes">
+    <meta name="twitter:description" content="utobo is the software as a service platform to create website Android and iOS application to teach and sell courses and test series online.">
+    <meta name="twitter:image" content="https://utobo.com/img/logo/logo.png">
+    <meta name="web_author" content="utobo" />
+    <link rel="shortcut icon" type="image/icon" href="img/favicon.ico" />
+    <link rel="stylesheet" type="text/css" href="css/theme-styles.css">
+    <link rel="stylesheet" type="text/css" href="css/blocks.css">
+    <link rel="stylesheet" type="text/css" href="css/widgets.css">
+
+    <link rel="stylesheet" href="css/Nunito.css">
+    <link rel="stylesheet" href="css/Baloo+Paaji.css">
+    <link rel="stylesheet" type="text/css" href="css/swiper.min.css">
+
+    <script src="captcha/component/jquery/jquery-3.2.1.min.js"></script>
+    <script src='https://www.google.com/recaptcha/api.js'></script>
+    <script src='script/script-file.js'></script>
+
+</head>
+
+<body class="crumina-grid">
+
+    <div id="hellopreloader" style="display: block; position: fixed;z-index: 99999;top: 0;left: 0;width: 100%;height: 100%;min-width: 100%;background: #66b5ff url(svg/preload.svg) center center no-repeat;background-size: 41px;opacity: 1;">
+    </div>
+
+    <header class="header header--menu-rounded header--blue-lighteen header-has-topbar" id="site-header">
+        <?php include("header.php"); ?>
+    </header>
+    <div class="header-spacer"></div>
+
+
+    <div class="content-wrapper">
+
+        <!-- Course Details -->
+
+        <section>
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                        <div class="course-details">
+                            <ul class="course-details-control" role="tablist" style="background-color: #233a53 !important">
+
+                                <li role="presentation" class="tab-control">
+
+                                    <a href="#description" role="tab" data-toggle="tab" class="control-item" aria-expanded="true">No Spam Policy</a>
+                                </li>
+
+                                <li role="presentation" class="tab-control">
+                                    <a href="#curriculum" role="tab" data-toggle="tab" class="control-item" aria-expanded="false">Privacy Policy</a>
+                                </li>
+
+                                <li role="presentation" class="tab-control">
+                                    <a href="#instructors" role="tab" data-toggle="tab" class="control-item" aria-expanded="false">Terms of use</a>
+                                </li>
+
+                                <li role="presentation" class="tab-control">
+                                    <a href="#reviews" role="tab" data-toggle="tab" class="control-item" aria-expanded="false">EULA</a>
+                                </li>
+                                <li role="presentation" class="tab-control active">
+                                    <a href="#tutorterms" role="tab" data-toggle="tab" class="control-item" aria-expanded="false">Tutor terms</a>
+                                </li>
+                            </ul>
+                            
+
+                            <div class="tab-content">
+
+                                <div role="tabpanel" class="tab-pane fade" id="description">
+                                    <div class="row">
+                                        <div class="col-lg-12">
+                                            <div class="col-lg-12 no-padding">
+                                                <h4 style="margin-bottom: 25px">Utobo Anti-spam policy </h4>
+                                                <p>By creating an account in the System and accepting the Terms of use, you hereby agree to consent to the rules of Anti-spam policy.</p>
+                                            </div>
+                                            <div class="col-lg-12 no-padding">
+                                                <h6>Definition</h6>
+                                                <p>
+                                                    The term “Spam” refers to unwanted e-mail containing commercial information sent to the specified recipient, which was not solicited by him or did not agree to receive it. It is known as:
+                                                    <ul class="list list--primary">
+                                                        <li>
+                                                            <svg class="utouch-icon utouch-icon-correct-symbol-1">
+                                                                <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#utouch-icon-correct-symbol-1"></use>
+                                                            </svg>
+                                                            UCE – unsolicited commercial e-mail
+                                                        </li>
+                                                        <li>
+                                                            <svg class="utouch-icon utouch-icon-correct-symbol-1">
+                                                                <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#utouch-icon-correct-symbol-1"></use>
+                                                            </svg>
+                                                            UBE – unsolicited bulk e-mail
+                                                        </li>
+                                                    </ul>
+
+                                                    Any capitalized term used but not defined in this policy shall, unless the context otherwise requires, have the representative meaning ascribed to such term in the Terms of Use.
+                                                </p>
+                                            </div>
+
+                                            <div class="col-lg-12 no-padding">
+                                                <h6>Policies</h6>
+                                                <p>
+                                                    <ol class="list list--standard">
+                                                        <li>
+                                                            <a href="#">Every User of the System agrees that it is strictly forbidden to send spam using utobo Marketing Automation.</a>
+                                                        </li>
+                                                        <li>
+                                                            <a href="#">Every User of the System agrees to send e-mails only to verified contacts that have given permission to receive messages and in particular disclosed their e-mail address.</a>
+                                                        </li>
+                                                        <li>
+                                                            <a href="#">Each message sent from the system must contain:</a>
+                                                            <h6>- Name and address in message header ‚from’ </h6>
+                                                            <h6>- Real ‘reply-to’ address</h6>
+                                                            <h6>- Footer that contains the data of the sender</h6>
+                                                            <h6>- Option to unsubscribe from the  group emails</h6>
+                                                        </li>
+                                                        <li>
+                                                            <a href="#">The content of e-mail must be consistent with the law and accepted principles of morality.</a>
+                                                        </li>
+                                                        <li>
+                                                            <a href="#">Each message sent from the System must contain correctly described, highly visible and active link that allows addressee resign from receiving e-mail.</a>
+                                                        </li>
+                                                        <li>
+                                                            <a href="#">If the addressee resigned from receiving e-mail it is not allowed to change that status without addressee approval.</a>
+                                                        </li>
+                                                        <li>
+                                                            <a href="#">Each User of the System undertakes to comply with the law including USA law regarding personal data protection and electronic services.</a>
+                                                        </li>
+                                                    </ol>
+                                                </p>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div role="tabpanel" class="tab-pane fade" id="curriculum">
+                                    <div class="row">
+                                        <div class="col-lg-12">
+                                            <div class="col-lg-12 no-padding">
+                                                <h4 style="margin-bottom: 25px">utobo Privacy Policy</h4>
+
+                                            </div>
+                                            <div class="col-lg-12 no-padding">
+
+                                                <p>
+                                                   utobo.com considers customers privacy as an important concern and care by all means that the important and crucial information is kept confidential at all levels. By providing information to us and/or using this Site, you agree to the terms and conditions of this Policy. If you do not agree to the terms and conditions of this Policy, please do not provide any information to us or use this Site. We reserve the right to change this Policy.
+                                                </p>
+                                                <p>
+                                               	  We will notify you of any material changes to our Policy as required by law. You can determine when this Policy was last revised by referring to the "Last Updated" date at the top of this page. Any changes to our Policy will become effective upon our posting of the revised Policy on the Site. Use of the Site following such changes constitutes your acceptance of the revised Policy then in effect. In the event you do not wish to adhere to any updates of this privacy policy, your sole remedy will be to stop using the System. 
+                                            	</p>
+
+                                                <p>
+                                                	We collect information that you provide us in submission forms such as your name, organization name, telephone number, e-mail address, and other information you may provide on a job application like your work history, when you voluntarily provide it to us.
+                                                </p>
+                                                <p>
+                                                	We may use information for the purpose for which it was provided such as services and product enquiry or job applications.
+                                                </p>
+                                                <p>
+                                                	To send you newsletters, update you about changes in privacy policy, services or products. For our internal business purposes, such as data analysis, improving our services, identifying usage trends and determining the effectiveness of our promotional campaigns.
+                                                </p>
+                                                <p>
+                                                	We may share your information to our third party service providers who provide services on our behalf such as website hosting, IT services, customer service, email delivery services, and other similar services to enable us to provide services to the users of the website.
+                                                </p>
+                                                <p>
+                                                	Third Party Sites: This Privacy Policy does not address, and we are not responsible for, the privacy, information or other practices of any third parties, including without limitation any of our affiliates and any third party operating any site to which this Site contains a link. The inclusion of a link on the Site does not imply endorsement of the linked site by us or by our affiliates. Read other companies’ privacy policies carefully.
+                                                </p>
+                                                <p>
+                                                	Security: Unfortunately, no data transmission over the Internet or data storage system can be guaranteed to be 100% secure. We keep information as long as it is necessary or relevant for the practices described in this Policy. We use necessary security measures and service levels mandated by law to protect and keep the information of the users shared with us secured from any data breaches. 
+                                                </p>
+                                                <p>
+                                                	<b>
+                                                		Contacting Us: If you have any questions/suggestions regarding this Privacy Policy, please email us at feedback@utobo.com
+                                                	</b>
+                                                </p>
+                                                <p>
+                                                	<b>
+                                                		In case of any grievances with the website or the policies, you may contact [support@utobo.com,  +14157078933]
+                                                	</b>
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div role="tabpanel" class="tab-pane fade" id="instructors" style="">
+                                    <div class="row">
+                                        <div class="col-lg-12">
+                                            <div class="col-lg-12 no-padding">
+                                                <h4 style="margin-bottom: 25px">TERMS OF SERVICE AGREEMENT</h4>
+                                            </div>
+
+                                            <div class="col-lg-12 no-padding">
+
+                                                <p>
+                                                    LAST REVISION: 21.01.2021
+                                                </p>
+                                                <p>PLEASE READ THIS TERMS OF SERVICE AGREEMENT CAREFULLY. BY USING THIS WEBSITE OR ORDERING PRODUCTS FROM THIS WEBSITE YOU AGREE TO BE BOUND BY ALL OF THE TERMS AND CONDITIONS OF THIS AGREEMENT.</p>
+                                            </div>
+
+                                            <div class="col-lg-12 no-padding">
+                                                <p>
+                                                    This Terms of Service Agreement (the "Agreement") governs your use of this website, utobo.com (the "Website"), Utobo Inc ("Utobo Inc") offer of products for purchase on this Website, or your purchase of products available on this Website. This Agreement includes, and incorporates by this reference, the policies and guidelines referenced below.
+                                                </p>
+
+                                                <p>
+                                                   	Utobo Inc reserves the right to change or revise the terms and conditions of this Agreement at any time by posting any changes or a revised Agreement on this Website. Utobo Inc will alert you that changes or revisions have been made by indicating on the top of this Agreement the date it was last revised. The changed or revised Agreement will be effective immediately after it is posted on this Website.
+                                                </p>
+
+                                                <p>
+                                                    Your use of the Website following the posting any such changes or of a revised Agreement will constitute your acceptance of any such changes or revisions. Utobo Inc encourages you to review this Agreement whenever you visit the Website to make sure that you understand the terms and conditions governing use of the Website. This Agreement does not alter in any way the terms or conditions of any other written agreement you may have with Utobo Inc for other products or services. If you do not agree to this Agreement (including any referenced policies or guidelines), please immediately terminate your use of the Website. If you would like to print this Agreement, please click the print button on your browser toolbar.
+                                                </p>
+
+                                                <p>
+                                                    <b>1. PRODUCTS</b>
+                                                    Terms of Offer. This Website offers for sale certain products (the "Products"). By placing an order for Products through this Website, you agree to the terms set forth in this Agreement.
+                                                </p>
+                                                <p style="margin-left:1em"><b>Customer Solicitation: </b> Unless you notify our third party call center representatives or direct Utobo Inc sales reps, while they are calling you, of your desire to opt out from further direct company communications and solicitations, you are agreeing to continue to receive further emails and call solicitations Utobo Inc and its designated in house or third party call team(s).</p>
+                                                <p style="margin-left:1em"><b>2.Opt Out Procedure: </b>We provide 3 easy ways to opt out of from future solicitations. 1. You may use the opt out link found in any email solicitation that you may receive. 2. You may also choose to opt out, via sending your email address to: opt-out email.3. You may send a written remove request to Company Address. </p>
+                                                <p style="margin-left:1em">Proprietary Rights. Utobo Inc has proprietary rights and trade secrets in the Products. You may not copy, reproduce, resell or redistribute any Product manufactured and/or distributed by Utobo Inc. Utobo Inc also has rights to all trademarks and trade dress and specific layouts of this webpage, including calls to action, text placement, images and other information.</p>
+                                                <p style="margin-left:1em">Sales Tax. If you purchase any Products, you will be responsible for paying any applicable sales tax</p>
+
+                                                <p>
+                                                    <b>2.WEBSITE.</b>
+                                                </p>
+                                                <p style="margin-left:1em">Content; Intellectual Property; Third Party Links. In addition to making Products available, this Website also offers information and marketing materials. This Website also offers information, both directly and through indirect links to third-party websites, about nutritional and dietary supplements. Utobo Inc does not always create the information offered on this Website; instead the information is often gathered from other sources. To the extent that Utobo Inc does create the content on this Website, such content is protected by intellectual property laws of the USA, foreign nations, and international bodies. Unauthorized use of the material may violate copyright, trademark, and/or other laws. You acknowledge that your use of the content on this Website is for personal, noncommercial use. Any links to third-party websites are provided solely as a convenience to you. Utobo Inc does not endorse the contents on any such third-party websites. Utobo Inc is not responsible for the content of or any damage that may result from your access to or reliance on these third-party websites. If you link to third-party websites, you do so at your own risk.</p>
+
+                                                <p style="margin-left:1em">Use of Website; Utobo Inc is not responsible for any damages resulting from use of this website by anyone. You will not use the Website for illegal purposes. You are eligible to use the website of Utobo Inc as per the applicable law and will (1) abide by all applicable local, state, national, and international laws and regulations in your use of the Website (including laws regarding intellectual property), (2) not interfere with or disrupt the use and enjoyment of the Website by other users, (3) not resell material you may not decompile, reverse engineer, or disassemble the content on the Website, (4) not engage, directly or indirectly, in transmission of "spam", chain letters, junk mail or any other type of unsolicited communication, and (5) not defame, harass, abuse, or disrupt other users of theWebsite and (6) you may not modify any content of the Website, including but not limited to, any public display, description, performance, sale, rental, pricing of the Product. </p>
+
+                                                <p style="margin-left:1em">License. By using this Website, you are granted a limited, non-exclusive, non-transferable right to use the content and materials on the Website in connection with your personal, non-commercial, use of the Website. You may not copy, reproduce, transmit, distribute, or create derivative works of such content or information without express written authorization from Utobo Inc or the applicable third party (if third party content is at issue).</p>
+
+                                                <p style="margin-left:1em">Posting. By posting, storing, or transmitting any content on the Website, you hereby grant Utobo Inc a perpetual, worldwide, non-exclusive, royalty-free, assignable, right and license to use, copy, display, perform, create derivative works from, distribute, have distributed, transmit and assign such content in any form, in all media now known or hereinafter created, anywhere in the world. Utobo Inc does not have the ability to control the nature of the user-generated content offered through the Website. You are solely responsible for your interactions with other users of the Website and any content you post. Utobo Inc is not liable for any damage or harm resulting from any posts by or interactions between users. Utobo Inc reserves the right, but has no obligation, to monitor interactions between and among users of the Website and applications and to remove any content Utobo Inc deems objectionable, is in company’s sole discretion. </p>
+
+                                                <p>
+                                                    <b>3.DISCLAIMER OF WARRANTIES</b>
+                                                </p>
+                                                <p style="margin-left:1em">YOUR USE OF THIS WEBSITE AND/OR PRODUCTS ARE AT YOUR SOLE RISK. THE WEBSITE AND PRODUCTS ARE OFFERED ON AN "AS IS" AND "AS AVAILABLE" BASIS. Utobo Inc EXPRESSLY DISCLAIMS ALL WARRANTIES OF ANY KIND, WHETHER EXPRESS OR IMPLIED, INCLUDING, BUT NOT LIMITED TO, IMPLIED WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NON-INFRINGEMENT WITH RESPECT TO THE PRODUCTS OR WEBSITE CONTENT, OR ANY RELIANCE UPON OR USE OF THE WEBSITE CONTENT OR PRODUCTS. ("PRODUCTS" INCLUDE TRIAL PRODUCTS. FURTHER, UTOBO INC DOES NOT WARRANT THAT THE WEBSITE AND PRODUCTS SHALL BE UNINTERRUPTED OR ERROR FREE. FURTHER, UTOBO INC IS NOT RESPONSIBLE FOR ANY DELAYS, DELIVERY FAILURES, OR ANY OTHER LOSS OR DAMAGE RESULTING EXCLUSIVELY FROM THE TRANSFER OF DATA OVER COMMUNICATIONS NETWORKS AND FACILITIES NOT PROVIDED BY UTOBO INC OR UNDER UTOBO INC'S RESPONSIBILITY INCLUDING WHEN APPLICABLE THE INTERNET, AND YOU ACKNOWLEDGE THAT ACCESS TO THE WEBSITE AND PRODUCTS MAY BE SUBJECT TO LIMITATIONS, DELAYS AND OTHER PROBLEMS INHERENT IN THE USE OF SUCH COMMUNICATIONS FACILITIES.</p>
+
+                                                <p style="margin-left:1em">WITHOUT LIMITING THE GENERALITY OF THE FOREGOING, Utobo Inc MAKES NO WARRANTY:</p>
+
+                                                <p style="margin-left:1em">THAT THE INFORMATION PROVIDED ON THIS WEBSITE IS ACCURATE, RELIABLE, COMPLETE, OR TIMELY.</p>
+
+                                                <p style="margin-left:1em">NO ADVICE OR INFORMATION, WHETHER ORAL OR WRITTEN, OBTAINED BY YOU FROM THIS WEBSITE WILL CREATE ANY WARRANTY NOT EXPRESSLY STATED HEREIN AS TO THE RESULTS THAT MAY BE OBTAINED FROM THE USE OF THE PRODUCTS OR THAT DEFECTS IN PRODUCTS WILL BE CORRECTED. REGARDING ANY PRODUCTS PURCHASED OR OBTAINED THROUGH THE WEBSITE.</p>
+
+                                                <p style="margin-left:1em">SOME JURISDICTIONS DO NOT ALLOW THE EXCLUSION OF CERTAIN WARRANTIES, SO SOME OF THE ABOVE EXCLUSIONS MAY NOT APPLY TO YOU.</p>
+
+                                                <p>
+                                                    <b>4.LIMITATION OF LIABILITY</b>
+                                                </p>
+
+                                                <p style="margin-left:1em">Utobo Inc ENTIRE LIABILITY, AND YOUR EXCLUSIVE REMEDY, IN LAW, IN EQUITY, OR OTHWERWISE, WITH RESPECT TO THE WEBSITE CONTENT AND PRODUCTS AND/OR FOR ANY BREACH OF THIS AGREEMENT IS SOLELY LIMITED TO THE AMOUNT YOU PAID, LESS SHIPPING AND HANDLING, FOR PRODUCTS PURCHASED VIA THE WEBSITE.</p>
+
+                                                <p style="margin-left:1em">Utobo Inc WILL NOT BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL OR CONSEQUENTIAL DAMAGES IN CONNECTION WITH THIS AGREEMENT OR THE PRODUCTS IN ANY MANNER, INCLUDING LIABILITIES RESULTING FROM (1) THE USE OR THE INABILITY TO USE THE WEBSITE CONTENT OR PRODUCTS; (2) THE COST OF PROCURING SUBSTITUTE PRODUCTS OR CONTENT; (3) ANY PRODUCTS PURCHASED OR OBTAINED OR TRANSACTIONS ENTERED INTO THROUGH THE WEBSITE; OR (4) ANY LOST PROFITS YOU ALLEGE.</p>
+
+                                                <p style="margin-left:1em">SOME JURISDICTIONS DO NOT ALLOW THE LIMITATION OR EXCLUSION OF LIABILITY FOR INCIDENTAL OR CONSEQUENTIAL DAMAGES SO SOME OF THE ABOVE LIMITATIONS MAY NOT APPLY TO YOU.</p>
+
+                                                <p>
+                                                    <b>5.INDEMNIFICATION</b>
+                                                    You will release, indemnify, defend and hold harmless Utobo Inc, and any of its contractors, agents, employees, officers, directors, shareholders, affiliates and assigns from all liabilities, claims, damages, costs and expenses, including reasonable attorneys' fees and expenses, of third parties relating to or arising out of (1) this Agreement or the breach of your warranties, representations and obligations under this Agreement; (2) the Website content or your use of the Website content; (3) the Products or your use of the Products (including Trial Products); (4) any intellectual property or other proprietary right of any person or entity; (5) your violation of any provision of this Agreement; or (6) any information or data you supplied to Utobo Inc. When Utobo Inc is threatened with suit or sued by a third party, Utobo Inc may seek written assurances from you concerning your promise to indemnify Utobo Inc; your failure to provide such assurances may be considered by Utobo Inc to be a material breach of this Agreement. Utobo Inc will have the right to participate in any defense by you of a third-party claim related to your use of any of the Website content or Products, with counsel of Utobo Inc choice at its expense. Utobo Inc will reasonably cooperate in any defense by you of a third-party claim at your request and expense. You will have sole responsibility to defend Utobo Inc against any claim, but you must receive Utobo Inc prior written consent regarding any related settlement. The terms of this provision will survive any termination or cancellation of this Agreement or your use of the Website or Products.
+                                                </p>
+
+                                                <p>
+                                                    <b>6. PRIVACY</b>
+                                                    Utobo Inc believes strongly in protecting user privacy and providing you with notice of utobo.com’s use of data. Please refer to Utobo Inc privacy policy, incorporated by reference herein that is posted on the Website.</p>
+
+                                                <p>
+                                                    <b>7.AGREEMENT TO BE BOUND</b>
+                                                    By using this Website or ordering Products, you acknowledge that you have read and agree to be bound by this Agreement and all terms and conditions on this Website.
+                                                </p>
+
+                                                <p>
+                                                    <b>8.GENERAL</b>
+                                                    Force Majeure. Utobo Inc will not be deemed in default hereunder or held responsible for any cessation, interruption or delay in the performance of its obligations hereunder due to earthquake, flood, fire, storm, natural disaster, act of God, war, terrorism, armed conflict, labor strike, lockout, or boycott.
+                                                </p>
+                                                <p>Cessation of Operation. Utobo Inc may at any time, in its sole discretion and without advance notice to you, cease operation of the Website and distribution of the Products.</p>
+                                                <p>Entire Agreement. This Agreement comprises the entire agreement between you and Utobo Inc and supersedes any prior agreements pertaining to the subject matter contained herein.</p>
+                                                <p>Effect of Waiver. The failure of Utobo Inc to exercise or enforce any right or provision of this Agreement will not constitute a waiver of such right or provision. If any provision of this Agreement is found by a court of competent jurisdiction to be invalid, the parties nevertheless agree that the court should endeavor to give effect to the parties' intentions as reflected in the provision, and the other provisions of this Agreement remain in full force and effect.</p>
+                                                <p>Governing Law; Jurisdiction. This Website originates from the Delaware USA. This Agreement will be governed by the laws of the State of Delaware,USA. without regard to its conflict of law principles to the contrary. Neither you nor Utobo Inc will commence or prosecute any suit, proceeding or claim to enforce the provisions of this Agreement, to recover damages for breach of or default of this Agreement, or otherwise arising under or by reason of this Agreement, other than in courts located in State of Delaware,USA. By using this Website or ordering Products, you consent to the jurisdiction and venue of such courts in connection with any action, suit, proceeding or claim arising under or by reason of this Agreement. You hereby waive any right to trial by jury arising out of this Agreement and any related documents.</p>
+                                                <p>Statute of Limitation. You agree that regardless of any statute or law to the contrary, any claim or cause of action arising out of or related to use of the Website or Products or this Agreement must be filed within one (1) year after such claim or cause of action arose or be forever barred.</p>
+                                                <p>Waiver of Class Action Rights. BY ENTERING INTO THIS AGREEMENT, YOU HEREBY IRREVOCABLY WAIVE ANY RIGHT YOU MAY HAVE TO JOIN CLAIMS WITH THOSE OF OTHER IN THE FORM OF A CLASS ACTION OR SIMILAR PROCEDURAL DEVICE. ANY CLAIMS ARISING OUT OF, RELATING TO, OR CONNECTION WITH THIS AGREEMENT MUST BE ASSERTED INDIVIDUALLY.</p>
+                                                <p>Termination. Utobo Inc reserves the right to terminate your access to the Website if it reasonably believes, in its sole discretion, that you have breached any of the terms and conditions of this Agreement. Following termination, you will not be permitted to use the Website and Utobo Inc may, in its sole discretion and without advance notice to you, cancel any outstanding orders for Products. If your access to the Website is terminated, Utobo Inc reserves the right to exercise whatever means it deems necessary to prevent unauthorized access of the Website. This Agreement will survive indefinitely unless and until Utobo Inc chooses, in its sole discretion and without advance to you, to terminate it.</p>
+                                                <p>Assignment. You may not assign your rights and obligations under this Agreement to anyone. Utobo Inc may assign its rights and obligations under this Agreement in its sole discretion and without advance notice to you.</p>
+                                                <p>BY USING THIS WEBSITE OR ORDERING PRODUCTS FROM THIS WEBSITE YOU AGREE TO BE BOUND BY ALL OF THE TERMS AND CONDITIONS OF THIS AGREEMENT.</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div role="tabpanel" class="tab-pane fade" id="reviews">
+                                    <div class="row">
+                                        <div class="col-lg-12">
+                                            <div class="col-lg-12 no-padding">
+                                                <h4 style="margin-bottom: 25px">End User License Agreement</h4>
+
+                                            </div>
+                                            <div class="col-lg-12 no-padding">
+
+                                                <p>
+                                                    PLEASE READ THIS UTOBO END USER LICENSE AGREEMENT (THE <b>“EULA“</b>) CAREFULLY. THIS EULA IS A LEGAL AGREEMENT BETWEEN YOU (EITHER AS AN INDIVIDUAL OR A SINGLE ENTITY) (<b>“You“, “Your” or “Subscriber“</b>) AND UTOBO (<b>“utobo“</b>) (PROVIDER OF THE UTOBO PLATFORM PROMOTED BY Utobo Inc), LOCATED AT 340 S LEMON AVE #9894 WALNUT, CA 91789, DELAWARE USA
+                                                </p>
+
+                                                <p>
+                                                    BY CLICKING THE “I ACCEPT” BUTTON, ACCESSING OR OTHERWISE USING THE UTOBO PLATFORM, YOU AGREE THAT YOU HAVE READ THIS EULA, UNDERSTOOD IT AND AGREE TO BE LEGALLY BOUND BY IT. IF YOU ARE ENTERING INTO THIS EULA ON BEHALF OF A COMPANY, YOU REPRESENT THAT YOU HAVE THE AUTHORITY TO BIND THE COMPANY TO THIS EULA AND, ACCORDINGLY ALL REFERENCE TO “YOU” SHALL BE DEEMED TO REFER TO THE COMPANY.By using the Application, you agree to be bound by the terms of this EULA, the Terms of Use, the Privacy Policy and any other terms notified on the Application or the Website.
+                                                </p>
+                                            </div>
+
+                                            <div class="col-lg-12 no-padding">
+                                                <p>
+                                                    <b>1.Definitions.</b>
+                                                    For purposes of this EULA, the following capitalized terms have the meanings set forth below. Other capitalized terms are defined in context.
+                                                </p>
+                                                <p style="margin-left:1em"><b>1.Documentation.</b> The term <b>“Documentation” </b>means the written, audio or visual (whether in print or electronic, as the case may be) technical descriptions of the utobo Software’s features and functionality that utobo may make available and update from time-to-time in its sole discretion.</p>
+
+                                                <p style="margin-left:1em"><b>2.utobo Platform.</b>The term <b> “utobo Platform” </b>” means the platform application that utobo makes available for use via the utobo Website to those users that have obtained a license from utobo pursuant to this EULA, and as such platform is further described in its documentation.</p>
+
+                                                <p style="margin-left:1em"><b>3.Effective Date. </b>The term <b>“Effective Date” </b>means the date upon which You enter into this EULA by clicking the “I Accept” button or otherwise access or use the utobo Software. </p>
+
+                                                <p style="margin-left:1em"><b>4.Intellectual Property Rights. </b>The term <b>“Intellectual Property Rights” </b>means any rights (whether owned or licensed) existing now or in the future under patent law, copyright law, trademark law, data and database protection law, trade secret law and any and all similar proprietary rights. The term Intellectual Property Rights means those rights as they exist as of the Effective Date, and all such rights subsequently acquired. </p>
+
+                                                <p style="margin-left:1em"><b>5.Order Terms. </b>The term<b> “Order Terms” </b>means the order terms presented to You or during Your purchase of a license to the utobo Software via the utobo Website, and that specify the applicable fees, the subscription period for Your license and other payment terms. </p>
+
+                                                <p style="margin-left:1em"><b>6.Other Agreements.</b> The term <b> “Other Agreements”</b> means, collectively: (i) the Terms of Use; (ii) the Privacy Policy; and (iii) the Order Terms. </p>
+
+                                                <p style="margin-left:1em"><b>7.Output Code.</b> The term<b> “Output Code”</b> means the computer code meeting the following three criteria, the computer code: (i) is generated by the utobo Software; (ii) comprises the Subscriber Application; and (iii) is made available to You via the utobo Software. </p>
+
+                                                <p style="margin-left:1em"><b>8.Party or Parties. </b>The term <b>“Party” or “Parties” </b>means: (i) utobo; (ii) You; or (iii) utobo and You, as the context permits. </p>
+
+                                                <p style="margin-left:1em"><b>9.Privacy Policy. </b>The term <b>“Privacy Policy”</b> means the agreement titled “Privacy Policy” that is available on the utobo Website. </p>
+
+                                                <p style="margin-left:1em"><b>10.utobo Assets.</b> The term <b>“utobo Assets”</b> means, collectively: (i) the utobo Software; (ii) Documentation; and (iii) the utobo Website. </p>
+
+                                                <p style="margin-left:1em"><b>11.utobo Website.</b> The term <b>“utobo Website” </b>means the website operated by utobo and through which the utobo Software is available to those who have entered into this EULA. </p>
+
+                                                <p style="margin-left:1em"><b>12.Source Code.</b> The term <b>“Source Code” </b>means computer programs, instructions and related material written in a human-readable source language in a form capable of serving as the input to a compiler or assembler program, and in form capable of being modified, supported and enhanced by programmers reasonably familiar with the source language. </p>
+
+                                                <p style="margin-left:1em"><b>13.Subscriber Application.</b> The term <b>“Subscriber Application” </b>means the software application generated by the utobo Software based on the Subscriber Input. The term Subscriber Application expressly excludes the utobo Software and expressly includes the related Output Code. </p>
+
+                                                <p style="margin-left:1em"><b>14.Subscriber Assets.</b> The term <b>“Subscriber Assets” </b>means, collectively: (i) the Subscriber Application; (ii) Subscriber Application Modifications; (iii) Subscriber Input; and (iv) Contributions. </p>
+
+                                                <p style="margin-left:1em"><b>15.Subscriber Application Modifications. </b>The term <b>“Subscriber Application Modifications”</b> means any modification to the Subscriber Application made by or at the direction of You. </p>
+
+                                                <p style="margin-left:1em"><b>16.Subscriber Input.</b> The term <b>“Subscriber Input”</b> means the data, information or other materials that You provide to utobo via the utobo Software’s functionality. </p>
+
+                                                <p style="margin-left:1em"><b>17.Terms of Use.</b> The term <b>“Terms of Use”</b> means the agreement titled “Terms of Use” that is available on the utobo Website. </p>
+
+                                                <p>
+                                                    <b>2.Grant of Rights to You.</b>
+                                                </p>
+                                                <p><b>1.utobo Platform.</b></p>
+
+                                                <p style="margin-left:1em"><b>1.Non-Exclusive Rights in utobo Platform.</b>. Subject to the terms and conditions of this EULA, utobo, under its Intellectual Property Rights, hereby grants to You during the Subscription Term a limited, non-exclusive, non-transferrable and non-sub licensable license to access the utobo Platform as it is made available to You by utobo via the utobo Website using the provided Subscriber Credentials in order to use the utobo Platform as permitted by its functionality for the sole purpose of generating Subscriber Applications.</p>
+
+                                                <p style="margin-left:1em"><b>2.Restrictions.</b> You agree that You shall not: (i) sell, rent, lease, sublicense, transfer, modify, create derivative works of or redistribute the utobo Platform; (ii) except as expressly permitted pursuant to Section 2.1.1 (Non-Exclusive Right in utobo Platform), otherwise use or exploit the utobo Platform; (iii) alter or remove any copyright, patent, trademark or other protective notices included with the utobo Platform; (iv) reverse engineer, decompile or disassemble the utobo Platform or otherwise attempt to derive any related Source Code; or (v) allow any third party to access or otherwise use the utobo Platform (either with or without Your Subscriber Credentials).</p>
+
+                                                <p style="margin-left:1em"><b>3.Subscriber Credentials.</b> The term “Subscriber Credentials” means the identifiers (such as an email address and password) that are used to authenticate you in order to provide you with the appropriate level of access to the utobo Platform. utobo relies on Your Subscriber Credentials to verify your identity in order to provide you with access to the utobo Platform via the utobo Website. Accordingly, You agree that: (i) You shall: (1) not share Your Subscriber Credentials with any third party; (ii) immediately notify utobo if the security, confidentiality or integrity of Your Subscriber Credentials have been compromised; and (iii) You are: (a) solely responsible for generating Your Subscriber Credentials through the utobo Website; (b) solely responsible for maintaining the confidentiality of Your Subscriber Credentials; and (c) solely liable for any and all use of the utobo Platform that occurs as a result of access to it via Your Subscriber Credentials.</p>
+                                                
+                                                <p><b> 2.Documentation.</b> Subject to the terms and conditions of this EULA, utobo, under its Intellectual Property Rights, hereby grants to You during the Subscription Term a limited, non-exclusive, non-transferrable and non-sublicensable license to use, copy, modify, perform, display, distribute and otherwise exploit the Documentation, but solely for Your internal business purposes and otherwise in connection with Your access to and use of the utobo Software pursuant to this EULA.</p>
+
+                                                <p><b>3.No Implied Rights.</b> Nothing in this EULA shall be construed as granting You any rights other than those expressly provided herein. Any rights granted to You under this EULA must be expressly provided herein, and there shall be no implied rights pursuant to this EULA, based on any course of conduct or other construction or interpretation thereof. All rights and licenses not expressly granted to You herein are expressly reserved by utobo.</p>
+
+                                                <p>
+                                                    <b>3.Grant of Rights to utobo.</b>
+                                                </p>
+                                                <p style="margin-left:1em"><b>1.Subscriber Input.</b> Subject to the terms and conditions of this EULA, You, under Your Intellectual Property Rights, hereby grant to utobo during the Subscription Term a limited, non-exclusive, worldwide, royalty-free, fully paid-up, sublicensable and transferable license to use and exploit Subscriber Input for all purposes contemplated under this EULA, the Documentation and the utobo Software’s functionality. By way of clarification, and not limitation, utobo shall have the right to modify Your Subscriber Input for the purpose of developing the Subscriber Application.</p>
+
+                                                <p style="margin-left:1em"><b>2.Contributions.</b> Subject to the terms and conditions of this EULA, You, under Your Intellectual Property Rights, hereby grant to utobo a non-exclusive, perpetual, worldwide, irrevocable, royalty-free, fully paid-up, sublicensable and transferrable license to use and exploit Your suggestions, recommendations or ideas relating to the utobo Assets (collectively, the “Contributions“) for any and all purposes and for as long as utobo sees fit. By way of clarification, and not limitation, You agree that (i) You have no expectation of review, compensation or other consideration for utobo’s use and exploitation of the Contributions, and (ii) utobo is free to use and exploit the Contributions in utobo’s discretion and without compensation or other obligation to You.</p>
+
+                                                <p style="margin-left:1em"><b>3.License to Use Subscriber Assets for Publicity.</b> Subject to the terms and conditions of this EULA, You, under Your Intellectual Property Rights, hereby grant to utobo a limited, non-exclusive, perpetual, irrevocable, worldwide, royalty-free, fully paid-up, sublicensable, and transferable license to use and exploit Subscriber Assets for utobo’s promotional or marketing efforts. You hereby consent to the inclusion of Your name and logos in materials that utobo may publish as part of such promotional and marketing efforts.</p>
+
+                                                <p>
+                                                    <b>4.Ownership.</b>
+                                                </p>
+
+                                                <p style="margin-left:1em"><b> 1.Ownership of utobo Assets.</b> You agree that, as between You and utobo, and subject to the grant of rights to You set out in Section 2 (Grant of Rights to You), utobo is the sole and exclusive owner of all of the right, title and interest in and to the utobo Assets (and all associated Intellectual Property Rights).</p>
+
+                                                <p style="margin-left:1em"><b> 2.Ownership of Subscriber Application.</b> . Subject to the terms and conditions of this EULA, utobo agrees that, as between You and utobo, You are the sole and exclusive owner of all of the right, title and interest in and to the Subscriber Application (Excluding Output Code) generated by the utobo Platform using Your Subscriber Input. By way of clarification, and not limitation, nothing in this EULA is intended or shall otherwise be construed as a representation, warranty or other commitment by utobo regarding your ownership interest in or to the Subscriber Application relative to any third party, including other utobo Platform users.</p>
+
+                                                <p style="margin-left:1em"><b> 3.Ownership of Subscriber Application Modifications, Subscriber Input and Contributions.</b> utobo agrees that, as between you and utobo, and subject to the grant of rights to utobo set out in Section 3 (Grant of Rights to utobo), you are the sole and exclusive owner of all of the right, title and interest in and to the Subscriber Application Modifications, Subscriber Input and Contributions (and all associated Intellectual Property Rights). By way of clarification, and not limitation, nothing in this EULA is intended or shall otherwise be construed as a representation, warranty or other commitment by utobo regarding your ownership interest in or to the Subscriber Application Modifications, Subscriber Input and Contributions relative to any third party, including other utobo Platform users.</p>
+
+                                                <p>
+                                                    <b>5.Similar Uses.</b>
+                                                    You agree that (i) the utobo Platform generates platform applications based on user-provided input and that users (other than You) may provide input that is the same as, or substantially similar to, Your Subscriber Input (the “Similar Input“), and (ii) based on the Similar Input provided by other users, the utobo Platform may generate a platform application (including Output Code) that is the same as, or substantially similar to, Your Subscriber Application (each, a “Similar Application“). Notwithstanding anything to the contrary, You agree that You shall not challenge, threaten to challenge, sue, threaten sue or otherwise take any action against (or encourage or assist any third party) utobo based on any Similar Input or Similar Application, or the utobo Platform’s functionality, and (b) contractually ensure that any third party that You provide any right, title or interest in and to Your Subscriber Input or Subscriber Application agrees to not to challenge, threaten to challenge, sue, threaten sue or otherwise take any action against (or encourage or assist any third party) utobo based on any Similar Input or Similar Application, or the utobo Platform’s functionality.
+                                                </p>
+
+                                                <p>
+                                                    <b>6.Subscription.</b>
+                                                    Subject to the terms and conditions of this EULA, You may generate multiple Subscriber Applications using your access to the utobo Platform; provided, however, that each Subscriber Application You generate shall be considered a separate project (each, a “Project”). You may access the utobo Platform to work on a Project for free (each, a “Free Project”) or by a paid subscription (each, a “Premium Project”) based on the Order Terms.
+                                                </p>
+
+                                                <p style="margin-left:1em"><b> 1.Free Project.</b>With respect to a Free Project, You may only access and use basic functionalities and features (collectively, the “Basic Feature”) of the utobo Platform. For example, your access in connection with Free Project does not include the ability to download the source code of the Subscriber Application. utobo reserves the right, in its sole discretion, without prior notice or liability, to add, remove, or otherwise modify any Basic Feature in connection with a Free Project.</p>
+
+                                                <p style="margin-left:1em"><b> 2.Premium Project.</b>With respect to a Premium Project, You may access and use premium functionalities and features (collectively, the “Premium Features”) of the utobo Platform, in addition to Basic Features listed in plans and pricing as Standard, Premium and Ultimate For example, Your access in connection with a Premium Plan includes: additional features and functions that utobo may add or remove from time-to-time in its sole discretion. Deployment services are subject to meeting basic app requirements as established by Google and Apple.</p>
+
+                                                <p style="margin-left:1em"><b> 3.Branding.</b> For each Project, We may offer you the ability to download a compiled version of the applicable Subscriber Application in an IPA and/or an APK file formats (each, a “Compiled App”). If You generate a Subscriber Application based on a Free Project, the applicable Compiled App will include a utobo-branded splash screen (the “Branding”) that You must not remove from the Compiled App. If You generate a Subscriber Application based on a Premium Project, You may download a Compiled App without the Branding</p>.
+
+                                                <p style="margin-left:1em"><b> 4.Free Trials.</b> utobo may offer You to upgrade a Free Project to a Premium Project for a limited duration of time (each, a “Free Trial”). Upon the expiration of the Free Trial, Your access to Premium Features shall immediately end for the applicable Project. utobo reserves the right, in its sole discretion, without prior notice or liability, to withdraw or modify a Free Trial at any time and for any reason.</p>
+
+                                                <p>
+                                                    <b>7.Support Services</b>
+                                                    During the Subscription Term, utobo shall use commercially reasonable efforts to make the utobo Platform available to You without significant interruption or material deviations of the utobo Platform from its applicable Documentation (each, an “Error“). If the utobo Platform experiences material Errors that are not due to scheduled or intended downtime or as a result of events beyond utobo’ s control, utobo shall use commercially reasonable efforts to restore the intended functionality. You may contact utobo technical support during its operating business hours to report Errors. In addition to taking reasonable steps that utobo deems appropriate in response to reproducible Errors that utobo determines to be commensurate with the severity of the Error, utobo may also provide you with information regarding the availability of the utobo Platform.
+                                                </p>
+
+                                                <p>
+                                                    <b>8.Custom Services. </b>
+                                                    If you desire utobo to develop platform, computer code or other services not available through the utobo Platform (the “Custom Services“), you may present a written request to utobo at support@utobo.com outlining such work. The Parties shall then negotiate in good faith a written statement of work that includes a detailed description of the Custom Services, an estimated delivery schedule and associated fees. If both Parties agree to the statement of work, they shall enter into a separate agreement relating to the Custom Services.
+                                                </p>
+                                                <p>
+                                                    <b> 9.Monitoring.</b>
+                                                    You agree that utobo may monitor and audit your use of the utobo Platform to confirm your compliance with this EULA and for utobo’ s other business purposes, including analysing and improving the utobo Platform.
+                                                </p>
+                                                <p>
+                                                    <b> 10. Payment Terms; Taxes.</b>
+                                                    You shall pay the fees in accordance with the payment terms included in the Order Terms. All fees are exclusive of all applicable taxes and You agree to pay all taxes (including, but not limited to, sales, use, excise and value-added taxes), tariffs, duties, customs fees or similar charges imposed or levied on utobo or You arising out of this EULA, except for taxes on utobo’s net income.
+                                                </p>
+                                                <p>
+                                                    <b> 11. Your Representations and Warranties. </b>
+                                                    You represent and warrant to utobo that: (i) the Subscriber Assets do not and shall not infringe the Intellectual Property Rights of a third party; (ii) You shall not upload any virus or malicious code to the utobo Software or otherwise use the utobo Software to develop a virus or malicious code; (iii) You have the full power and authority to enter into this EULA and to carry out Your obligations under this EULA; and (iv) Your performance under this EULA does not violate any existing agreement between You and any other person or entity.
+                                                </p>
+                                                <p>
+                                                    <b>
+                                                        12. WARRANTY DISCLAIMER.
+                                                    </b>
+                                                    utobo DISCLAIMS ALL REPRESENTATIONS AND WARRANTIES WITH RESPECT TO THE utobo ASSETS and THE SUBSCRIBER APPLICATIONS, WHETHER EXPRESS OR IMPLIED, INCLUDING ANY IMPLIED WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE, TITLE OR NON-INFRINGEMENT. utobo DOES NOT REPRESENT OR WARRANT THAT THE utobo ASSETS OR SUBSCRIBER APPLICATIONS ARE ERROR FREE, WILL OPERATE IN AN UNINTERRUPTED MANNER, ARE COMPLETELY SECURE OR WILL INTEROPERATE WITH THIRD PARTY SOFTWARE OR SERVICES. The utobo ASSETS AND SUBSCRIBER APPLICATIONS ARE PROVIDED ON AN “AS-IS” AND “AS-AVAILABLE” BASIS AND ARE SUBJECT TO CHANGE OR TERMINATION AT ANY TIME AND FOR ANY REASON WITHOUT NOTICE. The utobo ASSETS AND SUBSCRIBER APPLICATIONS ARE NOT DESIGNED OR MANUFACTURED FOR USE IN HAZARDOUS ENVIRONMENTS REQUIRING FAIL-SAFE PERFORMANCE, SUCH AS IN The OPERATION OF NUCLEAR FACILITIES, AIRCRAFT NAVIGATION OR COMMUNICATIONS SYSTEMS, AIR TRAFFIC CONTROL, DIRECT LIFE SUPPORT SYSTEMS OR WEAPON OR COMBAT SYSTEMS, IN WHICH THEIR FAILURE COULD LEAD TO PERSONAL INJURY, DEATH OR PROPERTY OR ENVIRONMENTAL DAMAGE. utobo DISCLAIMS ANY EXPRESS OR IMPLIED WARRANTY OF FITNESS FOR SUCH USES.
+                                                </p>
+                                                <p>
+                                                    <b>13. Limit of Liability. </b>
+                                                    IN NO EVENT SHALL utobo BE LIABLE TO YOU FOR ANY INDIRECT, INCIDENTAL, SPECIAL OR CONSEQUENTIAL DAMAGES OF ANY KIND OR NATURE WHATSOEVER, INCLUDING WITHOUT LIMITATION, LOSS OF PROFITS OR OTHER ECONOMIC LOSS, EVEN IF utobo HAS BEEN ADVISED OF THE POSSIBILITY OF SUCH DAMAGES. IN NO EVENT SHALL utobo’S LIABILITY, IN THE AGGREGATE, EXCEED THE TOTAL AMOUNT OF PAYMENTS MADE TO utobo BY YOU OVER THE ONE YEAR PERIOD IMMEDIATELY PRECEDING THE CLAIM.
+                                                </p>
+                                                <p>
+                                                    <b>14.USA Government Terms and Conditions; Exportation. </b>
+                                                    If you are the USA Government or any agency or instrumentality of the USA Government, the utobo Platform is commercial computer platform provided with RESTRICTED RIGHTS. Consistent with the above as applicable, Commercial Computer platform and Commercial Computer Documentation is licensed to USA government end users only as commercial items and only with those rights as are granted to all other end users under the terms and conditions set forth in this EULA. You agree not to use or otherwise export or re-export the utobo Platform except as authorized by USA law.
+                                                </p>
+                                                <p>
+                                                    <b>15. Your Indemnification.</b>
+                                                    You shall defend, indemnify and hold utobo and its affiliates and their respective officers, directors, employees and agents harmless from and against any third party claim, action, suit or proceeding resulting from: (i) Your breach of Your representations and warranties set out in this EULA; (ii) any injury to persons caused by Your failure to exercise reasonable care or Your willful misconduct; (iii) any other breach of Your obligations under this EULA; (iv) Your use or exploitation of the utobo Assets and Subscriber Assets; and (v) utobo’s use of the Subscriber Assets. You shall indemnify utobo for all losses, damages, liabilities and all reasonable expenses and costs incurred by utobo in any such claim, action, suit or proceeding. utobo shall: (a) give You reasonable written notice of any claim, action, suit or proceeding for which utobo is seeking indemnification; (b) granting control of the defense and settlement to You; and (c) reasonably cooperate with You at Your expense. utobo is entitled to participate in any defense at its own expense with counsel of its own choosing.
+                                                </p>
+                                                <p>
+                                                    <b>16. Confidentiality. </b>
+                                                    Confidential Information under this EULA shall consist of all non-public information disclosed by utobo, whether oral or in writing (including electronic transmission): (i) that is designated as “Confidential” or “Proprietary” by utobo at the time of disclosure or within a reasonable period thereafter; (ii) that concerns the customers, finances, methods, research, processes or procedures of utobo; or (iii) that by the nature of the circumstances surrounding disclosure, or the information itself, should in good faith be treated as confidential (collectively, the <b> “Confidential Information“</b>).
+                                                </p>
+                                                <p style="margin-left:1em"><b> 1. Non–Disclosure; Standard.</b> You shall retain Confidential Information in strict confidence and shall not use such Confidential Information except for purposes permitted under this EULA. You shall be entitled to disclose Confidential Information on a need-to-know basis to Your employees, provided such employees are bound by non-disclosure and confidentiality obligations no less protective than those set out in this EULA. You shall use at least the same degree of care in safeguarding the Confidential Information as You use in safeguarding Your own confidential information, but shall not use less than reasonable care and diligence. You shall return or destroy all Confidential Information (including, but not limited to, all copies of the same) in Your possession or control immediately upon utobo’s request.</p>
+
+                                                <p style="margin-left:1em"><b> 2. Exceptions.</b> Your obligations with respect to Confidential Information shall not apply to Confidential Information which You can demonstrate: (i) is or becomes a matter of public knowledge through no fault of Yours; (ii) was or becomes available to You on a non-confidential basis from a third party, provided that such third party is not bound by an obligation of confidentiality to utobo with respect to such Confidential Information; (iii) was independently developed by You without reference to the Confidential Information; or (iv) is required to be disclosed by law, provided that utobo is promptly notified by You in order to provide utobo an opportunity to seek a protective order or other relief.</p>
+                                                <p>
+                                                    <b> 17. Term and Termination. </b>
+                                                    earlier terminated pursuant to this Section 16 (Term and Termination), this EULA shall come into force and effect on the Effective Date and shall continue for the period selected by You pursuant to the Order Terms (the “Subscription Term“), and shall automatically renew under the same terms and conditions as further explained in the Order Terms. If either Party is in material breach of any obligation under this EULA, the non-breaching Party may terminate this EULA for cause upon written notice after first (i) providing the other Party with written notice of the breach (a “Notice of Breach“), and (ii) providing thereafter a thirty (30) day opportunity to cure beginning on the date of receipt by the alleged breaching Party of the Notice of Breach. You agree that, notwithstanding anything to the contrary, upon termination or expiration of this EULA for any reason, Your rights to the utobo Software and Documentation shall immediately terminate and You shall immediately stop accessing or otherwise using the utobo Software and Documentation. Unless the Company is required to retain the Documentation for a mandatory time period specified by provisions of applicable law, the Company, at its sole discretion, may immediately or within a reasonable period of time, delete all the Documentation.
+                                                </p>
+                                                <p>
+                                                    <b> 18.Changes to the EULA.</b>
+                                                    utobo may from time to time amend this EULA to further detail or describe reasonable restrictions on your use of the utobo Platform by publishing a revised version of the EULA at (https://utobo.com/utobo-terms.php). The revised EULA will become effective upon publishing.18.General. This EULA shall be governed and construed in all respects in accordance with the USA laws without regard to any conflict of laws principles. The exclusive venue and jurisdiction for any action or proceeding arising out of this EULA shall be the state and courts located in Delaware USA. The Parties accept the personal jurisdiction of such courts. This EULA is not assignable by you. utobo reserves the right to assign the rights and obligations under this EULA for any reason and in utobo’s sole discretion. utobo shall not be liable hereunder by reason of any failure or delay in the performance of its obligations due to any other cause which is beyond its reasonable control. Any provision of this EULA determined to be unenforceable or invalid by applicable law or court decision shall not render this EULA unenforceable or invalid as a whole and, in such event, such provision shall be changed and interpreted so as to best accomplish its objectives within the limits of applicable law or court decision. utobo’s failure to require Your performance of any obligation herein shall not affect the full right to require such performance at any time thereafter. utobo’s waiver of Your breach of any obligation under this EULA shall not be taken or held to be a waiver of the obligation itself or of any past or subsequent breaches of the same obligation. This EULA and the Other Agreements (which are incorporated into this EULA for all purposes), sets forth the entire understanding and agreement of the Parties and supersedes any and all oral or written agreements or understandings between the Parties as to the subject matter of this EULA. In the event of a conflict between this EULA and the Other Agreements, the conflict shall be resolved in favor of this EULA. Accept as otherwise set out in the Other Agreements, this EULA may be changed only by a writing signed by both Parties. Neither Party is relying on any warranties, representations, assurances or inducements not expressly set forth herein. In addition to any other right or obligation that by its nature is intended to survive any termination or expiration, the following Sections shall survive any termination or expiration of this EULA: (i) Section 3.2 (Contributions); (ii) Section 4 (Ownership); (iii) Section 12 (Limit of Liability); (iv) Section 14 (Your Indemnification); (v) Section 15 (Confidentiality); and (vi) Section 18 (General).
+                                                </p>
+                                                <p>
+                                                	<b>20.Support.</b>
+                                                	If You have any queries regarding this EULA, you can contact us via: E-mail Address: support@utobo.com
+                                                </p>
+                                                <p> <b>Copyright and Legal Notice.</b>Copyright © 2021 utobo.com or Utobo Inc All Rights Reserved. <b>Last updated: Jan 21, 2021</b></p>
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div role="tabpanel" class="tab-pane fade active in" id="tutorterms">
+                                    <div class="row">
+                                        <div class="col-lg-12">
+                                            <div class="col-lg-12 no-padding">
+                                                <h4 style="margin-bottom: 25px">Tutor Terms</h4>
+                                                <p>Creating an account in the System and accepting the Terms of use is considered to consent to the rules of the policies of Utobo Inc.</p>
+                                            </div>
+                                            <div class="col-lg-12 no-padding">
+
+                                                <i>These Tutor Terms were last updated 21.01, 2021.</i><br>
+
+                                                <p>When you sign up as a tutor on the Utobo platform, you agree to abide by these Tutor Terms ("Terms"). These Terms cover details about the aspects of the Utobo platform relevant to tutors and are incorporated by reference into our Terms of Use, End User License Agreement and no spam policythat govern your use of our Services. Any capitalized terms that aren't defined in these Terms are defined as specified in the Terms of Use.</p>
+
+
+                                                <p>As a tutor, you are contracting directly with Utobo Inc. (a Delaware corporation in the United States).</p>
+
+                                                <h6>1. Tutor Obligations.</h6>
+
+                                                <p>As a tutor, you are responsible for all content that you post, including course content, test series, polls, forums, SMS, email, quizzes, exercises, practice tests, answers, course landing page content, and announcements or any other content in all the formats ("Submitted Content").</p>
+
+                                                You represent and warrant that:
+                                                <ul class="list list--standard">
+                                                    <li> <svg class="utouch-icon utouch-icon-correct-symbol-1">
+                                                            <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#utouch-icon-correct-symbol-1"></use>
+                                                        </svg> you will provide and maintain accurate account information; </li>
+
+                                                    <li> <svg class="utouch-icon utouch-icon-correct-symbol-1">
+                                                            <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#utouch-icon-correct-symbol-1"></use>
+                                                        </svg>you own or have the necessary licenses, rights, consents, permissions, and authority to authorize Utobo to use your Submitted Content as specified in these Terms and the Terms of Use;</li>
+
+                                                    <li> <svg class="utouch-icon utouch-icon-correct-symbol-1">
+                                                            <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#utouch-icon-correct-symbol-1"></use>
+                                                        </svg>your Submitted Content will not infringe or misappropriate any third party's intellectual property rights;</li>
+
+                                                    <li> <svg class="utouch-icon utouch-icon-correct-symbol-1">
+                                                            <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#utouch-icon-correct-symbol-1"></use>
+                                                        </svg> you have the required qualifications, credentials, and expertise (including education, training, knowledge, and skill sets) to teach and offer the services that you offer through your Submitted Content and use of the Services; and</li>
+
+                                                    <li> <svg class="utouch-icon utouch-icon-correct-symbol-1">
+                                                            <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#utouch-icon-correct-symbol-1"></use>
+                                                        </svg> you will respond promptly to students and ensure a quality of service that corresponds with the standards of your industry and instruction services in general.</li>
+
+                                                    You warrant that you will not:<br>
+
+                                                    <li> <svg class="utouch-icon utouch-icon-correct-symbol-1">
+                                                            <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#utouch-icon-correct-symbol-1"></use>
+                                                        </svg> post or provide any inappropriate, offensive, racist, hateful, sexist, pornographic, false, misleading, incorrect, infringing, defamatory or libelous content or information;</li>
+
+                                                    <li> <svg class="utouch-icon utouch-icon-correct-symbol-1">
+                                                            <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#utouch-icon-correct-symbol-1"></use>
+                                                        </svg> post or transmit any unsolicited or unauthorized advertising, promotional materials, junk mail, spam, or any other form of solicitation (commercial or otherwise) through the Services or to any user;</li>
+
+                                                    <li> <svg class="utouch-icon utouch-icon-correct-symbol-1">
+                                                            <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#utouch-icon-correct-symbol-1"></use>
+                                                        </svg> use the Services for business other than providing tutoring, teaching, and instructional services to students;</li>
+
+                                                    <li> <svg class="utouch-icon utouch-icon-correct-symbol-1">
+                                                            <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#utouch-icon-correct-symbol-1"></use>
+                                                        </svg> engage in any activity that would require us to obtain licenses from or pay royalties to any third party, including the need to pay royalties for the public performance of a musical work or sound recording;</li>
+
+                                                    <li> <svg class="utouch-icon utouch-icon-correct-symbol-1">
+                                                            <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#utouch-icon-correct-symbol-1"></use>
+                                                        </svg> frame or embed the Services (such as to embed a free version of a course) or otherwise circumvent the Services;</li>
+
+                                                    <li> <svg class="utouch-icon utouch-icon-correct-symbol-1">
+                                                            <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#utouch-icon-correct-symbol-1"></use>
+                                                        </svg>impersonate another person or gain unauthorized access to another person's account;</li>
+
+                                                    <li> <svg class="utouch-icon utouch-icon-correct-symbol-1">
+                                                            <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#utouch-icon-correct-symbol-1"></use>
+                                                        </svg>interfere with or otherwise prevent other tutors from providing their services or courses; or</li>
+
+                                                    <li> <svg class="utouch-icon utouch-icon-correct-symbol-1">
+                                                            <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#utouch-icon-correct-symbol-1"></use>
+                                                        </svg>abuseUtobo resources, including support services.</li>
+                                                </ul>
+
+                                                <h6>2. License to use Utobo</h6>
+
+                                                <p> Unless otherwise agreed (including within our Promotions and marketplace Policy), you have the right to remove all or any portion of your Submitted Content from the Services at any time. Except as otherwise agreed, Utobo's right to sublicense the rights in this section will terminate with respect to new users 60 days after the Submitted Content's removal. However, (1) rights given to students before the Submitted Content's removal will continue in accordance with the terms of those licenses (including any grants of lifetime access) and (2) Utobo's right to use such Submitted Content for marketing purposes shall survive termination.</p>
+
+                                                <p> We may record all or any part of your Submitted Content for quality control and for delivering, marketing, promoting, demonstrating, or operating the Services. You grant Utobo permission to use your name, likeness, voice, and image in connection with offering, delivering, marketing, promoting, demonstrating, and selling the Services, your Submitted Content, or Utobo's content, and you waive any rights of privacy, publicity, or other rights of a similar nature, to the extent permissible under applicable law.</p>
+
+                                                <h6>3. Trust & Safety</h6>
+
+                                                3.1 Trust & Safety Policies<br>
+
+                                                <p> You agree to abide by Utobo's Trust & Safety policies, Restricted Topics policy, and other course quality standards or policies prescribed by Utobo from time to time. You should check these policies periodically to ensure that you comply with any updates to them. You understand that your use of the Services is subject to Utobo's approval, which we may grant or deny at our sole discretion.</p>
+
+                                                <p> We reserve the right to remove courses, suspend payouts, and/or ban tutors for any reason at any time, without prior notice, including in cases where:</p>
+                                                <ul class="list list--standard">
+                                                    <li> <svg class="utouch-icon utouch-icon-correct-symbol-1">
+                                                            <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#utouch-icon-correct-symbol-1"></use>
+                                                        </svg>a tutor or course does not comply with our policies or legal terms (including the Terms of Use);</li>
+
+                                                    <li> <svg class="utouch-icon utouch-icon-correct-symbol-1">
+                                                            <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#utouch-icon-correct-symbol-1"></use>
+                                                        </svg>a course falls below our quality standards or has a negative impact on the student experience;</li>
+
+                                                    <li> <svg class="utouch-icon utouch-icon-correct-symbol-1">
+                                                            <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#utouch-icon-correct-symbol-1"></use>
+                                                        </svg>a tutor engages in behavior that might reflect unfavorably on Utobo or bring Utobo into public disrepute, contempt, scandal, or ridicule;</li>
+
+                                                    <li> <svg class="utouch-icon utouch-icon-correct-symbol-1">
+                                                            <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#utouch-icon-correct-symbol-1"></use>
+                                                        </svg> a tutor engages the services of a marketer or other business partner who violates Utobo's policies; or</li>
+
+                                                    <li> <svg class="utouch-icon utouch-icon-correct-symbol-1">
+                                                            <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#utouch-icon-correct-symbol-1"></use>
+                                                        </svg> as determined by Utobo in its sole discretion.</li>
+                                                </ul>
+
+                                                3.2 AdditionalTutors and assistants<br>
+
+                                                <p> The Utobo platform allows you to add other users as an Additional Tutors and assistants for courses that you manage. By adding anAdditional Tutors or teaching assistant, you understand that you are authorizing them to take certain actions that affect your Utobo account and courses. Utobo is not able to advise on any questions or mediate any disputes between you and such users. We are also not responsible for any revenue sharing with additional tutors as it is calculated based on admin tutor account. </p>
+
+                                                3.3 Relationship to Other Users<br>
+
+                                                <p> Tutors do not have a direct contractual relationship with students, so the only information you'll receive about students is what is provided to you through the Services. You agree that you will not use the data you receive for any purpose other than providing your services to those students on the Utobo platform, and that you won't solicit additional personal data or store students' personal data outside the Utobo platform. You will indemnify Utobo against any claims arising from your use of students' personal data.</p>
+
+                                                <h6>4. Pricing</h6>
+
+                                                4.1 Price Setting<br>
+
+                                                <p>When creating a course, you have an option to offer the course or test series for free or list pricing for course subject or topic. On a paid subscription, you will also be given the opportunity to participate in certain promotional and marketplace programs (optional) under the terms of our Promotions Policy ("Promotional and Marketplace Programs").</p>
+
+                                                <p>You give us permission to share your courses for free with our employees, with selected partners, and in cases where we need to restore access accounts who have previously purchased your courses. You understand that you will not receive compensation in these cases.</p>
+
+                                                4.2 Transaction Taxes<br>
+
+                                                <p> If a student purchases a product or service in a country that requires Utobo to remit national, state, or local sales or use taxes, Goods and Sevice Tax (“GST”), value added taxes (VAT), or other similar transaction taxes ("Transaction Taxes"), under applicable law, we will collect and remit those Transaction Taxes to the competent tax authorities for those sales. We may increase the sale price at our discretion where we determine that such taxes may be due. For purchases through mobile applications, applicable Transaction Taxes are collected by the mobile platform (such as Apple's App Store or Google Play).</p>
+
+                                                4.3 Promotional Programs<br>
+
+                                                <p>Utobo offers several optional marketing programs (Promotional Programs) in which you can choose to participate, as detailed in our Promotions Policy. These programs can help increase your revenue potential on Utobo by finding the optimal price point for your courses and promoting them through additional marketing channels.</p>
+
+                                                <p> There is a cost to participate in these programs which completely depends customer outreach plans and you can modify your participation status at any time, though changes you make will not apply to currently active campaigns.</p>
+
+                                                <h6>5. Payments</h6>
+
+                                                5.1 Revenue Share<br>
+
+                                                <p> We give an option to integrate your own payment gateway. So whatever student purchases from courses and test series you will get the money in your bank account depending upon payment gateway provider terms. We are not responsible for any delay or deduction in payment. We encourage you to take all the details from payment gateway providers before integrating it with Utobo.</p>
+
+                                                <p>If you have not opted into any of Utobo's optional Promotional Programs or market place, your revenue share will be 50% of the Net Amount less any applicable deductions, such as student refunds. If we change this payment rate, we will provide you 30 days’ notice using prominent means, such as via email or by posting a notice through our Services.</p>
+
+                                                If you opt into any of the Promotional Programs, the relevant revenue share may be different and will be as specified in the Promotions Policy.<br>
+
+                                                5.2 Receiving Payments<br>
+
+                                                <p> For us to pay you in a timely manner, you must have an active PayPal or stipe account keep us informed of the correct email associated with your account. You must also provide any identifying information or tax documentation necessary for payment of amounts due, and you agree that we have the right to withhold appropriate taxes from your payments. We reserve the right to withhold payments or impose other penalties if we do not receive proper identifying information or tax documentation from you. You understand and agree that you are ultimately responsible for any taxes on your income.</p>
+
+                                                <p> Depending on the applicable revenue share model, payment will be made within 30 days of the end of the month in which we receive the fee for a course or test series.</p>
+
+                                                <p> As a tutor, you are responsible for determining whether you are eligible to be paid by USA company. We reserve the right not to pay out funds in the event of identified fraud, violations of intellectual property rights, or other violations of the law.
+                                                    If we cannot settle funds into your payment account after the period of time set forth by your state, country, or other government authority in its unclaimed property laws, we may process the funds due to you in accordance with our legal obligations, including by submitting those funds to the appropriate government authority as required by law.</p>
+
+                                                5.3 Refunds<br>
+
+                                                <p> You acknowledge and agree that students have the right to receive a refund, as detailed in the Terms of Use. Tutors will not receive any revenue from transactions for which a refund has been granted under the Terms of Use. </p>
+
+                                                <p> If a student asks for a refund after we have paid the relevant tutor payment, we reserve the right to either (1) deduct the amount of the refund from the next payment sent to the tutor or (2) where no further payments are due to the tutor or the payments are insufficient to cover the refunded amounts, require the tutor to refund any amounts refunded to students for the tutor's courses.</p>
+
+                                                <h6>6. Trademarks</h6>
+
+                                                <p> While you are a published tutor and subject to the requirements below, you may use our trademarks where we authorize you to do so.
+                                                    You must:</p>
+
+                                                <ul class="list list--standard">
+                                                    <li> <svg class="utouch-icon utouch-icon-correct-symbol-1">
+                                                            <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#utouch-icon-correct-symbol-1"></use>
+                                                        </svg>only use the images of our trademarks that we make available to you, as detailed in any guidelines we may publish.</li>
+
+                                                    <li> <svg class="utouch-icon utouch-icon-correct-symbol-1">
+                                                            <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#utouch-icon-correct-symbol-1"></use>
+                                                        </svg> only use our trademarks in connection with the promotion and sale of your Utobo courses or your participation on Utobo; and</li>
+
+                                                    <li> <svg class="utouch-icon utouch-icon-correct-symbol-1">
+                                                            <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#utouch-icon-correct-symbol-1"></use>
+                                                        </svg> immediately comply if we request that you discontinue use.</li>
+
+                                                    You must not:<br>
+
+                                                    <li> <svg class="utouch-icon utouch-icon-correct-symbol-1">
+                                                            <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#utouch-icon-correct-symbol-1"></use>
+                                                        </svg> use our trademarks in a misleading or disparaging way;</li>
+
+                                                    <li> <svg class="utouch-icon utouch-icon-correct-symbol-1">
+                                                            <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#utouch-icon-correct-symbol-1"></use>
+                                                        </svg>use our trademarks in a way that implies that we endorse, sponsor, or approve of your courses or services; or</li>
+
+                                                    <li> <svg class="utouch-icon utouch-icon-correct-symbol-1">
+                                                            <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#utouch-icon-correct-symbol-1"></use>
+                                                        </svg> use our trademarks in a way that violates applicable law or in connection with an obscene, indecent, or unlawful topic or material.</li>
+                                                </ul>
+                                                <h6>7. Sanctions and Export Laws</h6>
+
+                                                <p>
+                                                    You warrant that you aren't restricted from using the Services under USA sanctions or export laws (as an individual or as an officer, director, or controlling shareholder of any entity on whose behalf you use the Services). If you become subject to such a restriction while you are subject to these Tutor Terms, you will notify Utobo within 24 hours, and we will have the right to terminate any further obligations to you, effective immediately and with no further liability to you (but without prejudice to your outstanding obligations to Utobo). You will not use the Services to conduct or facilitate any transaction with any other individual or entity subject to such a restriction. You may not remove, export, or allow the export or re-export of the Services (or any product thereof, including technical data) outside the USA in violation of any restrictions, laws, or regulations of the Delaware USA or any other applicable country.</p>
+
+                                                <h6>8. Indemnity</h6>   
+                                                <p>
+                                                	Tutor/ You (the “Indemnifying Party”) hereby agrees to indemnify, defend and hold harmless Utobo Inc, its respective directors, officers, representatives, employees and agents (collectively, the “Indemnified Party(ies)”) from and against any and all losses, liabilities, claims, damages, suits, actions, proceedings, obligations, debts, demands, fines, penalties, charges, fees, judgments, awards, amounts paid in settlements, costs and expenses, including reasonable legal fees, disbursements and other costs of defense in connection therewith (collectively, the “Losses”) incurred by the Indemnified Party, in connection with or arising out of, or which may be payable by virtue of (i) any act, omission to act, breach of applicable laws, fraud, gross negligence or wilful misconduct; or (ii) breach of the terms of this Agreement or any other policies of Utobo Inc. 
+                                                </p>
+
+                                                <h6>9. Deleting Your Account</h6>
+
+                                                <p>
+                                                    Instructions on how to delete your tutor account is available in tutor dashboard. We'll use commercially reasonable efforts to make any remaining scheduled payments that are owed to you before deleting your account. You understand that if students have previously enrolled in your courses, your name and that Submitted Content will remain accessible to those students after your account is deleted. If you need help or encounter difficulty deleting your account, you can contact us via support@utobo.com.</p>
+
+                                                <h6>10. Miscellaneous Legal Terms</h6>
+
+                                                10.1 Updating These Terms<br>
+
+                                                <p>
+                                                    From time to time, we may update these Terms to clarify our practices or to reflect new or different practices (such as when we add new features), and Utobo reserves the right in its sole discretion to modify and/or make changes to these Terms at any time. If we make any material change, we will notify you using prominent means such as by email notice sent to the email address specified in your account or by posting a notice through our Services. Modifications will become effective on the day they are posted unless stated otherwise.</p>
+
+                                                <p>
+                                                    Your continued use of our Services after changes become effective shall mean that you accept those changes. Any revised Terms shall supersede all previous Terms.</p>
+
+                                                10.2 Translations<br>
+
+                                                <p>
+                                                    Any version of these Terms in a language other than English is provided for convenience and you understand and agree that the English language will control if there is any conflict.</p>
+
+                                                10.3 Relationship Between Us<br>
+
+                                                <p>
+                                                    You and we agree that no joint venture, partnership, employment, contractor, or agency relationship exists between us.</p>
+
+                                                10.4 Survival<br>
+
+                                                <p>The following sections shall survive the expiration or termination of these Terms: Sections 2 (License to Utobo), 3.3 (Relationship to Other Users), 5.2 (Receiving Payments), 5.3 (Refunds),  8 (Indemnity), 9 (Deleting Your Account), and 10 (Miscellaneous Legal Terms).</p>
+
+                                                <h6>10. How to Contact Us</h6>
+
+                                                <p>
+                                                    The best way to get in touch with us is to contact our support team (support@utobo.com). We'd love to hear your questions, concerns, and feedback about our Services.
+                                                </p>
+                                                
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+
+                            </div>
+
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+    </div>
+    
+  
+
+    <!-- ... end Course Details -->
+
+    </div>
+
+
+    <!-- Footer -->
+    <footer class="footer" id="site-footer">
+        <?php include("footer.php"); ?>
+    </footer>
+
+    <!-- End Footer -->
+
+    <div class="window-popup message-popup">
+        <a href="#" class="popup-close js-popup-close cd-nav-trigger">
+            <svg class="utouch-icon utouch-icon-cancel-1">
+                <use xlink:href="#utouch-icon-cancel-1"></use>
+            </svg>
+        </a>
+
+        <div class="send-message-popup">
+            <h5>Send a Message</h5>
+            <p>utobo always ready to help you for your all queries, Feel free to contact us.</p>
+            <form id="getFreeTrial" class="contact-form" action="" method="POST" novalidate="novalidate">
+                <div class="with-icon">
+                    <input name="getFreeTrialname" placeholder="Your Name *" type="text">
+                    <svg class="utouch-icon utouch-icon-user">
+                        <use xlink:href="#utouch-icon-user"></use>
+                    </svg>
+                </div>
+
+                <div class="with-icon">
+                    <input name="getFreeTrialemail" placeholder="Email Address *" type="text">
+                    <svg class="utouch-icon utouch-icon-message-closed-envelope-1">
+                        <use xlink:href="#utouch-icon-message-closed-envelope-1"></use>
+                    </svg>
+                </div>
+
+                <div class="with-icon">
+                    <input name="getFreeTrialphone" placeholder="Phone Number *" type="number">
+                    <svg class="utouch-icon utouch-icon-telephone-keypad-with-ten-keys">
+                        <use xlink:href="#utouch-icon-telephone-keypad-with-ten-keys"></use>
+                    </svg>
+                </div>
+
+                <div class="with-icon">
+                    <input name="getFreeTrialsubject" placeholder="Subject *" type="text">
+                    <svg class="utouch-icon utouch-icon-icon-1">
+                        <use xlink:href="#utouch-icon-icon-1"></use>
+                    </svg>
+                </div>
+
+                <div class="with-icon">
+                    <textarea name="getFreeTrialmessage" placeholder="Your Message *" style="height: 180px;"></textarea>
+                    <svg class="utouch-icon utouch-icon-edit">
+                        <use xlink:href="#utouch-icon-edit"></use>
+                    </svg>
+                </div>
+
+                <div class="g-recaptcha" data-sitekey="<?php echo SITE_KEY; ?>"></div>
+
+                <button type="button" id="getFreeTrialButton" class="btn btn--green btn--with-shadow full-width" style="clear:both;">
+                    Send a Message
+                </button>
+
+            </form>
+
+            <div class="with-icon" id="getFreeTrialMsg"></div>
+
+            <div id="getFreeTrialLoader" style="display:none;"><img src="script/loader.gif" /></div>
+
+        </div>
+    </div>
+    <!-- Used SVG-icons -->
+
+    <svg xmlns="http://www.w3.org/2000/svg" style="display: block; width: 1px; height: 1px; visibility: hidden; opacity: 0;">
+
+        <symbol id="utouch-icon-calendar-1" viewBox="0 0 512 512">
+            <path d="m462 77l-46 0 0-18c0-9-7-17-16-17-9 0-17 8-17 17l0 18-254 0 0-18c0-9-8-17-17-17-9 0-16 8-16 17l0 18-46 0c-28 0-50 23-50 50 0 4 0 323 0 326 0 9 7 17 17 17l478 0c10 0 17-8 17-17 0-3 0-322 0-326 0-27-22-50-50-50z m17 359l-446 0 0-229 446 0z m0-262l-446 0 0-47c0-9 8-16 17-16l46 0 0 5c0 9 7 16 16 16 9 0 17-7 17-16l0-5 254 0 0 5c0 9 8 16 17 16 9 0 16-7 16-16l0-5 46 0c9 0 17 7 17 16z m-355 66c-17 0-30 14-30 30 0 17 13 30 30 30 16 0 30-13 30-30 0-16-14-30-30-30z m132 0c-17 0-30 14-30 30 0 17 13 30 30 30 17 0 30-13 30-30 0-16-13-30-30-30z m132 0c-16 0-30 14-30 30 0 17 14 30 30 30 17 0 30-13 30-30 0-16-13-30-30-30z m-264 103c-17 0-30 14-30 31 0 16 13 30 30 30 16 0 30-14 30-30 0-17-14-31-30-31z m132 0c-17 0-30 14-30 31 0 16 13 30 30 30 17 0 30-14 30-30 0-17-13-31-30-31z m132 0c-16 0-30 14-30 31 0 16 14 30 30 30 17 0 30-14 30-30 0-17-13-31-30-31z"></path>
+        </symbol>
+
+        <symbol id="utouch-icon-calendar-2" viewBox="0 0 512 512">
+            <path d="m462 77l-46 0 0-18c0-9-7-17-16-17-9 0-17 8-17 17l0 18-254 0 0-18c0-9-8-17-17-17-9 0-16 8-16 17l0 18-46 0c-28 0-50 23-50 50 0 4 0 323 0 326 0 9 7 17 17 17l478 0c10 0 17-8 17-17 0-3 0-322 0-326 0-27-22-50-50-50z m17 359l-446 0 0-229 446 0z m0-262l-446 0 0-47c0-9 8-16 17-16l46 0 0 5c0 9 7 16 16 16 9 0 17-7 17-16l0-5 254 0 0 5c0 9 8 16 17 16 9 0 16-7 16-16l0-5 46 0c9 0 17 7 17 16z m-329 66l-53 0c-9 0-17 7-17 17 0 9 8 16 17 16l53 0c10 0 17-7 17-16 0-10-7-17-17-17z m133 0l-54 0c-9 0-16 7-16 17 0 9 7 16 16 16l54 0c9 0 16-7 16-16 0-10-7-17-16-17z m134 0l-53 0c-9 0-17 7-17 17 0 9 8 16 17 16l53 0c9 0 17-7 17-16 0-10-8-17-17-17z m-267 65l-53 0c-9 0-17 8-17 17 0 9 8 17 17 17l53 0c10 0 17-8 17-17 0-9-7-17-17-17z m133 0l-54 0c-9 0-16 8-16 17 0 9 7 17 16 17l54 0c9 0 16-8 16-17 0-9-7-17-16-17z m134 0l-53 0c-9 0-17 8-17 17 0 9 8 17 17 17l53 0c9 0 17-8 17-17 0-9-8-17-17-17z m-267 66l-53 0c-9 0-17 7-17 16 0 10 8 17 17 17l53 0c10 0 17-7 17-17 0-9-7-16-17-16z m133 0l-54 0c-9 0-16 7-16 16 0 10 7 17 16 17l54 0c9 0 16-7 16-17 0-9-7-16-16-16z m134 0l-53 0c-9 0-17 7-17 16 0 10 8 17 17 17l53 0c9 0 17-7 17-17 0-9-8-16-17-16z"></path>
+        </symbol>
+
+        <symbol id="utouch-icon-cancel-1" viewBox="0 0 512 512">
+            <path d="m293 256l211-209c10-10 10-26 0-36-10-10-27-10-37 0l-210 209-212-212c-10-10-27-10-37 0-10 10-10 26 0 36l212 212-212 212c-11 10-11 26 0 36 10 10 26 10 36 0l213-211 211 211c10 10 26 10 36 0 11-10 11-26 0-36z"></path>
+        </symbol>
+
+        <symbol id="utouch-icon-checked" viewBox="0 0 512 512">
+            <path d="m450 240c-1-8-7-13-15-13-7 1-13 7-13 15 1 4 1 9 1 14 0 109-89 198-198 198-109 0-198-89-198-198 0-109 89-198 198-198 43 0 84 14 119 40 6 4 14 3 19-3 4-6 3-15-3-19-39-30-86-45-135-45-124 0-225 101-225 225 0 124 101 225 225 225 124 0 225-101 225-225 0-5 0-11 0-16z m46-178c-20-21-54-21-75 0l-197 197-70-70c-21-21-55-21-76 0-20 21-20 55 0 75l121 121c7 7 16 10 25 10 9 0 18-3 25-10l247-248c21-21 21-54 0-75z m-19 56l-248 247c-3 4-8 4-11 0l-120-120c-10-10-10-27 0-37 5-5 12-7 18-7 7 0 14 2 19 7l71 72c5 5 11 7 18 7 6 0 13-2 17-7l199-199c10-10 27-10 37 0 10 10 10 27 0 37z"></path>
+        </symbol>
+
+        <symbol id="utouch-icon-clock-1" viewBox="0 0 512 512">
+            <path d="m256 0c-141 0-256 115-256 256 0 141 115 256 256 256 141 0 256-115 256-256 0-141-115-256-256-256z m0 458c-111 0-202-91-202-202 0-111 91-202 202-202 111 0 202 91 202 202 0 111-91 202-202 202z m137-210l-100 0c-3-6-8-11-14-14l0-121c0-12-10-23-23-23-13 0-23 11-23 23l0 121c-12 7-21 21-21 37 0 24 20 44 44 44 16 0 30-9 37-21l100 0c13 0 23-10 23-23 0-13-10-23-23-23z"></path>
+        </symbol>
+
+        <symbol id="utouch-icon-dot-arrow" viewBox="0 0 512 512">
+            <path d="m52 26c0 14-12 25-26 25-14 0-25-11-25-25 0-15 11-26 25-26 14 0 26 11 26 26z m76 77c0 14-12 25-26 25-14 0-25-11-25-25 0-14 11-26 25-26 14 0 26 12 26 26z m0-77c0 14-12 25-26 25-14 0-25-11-25-25 0-15 11-26 25-26 14 0 26 11 26 26z m77 77c0 14-12 25-26 25-14 0-25-11-25-25 0-14 11-26 25-26 14 0 26 12 26 26z m0 76c0 14-12 25-26 25-14 0-25-11-25-25 0-14 11-26 25-26 14 0 26 12 26 26z m0-153c0 14-12 25-26 25-14 0-25-11-25-25 0-15 11-26 25-26 14 0 26 11 26 26z m76 77c0 14-12 25-26 25-14 0-25-11-25-25 0-14 11-26 25-26 14 0 26 12 26 26z m0 76c0 14-12 25-26 25-14 0-25-11-25-25 0-14 11-26 25-26 14 0 26 12 26 26z m0-153c0 14-12 25-26 25-14 0-25-11-25-25 0-15 11-26 25-26 14 0 26 11 26 26z m75 77c0 14-11 25-25 25-14 0-26-11-26-25 0-14 12-26 26-26 14 0 25 12 25 26z m0 76c0 14-11 25-25 25-14 0-26-11-26-25 0-14 12-26 26-26 14 0 25 12 25 26z m-75 75c0 14-12 26-26 26-14 0-25-12-25-26 0-14 11-25 25-25 14 0 26 11 26 25z m75 0c0 14-11 26-25 26-14 0-26-12-26-26 0-14 12-25 26-25 14 0 25 11 25 25z m-151 78c0 14-12 25-26 25-14 0-25-11-25-25 0-14 11-26 25-26 14 0 26 12 26 26z m76 0c0 14-12 25-26 25-14 0-25-11-25-25 0-14 11-26 25-26 14 0 26 12 26 26z m75 0c0 14-11 25-25 25-14 0-26-11-26-25 0-14 12-26 26-26 14 0 25 12 25 26z m-228 76c0 14-12 25-26 25-14 0-25-11-25-25 0-15 11-26 25-26 14 0 26 11 26 26z m77 0c0 14-12 25-26 25-14 0-25-11-25-25 0-15 11-26 25-26 14 0 26 11 26 26z m76 0c0 14-12 25-26 25-14 0-25-11-25-25 0-15 11-26 25-26 14 0 26 11 26 26z m75 0c0 14-11 25-25 25-14 0-26-11-26-25 0-15 12-26 26-26 14 0 25 11 25 26z m79-229c0 14-11 25-25 25-14 0-26-11-26-25 0-14 12-26 26-26 14 0 25 12 25 26z m0 75c0 14-11 26-25 26-14 0-26-12-26-26 0-14 12-25 26-25 14 0 25 11 25 25z m0 78c0 14-11 25-25 25-14 0-26-11-26-25 0-14 12-26 26-26 14 0 25 12 25 26z m-383 154c0 15-12 26-26 26-14 0-25-11-25-26 0-14 11-25 25-25 14 0 26 11 26 25z m76 0c0 15-12 26-26 26-14 0-25-11-25-26 0-14 11-25 25-25 14 0 26 11 26 25z m77 0c0 15-12 26-26 26-14 0-25-11-25-26 0-14 11-25 25-25 14 0 26 11 26 25z m76 0c0 15-12 26-26 26-14 0-25-11-25-26 0-14 11-25 25-25 14 0 26 11 26 25z m230-232c0 14-11 26-25 26-14 0-26-12-26-26 0-14 12-25 26-25 14 0 25 11 25 25z"></path>
+        </symbol>
+
+        <symbol id="utouch-icon-edit" viewBox="0 0 512 512">
+            <path d="m482 64l-34-34c-62-56-126-20-146 0l-279 280c-9 6-9 17-9 19l-14 160c2 24 23 23 23 23l165-12c6-1 10-3 13-7l281-283c40-40 40-106 0-146z m-290 378c-11-20-24-38-37-53l210-213 46 46z m99-339l44 43-211 212c-20-16-38-28-53-36z m-237 258c28 16 71 47 99 98l-108 9z m398-179l-11 11-120-121 11-11c12-11 52-34 86 0l34 34c23 25 23 63 0 87z"></path>
+        </symbol>
+
+        <symbol id="utouch-icon-expand" viewBox="0 0 512 512">
+            <path d="m146 270l94 95c7 8 22 9 31 0l94-95c9-9 9-22 0-30l-94-95c-9-9-22-9-31 0l-94 95c-9 8-9 21 0 30z m109-78l65 64-65 64-64-64z m120 125l-58 58c-8 8-8 21 0 30 5 4 17 12 31 0l57-58c9-8 9-21 0-30-8-9-21-9-30 0z m-239-123l58-58c8-8 8-21 0-30-9-9-22-9-31 0l-58 58c-8 8-8 22 0 30 10 9 23 8 31 0z m27 211c13 12 27 4 30 0 9-9 9-22 0-30l-57-58c-9-9-22-9-31 0-8 9-8 22 0 30z m212-211c13 12 26 4 30 0 9-9 9-22 0-30l-57-58c-9-9-22-9-31 0-8 9-8 22 0 30z m115-193l-468 0c-12 0-22 9-22 21l0 468c0 12 10 21 22 21l467 0c12 0 22-9 23-20l0-469c0-12-10-21-22-21z m-22 468l-426 0 0-426 426 0z"></path>
+        </symbol>
+
+        <symbol id="utouch-icon-flag-1" viewBox="0 0 512 512">
+            <path d="m464 195l-93-81 93-81c6-5 9-13 6-21-3-7-10-12-18-12l-299 0c-10 0-19 8-19 19l0 356-19 0c-41 0-74 33-74 74l0 44c0 11 8 19 19 19l189 0c10 0 18-8 18-19 0-10-8-19-18-19l-170 0 0-25c0-20 16-36 36-36l76 0c13 0 26 7 32 19 5 9 17 12 26 7 9-5 12-17 7-26-13-23-38-38-65-38l-19 0 0-337 230 0-72 62c-5 4-7 9-7 14 0 6 3 11 7 14l72 63-168 0c-11 0-19 8-19 19 0 10 8 18 19 18l218 0c8 0 15-5 18-12 3-7 0-16-6-21z"></path>
+        </symbol>
+
+        <symbol id="utouch-icon-home-icon-silhouette" viewBox="0 0 512 512">
+            <path d="m504 233l-78-77 0-90c0-16-13-29-29-29-16 0-30 13-30 29l0 31-57-58c-29-29-79-28-107 0l-194 194c-12 12-12 30 0 42 11 11 30 11 41 0l194-194c7-7 18-7 24 0l194 194c6 6 14 8 21 8 8 0 15-2 21-8 11-12 11-30 0-42z m-238-97c-5-5-14-5-20 0l-171 171c-2 3-4 6-4 10l0 125c0 29 24 53 53 53l84 0 0-131 96 0 0 131 84 0c30 0 53-24 53-53l0-125c0-4-1-7-4-10z"></path>
+        </symbol>
+
+        <symbol id="utouch-icon-icon252" viewBox="0 0 512 512">
+            <path d="m386 0l-292 291 108 0-83 221 299-291-108 0z"></path>
+        </symbol>
+
+        <symbol id="utouch-icon-icon-1" viewBox="0 0 512 512">
+            <path d="m510 347c5 9 0 21-10 26l-216 98c-3 1-6 2-8 2-2 0-4 0-6-1l-256-79c-10-3-16-14-13-24 3-11 14-17 25-13l248 76 210-95c10-5 22 0 26 10z m-236 6l-248-76c-11-3-22 2-25 13-3 10 3 21 13 24l256 79c2 1 4 1 6 1 2 0 5-1 8-2l216-98c10-5 15-16 10-26-4-10-16-15-26-10z m-274-135c0-8 4-16 12-19l144-61c28-12 42-27 42-79 0-6 2-12 7-16 5-3 11-5 17-3l255 63c9 2 15 10 15 19l0 3c0 58 0 96-72 126-47 21-135 62-136 62-3 2-5 2-8 2-2 0-4 0-6-1l-256-78c-8-3-14-10-14-18z m77-4l197 61c22-11 90-43 131-60 44-18 47-32 47-78l-216-53c-4 40-19 71-65 90z"></path>
+        </symbol>
+
+        <symbol id="utouch-icon-letter" viewBox="0 0 512 512">
+            <path d="m501 158l-231-154c-8-5-20-5-28 0l-231 154c-7 5-11 13-11 21l0 307c0 15 11 26 26 26l460 0c15 0 26-11 26-26l0-307c0-8-4-16-11-21z m-245-102l185 123-185 123-185-123z m205 405l-410 0 0-233 191 126c4 3 9 4 14 4 5 0 10-1 14-4l191-126z"></path>
+        </symbol>
+
+        <symbol id="utouch-icon-link-chain" viewBox="0 0 512 512">
+            <path d="m431 14c-8-9-19-14-31-14-12 0-24 5-32 14l-135 134c-8 9-13 20-13 32 0 12 5 23 13 32l20 20-21 21-20-20c-9-8-20-13-32-13 0 0 0 0 0 0-12 0-23 5-32 13l-134 135c-9 8-14 20-14 32 0 12 5 23 14 31l66 67c9 8 20 13 32 13 12 0 23-5 32-13l134-135c9-8 14-20 14-32 0-12-5-23-14-31l-20-21 21-21 21 20c8 9 19 14 31 14 12 0 24-5 32-14l135-134c8-9 13-20 13-32 0-12-5-23-13-32z m-179 312c2 2 3 4 3 5 0 2-1 4-3 6l-134 135c-2 2-5 2-6 2-1 0-4 0-6-2l-66-67c-2-2-3-4-3-5 0-2 1-4 3-6l135-135c2-2 4-2 5-2 1 0 4 0 6 2l20 20-36 37c-8 7-8 19 0 26 3 4 8 5 13 5 4 0 9-1 13-5l36-36z m220-208l-135 134c-2 2-4 3-6 3-1 0-3-1-5-3l-20-20 38-38c7-7 7-19 0-26-7-8-19-8-26 0l-39 38-20-20c-2-2-2-5-2-6 0-1 0-3 2-5l135-135c2-2 4-3 6-3 1 0 3 1 5 3l67 66c2 2 2 5 2 6 0 1 0 4-2 6z m-360 394c-12 0-24-5-32-14l-67-66c-8-9-13-20-13-32 0-12 5-24 13-32l135-135c9-9 20-13 32-13 12 0 24 4 32 13l20 20 21-21-20-20c-9-8-13-20-13-32 0-12 4-23 13-32l135-135c8-8 20-13 32-13 12 0 23 5 32 13l66 67c9 8 14 20 14 32 0 12-5 23-14 32l-135 135c-8 8-19 13-32 13-12 0-23-5-32-13l-20-20-20 20 20 20c8 9 13 20 13 32 0 13-5 24-13 32l-135 135c-9 9-20 14-32 14z m68-292c-12 0-23 5-31 13l-135 135c-9 9-13 20-13 32 0 12 4 23 13 31l67 67c8 8 19 13 31 13 12 0 23-5 31-13l135-135c9-9 13-20 13-32 0-11-4-23-13-31l-20-21 21-21 21 20c8 9 20 13 31 13 12 0 23-4 32-13l135-135c8-8 13-19 13-31 0-12-5-23-13-31l-67-67c-8-9-19-13-31-13-12 0-23 4-32 13l-135 135c-8 8-13 19-13 31 0 12 5 23 13 32l21 20-22 22-20-21c-9-8-20-13-32-13z m-68 255c-1 0-4-1-6-3l-67-66c-2-3-2-5-2-6 0-2 0-4 2-6l135-135c2-2 5-3 6-3 1 0 4 1 6 3l21 20-37 37c-7 7-7 19 0 26 3 3 8 5 13 5 4 0 9-2 12-5l37-37 21 21c2 2 2 4 2 5 0 2 0 4-2 6l-135 135c-2 2-5 3-6 3z m68-218c-1 0-3 1-5 3l-135 134c-2 2-2 5-2 6 0 1 0 3 2 5l67 67c2 2 4 2 5 2 1 0 3 0 5-2l135-135c2-2 2-4 2-6 0-1 0-3-2-5l-20-20-36 36c-4 4-8 6-13 6-5 0-10-2-14-6-7-7-7-19 0-26l36-37-20-19c-1-2-4-3-5-3z m151-2c-1 0-3 0-5-2l-21-21 39-39c3-3 5-7 5-12 0-5-2-10-5-13-4-3-8-5-13-5-5 0-9 2-13 5l-39 39-20-21c-2-2-3-5-3-6 0-1 1-4 3-6l135-135c2-2 4-2 6-2 1 0 3 0 6 2l66 67c2 2 3 5 3 6 0 1-1 4-3 6l-135 135c-2 2-4 2-6 2z m-25-23l20 20c2 2 4 2 5 2 2 0 4 0 6-2l135-135c2-2 2-4 2-5 0-1 0-3-2-5l-67-67c-2-2-4-2-5-2-1 0-4 0-6 2l-134 135c-2 2-3 4-3 5 0 1 1 4 3 5l19 20 39-38c3-3 8-5 13-5 5 0 10 2 13 5 8 8 8 20 0 27z"></path>
+        </symbol>
+
+        <symbol id="utouch-icon-media-play-symbol" viewBox="0 0 512 512">
+            <path d="m85 4c4-3 8-4 13-4 5 0 9 1 13 4l316 229c8 5 13 14 13 23 0 9-5 18-13 23l-316 229c-8 5-18 5-26 0-8-4-13-13-13-22l0-459c0-10 5-19 13-23z"></path>
+        </symbol>
+
+        <symbol id="utouch-icon-message" viewBox="0 0 512 512">
+            <path d="m512 198c0-1-1-2-1-3-1-3-2-5-5-7l-73-51 0-55c0-7-6-13-13-13l-85 0-71-50c-5-3-11-3-15 0l-73 50-84 0c-7 0-13 6-13 13l0 54-73 51c-4 3-6 7-6 11 0 0 0 0 0 0l0 284c0 4 2 7 4 9 3 3 6 4 10 4 0 0 0 0 0 0l485 0c7 0 13-6 13-14z m-79-29l42 29-42 29z m-177-123l33 23-66 0z m-150 49l300 0 0 150-101 70-41-32c0 0 0 0 0 0-5-3-11-3-16 0l-41 33-101-70z m-27 73l0 60-43-30z m-53 55l159 110-158 122z m26 246l204-159 204 158z m275-137l158-110 1 233z m18-184l-178 0c-7 0-13 6-13 13 0 7 6 13 13 13l178 0c7 0 13-6 13-13 0-7-6-13-13-13z m0 68l-178 0c-7 0-13 6-13 13 0 7 6 13 13 13l178 0c7 0 13-6 13-13 0-7-6-13-13-13z"></path>
+        </symbol>
+
+        <symbol id="utouch-icon-message-closed-envelope-1" viewBox="0 0 512 512">
+            <path d="m451 62l-390 0c-34 0-61 26-61 58l0 272c0 32 27 58 61 58l390 0c34 0 61-26 61-58l0-272c0-32-27-58-61-58z m0 337l-390 0c-5 0-9-3-9-7l0-236 176 149c4 3 8 5 13 5l30 0c5 0 9-2 13-5l176-149 0 236c0 4-4 7-9 7z m-195-140l-172-146 344 0z"></path>
+        </symbol>
+
+        <symbol id="utouch-icon-minus" viewBox="0 0 512 512">
+            <path d="m452 195l-392 0c-33 0-60 28-60 61 0 33 27 61 60 61l392 0c33 0 60-28 60-61 0-33-27-61-60-61z"></path>
+        </symbol>
+
+        <symbol id="utouch-icon-musical-note-2" viewBox="0 0 512 512">
+            <path d="m181 408c0 47-38 85-85 85-48 0-86-38-86-85 0-48 38-86 86-86 47 0 85 38 85 86z m321-44c0 47-38 86-86 86-47 0-85-39-85-86 0-47 38-85 85-85 48 0 86 38 86 85z m-321-302l321-43 0 71-321 44z m321 67c-6 0-10 4-10 10l0 10c0 6 4 10 10 10 5 0 10-4 10-10l0-10c0-6-5-10-10-10z m0 56c-6 0-10 4-10 10l0 110c-18-22-45-36-76-36-52 0-95 43-95 95 0 53 43 96 95 96 53 0 96-43 96-96l0-169c0-6-5-10-10-10z m-86 254c-41 0-75-33-75-75 0-41 34-75 75-75 42 0 76 34 76 75 0 42-34 75-76 75z m-245-90c-18-23-45-37-75-37-53 0-96 43-96 96 0 52 43 95 96 95 52 0 95-43 95-95l0-265 312-42c5-1 9-5 9-11l0-71c0-3-1-6-3-8-3-1-6-2-9-2l-321 43c-5 1-8 5-8 10z m-75 134c-42 0-76-34-76-75 0-42 34-76 76-76 41 0 75 34 75 76 0 41-34 75-75 75z m396-401l-301 40 0-51 301-40z m-399 269c-30 0-54 24-54 54 0 6 5 10 11 10 5 0 10-4 10-10 0-18 15-33 33-33 5 0 10-5 10-10 0-6-5-11-10-11z"></path>
+        </symbol>
+
+        <symbol id="utouch-icon-picture" viewBox="0 0 512 512">
+            <path d="m459 0l-406 0c-29 0-53 24-53 53l0 406c0 29 24 53 53 53l406 0c29 0 53-24 53-53l0-406c0-29-24-53-53-53z m-9 316l-80-80c-5-4-12-4-16 0l-59 58-100-100c-5-5-12-5-17 0l-116 116 0-248 388 0z m-96-170c0 24-20 44-45 44-24 0-44-20-44-44 0-25 20-45 44-45 25 0 45 20 45 45z"></path>
+        </symbol>
+
+        <symbol id="utouch-icon-placeholder-3" viewBox="0 0 512 512">
+            <path d="m434 479l-58-122c-1-2-3-4-4-5-5-4-13-3-17 2-4 4-5 10-2 14l50 107-50-23c-6-2-14-2-21 0l-76 34c0 0 0 0 0 0 0 0 0 0 0 0l-76-33c-7-3-15-3-21-1l-50 23 50-107c2-3 2-8 0-11-3-7-11-9-17-6-3 1-5 3-6 6l-58 122c-3 8-2 16 4 22 6 6 14 7 22 4l65-29 77 34c3 1 6 2 10 2 4 0 7-1 10-2l77-34 65 29c8 3 16 2 22-4 6-6 7-14 4-22z m-64-432c-32-31-73-48-116-47-43 1-83 18-113 48-30 30-46 70-47 113 0 26 6 51 18 74 0 1 0 1 0 1l111 185c7 12 19 19 33 19 14 0 26-7 33-19l111-185c0 0 0 0 0-1 12-23 18-47 18-73 0-44-17-85-48-115z m7 176l-110 185c-3 6-9 7-11 7-2 0-8-1-11-7l-110-185c-10-19-15-40-15-62 0-74 61-134 134-135 37-1 71 13 98 39 26 26 40 60 40 97 0 21-5 42-15 61z m-121-120c-32 0-58 26-58 59 0 32 26 58 58 58 32 0 59-26 59-58 0-33-27-59-59-59z m0 92c-18 0-33-15-33-33 0-18 15-33 33-33 18 0 33 15 33 33 0 18-15 33-33 33z"></path>
+        </symbol>
+
+        <symbol id="utouch-icon-placeholder-4" viewBox="0 0 512 512">
+            <path d="m383 53c-34-34-79-53-127-53-48 0-93 19-127 53-62 62-70 180-17 252l144 207 143-207c54-72 46-190-16-252z m-125 190c-36 0-66-29-66-65 0-36 30-66 66-66 36 0 65 30 65 66 0 36-29 65-65 65z"></path>
+        </symbol>
+
+        <symbol id="utouch-icon-play-button-2" viewBox="0 0 512 512">
+            <path d="m478 128c-71-122-228-164-350-94-122 71-164 228-94 350 71 123 228 164 350 94 123-71 164-228 94-350z m-120 305c-97 57-223 23-279-75-57-97-23-223 75-279 98-57 223-23 279 75 57 98 23 223-75 279z m-10-187l-134-79c-12-7-22-1-22 13l1 155c0 14 10 20 22 13l133-77c12-7 12-18 0-25z"></path>
+        </symbol>
+
+        <symbol id="utouch-icon-settings-5" viewBox="0 0 512 512">
+            <path d="m256 142c-63 0-114 51-114 114 0 63 51 114 114 114 63 0 114-51 114-114 0-63-51-114-114-114z m0 195c-44 0-81-36-81-81 0-44 37-81 81-81 45 0 81 37 81 81 0 45-36 81-81 81z m215-150l-23 0c-3-6-5-12-7-17l16-17c16-16 16-42 0-58l-40-40c-16-16-42-16-58 0l-17 16c-5-2-11-4-17-7l0-23c0-23-18-41-41-41l-56 0c-23 0-41 18-41 41l0 23c-6 3-12 5-17 7l-17-16c-16-16-42-16-58 0l-40 40c-16 16-16 42 0 58l16 17c-2 5-4 11-7 17l-23 0c-23 0-41 18-41 41l0 56c0 23 18 41 41 41l23 0c3 6 5 12 7 17l-16 17c-16 16-16 42 0 58l40 40c16 16 42 16 58 0l17-16c5 2 11 4 17 7l0 23c0 23 18 41 41 41l56 0c23 0 41-18 41-41l0-23c6-3 12-5 17-7l17 16c16 16 42 16 58 0l40-40c16-16 16-42 0-58l-16-17c2-5 4-11 7-17l23 0c23 0 41-18 41-41l0-56c0-23-18-41-41-41z m8 97c0 5-4 8-8 8l-35 0c-8 0-14 5-16 12-4 12-8 23-14 34-4 6-3 14 3 19l25 25c3 3 3 8 0 12l-40 40c-4 3-9 3-12 0l-25-25c-5-6-13-7-19-3-11 6-22 10-34 14-7 2-12 8-12 16l0 35c0 4-3 8-8 8l-56 0c-5 0-8-4-8-8l0-35c0-8-5-14-12-16-12-4-23-8-34-14-6-4-14-3-19 3l-25 25c-3 3-8 3-12 0l-40-40c-3-4-3-9 0-12l25-25c6-5 7-13 3-19-6-11-10-22-14-34-2-7-8-12-16-12l-35 0c-4 0-8-3-8-8l0-56c0-5 4-8 8-8l35 0c8 0 14-5 16-12 4-12 8-23 14-34 4-6 3-14-3-19l-25-25c-3-3-3-8 0-12l40-40c4-3 9-3 12 0l25 25c5 6 13 7 19 3 11-6 22-10 34-14 7-2 12-8 12-16l0-35c0-4 3-8 8-8l56 0c5 0 8 4 8 8l0 35c0 8 5 14 12 16 12 4 23 8 34 14 6 4 14 3 19-3l25-25c3-3 8-3 12 0l40 40c3 4 3 9 0 12l-25 25c-6 5-7 13-3 19 6 11 10 22 14 34 2 7 8 12 16 12l35 0c4 0 8 3 8 8z m-207-170c0 8-7 16-16 16-9 0-16-8-16-16 0-9 7-16 16-16 9 0 16 7 16 16z m0 284c0 9-7 16-16 16-9 0-16-7-16-16 0-8 7-15 16-15 9 0 16 7 16 15z m142-142c0 9-7 16-16 16-8 0-15-7-15-16 0-9 7-16 15-16 9 0 16 7 16 16z m-284 0c0 9-8 16-16 16-9 0-16-7-16-16 0-9 7-16 16-16 8 0 16 7 16 16z m242-101c0 9-7 16-15 16-9 0-16-7-16-16 0-8 7-15 16-15 8 0 15 7 15 15z m-201 202c0 8-7 15-16 15-8 0-15-7-15-15 0-9 7-16 15-16 9 0 16 7 16 16z m201 0c0 8-7 15-15 15-9 0-16-7-16-15 0-9 7-16 16-16 8 0 15 7 15 16z m-201-202c0 9-7 16-16 16-8 0-15-7-15-16 0-8 7-15 15-15 9 0 16 7 16 15z"></path>
+        </symbol>
+
+        <symbol id="utouch-icon-star" viewBox="0 0 512 512">
+            <path d="m512 201c0-7-6-12-17-14l-155-23-69-140c-4-8-9-12-15-12-6 0-11 4-15 12l-69 140-155 23c-11 2-17 7-17 14 0 4 3 9 8 15l112 109-27 154c0 3 0 5 0 6 0 4 1 8 3 11 2 3 5 4 10 4 3 0 7-1 12-3l138-73 138 73c5 2 9 3 13 3 4 0 7-1 9-4 2-3 3-7 3-11 0-3 0-5 0-6l-27-154 112-109c5-5 8-10 8-15z"></path>
+        </symbol>
+
+        <symbol id="utouch-icon-star-half-empty" viewBox="0 0 512 512">
+            <path d="m511 198c-1-6-7-10-16-11l-155-23-69-140c-4-8-9-12-15-12-6 0-11 4-15 12l-69 140-155 23c-9 1-15 5-16 11-2 5 0 11 7 18l112 109-27 154c-1 6 0 12 2 16 2 3 6 5 11 5 3 0 7-1 12-3l138-73 138 73c5 2 9 3 13 3 4 0 8-2 10-5 2-4 3-10 2-16l-27-154 112-109c7-7 9-13 7-18z m-146 98l-15 15 4 20 18 110-98-52-18-10 0-296 49 99 9 18 21 4 109 16z"></path>
+        </symbol>
+
+        <symbol id="utouch-icon-stopwatch" viewBox="0 0 512 512">
+            <path d="m278 261l-111-80c-3-3-8-2-11 1-3 3-3 7-1 11l80 110c5 7 13 12 22 13 1 0 2 0 3 0 8 0 16-3 21-9 7-6 10-15 9-24-1-9-5-17-12-22z m-9 34c-3 3-6 4-10 4-4-1-8-3-10-6l-49-67 68 49c3 2 5 5 5 9 0 4-1 8-4 11z m210-73c0 0 0 0 0 0 0 0 0 0 0 0-6-20-13-38-23-55 0 0 0 0 0-1-1 0-1 0-1 0-8-15-19-29-30-41l18-18 12 12 36-37-36-36-36 36 12 13-18 18c-13-12-27-22-41-31-1 0-1 0-1 0 0 0 0 0 0 0-17-10-36-18-55-23 0 0 0 0 0 0 0 0 0 0 0 0-11-3-23-5-34-6l0-10 12 0c12 0 22-10 22-22 0-11-10-21-22-21l-76 0c-12 0-22 10-22 21 0 12 10 22 22 22l12 0 0 10c-11 1-23 3-34 6 0 0 0 0 0 0 0 0 0 0 0 0-19 5-38 13-55 23 0 0 0 0 0 0 0 0 0 0-1 0-14 9-28 19-41 31l-18-18 12-13-36-36-36 36 36 37 12-12 18 18c-11 12-22 26-30 41 0 0 0 0-1 0 0 1 0 1 0 1-10 17-17 35-22 55-1 0-1 0-1 0 0 0 0 0 0 0-5 19-7 39-7 60 0 20 2 40 7 59 0 0 0 0 0 0 0 0 0 0 1 0 5 20 12 38 22 55 0 0 0 1 0 1 1 0 1 0 1 0 10 17 22 33 36 47 0 0 0 0 0 1 0 0 0 0 1 0 14 14 29 26 46 36 1 0 1 0 1 0 0 0 0 0 1 0 17 10 35 18 54 23 0 0 0 0 0 0 0 0 0 0 0 0 19 5 39 8 60 8 21 0 41-3 60-8 0 0 0 0 0 0 0 0 0 0 0 0 19-5 37-13 54-23 1 0 1 0 1 0 0 0 0 0 1 0 17-10 32-22 46-36 1 0 1 0 1 0 0-1 0-1 0-1 14-14 26-30 36-47 0 0 0 0 1 0 0 0 0-1 0-1 10-17 17-35 23-55 0 0 0 0 0 0 0 0 0 0 0 0 5-19 7-39 7-59 0-21-2-41-7-60z m-24-152l12 12-12 13-12-13z m-410 12l12-12 12 12-12 13z m398 259l17 4c-4 12-9 24-15 36l-15-9c-4-2-9-1-11 3-3 5-1 10 3 12l14 9c-7 10-15 21-23 30l-12-12c-4-3-9-3-12 0-4 4-4 9 0 12l12 12c-10 9-20 17-31 24l-8-15c-3-4-8-5-12-3-4 3-6 8-3 12l8 14c-11 6-23 11-36 15l-4-16c-1-5-6-7-10-6-5 1-8 6-6 10l4 17c-13 2-25 4-38 5l0-17c0-5-4-9-9-9-5 0-9 4-9 9l0 17c-13-1-25-3-38-5l4-17c2-4-1-9-6-10-4-1-9 1-10 6l-4 16c-13-4-25-9-36-15l8-14c3-4 1-9-3-12-4-2-9-1-12 3l-8 15c-11-7-21-15-31-24l12-12c4-3 4-8 0-12-3-3-8-3-12 0l-12 12c-8-9-16-20-23-30l14-9c4-2 6-7 3-12-2-4-7-5-11-3l-15 9c-6-12-11-24-15-36l17-4c4-2 7-6 6-11-2-4-6-7-11-6l-16 5c-3-13-5-26-5-39l17 0c4 0 8-4 8-8 0-5-4-9-8-9l-17 0c0-13 2-26 5-38l16 4c1 0 2 0 2 0 4 0 8-2 9-6 1-5-2-9-6-10l-17-5c4-12 9-24 15-36l15 9c1 1 3 1 4 1 3 0 6-2 7-4 3-4 1-10-3-12l-14-8c7-11 15-22 23-31l12 12c2 2 4 2 6 2 2 0 5 0 6-2 4-3 4-9 0-12l-12-12c10-9 20-17 31-24l8 15c2 3 5 4 8 4 1 0 3 0 4-1 4-2 6-8 3-12l-8-14c11-6 23-11 36-15l4 16c1 4 4 7 8 7 1 0 2-1 2-1 5-1 8-6 6-10l-4-16c10-3 20-4 31-5 2 0 5 0 7-1 0 0 0 0 0 0l0 17c0 5 4 9 9 9 5 0 9-4 9-9l0-17c0 0 0 0 0 0 2 1 5 1 7 1 11 1 21 2 31 5l-4 16c-2 4 1 9 6 10 0 0 1 1 2 1 4 0 7-3 8-7l4-16c13 4 25 9 36 15l-8 14c-3 4-1 10 3 12 1 1 3 1 4 1 3 0 6-1 8-4l8-15c11 7 21 15 31 24l-12 12c-4 3-4 9 0 12 1 2 4 2 6 2 2 0 4 0 6-2l12-12c8 9 16 20 23 31l-14 8c-4 2-6 8-3 12 1 2 4 4 7 4 1 0 3 0 4-1l15-9c6 12 11 24 15 36l-17 5c-4 1-7 5-6 10 1 4 5 6 9 6 0 0 1 0 2 0l16-4c3 12 5 25 5 38l-17 0c-4 0-8 4-8 9 0 4 4 8 8 8l17 0c0 13-2 26-5 39l-16-5c-5-1-9 2-11 6-1 5 2 9 6 11z m-196-290l0-25-29 0c-3 0-5-2-5-5 0-2 2-4 5-4l76 0c3 0 5 2 5 4 0 3-2 5-5 5l-29 0 0 25c-3 0-6 0-9 0-3 0-6 0-9 0z"></path>
+        </symbol>
+
+        <symbol id="utouch-icon-team" viewBox="0 0 512 512">
+            <path d="m512 362c0-30-9-59-26-84-12-18-28-33-46-44 21-20 35-49 35-81 0-61-50-111-112-111-36 0-70 18-91 48-5-1-11-2-16-2-5 0-11 1-16 2-21-30-55-48-91-48-62 0-112 50-112 111 0 32 14 61 35 81-18 11-34 26-46 44-17 25-26 54-26 84l0 62 107 0 0 46 298 0 0-46 107 0z m-149-292c47 0 84 37 84 83 0 47-37 84-84 84 0 0-1 0-2 0 0 0 0 0 0 0 2-4 3-8 4-13 0 0 0 0 0-1 0-1 0-2 1-3 0-1 0-1 0-2 0-1 0-2 0-3 0-1 1-1 1-2 0-1 0-2 0-3 0-1 0-2 0-3 0 0 0-1 0-2 0-2 0-3 0-5 0 0 0 0 0 0 0 0 0 0 0 0 0-2 0-4 0-5 0-1 0-1 0-2 0-1 0-2 0-4 0 0 0 0 0-1-4-40-30-74-66-90 15-18 38-28 62-28z m-136 51c0 0 1 0 1 0 1 0 1-1 2-1 1 0 2 0 2-1 1 0 1 0 2 0 0 0 1 0 2-1 7-1 13-2 20-2 7 0 13 1 20 2 1 1 1 1 2 1 1 0 1 0 2 0 0 1 1 1 2 1 1 0 1 1 2 1 1 0 1 0 1 0 28 11 49 35 54 66 0 0 0 0 0 1 0 1 0 2 0 3 0 0 0 0 1 1 0 1 0 2 0 3 0 0 0 0 0 1 0 1 0 2 0 4 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 2 0 4 0 0 0 0 0 1 0 1 0 2-1 3 0 1 0 1 0 1 0 1 0 2 0 3 0 0 0 1 0 1 0 1 0 2-1 3 0 1 0 1 0 2 0 1 0 1 0 1-1 2-1 3-1 4 0 0-1 1-1 1 0 1 0 1 0 2 0 0-1 1-1 1 0 1 0 2 0 2-1 1-1 2-2 3 0 0 0 1 0 1 0 1-1 2-1 3 0 0 0 0 0 0 0 0 0 0-1 1 0 1 0 1-1 2 0 0 0 1 0 1 0 0 0 0 0 0-1 1-1 2-2 3 0 0 0 0-1 1 0 1-1 1-1 2-1 1-1 1-1 2-1 0-1 1-1 1-1 1-1 1-2 2 0 0 0 1 0 1-1 1-1 1-2 2 0 0 0 1-1 1 0 0-1 1-1 2-1 0-1 0-1 1-1 0-2 1-3 2 0 1-1 1-1 2-1 0-1 0-1 1-1 0-2 1-2 1-1 0-1 1-1 1-1 1-2 1-2 2-1 0-1 0-1 0-14 11-31 17-50 17-19 0-36-6-50-17 0 0 0 0-1 0 0-1-1-1-2-2 0 0 0-1-1-1 0 0-1-1-2-1 0-1 0-1-1-1 0-1-1-1-1-2-1-1-2-2-3-2 0-1 0-1-1-1 0-1-1-2-1-2-1 0-1-1-1-1-1-1-1-1-2-2 0 0 0-1 0-1-1-1-1-1-2-2 0 0 0-1-1-1 0-1 0-1-1-2 0-1-1-1-1-2-1-1-1-1-1-1-1-1-1-2-2-3 0 0 0-1 0-1-1-1-1-2-1-2-1-1-1-1-1-1 0 0 0 0 0 0 0-1-1-2-1-3 0 0 0-1 0-1-1-1-1-2-2-3 0 0 0-1 0-1 0-1-1-2-1-2 0-1 0-1 0-2-1-1-1-2-1-3 0 0 0-1-1-1 0-1 0-1 0-2 0-1 0-1 0-2 0-1-1-2-1-3 0 0 0-1 0-1 0-1 0-2 0-3 0 0 0 0 0-1-1-1-1-2-1-3 0-1 0-1 0-1 0-2 0-3 0-4 0-1 0-3 0-4 0-1 0-1 0-1 0-1 0-2 0-3 1-1 1-1 1-1 0-1 0-2 0-4 0 0 0 0 0 0 5-30 26-55 54-66z m-162 32c0-46 37-83 84-83 24 0 47 10 62 28-36 16-62 50-66 90 0 1 0 1 0 1 0 1 0 3 0 4 0 1 0 1 0 2 0 1 0 3 0 5 0 2 0 3 0 5 0 1 0 2 0 2 0 1 0 2 0 3 0 1 0 2 0 3 0 1 1 1 1 2 0 1 0 2 0 3 0 1 0 1 0 2 1 1 1 2 1 3 0 1 0 1 0 1 1 5 2 9 4 13 0 0 0 0 0 0-1 0-2 0-2 0-47 0-84-37-84-84z m65 176c0 0 0 1 0 1-1 1-2 2-2 3-1 1-1 1-1 2-1 1-1 2-2 3 0 0-1 1-1 2 0 1-1 2-1 3-1 0-1 1-1 1-1 1-1 2-2 3 0 1 0 2 0 2-1 1-1 3-2 4 0 0 0 1 0 1-1 2-2 3-2 5 0 0 0 1-1 1 0 1 0 2-1 4 0 0 0 1 0 1-1 2-1 3-1 4 0 0-1 1-1 2 0 1 0 2-1 3 0 0 0 1 0 2 0 1-1 2-1 3 0 1 0 1 0 2 0 1-1 2-1 3 0 1 0 2 0 2 0 2 0 4-1 5 0 0 0 0 0 0 0 2 0 3 0 5l-81 0 0-34c0-48 28-90 70-110 15 8 33 13 52 13 5 0 10-1 16-1 1 1 1 2 2 3 1 1 1 1 1 1 1 1 2 3 3 4 0 0 1 1 1 1 1 1 2 2 3 3 0 0 1 1 1 1 1 1 2 2 3 3 0 0 0 0 0 1-1 0-2 1-3 2 0 0 0 0-1 0-1 1-2 2-3 3-1 0-1 0-1 0-1 1-2 2-3 3-1 0-1 0-1 0-2 1-3 2-4 3 0 1-1 1-1 1-1 1-2 2-3 2 0 1-1 1-1 1-1 1-2 2-3 3 0 0 0 1-1 1-1 1-2 2-3 3 0 0-1 1-1 1-1 1-2 2-3 3 0 0 0 0-1 1 0 1-1 2-2 3 0 0-1 0-1 0-1 2-2 3-3 4 0 1 0 1-1 1 0 1-1 2-2 3 0 1-1 1-1 1-1 2-2 3-3 4-1 2-2 3-3 5z m5 113l0-34c0-2 0-3 0-5 0 0 0-1 0-1 0-1 0-2 0-3 0-1 0-1 0-2 0-1 1-2 1-3 0 0 0-1 0-2 0 0 0-1 0-2 0-1 0-1 1-2 0-1 0-2 0-2 0-1 0-2 0-2 1-1 1-2 1-3 0 0 0-1 0-2 1-1 1-1 1-2 0-1 0-1 0-2 1-1 1-2 1-2 0-1 1-2 1-2 0-1 0-2 0-3 1 0 1-1 1-2 0 0 1-1 1-2 0 0 1-1 1-2 0 0 0-1 1-2 0 0 0-1 1-2 0 0 0-1 0-2 1 0 1-1 1-2 1 0 1-1 1-2 1 0 1-1 1-2 1 0 1-1 1-1 1-1 1-2 2-2 0-1 0-2 1-2 0-1 0-1 1-2 0-1 1-1 1-2 0-1 1-1 1-2 1 0 1-1 2-2 0 0 0-1 1-1 0-1 1-1 1-2 1-1 1-1 2-2 0 0 0-1 1-1 0-1 1-2 1-2 1-1 1-1 2-2 0 0 1-1 1-1 1-1 1-1 2-2 0 0 1-1 1-2 1 0 1-1 2-1 0-1 1-1 1-2 1 0 2-1 2-1 1-1 1-1 2-2 0 0 1 0 1-1 1 0 2-1 2-1 1-1 1-1 2-2 0 0 1-1 2-1 0-1 1-1 1-1 1-1 2-1 2-2 1 0 2 0 2-1 1 0 1-1 2-1 1-1 1-1 2-1 1-1 1-1 2-1 0-1 1-1 2-2 0 0 1 0 2-1 0 0 1 0 2-1 0 0 1 0 2-1 0 0 1 0 1 0 16 8 33 12 52 12 19 0 36-4 52-12 0 0 1 0 1 0 1 1 2 1 2 1 1 1 2 1 2 1 1 1 2 1 2 1 1 1 2 1 2 2 1 0 1 0 2 1 1 0 1 0 2 1 1 0 1 1 2 1 0 1 1 1 2 1 0 1 1 1 2 2 0 0 1 0 1 1 1 0 2 1 2 1 1 1 1 1 2 2 0 0 1 1 2 1 0 1 1 1 1 1 1 1 1 1 2 2 0 0 1 1 2 1 0 1 1 1 1 2 1 0 1 1 2 1 0 1 1 2 1 2 1 1 1 1 2 2 0 0 1 1 1 1 1 1 1 1 2 2 0 0 1 1 1 2 1 0 1 1 1 1 1 1 1 1 2 2 0 1 1 1 1 2 1 0 1 1 1 1 1 1 1 2 2 2 0 1 1 1 1 2 0 1 1 1 1 2 1 1 1 1 1 2 1 0 1 1 1 2 1 0 1 1 2 2 0 0 0 1 1 1 0 1 0 2 1 2 0 1 0 2 1 2 0 1 0 2 1 2 0 1 0 2 0 2 1 1 1 2 1 2 1 1 1 2 1 2 0 1 1 2 1 2 0 1 1 2 1 2 0 1 0 2 1 2 0 1 0 2 0 3 0 0 1 1 1 2 0 0 0 1 1 2 0 1 0 1 0 2 0 1 0 1 1 2 0 1 0 2 0 2 0 1 0 2 1 3 0 0 0 1 0 2 0 0 0 1 0 2 1 1 1 1 1 2 0 1 0 2 0 2 0 1 0 2 0 2 0 1 1 2 1 3 0 1 0 1 0 2 0 1 0 2 0 3 0 0 0 1 0 1 0 2 0 3 0 5l0 34z m269-46c0-3-1-7-1-10 0 0 0-1 0-2 0-1-1-2-1-3 0-1 0-1 0-2 0-1-1-2-1-3 0-1 0-2 0-2-1-1-1-2-1-3 0-1 0-2-1-2 0-1 0-2-1-4 0 0 0-1 0-1-1-2-1-3-1-4-1 0-1-1-1-1 0-2-1-3-2-5 0 0 0-1 0-1-1-1-1-3-2-4 0 0 0-1 0-2-1-1-1-2-2-3 0 0 0-1-1-1 0-1-1-2-1-3 0-1-1-2-1-2-1-1-1-2-2-3 0-1 0-1-1-2 0-1-1-2-2-3 0 0 0-1 0-1-1-2-2-3-3-5-1-1-2-2-3-4 0 0-1 0-1-1-1-1-2-2-2-3-1 0-1 0-1-1-1-1-2-2-3-4 0 0-1 0-1 0-1-1-2-2-2-3-1-1-1-1-1-1-1-1-2-2-3-3 0 0-1-1-1-1-1-1-2-2-3-3-1 0-1-1-1-1-1-1-2-2-3-3 0 0-1 0-1-1-1 0-2-1-3-2 0 0-1 0-1-1-1-1-2-2-4-3 0 0 0 0-1 0-1-1-2-2-3-3 0 0 0 0-1 0-1-1-2-2-3-3-1 0-1 0-1 0-1-1-2-2-3-2 0-1 0-1 0-1 1-1 2-2 3-3 0 0 1-1 1-1 1-1 2-2 3-3 0 0 1-1 1-1 1-1 2-3 3-4 0 0 0 0 1-1 1-1 1-2 2-3 6 0 11 1 16 1 19 0 37-5 52-13 42 20 70 62 70 110l0 34z"></path>
+        </symbol>
+
+        <symbol id="utouch-icon-telephone-keypad-with-ten-keys" viewBox="0 0 512 512">
+            <path d="m256 419c-26 0-47 21-47 46 0 26 21 47 47 47 26 0 47-21 47-47 0-25-21-46-47-46z m-140-419c-25 0-46 21-46 47 0 25 21 46 46 46 26 0 47-21 47-46 0-26-21-47-47-47z m0 140c-25 0-46 21-46 46 0 26 21 47 46 47 26 0 47-21 47-47 0-25-21-46-47-46z m0 139c-25 0-46 21-46 47 0 25 21 46 46 46 26 0 47-21 47-46 0-26-21-47-47-47z m280-186c25 0 46-21 46-46 0-26-21-47-46-47-26 0-47 21-47 47 0 25 21 46 47 46z m-140 186c-26 0-47 21-47 47 0 25 21 46 47 46 26 0 47-21 47-46 0-26-21-47-47-47z m140 0c-26 0-47 21-47 47 0 25 21 46 47 46 25 0 46-21 46-46 0-26-21-47-46-47z m0-139c-26 0-47 21-47 46 0 26 21 47 47 47 25 0 46-21 46-47 0-25-21-46-46-46z m-140 0c-26 0-47 21-47 46 0 26 21 47 47 47 26 0 47-21 47-47 0-25-21-46-47-46z m0-140c-26 0-47 21-47 47 0 25 21 46 47 46 26 0 47-21 47-46 0-26-21-47-47-47z"></path>
+        </symbol>
+
+        <symbol id="utouch-icon-upward-arrow" viewBox="0 0 512 512">
+            <path d="m308 0l-151 198 79 0c13 137-39 267-182 314 184 1 289-151 324-314l80 0z"></path>
+        </symbol>
+
+        <symbol id="utouch-icon-user" viewBox="0 0 512 512">
+            <path d="m325 193c0 37-30 68-68 68-37 0-68-31-68-68 0-38 31-69 68-69 38 0 68 31 68 69z m-69-193c-141 0-256 115-256 256 0 141 115 256 256 256 141 0 256-115 256-256 0-141-115-256-256-256z m117 423c-8-69-36-139-116-139-80 0-108 71-116 140-54-36-89-98-89-168 0-113 91-204 204-204 113 0 204 91 204 204 0 69-34 130-87 167z"></path>
+        </symbol>
+
+        <symbol id="utouch-icon-users" viewBox="0 0 512 512">
+            <path d="m103 206c0-46 37-83 83-83 45 0 82 37 82 83 0 45-37 82-82 82-46 0-83-37-83-82z m118 88l-71 0c-58 0-105 47-105 106l0 86 0 1 6 2c55 17 104 23 144 23 77 0 122-22 125-24l6-2 0 0 0-86c0-59-47-106-105-106z m105-129c46 0 83-37 83-82 0-46-37-83-83-83-45 0-82 37-82 83 0 45 37 82 82 82z m35 6l-70 0c-1 0-3 0-5 0 7 13 10 28 10 44 0 29-12 55-31 74 45 13 80 52 88 99 67-2 106-21 108-23l6-3 0 0 0-85c0-59-47-106-106-106z"></path>
+        </symbol>
+
+        <symbol id="utouch-icon-worlwide" viewBox="0 0 512 512">
+            <path d="m437 75c-48-47-110-74-178-75-1 0-2 0-3 0-1 0-2 0-3 0-68 1-130 28-178 75-48 48-75 113-75 181 0 68 27 133 75 181 48 47 110 74 178 75 1 0 2 0 3 0 1 0 2 0 3 0 68-1 130-28 178-75 48-48 75-113 75-181 0-68-27-133-75-181z m-340 22c27-28 60-47 96-57-9 9-16 20-24 31-9 16-17 32-24 49l-69 0c6-8 13-16 21-23z m-41 54l79 0c-8 28-13 59-14 90l-90 0c2-32 11-63 25-90z m0 210c-14-27-23-58-25-90l90 0c1 31 6 62 14 90z m41 54c-8-7-15-15-21-23l69 0c7 17 15 33 24 49 8 11 15 22 24 31-36-10-69-29-96-57z m144 60c-13-8-30-25-46-50-6-11-12-22-17-33l63 0z m0-114l-74 0c-9-28-15-58-16-90l90 0z m0-120l-90 0c1-32 7-62 16-90l74 0z m0-121l-63 0c5-11 11-22 17-33 16-25 33-42 46-50l0 83z m215 31c14 27 23 58 25 90l-90 0c-1-31-6-62-14-90z m-41-54c8 7 15 15 21 23l-69 0c-7-17-15-33-24-49-8-11-15-22-24-31 36 10 69 29 96 57z m-144-60c13 8 30 25 46 50 6 11 12 22 17 33l-63 0 0-83z m0 114l74 0c9 28 15 58 16 90l-90 0z m90 120c-1 32-7 62-16 90l-74 0 0-90z m-90 204l0-83 63 0c-5 11-11 22-17 33-16 25-33 42-46 50z m144-60c-27 28-60 47-96 57 9-9 16-20 24-31 9-16 17-32 24-49l69 0c-6 8-13 16-21 23z m41-54l-79 0c8-28 13-59 14-90l90 0c-2 32-11 63-25 90z"></path>
+        </symbol>
+
+        <symbol id="utouch-icon-world-map" viewBox="0 0 512 512">
+            <path d="m172 295c0-1-9-9-12-12-2-3-6-4-8-5-3-1-17-6-21-3-3 2-8 4-10 0-2-4-3-5-5-5-3-1-2-4-2-7 0-3-2-5-3-4-2 2-9 7-9 5-1-3-6-13 1-15 6-2 12-1 14 1 1 2 3 7 5 6 2-1 1-4 1-7 1-3 6-8 8-12 2-4 3-7 6-8 2-1 4-3 6-4 3-2 7-4 9-5 1-1 8-4 10-4 2 1 4 0 2-3-2-4-4-14-8-18-4-4-4-6-6-10-1-4-3-8-4-5-2 3-4 7-6 3-1-4-1-3-3-5-2-2-3-2-6-3-3-1-5 0-5 3 0 2-2 7-1 10 2 3 3 7 1 8-2 1 0 8-2 8-2 0-3 0-3-2 0-3 1-7-3-7-4 0-7-2-10-4-3-2-5-1-4-6 0-5-1-6 2-9 4-3 5-4 7-3 2 1 4 1 6-1 1-1 4 0 4-2 0-2-3-2-3-5 0-3 2-1 2-6 1-5-3-12-7-11-4 1-11 6-12 4-1-3-4-1-9 0-5 2-25-1-27-3 0 0-3-3-5-1-2 1-10 0-12 0-2 0-4 3-7 2-3-1-12-3-15-5-2-1-5-1-7-2-1-1-7-1-8 0-1 2-5 4-7 6-2 2-4 2-2 6 2 4-6 7-4 11 2 5 0 17 7 19 8 2 14 4 18 0 4-3 11-3 13 0 2 4 3 10 10 13 6 4 12 13 12 18-1 4 0 18 7 26 7 8 14 23 14 20 1-4 1-7 2-5 2 3 6 10 12 12 6 1 9 2 12 4 2 2 4 4 7 5 2 1 9 4 10 7 1 2 1 5 0 9-2 3-3 7-1 10 1 3 5 13 9 15 3 2 6 6 5 10-1 5-4 26-4 31 1 4-4 20 0 26 3 6 10 8 12 7 3 0 1-1 0-4-2-2-1-6 0-9 2-3 2-4 1-7-1-3-1-5 1-7 2-3 10-9 12-12 3-2 18-21 20-23 2-1 7-5 8-11 2-6 7-17 3-20-3-3-17-5-18-5z m37-164c1-2 4-8 5-10l-58 0c0 3 3 14 2 19 0 5 2 4 3 6 1 2 1 5 0 8-1 2-1 8 2 14 3 7 6 15 9 16 3 0 2 4 4 3 2-2 3-5 4-10 2-5 2-9 6-11 5-3 17-11 19-14 3-3 6-4 5-9-1-5-2-9-1-12z m289 23c-2-2-15-13-21-11-6 1-16-3-17-4-2-1-16-5-23-6-4 0-19-3-25-6-6-3-12-16-24-14-1 0-16 2-20 6-3 3-5 7-7 8-2 0-8 0-8 3 0 3 2 12 0 10-3-2-5-6-6-3-1 3-3 5-4 4-1-1-7 0-8 2-1 2-8 6-11 7-3 1-4 2-6 3-2 1-14 7-17 4-2-2-3 0-4 0 0 0-5-1-8-4-2-4-3-3-6-6-3-3-4-7-7-5-3 1-17 15-22 21-5 6-14 13-10 17 5 5 8 4 8 7 1 2 1 5 2 6 1 1 5 4 7 0 3-5 3-8 6-7 2 0 3 2 1 6-1 3-2 8-6 8-5 0-10-3-11-2-2 1-2 2-4 3-2 2-7 8-11 9-3 1-7 0-5 3 3 3 6 9 3 9-4 0-9-1-10 3 0 3-1 5-1 7 1 3 4 7 6 6 3-2 9-4 11-7 1-4 3-7 7-7 3 0 12 5 12 7-1 1-3 5-1 4 3-1 4-3 6-3 1-1 3 1 3 2 1 1 5 3 5 0 1-3 2-1 4 0 2 1 9 2 10 3 1 1 3 3 0 6-2 3-5 4-10 2-4-2-9 2-13 0-5-3-3-6-9-8-5-3-18 0-23 2-4 1-4 1-5 3-2 2-13 15-13 22 0 7 4 26 17 24 13-2 21 0 20 4-2 3-1 4 2 9 2 4 8 34 8 39 1 5 0 11 6 10 6-1 12-3 15-8 3-6 3-12 6-16 4-3 8-3 8-7 0-5-1-16 1-19 3-2 13-14 14-19 1-4 3-5-2-5-4 0-11-1-13-5-2-4-7-11-7-13 0-2 3-1 4 2 2 4 7 15 13 13 6-3 14-5 14-9 1-4-2-8-5-8-3 0-6-2-6-4 0-2 0-1 4 0 3 2 4 4 10 4 5 1 11 6 14 8 3 3 8 18 10 20 1 2 3 2 4-2 1-3 7-13 10-15 3-3 3-7 5-4 2 2 10 8 10 11 1 4 0 11 2 9 1-2 3-7 4-5 2 2 2 5 5 3 4-3 10-4 6-9-3-5-1-9 1-9 2 0 16-3 17-10 0-8-5-12-3-16 3-4 6-7 7-5 1 2-2 10 1 9 4-1 8-1 8-4 0-2-1-8 0-9 2-2 13-12 14-16 1-4 4-8 2-11-2-3-6-2-3-6 3-4 7-7 11-8 11-1 8 13 8 16 0 3 0 11 2 7 2-4 4-8 7-12 3-3 5-5 5-8 1-3 1-4 4-5 3-2 17-7 18-11 2-4-1-7 2-7 3 0 6 4 8 2 2-2 6-5 5-7 0-2-5-7-8-8z m-59 65c-1 2-2 3-4 8-1 5-1 4-3 7-1 4-4 4-7 6-3 2-3 6-3 6-3 4 10-4 14-7 4-2 3-5 3-9 1-4 2-5 4-7 2-1 0-5-1-7-1-3-2 0-3 3z m-38 88c1-1 0-3 2-3 2 1 4 2 6 1 3-2 5-1 4-4 0-2 0-5 0-7-1-2-4-2-6 0-3 2-6 5-6 4 0-1 1-4 1-6-1-2 0-4-4-2-3 1-6 1-7 3-1 2-3 6-5 3-2-2-9-7-9-7 0 0-7-6-5-2 3 4 7 11 8 13 2 3 4 6 7 4 2-1 2-1 5 0 3 2 7 4 9 3z m45-5c-4-2-2-3-6-4-5-1-8 0-9-1-1-1-7-3-6 0 1 3 6 4 7 4 1 1-2 3 0 4 3 2 5 4 8 3 3 0 4 1 7 2 2 0 5-1 4-2-1-1-2-3-2-4 0-1 1-1-3-2z m-2 17c-1-4-4-11-5-8-1 4-6 6-8 6-1 0 0-2 0-3 0-2-1-3-6-2-4 1-5 5-6 5-1-1-4-2-6 1-2 2-3 6-6 7-2 0-9 1-9 4 0 4 2 8 2 11-1 2-4 8 0 10 3 1 5 1 8-1 3-1 16-5 17-4 2 2 5 5 6 5 2 2 3 5 6 6 3 1 6 1 7 1 1 0 6-2 7-4 1-3 3-9 4-13 1-3 2-6-1-9-3-3-9-8-10-12z"></path>
+        </symbol>
+
+        <symbol id="utouch-icon-menu-1" viewBox="0 0 512 512">
+            <path d="m23 186l466 0c13 0 23-10 23-23 0-13-10-23-23-23l-466 0c-13 0-23 10-23 23 0 13 10 23 23 23z m466 47l-466 0c-13 0-23 10-23 23 0 13 10 23 23 23l466 0c13 0 23-10 23-23 0-13-10-23-23-23z m0 93l-466 0c-13 0-23 10-23 23 0 13 10 23 23 23l466 0c13 0 23-10 23-23 0-13-10-23-23-23z"></path>
+        </symbol>
+
+        <symbol id="utouch-icon-google-play" viewBox="0 0 512 512">
+            <path d="m24 24c-2 4-2 9-2 14l0 436c0 5 0 9 2 14l244-232c0 0-244-232-244-232z m339 142l-285-159c-11-7-22-8-32-6l245 233c0 0 72-68 72-68z m105 58l-76-42-78 74 80 75 74-40c36-21 23-54 0-67z m-423 287c10 2 21 1 33-6l286-157-73-70c0 0-246 233-246 233z"></path>
+        </symbol>
+
+        <symbol id="utouch-icon-chat-1" viewBox="0 0 512 512">
+            <path d="m256 27l0 25c38 26 63 69 63 119 0 49-25 92-63 118l0 43 27 0 0 54 54-54 135 0c9 0 18-8 18-18l0-287c0-10-9-18-18-18l-198 0c-10 0-18 8-18 18m0 0l0 25c38 26 63 69 63 119 0 49-25 92-63 118l0 43 27 0 0 54 54-54 108 0c10 0 18-8 18-18l0-287c0-10-8-18-18-18l-171 0c-10 0-18 8-18 18m-81 0c-79 0-144 65-144 144 0 45 21 85 54 112l0 67 44-44c15 5 30 8 46 8 79 0 144-64 144-143 0-79-65-144-144-144m14 9c-72 0-131 63-131 140 0 44 19 84 49 109l0 65 39-42c14 5 27 7 43 7 71 0 130-63 130-140 0-76-59-139-130-139m94 296l-27 0 0-43c-23 16-51 25-81 25-16 0-31-2-46-8l-44 44 0-67c-10-9-20-20-28-31l-17 0c-9 0-18 8-18 17l0 162c0 10 9 18 18 18l0 54 54-54 198 0c10 0 18-8 18-18l0-72-27 27 0-54z m-216-72c-10 0-18 0-18 9l0 162c0 10 8 18 18 18l0 27 27-27 198 0c10 0 18-8 18-18l0-72-27 27 0-54-27 0 0-43c-23 16-51 25-81 25-16 0-39-2-54-8l-36 44 0-67z m18 99c-1 0-2 0-3-1-4 0-6-4-6-8l0-63c-34-29-54-71-54-116 0-85 69-153 153-153 85 0 153 68 153 153 0 84-68 152-153 152-14 0-29-1-44-6l-39 40c-2 1-4 2-7 2z m90-323c-74 0-135 60-135 135 0 41 19 79 51 105 2 2 3 4 3 7l0 46 29-29c3-3 6-4 9-2 14 5 29 7 43 7 75 0 135-60 135-134 0-75-60-135-135-135z m108 359c-1 0-3 0-4-1-3-1-5-4-5-8l0-45-18 0c-5 0-9-3-9-9l0-43c0-2 2-5 4-7 36-25 59-66 59-111 0-45-23-87-59-112-2-2-4-4-4-7l0-25c0-15 12-27 27-27l198 0c15 0 27 12 27 27l0 287c0 16-12 27-27 27l-132 0-51 52c-2 1-3 2-6 2z m-18-72l18 0c5 0 9 4 9 9l0 33 39-39c1-2 3-3 6-3l135 0c5 0 9-3 9-9l0-287c0-5-4-9-9-9l-198 0c-5 0-9 4-9 9l0 21c40 28 63 74 63 123 0 48-23 94-63 123l0 29z m-225 189c0 0-2 0-3-1-4-1-6-4-6-8l0-47c-10-3-18-13-18-25l0-162c0-15 12-26 27-26l17 0c2 0 5 1 7 3 8 12 17 22 27 30 2 2 3 4 3 7l0 46 29-29c3-3 6-4 9-2 40 14 84 7 120-16 2-2 6-2 8-1 3 2 5 5 5 8l0 34 18 0c5 0 9 4 9 9l0 33 12-12c2-3 6-4 9-2 4 2 6 5 6 8l0 72c0 15-12 27-27 27l-194 0-51 51c-2 2-4 3-7 3z m0-252c-5 0-9 4-9 9l0 162c0 6 4 9 9 9 6 0 9 4 9 9l0 32 39-38c2-2 4-3 6-3l198 0c5 0 9-3 9-9l0-50-12 12c-2 2-6 3-10 1-3-1-5-4-5-8l0-45-18 0c-5 0-9-3-9-9l0-27c-35 19-76 24-116 12l-39 40c-3 2-7 3-10 1-4 0-6-4-6-8l0-63c-9-9-17-17-24-27z m396-170l-63 0c-6 0-9-4-9-9 0-6 3-9 9-9l63 0c5 0 9 3 9 9 0 5-4 9-9 9z m-99 0l-45 0c-5 0-9-4-9-9 0-6 4-9 9-9l45 0c5 0 9 3 9 9 0 5-4 9-9 9z m99 45l-27 0c-6 0-9-4-9-9 0-6 3-9 9-9l27 0c5 0 9 3 9 9 0 5-4 9-9 9z m-63 0l-54 0c-6 0-9-4-9-9 0-6 3-9 9-9l54 0c5 0 9 3 9 9 0 5-4 9-9 9z m63 45l-54 0c-6 0-9-4-9-9 0-6 3-9 9-9l54 0c5 0 9 3 9 9 0 5-4 9-9 9z m-90 0l-27 0c-6 0-9-4-9-9 0-6 3-9 9-9l27 0c5 0 9 3 9 9 0 5-4 9-9 9z m90 45l-27 0c-6 0-9-4-9-9 0-6 3-9 9-9l27 0c5 0 9 3 9 9 0 5-4 9-9 9z m-63 0l-54 0c-6 0-9-4-9-9 0-6 3-9 9-9l54 0c5 0 9 3 9 9 0 5-4 9-9 9z m63 44l-45 0c-6 0-9-3-9-9 0-5 3-8 9-8l45 0c5 0 9 3 9 8 0 6-4 9-9 9z m-81 0l-63 0c-5 0-9-3-9-9 0-5 4-8 9-8l63 0c5 0 9 3 9 8 0 6-4 9-9 9z m-108-134l-45 0c-5 0-9-4-9-9 0-6 4-9 9-9l45 0c5 0 9 3 9 9 0 5-4 9-9 9z m-81 0l-63 0c-5 0-9-4-9-9 0-6 4-9 9-9l63 0c6 0 9 3 9 9 0 5-3 9-9 9z m81 45l-9 0c-5 0-9-4-9-9 0-6 4-9 9-9l9 0c5 0 9 3 9 9 0 5-4 9-9 9z m-45 0l-36 0c-5 0-9-4-9-9 0-6 4-9 9-9l36 0c5 0 9 3 9 9 0 5-4 9-9 9z m-72 0l-27 0c-5 0-9-4-9-9 0-6 4-9 9-9l27 0c6 0 9 3 9 9 0 5-3 9-9 9z m117 45l-27 0c-5 0-9-4-9-9 0-6 4-9 9-9l27 0c5 0 9 3 9 9 0 5-4 9-9 9z m-63 0l-81 0c-5 0-9-4-9-9 0-6 4-9 9-9l81 0c6 0 9 3 9 9 0 5-3 9-9 9z m45 143l-63 0c-5 0-9-3-9-9 0-5 4-9 9-9l63 0c5 0 9 4 9 9 0 6-4 9-9 9z m-99 0l-9 0c-5 0-9-3-9-9 0-5 4-9 9-9l9 0c6 0 9 4 9 9 0 6-3 9-9 9z m99 45l-27 0c-5 0-9-3-9-9 0-5 4-9 9-9l27 0c5 0 9 4 9 9 0 6-4 9-9 9z m-63 0l-45 0c-5 0-9-3-9-9 0-5 4-9 9-9l45 0c6 0 9 4 9 9 0 6-3 9-9 9z"></path>
+        </symbol>
+
+        <symbol id="utouch-icon-1496680146-share" viewBox="0 0 512 512">
+            <path d="m384 314c-19 0-36 8-48 21l-142-70c0-3 1-6 1-10 0-3-1-6-1-9l142-69c12 13 29 21 48 21 37 0 67-30 67-67 0-37-30-66-67-66-37 0-67 29-67 66 0 4 1 7 1 10l-142 69c-12-13-29-21-48-21-37 0-67 30-67 66 0 37 30 67 67 67 19 0 36-8 48-21l142 70c0 3-1 6-1 10 0 37 30 66 67 66 37 0 67-29 67-66 0-37-30-67-67-67z"></path>
+        </symbol>
+
+        <symbol id="utouch-icon-1496838047-75" viewBox="0 0 512 512">
+            <path d="m38 427c0 20 17 37 37 37l121 0c21 0 37-17 37-37l0-149c0-21-16-38-37-38l-60 0c-10 0-18-8-18-18 0-3 1-6 1-6 13-45 47-81 91-97l1 0c13-6 22-19 22-34 0-21-16-38-37-38-5 0-10 1-14 3l-2 1c-83 32-142 113-142 208z m242 0c0 20 16 37 37 37l121 0c20 0 37-17 37-37l0-149c0-21-17-38-37-38l-60 0c-10 0-18-8-18-18 0-4 0-6 0-6 14-45 48-81 92-97l1 0c13-6 22-19 22-34 0-21-17-38-37-38-5 0-10 1-14 3l-2 1c-83 32-142 113-142 208z"></path>
+        </symbol>
+
+        <symbol id="utouch-icon-add" viewBox="0 0 512 512">
+            <path d="m452 195l-135 0 0-135c0-33-28-60-61-60-33 0-61 27-61 60l0 135-135 0c-33 0-60 28-60 61 0 33 27 61 60 61l135 0 0 135c0 33 28 60 61 60 33 0 61-27 61-60l0-135 135 0c33 0 60-28 60-61 0-33-27-61-60-61z"></path>
+        </symbol>
+
+        <symbol id="utouch-icon-alarm" viewBox="0 0 512 512">
+            <path d="m71 226c-5 0-10-4-10-10 0-59 27-115 73-152 5-3 11-3 14 2 4 4 3 11-1 14-42 33-65 83-65 136 0 6-5 10-11 10z m11 62c-4 0-8-2-10-6-2-7-4-14-6-21-1-5 3-11 8-12 6-1 11 2 12 8 2 6 4 12 6 18 2 5-1 11-7 13-1 0-2 0-3 0z m-35 36c-4 0-8-3-9-6-15-32-23-66-23-102 0-71 32-138 86-184 5-4 11-3 15 1 3 4 3 11-2 14-50 42-78 104-78 169 0 33 7 64 20 93 3 5 0 11-5 14-1 0-3 1-4 1z m383-36c-1 0-2 0-3 0-6-2-9-8-7-13 7-19 10-39 10-59 0-53-23-103-65-136-4-3-5-10-1-14 3-5 9-5 14-2 46 37 73 93 73 152 0 23-4 45-11 66-2 4-6 6-10 6z m-16-229c-2 0-5-1-7-3-3-3-6-6-9-9-5-3-5-10-2-14 4-4 10-5 15-1 3 3 7 6 10 9 4 4 4 10 1 14-2 3-5 4-8 4z m51 265c-1 0-3-1-4-1-5-3-8-9-5-14 13-29 20-60 20-93 0-47-15-92-43-130-3-5-2-11 3-15 4-3 10-2 14 2 30 42 47 91 47 143 0 36-8 70-23 102-1 3-5 6-9 6z m-237-249c0-15 12-28 28-28 16 0 28 13 28 28 0 2 0 3 0 4 12 3 24 7 35 13 1-5 2-11 2-17 0-36-29-65-65-65-36 0-65 29-65 65 0 6 0 11 2 17 11-6 23-10 35-13 0-1 0-2 0-4z m166 227l0-86c0-54-30-101-75-124-11-6-23-10-35-13-9-2-18-3-28-3-9 0-19 1-28 3-12 3-24 7-35 13-45 23-75 69-75 123l0 87c0 49-40 149-90 149l456 0c-50 0-90-100-90-149z m-189 149c0 28 23 51 51 51 28 0 51-23 51-51z m279-11c-40 0-79-88-79-138l0-86c0-28-8-55-23-79-13-21-30-38-51-50 0-4 0-8 0-12 0-41-33-75-75-75-42 0-75 34-75 75 0 4 0 8 0 11-45 27-74 75-74 129l0 87c0 50-39 138-79 138-5 0-10 5-10 11 0 5 5 10 10 10l167 0c5 29 31 51 61 51 30 0 56-22 61-51l167 0c5 0 10-5 10-10 0-6-5-11-10-11z m-228-420c30 0 55 25 55 55 0 1 0 1 0 2l0 0c-6-2-11-4-17-6l0 0c-2-19-18-34-38-34-20 0-36 15-38 34l0 0c-6 2-11 4-17 6l0 0c0-1 0-1 0-2 0-30 25-55 55-55z m16 47c-5 0-11-1-16-1-5 0-11 1-16 1 3-6 9-9 16-9 7 0 13 3 16 9z m-16 425c-19 0-35-13-40-31l80 0c-5 18-21 31-40 31z m51-52l-236 0c11-10 21-23 29-40 17-32 28-71 28-98l0-87c0-48 26-92 69-114 11-6 22-9 33-12 9-2 17-2 26-2 0 0 0 0 0 0 9 0 17 1 26 2 11 3 22 6 32 12 43 22 70 66 70 115l0 86c0 27 11 66 28 98 8 17 18 30 29 40z m-150-151c-6 0-10-4-10-10l0-63c0-41 22-78 59-97 5-2 11 0 14 5 2 5 0 11-5 13-29 16-48 46-48 79l0 63c0 6-5 10-10 10z m119-159c-1 0-1-1-2-1-6-1-12-2-18-2-6 0-10-4-10-10 0-5 4-10 10-10 0 0 0 0 0 0 7 0 15 1 22 2 6 1 9 7 8 12-1 5-5 9-10 9z"></path>
+        </symbol>
+
+        <symbol id="utouch-icon-apple-logotype-1" viewBox="0 0 512 512">
+            <path d="m282 39c19-22 50-38 76-39 3 30-9 60-27 82-18 21-47 38-76 36-4-29 11-60 27-79z m146 409c-21 32-43 63-78 63-34 1-45-20-84-20-39 0-51 20-83 21-34 1-60-34-81-65-44-63-77-179-32-258 22-39 62-63 105-64 33-1 64 22 84 22 21 0 58-27 98-23 17 1 63 7 93 51-2 1-55 32-55 97 1 78 68 103 69 104-1 1-11 36-36 72z"></path>
+        </symbol>
+
+        <symbol id="utouch-icon-arrow-left" viewBox="0 0 512 512">
+            <path d="m477 235l13 0c12 0 22 9 22 21 0 12-10 21-22 21l-13 0c-12 0-22-9-22-21 0-12 10-21 22-21z m-171 0l71 0c11 0 21 9 21 21 0 12-10 21-21 21l-71 0c-12 0-21-9-21-21 0-12 9-21 21-21z m-236 0l136 0c12 0 21 9 21 21 0 12-9 21-21 21l-136 0c-12 0-21-9-21-21 0-12 9-21 21-21z"></path>
+        </symbol>
+
+        <symbol id="utouch-icon-arrow-left-1" viewBox="0 0 512 512">
+            <path d="m7 239c1-2 2-3 4-3l92-94c9-9 23-9 32 0 9 9 9 24 0 33l-79 81 80 81c9 9 9 24 0 33-5 5-11 7-17 7-5 0-11-2-16-7l-92-94c-2-1-3-2-4-3-5-5-7-11-7-17 0-6 2-13 7-17z m470-4l13 0c12 0 22 9 22 21 0 12-10 21-22 21l-13 0c-12 0-22-9-22-21 0-12 10-21 22-21z m-171 0l71 0c11 0 21 9 21 21 0 12-10 21-21 21l-71 0c-12 0-21-9-21-21 0-12 9-21 21-21z m-236 0l136 0c12 0 21 9 21 21 0 12-9 21-21 21l-136 0c-12 0-21-9-21-21 0-12 9-21 21-21z"></path>
+        </symbol>
+
+        <symbol id="utouch-icon-arrow-left1" viewBox="0 0 512 512">
+            <path d="m7 239c1-2 2-3 4-3l92-94c9-9 23-9 32 0 9 9 9 24 0 33l-79 81 80 81c9 9 9 24 0 33-5 5-11 7-17 7-5 0-11-2-16-7l-92-94c-2-1-3-2-4-3-5-5-7-11-7-17 0-6 2-13 7-17z"></path>
+        </symbol>
+
+        <symbol id="utouch-icon-arrow-right" viewBox="0 0 512 512">
+            <path d="m505 239c-1-2-2-3-4-3l-92-94c-9-9-23-9-32 0-9 9-9 24 0 33l79 81-79 81c-9 9-9 24 0 33 4 5 10 7 16 7 6 0 11-2 16-7l92-94c2-1 3-2 4-3 5-5 7-11 7-17 0-6-2-13-7-17z m-483-4l13 0c12 0 22 9 22 21 0 12-10 21-22 21l-13 0c-12 0-22-9-22-21 0-12 10-21 22-21z m113 0l71 0c12 0 21 9 21 21 0 12-9 21-21 21l-71 0c-11 0-21-9-21-21 0-12 10-21 21-21z m171 0l136 0c12 0 21 9 21 21 0 12-9 21-21 21l-136 0c-12 0-21-9-21-21 0-12 9-21 21-21z"></path>
+        </symbol>
+
+        <symbol id="utouch-icon-arrow-right-1" viewBox="0 0 512 512">
+            <path d="m22 235l13 0c12 0 22 9 22 21 0 12-10 21-22 21l-13 0c-12 0-22-9-22-21 0-12 10-21 22-21z m113 0l71 0c12 0 21 9 21 21 0 12-9 21-21 21l-71 0c-11 0-21-9-21-21 0-12 10-21 21-21z m171 0l136 0c12 0 21 9 21 21 0 12-9 21-21 21l-136 0c-12 0-21-9-21-21 0-12 9-21 21-21z"></path>
+        </symbol>
+
+        <symbol id="utouch-icon-arrow-right1" viewBox="0 0 512 512">
+            <path d="m505 239c-1-2-2-3-4-3l-92-94c-9-9-23-9-32 0-9 9-9 24 0 33l79 81-79 81c-9 9-9 24 0 33 4 5 10 7 16 7 6 0 11-2 16-7l92-94c2-1 3-2 4-3 5-5 7-11 7-17 0-6-2-13-7-17z"></path>
+        </symbol>
+
+        <symbol id="utouch-icon-arrow-top" viewBox="0 0 512 512">
+            <path d="m256 364c16 0 27 12 27 27l0 93c0 15-12 27-27 27-15 0-27-13-27-27l0-93c-1-15 11-27 27-27z m0-296c16 0 27 12 27 27l0 168c0 16-12 27-27 27-15 0-27-12-27-27l0-168c-1-15 11-27 27-27z m-22-60c-2 1-3 3-4 6l-121 119c-12 11-12 30 0 41 11 12 31 12 43 0l103-102 104 102c12 12 32 12 43 0 7-6 9-13 9-20 0-8-3-16-9-21l-121-119c-1-3-2-4-4-6-5-5-14-8-21-8-8 0-17 3-22 8z m0 0c-2 1-3 3-4 6l-121 119c-12 11-12 30 0 41 11 12 31 12 43 0l103-102 104 102c12 12 32 12 43 0 7-6 9-13 9-20 0-8-3-16-9-21l-121-119c-1-3-2-4-4-6-5-5-14-8-21-8-8 0-17 3-22 8z"></path>
+        </symbol>
+
+        <symbol id="utouch-icon-box" viewBox="0 0 512 512">
+            <path d="m260 203c-37 0-70 23-84 56-14-33-46-56-84-56-18 0-34 5-48 14l0-76c0-12-10-22-22-22-12 0-22 10-22 22l0 154c0 51 41 92 92 92 38 0 70-22 84-55 14 33 47 55 84 55 51 0 92-41 92-92 0-50-41-92-92-92z m-168 140c-27 0-48-21-48-48 0-26 21-48 48-48 26 0 48 22 48 48 0 27-22 48-48 48z m168 0c-26 0-47-21-47-48 0-26 21-48 47-48 27 0 48 22 48 48 0 27-21 48-48 48z m193-49l54-61c8-9 7-23-3-31-9-8-23-7-30 2l-50 57-50-57c-8-9-22-10-31-2-10 8-11 22-3 31l54 61-54 62c-8 9-7 23 3 31 4 4 9 6 14 6 6 0 12-3 17-8l50-57 50 57c4 5 10 8 16 8 5 0 10-2 14-6 10-8 11-22 3-31z"></path>
+        </symbol>
+
+        <symbol id="utouch-icon-cup-1" viewBox="0 0 512 512">
+            <path d="m256 365c-3 0-5-1-8-2l-105-66c-31-19-49-53-49-90l0-167c0-22 18-40 39-40l246 0c21 0 39 18 39 40l0 88c0 8-6 15-14 15-9 0-15-7-15-15l0-88c0-6-5-11-10-11l-246 0c-5 0-10 5-10 11l0 167c0 27 14 51 36 65l97 61 97-61c22-14 36-38 36-65 0-8 6-14 15-14 8 0 14 6 14 14 0 37-18 71-49 90l-105 66c-3 1-5 2-8 2z m-35-29l-43 38c-12 11-18 26-18 41l0 82 192 0 0-82c0-15-6-30-18-41l-43-38z m131 176l-192 0c-9 0-15-7-15-15l0-82c0-20 8-39 23-52l44-38c2-2 6-4 9-4l70 0c3 0 7 2 9 4l44 38c15 13 23 32 23 52l0 82c0 8-6 15-15 15z m-178-29l164 0 0-68c0-11-5-22-14-30l-39-34-58 0-39 34c-9 8-14 19-14 30l0 68z m47-147l-43 38c-12 11-18 26-18 41l0 82 192 0 0-82c0-15-6-30-18-41l-43-38z m131 176l-192 0c-9 0-15-7-15-15l0-82c0-20 8-39 23-52l44-38c2-2 6-4 9-4l70 0c3 0 7 2 9 4l44 38c15 13 23 32 23 52l0 82c0 8-6 15-15 15z m-178-29l164 0 0-68c0-11-5-22-14-30l-39-34-58 0-39 34c-9 8-14 19-14 30l0 68z m70-323l-6 5c-2 1-4 1-6 1-6 0-11-7-11-14 0-4 2-9 7-11l29-18c2-2 4-2 7-2 7 0 15 4 15 11l0 143c0 7-8 10-17 10-9 0-18-3-18-10l0-115z m159 352l-294 0c-8 0-15-7-15-15 0-8 7-14 15-14l294 0c8 0 15 6 15 14 0 8-7 15-15 15z m70-329c-5 0-9-2-12-6-5-6-4-16 2-21 7-5 11-13 11-21 0-16-13-28-28-28-15 0-28 12-28 28 0 8-6 14-14 14-9 0-15-6-15-14 0-32 26-58 57-58 32 0 57 26 57 58 0 17-8 34-21 44-3 3-6 4-9 4z m-434 0c-3 0-6-1-9-4-13-10-21-27-21-44 0-32 25-58 57-58 31 0 57 26 57 58 0 8-6 14-15 14-8 0-14-6-14-14 0-16-13-28-28-28-15 0-28 12-28 28 0 8 4 16 11 21 6 5 7 15 2 21-3 4-7 6-12 6z m365-106l0-37c0-14-12-25-25-25l-246 0c-13 0-25 11-25 25l0 37 296 0z m0 15l-296 0c-8 0-14-7-14-15l0-37c0-22 18-40 39-40l246 0c21 0 39 18 39 40l0 37c0 8-6 15-14 15z m-281-30l266 0 0-22c0-6-5-11-10-11l-246 0c-5 0-10 5-10 11z"></path>
+        </symbol>
+
+        <symbol id="utouch-icon-correct-symbol-1" viewBox="0 0 512 512">
+            <path d="m502 114l-45-45c-6-6-13-9-22-9-9 0-16 3-23 9l-216 217-97-98c-6-6-14-9-22-9-9 0-17 3-23 9l-45 45c-6 6-9 14-9 23 0 9 3 16 9 22l120 120 45 44c6 7 13 10 22 10 9 0 16-3 22-10l45-44 239-239c6-6 9-14 9-23 0-9-3-16-9-22z"></path>
+        </symbol>
+
+        <symbol id="utouch-icon-copy" viewBox="0 0 512 512">
+            <path d="m54 419l70 0 0 70c0 13 11 23 23 23l311 0c13 0 23-10 23-23l0-373c0-12-10-23-23-23l-70 0 0-70c0-13-11-23-23-23l-311 0c-13 0-23 10-23 23l0 373c0 12 10 23 23 23z m380 46l-263 0 0-325 263 0z m-356-418l263 0 0 46-194 0c-12 0-23 11-23 23l0 256-46 0z m162 139c-12 0-23 11-23 23 0 13 11 24 23 24l125 0c12 0 23-11 23-24 0-12-11-23-23-23z m125 93l-125 0c-12 0-23 11-23 24 0 12 11 23 23 23l125 0c12 0 23-11 23-23 0-13-11-24-23-24z m0 93l-125 0c-12 0-23 11-23 24 0 12 11 23 23 23l125 0c12 0 23-11 23-23 0-13-11-24-23-24z"></path>
+        </symbol>
+
+        <symbol id="utouch-icon-search" viewBox="0 0 512 512">
+            <path d="m411 203c-12-2-23 5-25 17-3 19-12 35-26 50-14 13-31 22-50 26-10 2-18 13-16 24 2 11 12 19 24 18 27-6 52-19 71-38 20-20 33-45 38-72 3-12-4-22-16-25z m-109-203c-116 0-210 94-210 209 0 32 7 61 19 88l-78 68c-56 58-25 109-9 124 14 15 66 48 124-10l69-78c26 11 54 18 85 18 115 0 209-94 209-210 0-115-94-209-209-209z m-185 452c-10 11-38 29-63 8-7-6-21-36 8-63l72-63c13 18 28 33 45 45z m185-77c-92 0-166-74-166-166 0-91 74-165 166-165 91 0 165 74 165 165 0 92-74 166-165 166z"></path>
+        </symbol>
+
+        <symbol id="utouch-icon-zoom-increasing-button-outline" viewBox="0 0 512 512">
+            <path d="m19 281c10 24 25 46 43 64 19 19 40 33 64 43 25 11 52 16 79 16 27 0 54-5 79-16 4-1 8-3 12-5l113 113c10 10 23 15 38 15 14 0 27-5 37-15l9-9c21-21 21-55 0-75l-111-112c3-6 6-12 9-19 11-25 16-51 16-79 0-27-5-53-16-78-10-24-25-46-43-64-19-19-40-34-64-44-25-10-52-16-79-16-27 0-54 6-79 16-24 10-45 25-64 44-18 18-33 40-43 64-11 25-16 51-16 78 0 28 5 54 16 79z m315 24c-9 12-20 22-32 31-11 8-22 14-34 19-19 8-41 12-63 12-91 0-165-74-165-165 0-91 74-165 165-165 91 0 165 74 165 165 0 25-6 49-16 71-5 11-12 22-20 32z m133 133c6 6 6 16 0 23l-9 9c-3 3-7 4-11 4-5 0-9-1-12-4l-107-108c7-5 14-11 20-17 4-4 8-9 12-14z m-20 74c-15 0-28-6-38-16l-113-113c-4 2-8 4-12 6-25 10-52 16-79 16-27 0-54-6-79-16-24-10-46-25-64-44-19-18-33-40-43-64-11-25-16-51-16-79 0-27 5-53 16-78 10-25 24-46 43-65 18-18 40-33 64-43 25-11 52-16 79-16 27 0 54 5 79 16 24 10 45 25 64 43 19 19 33 40 43 65 11 25 16 51 16 78 0 28-5 54-16 79-2 6-5 13-9 19l111 111c21 21 21 55 0 76l-9 9c-10 10-23 16-37 16z m-151-130l113 113c10 10 23 16 38 16 14 0 27-6 37-16l9-9c20-20 20-54 0-74l-112-112 0 0c4-6 7-13 10-19 10-25 15-51 15-79 0-27-5-53-15-78-11-24-25-46-44-64-18-19-40-33-64-43-24-11-51-16-78-16-27 0-54 5-78 16-24 10-46 24-64 43-19 18-33 40-44 64-10 25-15 51-15 78 0 28 5 54 15 79 11 24 25 45 44 64 18 18 40 33 64 43 24 10 51 16 78 16 27 0 54-6 78-16 4-2 9-4 13-6z m151 93c-5 0-9-2-12-5l-108-108 1 0c7-5 13-11 19-17 5-5 9-9 13-14l0 0 107 106c7 7 7 17 0 24l-9 9c-3 3-7 5-11 5z m-118-113l106 107c3 3 7 5 12 5 4 0 8-2 11-5l9-9c6-6 6-16 0-22l-107-106c-3 5-8 9-12 13-6 6-13 12-19 17z m-124 6c-91 0-165-74-165-166 0-91 74-165 165-165 91 0 165 74 165 165 0 25-5 49-15 71-6 11-13 22-21 32-9 12-20 22-32 31-11 8-22 14-34 19-20 8-41 13-63 13z m0-330c-91 0-164 74-164 164 0 91 73 165 164 165 22 0 43-4 63-13 12-5 23-11 33-18 12-9 23-20 33-31 8-10 14-21 20-33 10-22 15-45 15-70 0-90-73-164-164-164z m76 146l-58 0 0-58c0-10-8-18-18-18-10 0-19 8-19 18l0 58-57 0c-10 0-18 8-18 18 0 11 8 19 18 19l57 0 0 57c0 11 9 19 19 19 2 0 3 0 4-1 9-2 14-9 14-18l0-57 58 0c6 0 11-3 14-7 3-3 4-7 4-12 0-10-8-18-18-18z m-76 113c-10 0-19-8-19-19l0-57-57 0c-10 0-19-8-19-19 0-10 9-19 19-19l57 0 0-57c0-10 9-19 19-19 10 0 19 9 19 19l0 57 57 0c10 0 19 9 19 19 0 5-2 9-4 12-4 5-9 7-15 7l-57 0 0 57c0 9-6 17-14 19-2 0-3 0-5 0z m-76-113c-10 0-18 8-18 18 0 10 8 18 18 18l58 0 0 58c0 10 8 18 18 18 1 0 3 0 4 0 8-2 14-9 14-18l0-58 58 0c5 0 11-2 14-6 3-4 4-8 4-12 0-10-8-18-18-18l-58 0 0-58c0-10-8-18-18-18-10 0-18 8-18 18l0 58z"></path>
+        </symbol>
+
+        <symbol id="utouch-icon-quotes" viewBox="0 0 512 512">
+            <path d="m112 208c62 0 112 50 112 112 0 61-50 111-112 111-61 0-111-50-111-111l-1-16c0-124 100-224 224-224l0 64c-43 0-83 17-113 47-6 6-11 12-16 18 5-1 11-1 17-1z m288 0c61 0 112 50 112 112 0 61-51 111-112 111-62 0-112-50-112-111l-1-16c0-124 101-224 224-224l0 64c-43 0-83 17-113 47-6 6-11 12-16 18 6-1 12-1 18-1z"></path>
+        </symbol>
+
+        <symbol id="utouch-icon-lnr-star" viewBox="0 0 512 512">
+            <path d="m397 486c-2 0-4 0-6-1l-135-74-135 74c-4 2-9 2-13-1-4-3-6-8-5-13l24-147-98-97c-3-4-4-9-3-13 2-5 6-8 10-9l147-25 62-122c2-4 6-7 11-7 5 0 9 3 11 7l62 122 147 25c4 1 8 4 10 9 1 4 0 9-3 13l-98 97 24 147c1 5-1 10-5 13-2 2-5 2-7 2z m-141-102c2 0 4 1 6 2l118 64-21-128c-1-4 0-8 3-11l85-85-129-21c-4-1-8-4-9-7l-53-105-53 105c-1 3-5 6-9 7l-129 21 85 85c3 3 4 7 3 11l-21 128 118-64c2-1 4-2 6-2z"></path>
+        </symbol>
+
+    </svg>
+
+    <!-- ... end Used SVG-icons -->
+
+
+    <!-- jQuery first, then Other JS. -->
+    <script src="js/jquery-3.5.1.min.js"></script>
+    <script src="js/crum-mega-menu.js"></script>
+    <script src="js/swiper.jquery.min.js"></script>
+    <script src="js/theme-plugins.js"></script>
+    <script src="js/jquery.typeahead.min.js"></script>
+    <script src="js/velocity.min.js"></script>
+    <script src="js/main.js"></script>
+    <script src="js/form-actions.js"></script>
+    <script src="js/lazysizes.min.js"></script>
+
+
+    
+
+
+</body>
+
+</html>

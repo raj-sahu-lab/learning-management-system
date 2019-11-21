@@ -1,0 +1,397 @@
+<div class="container" id="startForm">
+	
+	<div class="row clearfix">
+		<div class="col-lg-12">
+			<div class="card">
+				<div class="body block-header">
+					<div class="row">
+						<div class="col-lg-6 col-md-8 col-sm-12">
+							<h2 class="headerSemiBold">Manage Audio</h2>
+
+							<ul class="breadcrumb p-l-0 p-b-0 labelTitle">
+								<li class="breadcrumb-item">
+									<a class="linkColor" routerLink="/" routerLinkActive="active"><i
+											class="icon-home"></i></a>
+								</li>
+								<li class="breadcrumb-item active labelTitle">Audio</li>
+							</ul>
+						</div>
+						<div class="col-lg-6 col-md-4 col-sm-12">
+							<a routerLink="/" routerLinkActive="active"
+								class="btn btn-secondary headerSemiBold float-right">
+								<i class="icon-arrow-left"></i> BACK
+							</a>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="row clearfix">
+
+		<div class="col-sm-12 col-md-12 col-lg-12">
+			<div class="card">
+
+				<div class="header headerSemiBold">
+					<h2><span class="linkColor">Manage</span> Audio</h2>
+				</div>
+
+				<div class="body">
+					<div class="demo-masked-input labelTitle">
+						<div class="row clearfix">
+							<div class="col-lg-3 col-md-3">Select Course Bundle
+								<div class="input-group">
+									<select class="form-control" [(ngModel)]="subjectId" (change)="subjectChanged()">
+										<option [ngValue]="undefined" disabled>Select Course Bundle</option>
+										<option *ngFor="let subject of subjectList" [ngValue]="subject.id">
+											{{subject.title}}
+										</option>
+									</select>
+								</div>
+							</div>
+							<div class="col-lg-3 col-md-3">Select Module
+								<div class="input-group">
+									<select class="form-control" [(ngModel)]="topicId" (change)="topicChanged()">
+										<option [ngValue]="undefined" disabled>Select Module</option>
+										<option *ngFor="let topic of topicsList" [ngValue]="topic.id">
+											{{topic.title}}
+										</option>
+									</select>
+								</div>
+							</div>
+							<div class="col-lg-3 col-md-3">Select Lecture Content
+								<div class="input-group">
+									<select class="form-control" [(ngModel)]="contentId" (change)="contentChange()">
+										<option [ngValue]="undefined" disabled>Select Content</option>
+										<option *ngFor="let content of contentList" [ngValue]="content.id">
+											{{content.title}}
+										</option>
+									</select>
+								</div>
+							</div>
+							<div class="col-lg-3 col-md-3">Audio Name
+								<div class="input-group">
+									<input type="text" class="form-control" [(ngModel)]="title"
+										placeholder="Enter audio name">
+								</div>
+							</div>
+							<div class="col-lg-3 col-md-3"> Select Audio
+								<div class="input-group">
+									<!-- ,audio/* -->
+									<input type="file" class="form-control" [(ngModel)]="audio" accept=".mp3"
+										(change)="FileChangedAudio($event)">
+								</div>
+							</div>
+
+							<!-- Paymentgatway Start-->
+							<div class="col-lg-3 col-md-3"> Payment Type
+								<div class="input-group">
+									<div class="radio inlineblock m-r-20" style="margin-top:10px;">
+										<input type="radio" [(ngModel)]="paymentTypeFree" name="paymentType" id="free"
+											class="with-gap" value="0">
+										<label for="free">Free</label>
+									</div>
+									<div class="radio inlineblock" style="margin-top:10px;">
+										<input type="radio" [(ngModel)]="paymentTypeFree" name="paymentType" id="paid"
+											class="with-gap" value="1">
+										<label for="paid">Paid</label>
+									</div>
+								</div>
+							</div>
+							<div class="col-lg-3 col-md-3" *ngIf="paymentTypeFree == '1'">Payment Gateway
+                                <div class="input-group">
+                                    <select class="form-control" [(ngModel)]="paymentGateWayId">
+                                        <option [ngValue]="undefined" disabled>Payment Gateway</option>
+                                        <option *ngFor="let paymentGateWay of paymentGateWayList"
+                                            value="{{ paymentGateWay.id }}">
+                                            {{ paymentGateWay.title }}
+                                        </option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="col-lg-3 col-md-3" *ngIf="paymentTypeFree == '1'">iOS Amount
+								<span tooltip="It is pricing for iOS mobile application as per Apple’s guidelines." placement="top">
+									<i class="icon-info"></i>
+								</span>
+
+                                <div class="input-group">
+                                    <select class="form-control" [(ngModel)]="iosPaymentGateWayid">
+                                        <option [ngValue]="undefined" disabled>iOS Amount</option>
+                                        <option *ngFor="let iOSInApp of iOSInAppList" value="{{ iOSInApp.id }}">
+                                            {{ iOSInApp.title }} ( {{iOSInApp.inAppamount}} $)
+                                        </option>
+                                    </select>
+                                </div>
+							</div>
+
+							<div class="col-lg-3 col-md-3" *ngIf="paymentTypeFree == '1'">Currency
+                                <div class="input-group">
+                                  <select class="form-control" [(ngModel)]="currencyId">
+                                    <option [ngValue]="undefined" disabled>Currency</option>
+                                    <option *ngFor="let currency of currencyList" value="{{currency.id}}">
+                                      {{currency.title}} ( {{currency.sign}} )
+                                    </option>
+                                  </select>
+                                </div>
+                            </div>
+							<div class="col-lg-3 col-md-3" *ngIf="paymentTypeFree == '1'"> Amount
+								<div class="input-group">
+									<input type="number" class="form-control" [(ngModel)]="amount"
+										placeholder="Enter amount" min="0" pattern="/^-?\d+\.?\d*$/" onKeyPress="if(this.value.length==6) return false;">
+								</div>
+							</div>
+							<div class="col-lg-3 col-md-3" *ngIf="paymentTypeFree == '1'">Day's of validity
+								<span tooltip="After validity ends, students won’t be able to access it." placement="top">
+									<i class="icon-info"></i>
+								</span>
+
+								<div class="input-group">
+									<input type="number" class="form-control" [(ngModel)]="validity"
+										placeholder="Enter validity" min="0" pattern="/^-?\d+\.?\d*$/" onKeyPress="if(this.value.length==3) return false;">
+								</div>
+							</div>
+							<div class="col-lg-12 col-md-12" *ngIf="paymentTypeFree == '1'"> Payment Preview
+								<span tooltip="It will be visible on the website and mobile app when a student clicks on pay for audio." placement="top">
+									<i class="icon-info"></i>
+								</span>
+
+								<div class="input-group">
+									<textarea rows="6" class="form-control no-resize" [(ngModel)]="previewText" style="border: 1px solid #E3E3E3;border-radius: 10px;" maxlength="200"></textarea>
+								</div>
+							</div>
+							<div class="col-lg-12 col-md-12" *ngIf="paymentTypeFree == '1'">
+								<div class="input-group">
+									<span class="linkColor">{{200 - previewText?.length}} character left</span>
+								</div>
+							</div>
+							<!-- Paymentgatway End-->
+
+							<div class="col-lg-3 col-md-3" *ngIf="isEdit"> Status
+								<div class="input-group">
+									<div class="radio inlineblock m-r-20" style="margin-top:10px;">
+										<input type="radio" [(ngModel)]="status" name="status" id="active"
+											class="with-gap" value="0">
+										<label for="active">Active</label>
+									</div>
+									<div class="radio inlineblock" style="margin-top:10px;">
+										<input type="radio" [(ngModel)]="status" name="status" id="inactive"
+											class="with-gap" value="1">
+										<label for="inactive">Inactive</label>
+									</div>
+								</div>
+							</div>
+							<div class="col-lg-1 col-md-1"><b>&nbsp;</b>
+								<div class="input-group">
+									<input type="button" class="btn btn-secondary headerSemiBold float-right"
+										value="{{ isEdit ? 'UPDATE' : 'SUBMIT'}}" style="margin:0px;"
+										(click)="submitButtonClick();">
+								</div>
+							</div>
+							<div class="col-lg-1 col-md-1"><b>&nbsp;</b>
+								<div class="input-group">
+									<input type="button" class="btn btn-warning headerSemiBold float-right"
+										*ngIf="isEdit" value="CANCEL" style="margin:0px;" (click)="cancelEditClick();">
+								</div>
+							</div>
+
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="col-sm-12 col-md-12 col-lg-12">
+			<div class="card">
+				<div class="header headerSemiBold">
+					<div class="row clearfix">
+
+						<div class="col-sm-6 col-md-6 col-lg-6">
+
+							<h2><span class="linkColor">Available</span> Audio</h2>
+
+						</div>
+
+						<div class="col-sm-6 col-md-6 col-lg-6">
+
+							<ul class="header-dropdown" style="top: 0px;">
+
+								<li [ngClass]="filter ? 'dropdown show' : 'dropdown'">
+
+									<a href="javascript:void(0);" class="dropdown-toggle mr-4 linkColor"
+										data-toggle="dropdown" role="button" (click)="dropDownFilter();"
+										aria-haspopup="true" aria-expanded="false">
+										Manage columns
+									</a>
+
+									<ul class="dropdown-menu dropdown-menu-right labelTitle mangeColumn">
+
+										<li class="p-2">
+											<input type="checkbox" data-target="2" [(ngModel)]="columBranch"><span class="pl-2">Branch Name</span> <br>
+											<input type="checkbox" data-target="3" [(ngModel)]="columTutor"><span class="pl-2">Educator Name</span> <br>
+											<input type="checkbox" data-target="4" [(ngModel)]="columSubject"><span class="pl-2">Bundle Name</span><br>
+											<input type="checkbox" data-target="5" [(ngModel)]="columTopic"><span class="pl-2">Module Name</span><br>
+											<input type="checkbox" data-target="6" [(ngModel)]="columContent"><span class="pl-2">Content Header</span><br>
+											<input type="checkbox" data-target="7" [(ngModel)]="columTitle"><span class="pl-2">Audio Name</span> <br>
+											<input type="checkbox" data-target="8" [(ngModel)]="columAudio"><span class="pl-2">Audio</span> <br>
+											<input type="checkbox" data-target="9" [(ngModel)]="columPayment"><span class="pl-2">Gateway</span> <br>
+											<input type="checkbox" data-target="10" [(ngModel)]="columAmount"><span class="pl-2">Amount</span> <br>
+											<input type="checkbox" data-target="11" [(ngModel)]="columValidity"><span class="pl-2">Day's of validity</span><br>
+											<input type="checkbox" data-target="12" [(ngModel)]="columPreview"><span class="pl-2">Preview</span>  <br>
+											<input type="checkbox" data-target="13" [(ngModel)]="columStatus"><span class="pl-2">Status</span> 
+										</li>
+
+									</ul>
+
+								</li>
+
+							</ul>
+						</div>
+					</div>
+				</div>
+				<div class="body">
+					<div class="table-responsive">
+						<table class="table table-bordered table-striped table-hover dataTable js-exportable w-100">
+							<thead class="headerSemiBold">
+								<tr>
+									<th>#</th>
+									<th>S No</th>
+									<th [ngClass]="(columBranch == false)?'d-none':''">Branch Name</th>
+									<th [ngClass]="(columTutor == false)?'d-none':''">Educator Name</th>
+									<th [ngClass]="(columSubject == false)?'d-none':''">Bundle Name</th>
+									<th [ngClass]="(columTopic == false)?'d-none':''">Module Name</th>
+									<th [ngClass]="(columContent == false)?'d-none':''">Content Header</th>
+									<th [ngClass]="(columTitle == false)?'d-none':''">Audio Name</th>
+									<th [ngClass]="(columAudio == false)?'d-none':''">Audio</th>
+									<th [ngClass]="(columPayment == false)?'d-none':''">Gateway</th>
+									<th [ngClass]="(columAmount == false)?'d-none':''">Amount</th>
+									<th [ngClass]="(columValidity == false)?'d-none':''">Day's of validity</th>
+									<th [ngClass]="(columPreview == false)?'d-none':''">Preview</th>
+									<th [ngClass]="(columStatus == false)?'d-none':''">Status</th>
+								</tr>
+							</thead>
+							<tbody class="labelTitle">
+								<tr *ngFor="let audio of audioList;let i=index;">
+									<td>
+										<span class="badge badge-success" title="Update Audio"
+											(click)="editButtonClick(audio.id)">
+											<i class="icon-pencil"></i>
+										</span>
+										<span class="badge badge-danger" title="Delete Audio"
+											(click)="deleteButtonClick(audio.id)" *ngIf="userType == 1">
+											<i class="icon-trash"></i>
+										</span>
+									</td>
+									<td>{{audioList.length - i}}</td>
+									<td [ngClass]="(columBranch == false)?'d-none':''">{{audio.subject.tutor.branch.name}}</td>
+									<td [ngClass]="(columTutor == false)?'d-none':''">{{audio.subject.tutor.name}}</td>
+									<td [ngClass]="(columSubject == false)?'d-none':''">{{audio.subject.title}}</td>
+									<td [ngClass]="(columTopic == false)?'d-none':''">{{audio.topic.title}}</td>
+									<td [ngClass]="(columContent == false)?'d-none':''">{{audio.content.title}}</td>
+									<td [ngClass]="(columTitle == false)?'d-none':''">{{audio.title}}</td>
+									<td [ngClass]="(columAudio == false)?'d-none':''">
+										<span class="badge badge-success" title="Listen Audio"
+											(click)="showDescription(audio.id)">
+											<i class="icon-eye"></i>
+										</span>
+									</td>
+									<td [ngClass]="(columPayment == false)?'d-none':''">
+										{{ audio.payment_type?.title}}
+										{{ audio.iosPaymentGateWay == null ? '' : '/' }} 
+                     					{{ audio.iosPaymentGateWay?.title }}
+									</td>
+									<td [ngClass]="(columAmount == false)?'d-none':''">
+										<span *ngIf="audio.isPaid">{{audio.currency.sign}}</span>
+										{{audio.amount | number: '1.2'}}
+									</td>
+									<td [ngClass]="(columValidity == false)?'d-none':''">{{audio.validity}}</td>
+									<td [ngClass]="(columPreview == false)?'d-none':''">
+										<span class="badge badge-success" title="Preview" *ngIf="audio.isPaid"
+											(click)="showPreview(audio.id)">
+											<i class="icon-eye"></i>
+										</span>
+									</td>
+									<td [ngClass]="(columStatus == false)?'d-none':''">
+										<span class="badge badge-{{audio.status==0 ? 'success' : 'warning'}}">
+											{{audio.status==0 ? 'Active' : 'Inactive'}}
+										</span>
+									</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+				</div>
+			</div>
+		</div>
+
+	</div>
+
+</div>
+
+<!--Modal Popup -->
+<div class="modal" [style.display]="selectedPreview ? 'block' : 'none'">
+	<div class="modal-dialog">
+		<div class="modal-content">
+
+			<div class="modal-header">
+				<h6 class="headerBold">{{selectedPreview?.title}}</h6>
+			</div>
+
+			<div class="modal-body labelTitle" [innerHTML]="selectedPreview?.preview"></div>
+
+			<div class="modal-footer">
+				<button type="button" class="btn btn-secondary headerSemiBold" data-dismiss="modal"
+					(click)="hidePreview()">Close</button>
+			</div>
+
+		</div>
+	</div>
+</div>
+
+<div class="modal" [style.display]="selectedDescription ? 'block' : 'none'">
+	<div class="modal-dialog">
+		<div class="modal-content">
+
+			<div class="modal-header">
+				<h6 class="headerBold">{{selectedDescription?.title}}</h6>
+			</div>
+
+			<div class="modal-body labelTitle">
+				<audio id="audioUrl" controls [src]="audioUrl" controlsList="nodownload" class="w-100"></audio>
+			</div>
+
+			<div class="modal-footer">
+				<button type="button" class="btn btn-secondary headerSemiBold" data-dismiss="modal"
+					(click)="hideDescription()">Close</button>
+			</div>
+
+		</div>
+	</div>
+</div>
+
+<!-- <div class="modal" [style.display]="audioId ? 'block' : 'none'">
+	<div class="modal-dialog">
+		<div class="modal-content">
+
+			<div class="modal-header">
+				<h6 class="headerBold">Are you sure you want to delete audio?</h6>
+			</div>
+
+			<div class="modal-body labelTitle">
+				<input type="text" class="form-control" [(ngModel)]="deleteConfirmation" placeholder="type delete">
+				<span class="text-muted">
+					1. Delete <br>
+					2. Delete
+				</span>
+			</div>
+
+			<div class="modal-footer">
+				<button type="button" class="btn btn-secondary headerSemiBold" data-dismiss="modal"
+					(click)="hideDelete()">Close</button>
+			</div>
+
+		</div>
+	</div>
+</div> -->
+<!--Modal Popup -->

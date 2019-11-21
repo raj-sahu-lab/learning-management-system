@@ -1,0 +1,163 @@
+<div class="container">
+  <div class="row clearfix">
+    <div class="col-lg-12">
+      <div class="card">
+        <div class="body block-header">
+          <div class="row">
+            <div class="col-lg-6 col-md-8 col-sm-12">
+              <h2 class="headerSemiBold">Manage Support Request</h2>
+              <ul class="breadcrumb p-l-0 p-b-0 labelTitle">
+                <li class="breadcrumb-item">
+                  <a class="linkColor" routerLink="/" routerLinkActive="active"><i class="icon-home"></i></a>
+                </li>
+                <li class="breadcrumb-item active labelTitle">Support Request</li>
+              </ul>
+            </div>
+            <div class="col-lg-6 col-md-4 col-sm-12">
+              <a routerLink="/support" routerLinkActive="active" class="btn btn-secondary headerSemiBold float-right">
+                <i class="icon-arrow-left"></i> BACK
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row clearfix">
+
+    <div class="col-lg-6 col-xl-6">
+      <div class="card">
+        <div class="body">
+
+          <div class="row">
+            <div class="col-lg-8 col-md-8 col-sm-8 col-xs-8">
+              <!-- <h6 class="headerSemiBold">{{supportRequest.name}}</h6> -->
+              <p class="text-muted">#{{supportRequest.id}}</p>
+            </div>
+            <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
+              
+              <div (click)="closeTicket(supportRequest.id)" class="btn btn-default headerSemiBold float-right" *ngIf="supportRequest.currentStatus!=3">Close Ticket</div>
+
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+              <h6 class="headerSemiBold" style="text-align: justify;">{{supportRequest.name}}</h6>
+            </div>
+          </div>
+
+          <div class="row m-t-15">
+            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+              <h6 class="headerSemiBold">Type</h6>
+
+              <p class="text-muted" *ngIf="supportRequest.type == 1">Subject</p>
+              <p class="text-muted" *ngIf="supportRequest.type == 2">Topic</p>
+              <p class="text-muted" *ngIf="supportRequest.type == 3">Content</p>
+              <p class="text-muted" *ngIf="supportRequest.type == 4">Test</p>
+              <p class="text-muted" *ngIf="supportRequest.type == 5">Practice</p>
+              <p class="text-muted" *ngIf="supportRequest.type == 6">PDF</p>
+              <p class="text-muted" *ngIf="supportRequest.type == 7">PPT</p>
+              <p class="text-muted" *ngIf="supportRequest.type == 8">Audio</p>
+              <p class="text-muted" *ngIf="supportRequest.type == 9">Video</p>
+
+            </div>
+            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+              <h6 class="headerSemiBold">Course</h6>
+              <p class="text-muted">{{supportRequest.detail?.title}}</p>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+              <h6 class="headerSemiBold">Query</h6>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+              <p class="text-muted" style="text-align: justify;">{{supportRequest?.description}}</p>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+              <h6 class="headerSemiBold">Student</h6>
+              <p class="text-muted">
+                {{supportRequest?.student?.firstName}} {{supportRequest?.student?.lastLame}}
+                ( +{{supportRequest?.student?.countrycode}} {{supportRequest?.student?.phone}} )
+              </p>
+            </div>
+
+            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+              <h6 class="headerSemiBold">Branch</h6>
+              <p class="text-muted">{{supportRequest?.branch?.name}}</p>
+            </div>
+
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <div class="col-lg-6 col-xl-6">
+      <div class="card chat-app">
+        <div class="chat ml-0">
+          <div class="chat-history">
+            <div class="row clearfix">
+              <div class="col-lg-12 col-xl-12 mb-4 text-center">
+                <button type="button" id="loadMore" class="btn btn-light btn-xs mb-1" (click)="loadMore();">View
+                  More</button>
+              </div>
+            </div>
+
+            <ul class="m-b-0">
+              
+              <li class="clearfix" *ngFor="let message of messageList; let i=index">
+                <sub>
+                  <span *ngIf="message.account!=null">
+                    <div class="message-data text-right">
+                      <span class="message-data-time">{{message.date | date:'short'}}</span>
+                      <img src="{{message.account.image}}" alt="avatar">
+                    </div>
+                    <div class="message other-message float-right">
+
+                      {{message.message}}
+                      &nbsp;
+
+                      <i class="zmdi zmdi-delete" (click)="deleteButtonClick(message.id)" *ngIf="supportRequest.currentStatus!=3"></i>
+
+                    </div>
+                  </span>
+                </sub>
+
+
+                <span *ngIf="message.student!=null">
+                  <div class="message-data">
+                    <span class="message-data-time">{{message.date | date:'short'}}</span>
+                  </div>
+                  <div class="message other-message">
+                      <!-- <i class="zmdi zmdi-delete"(click)="deleteButtonClick(message.id)"></i> &nbsp;  -->
+                      {{message.message}}
+                    </div>
+                </span>
+
+              </li>
+            </ul>
+          </div>
+
+          <div class="chat-message clearfix" *ngIf="supportRequest.currentStatus!=3">
+            <div class="input-group m-b-0">
+              <input type="text" class="form-control" [(ngModel)]="message" placeholder="Enter text here..." (keyup.enter)="submitButtonClick()">
+              <span class="input-group-addon" style="padding: 10px 18px 10px 18px;" (click)="submitButtonClick()">
+                <i class="zmdi zmdi-mail-send"></i>
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>

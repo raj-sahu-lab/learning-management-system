@@ -1,0 +1,21 @@
+<!--Page Loader-->
+<!-- <div class="page-loader-wrapper">
+        <div class="loader">
+            <div class="m-t-30">
+                        
+                <img class="zmdi-hc-spin" src="assets/images/logo.svg" width="48" height="48">
+            </div>
+            <p>Please wait...</p>
+        </div>
+    </div>
+    <div class="overlay"></div> -->
+
+<div class="theme-purple">
+    <app-header></app-header>
+    <section class="content" ng-view>
+        <router-outlet (activate)="changeOfRoutes()"></router-outlet>
+    </section>
+    <div class="row clearfix" style="margin-right: 0px;margin-left: 0px;">
+        <app-footer style="width: 100%;padding: 0 2%;"></app-footer>
+    </div>
+</div>

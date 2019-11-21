@@ -1,0 +1,236 @@
+{
+  "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
+  "version": 1,
+  "newProjectRoot": "projects",
+  "projects": {
+    "schoolbus": {
+      "root": "",
+      "sourceRoot": "src",
+      "projectType": "application",
+      "prefix": "app",
+      "schematics": {
+        "@schematics/angular:component": {
+          "style": "scss"
+        }
+      },
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "options": {
+            "allowedCommonJsDependencies" : [
+              "@firebase/database",
+              "@firebase/auth",
+              "@mattlewis92/dom-autoscroller",
+              "@firebase/component",
+              "@firebase/util",
+              "@firebase/app",
+              "firebase/app",
+              "html2pdf.js",
+              "crypto-js",
+              "ng2-pdf-viewer",
+              "angular-calendar/date-adapters/date-fns",
+              "@zoomus/websdk"
+            ],
+            "aot": true,
+            "outputPath": "dist/ultimateStudent",
+            "index": "src/index.html",
+            "main": "src/main.ts",
+            "polyfills": "src/polyfills.ts",
+            "tsConfig": "src/tsconfig.app.json",
+            "assets": [
+              "src/favicon.ico",
+              "src/assets",
+              "src/firebase-messaging-sw.js",
+              "src/manifest.json",
+              {
+                "glob": "**/*",
+                "input": "./node_modules/@zoomus/websdk/dist/lib/",
+                "output": "./node_modules/@zoomus/websdk/dist/lib/"
+              }
+            ],
+            "styles": [
+              "node_modules/angular-calendar/css/angular-calendar.css",
+              "src/styles.scss",
+              "node_modules/ngx-toastr/toastr.css",
+              "src/assets/font/iconsmind-s/css/iconsminds.css",
+              "src/assets/font/simple-line-icons/css/simple-line-icons.css",
+              "src/assets/css/vendor/bootstrap.min.css",
+              "src/assets/css/vendor/bootstrap.rtl.only.min.css",
+              "src/assets/css/vendor/bootstrap-float-label.min.css",
+              "src/assets/css/vendor/fullcalendar.min.css",
+              "src/assets/css/vendor/dataTables.bootstrap4.min.css",
+              "src/assets/css/vendor/jquery.contextMenu.min.css",
+              "src/assets/css/vendor/datatables.responsive.bootstrap4.min.css",
+              "src/assets/css/vendor/select2.min.css",
+              "src/assets/css/vendor/select2-bootstrap.min.css",
+              "src/assets/css/vendor/smart_wizard.min.css",
+              "src/assets/css/vendor/bootstrap-tagsinput.css",
+              "src/assets/css/vendor/perfect-scrollbar.css",
+              "src/assets/css/vendor/owl.carousel.min.css",
+              "src/assets/css/vendor/bootstrap-stars.css",
+              "src/assets/css/vendor/nouislider.min.css",
+              "src/assets/css/vendor/bootstrap-datepicker3.min.css",
+              "src/assets/css/vendor/component-custom-switch.min.css",
+              "src/assets/css/main.css",
+              "node_modules/video.js/dist/video-js.min.css"
+            ],
+            "scripts": [
+              "src/assets/js/vendor/jquery-3.3.1.min.js",
+              "src/assets/js/vendor/bootstrap.bundle.min.js",
+              "src/assets/js/vendor/Chart.bundle.min.js",
+              "src/assets/js/vendor/chartjs-plugin-datalabels.js",
+              "src/assets/js/vendor/moment.min.js",
+              "src/assets/js/vendor/fullcalendar.min.js",
+              "src/assets/js/vendor/datatables.min.js",
+              "src/assets/js/vendor/perfect-scrollbar.min.js",
+              "src/assets/js/vendor/bootstrap-tagsinput.min.js",
+              "src/assets/js/vendor/jquery.smartWizard.min.js",
+              "src/assets/js/vendor/jquery.validate/jquery.validate.min.js",
+              "src/assets/js/vendor/jquery.validate/additional-methods.min.js",
+              "src/assets/js/vendor/owl.carousel.min.js",
+              "src/assets/js/vendor/progressbar.min.js",
+              "src/assets/js/vendor/jquery.barrating.min.js",
+              "src/assets/js/vendor/select2.full.js",
+              "src/assets/js/vendor/bootstrap-datepicker.js",
+              "src/assets/js/vendor/Sortable.js",
+              "src/assets/js/vendor/mousetrap.min.js",
+              "src/assets/js/vendor/jquery.contextMenu.min.js",
+              "src/assets/js/dore.script.js",
+              "src/assets/js/scripts.js",
+              "node_modules/html2canvas/dist/html2canvas.min.js",
+              "node_modules/jspdf/dist/jspdf.min.js",
+              "node_modules/html2pdf.js/dist/html2pdf.js",
+              "node_modules/video.js/dist/video.min.js"
+            ]
+          },
+          "configurations": {
+            "production": {
+              "fileReplacements": [
+                {
+                  "replace": "src/environments/environment.ts",
+                  "with": "src/environments/environment.prod.ts"
+                }
+              ],
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "extractCss": true,
+              "namedChunks": false,
+              "aot": true,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "buildOptimizer": true,
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "4mb",
+                  "maximumError": "5mb"
+                }
+              ]
+            },
+            "stage": {
+              "fileReplacements": [
+                {
+                  "replace": "src/environments/environment.ts",
+                  "with": "src/environments/environment.stage.ts"
+                }
+              ],
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "extractCss": true,
+              "namedChunks": false,
+              "aot": true,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "buildOptimizer": true,
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "4mb",
+                  "maximumError": "5mb"
+                }
+              ]
+            }
+          }
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "options": {
+            "browserTarget": "schoolbus:build"
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "schoolbus:build:production"
+            }
+          }
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "schoolbus:build"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "src/test.ts",
+            "polyfills": "src/polyfills.ts",
+            "tsConfig": "src/tsconfig.spec.json",
+            "karmaConfig": "src/karma.conf.js",
+            "styles": [
+              "node_modules/angular-calendar/css/angular-calendar.css",
+              "src/styles.scss"
+            ],
+            "scripts": [],
+            "assets": [
+              "src/favicon.ico",
+              "src/assets"
+            ]
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "src/tsconfig.app.json",
+              "src/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
+    },
+    "schoolbus-e2e": {
+      "root": "e2e/",
+      "projectType": "application",
+      "prefix": "",
+      "architect": {
+        "e2e": {
+          "builder": "@angular-devkit/build-angular:protractor",
+          "options": {
+            "protractorConfig": "e2e/protractor.conf.js",
+            "devServerTarget": "schoolbus:serve"
+          },
+          "configurations": {
+            "production": {
+              "devServerTarget": "schoolbus:serve:production"
+            }
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": "e2e/tsconfig.e2e.json",
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
+    }
+  },
+  "defaultProject": "schoolbus"
+}

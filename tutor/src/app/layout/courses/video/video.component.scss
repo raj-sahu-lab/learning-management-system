@@ -1,0 +1,36 @@
+.showLoading{
+    background-color: rgba(40, 40, 40, 0.8);
+    border-radius: 0px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 99998!important;
+    cursor: progress;
+    display: block;
+}
+.prg{
+    position: absolute;
+    top: 47%;
+    padding: 0 30%;
+}
+.progress{
+    height: 50px;
+}
+.vid-dimensions {
+    width: 100% !important;
+    height: 450px !important;
+}
+@media (max-width:991px){
+    .vid-dimensions {
+        width: 100% !important;
+        height: 250px !important;
+    }
+}
+@media (max-width:320px){
+    .vid-dimensions {
+        width: 100% !important;
+        height: 150px !important;
+    }
+}

@@ -1,0 +1,29 @@
+.blu{
+    color: #145388!important;
+}
+.xsmall{
+    width: 25px;
+    height: 25px;
+}
+.rounded-circle{
+    border-radius: 50%;
+}
+.pl-2{
+    padding-left: 10px;
+}
+.mr-t-5{
+    margin-top: 5px;
+}
+.fnt-14{
+    font-size: 14px;
+}
+.red{
+    color: red;
+}
+.green{
+    color: green;
+}
+.inp{
+    padding: .5rem!important;
+    margin: 5px;
+}

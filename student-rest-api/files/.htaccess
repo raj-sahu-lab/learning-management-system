@@ -1,0 +1,34 @@
+<IfModule mod_rewrite.c>
+    <IfModule mod_negotiation.c>
+        Options -MultiViews
+    </IfModule>
+RewriteEngine On
+
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^(.*)/$ /$1 [L,R=301]
+#RewriteRule ^(.*)$ public/$1 [L]
+
+RewriteCond %{REQUEST_URI} !(\.css|\.js|\.png|\.jpg|\.gif|robots\.txt|\.eot|\.svg|\.ttf|\.jpeg|\.woff|\.woff2)$ [NC]
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteRule ^ index.php [L]
+
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_URI} !^/public/
+RewriteRule ^(css|js|assets|vendor)/(.*)$ public/$1/$2 [L,NC]
+
+# Disable index view
+Options -Indexes
+
+# Hide a specific file
+#<Files .env>
+#    Order allow,deny
+#    Deny from all
+#</Files>
+</IfModule>
+# Use PHP71 as default
+AddHandler application/x-httpd-php71 .php
+<IfModule mod_suphp.c>
+    suPHP_ConfigPath /opt/php71/lib
+</IfModule>

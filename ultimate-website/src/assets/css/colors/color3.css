@@ -1,0 +1,338 @@
+/*------ COLOR SCHEME ------*/
+a:focus,
+a:hover
+{
+    color: #336E7B;
+}
+.theme-bg,
+.separate-bg.s-theme:after,
+.style-box .process-step,
+.border-style1:hover,
+.cd-horizontal-timeline .events a.selected::after,
+.no-touch .cd-horizontal-timeline .events a:hover::after,
+.cd-horizontal-timeline .filling-line
+{
+    background: #336E7B;
+}
+.text-color,
+.text-color,
+.text-color h1,
+.text-color h2,
+.text-color h3,
+.text-color h4,
+.text-color h5,
+.text-color h6,
+.text-color p,
+.text-color a,
+.text-color,
+h1.text-color,
+h2.text-color,
+h3.text-color,
+h4.text-color,
+h5.text-color,
+h6.text-color,
+p.text-color,
+a.text-color,
+.footer.dark-bg a:hover,
+.recent-item:hover a .recent-title,
+.breadcrumb > .active,
+.page-header.default,
+.play-video a:hover:before,
+.header-transparent .toggle-close,
+ul.check-list li:before
+{
+    color: #336E7B;
+}
+.a-active,
+.light-style a.active,
+.light-style a.hover,
+.light-style a.focus
+{
+    color: #336E7B !important;
+}
+.separate-bg.s-semitheme:after
+{
+    background-color: rgba(51,110,123,.6);
+}
+.direction-l .flag:before,
+.direction-r .flag:before,
+.cd-horizontal-timeline .events a.selected::after,
+.cd-horizontal-timeline .events a.older-event::after,
+.no-touch .cd-horizontal-timeline .events a:hover::after,
+.no-touch .cd-timeline-navigation a:hover {
+	border-color: #336E7B;
+}
+/* =================================================================== 
+							HEADER
+======================================================================*/
+
+/* HEADER TOP */
+.header-top-section.navbar,
+.cart-toggle .cart-count
+{
+    background: #336E7B;
+}
+.header-top-transparent .header-top-section .navbar-nav > li > a:hover,
+.header-top-transparent .header-top-section .navbar-nav > li > a:focus,
+.header-top-transparent .header-top-section .navbar-nav li:hover > a,
+.header-top-transparent .header-top-section .navbar-nav li:focus > a,
+.header-top-semi-light .header-top-section .navbar-nav > li > a:hover,
+.header-top-semi-light .header-top-section .navbar-nav > li > a:focus,
+.header-top-semi-light .header-top-section .navbar-nav li:hover > a,
+.header-top-semi-light .header-top-section .navbar-nav li:focus > a,
+.header-top-semi-dark .header-top-section .navbar-nav > li > a:hover,
+.header-top-semi-dark .header-top-section .navbar-nav > li > a:focus,
+.header-top-semi-dark .header-top-section .navbar-nav li:hover > a,
+.header-top-semi-darkt .header-top-section .navbar-nav li:focus > a,
+.header-top-light .header-top-section .navbar-nav > li > a:hover,
+.header-top-light .header-top-section .navbar-nav > li > a:focus,
+.header-top-light .header-top-section .navbar-nav li:hover > a,
+.header-top-light .header-top-section .navbar-nav li:focus > a
+{
+    color: #336E7B;
+}
+
+.navbar-default .navbar-nav.nav li:hover > a,
+.navbar-default .navbar-nav li.active > a:hover,
+.navbar-default .navbar-nav li.active > a:focus,
+.navbar-default .navbar-nav li.active > a,
+.navbar-default .navbar-nav > li > a:focus,
+.navbar-default .navbar-nav > li > a:hover,
+.navbar-default .nav .open > a,
+.dropdown.open > a,
+.dropdown-menu > li > a:focus,
+.dropdown-menu > li > a:hover,
+.navbar-default .nav .open > a:focus,
+.navbar-default .nav .open > a:hover,
+.side-nav  li > a:focus,
+.side-nav  li > a:hover,
+.header-dropdown-dark .item-info a:hover,
+.header-dropdown-dark .is-sticky .item-info a:hover,
+.header-top-section.dark-bg .navbar-nav li > a:hover
+{
+    color: #336E7B;
+}
+
+/* =================================================================== 
+							CONTENT
+======================================================================*/
+/* Page Title */
+.bottom-line:after
+{
+    background: #336E7B;
+}
+
+.bottom-line:after,
+.side-line:before
+{
+    border-color: #336E7B;
+}
+
+
+/* =================================================================== 
+							BUTTONS
+======================================================================*/
+.btn-theme,
+.btn-hv-theme:hover,
+.btn-hv-theme:focus,
+.btn-hv-theme:active,
+.btn-hv-theme:active:focus,
+.btn-hv-theme:active:hover,
+.btn-hv-theme.btn-outline:hover,
+.btn-hv-theme.btn-outline:focus,
+.btn-hv-theme.btn-outline:active,
+.btn-hv-theme.btn-outline:active:focus,
+.btn-hv-theme.btn-outline:active:hover,
+.btn.btn-outline.btn-theme.btn-hv-fadein:hover
+{
+    border-color: #336E7B;
+    background: #336E7B;
+}
+.btn-theme.btn-outline
+{
+    color: #336E7B;
+}
+.btn-theme.btn-hv-fadeout:hover,
+.btn-theme.btn-outline
+{
+    border-color: #336E7B;
+}
+.btn.btn-hv-theme:after,
+.btn.btn-hv-theme.btn-outline:after
+{
+    background: #336E7B;
+}
+.btn.btn-theme.btn-hvfill-right:hover,
+.btn.btn-theme.btn-hvfill-left:hover,
+.btn.btn-theme.btn-hvfill-top:hover,
+.btn.btn-theme.btn-hvfill-bottom:hover,
+.btn.btn-theme.btn-hvborder-right:hover,
+.btn.btn-theme.btn-hvborder-left:hover,
+.btn.btn-theme.btn-hvborder-center:hover
+{
+    background: #336E7B;
+}
+.btn.btn-outline.btn-theme.btn-hvborder-right:hover,
+.btn.btn-outline.btn-theme.btn-hvborder-left:hover,
+.btn.btn-outline.btn-theme.btn-hvborder-center:hover
+{
+    color: #336E7B!important;
+    border-color: #336E7B!important;
+}
+
+
+
+/* OWL CAROUSEL */
+.owl-carousel .owl-nav .owl-prev:hover:after,
+.owl-carousel .owl-nav .owl-next:hover:after
+{
+    color: #336E7B;
+}
+.owl-carousel.navigation-colored .owl-nav > div
+{
+    background: #336E7B;
+}
+.owl-carousel.navigation-colored .owl-nav > div:hover
+{
+    background: rgba(51,110,123,.6);
+}
+/* DOTS COLORED */
+.owl-carousel.dots-colored .owl-dots .owl-dot span
+{
+    background: #336E7B;
+}
+.owl-carousel.dots-colored .owl-dots .owl-dot:hover span
+{
+    background: rgba(51,110,123,.8);
+}
+.owl-carousel.dots-colored .owl-dots .owl-dot.active span
+{
+    border-color: #336E7B;
+}
+/* Pagination */
+.pagination > li > a,
+.pagination > li > span
+{
+    color: #336E7B;
+}
+.pagination > .active > a,
+.pagination > .active > a:focus,
+.pagination > .active > a:hover,
+.pagination > .active > span,
+.pagination > .active > span:focus,
+.pagination > .active > span:hover
+{
+    border-color: #336E7B;
+    background: #336E7B;
+}
+/* =================================================================== 
+							PORTFOLIO
+======================================================================*/
+.nav-tabs > li > a.active,
+.nav-tabs > li.active > a,
+.nav-tabs > li.active > a:hover,
+.nav-tabs > li.active > a:focus
+{
+    border-color: #336E7B;
+    background: #336E7B;
+}
+.nav-tabs.arrow-style-bordered > li > a.active:before,
+.nav-tabs.arrow-style-bordered > li.active > a:before
+{
+    border-top-color: #336E7B;
+}
+.tabs-left .nav-tabs.arrow-style-bordered > li > a.active:before,
+.tabs-left .nav-tabs.arrow-style-bordered > li.active > a:before
+{
+    border-left-color: #336E7B;
+}
+.tabs-right .nav-tabs.arrow-style-bordered > li > a.active:before,
+.tabs-right .nav-tabs.arrow-style-bordered > li.active > a:before
+{
+    border-right-color: #336E7B;
+}
+.nav-tabs.bordered-style > li > a.active,
+.nav-tabs.bordered-style > li > a.active:hover,
+.nav-tabs.bordered-style > li > a.active:focus,
+.nav-tabs.bordered-style > li.active > a:hover,
+.nav-tabs.bordered-style > li.active > a:focus,
+.nav-tabs.bordered-style > li.active > a
+{
+    border-color: #336E7B;
+}
+.nav-tabs.bottom-line-style > li > a.active:after,
+.nav-tabs.bottom-line-style > li.active > a:after
+{
+    background: #336E7B;
+}
+.nav-tabs.bordered-style > li > a.active
+{
+    border-color: #336E7B;
+}
+
+/* =================================================================== 
+							ICONS
+======================================================================*/
+.icon-theme,
+.icon-hvtheme:hover,
+.hv-wrapper:hover .icon-hvtheme
+{
+    color: #336E7B;
+}
+.icon-theme-bg,
+.icon-hvtheme-bg:hover,
+.hv-wrapper:hover .icon-hvtheme-bg
+{
+    background: #336E7B;
+}
+.icon-bordered-theme,
+.icon-hvbordered-theme:hover,
+.hv-wrapper:hover .icon-hvbordered-theme
+{
+    border-color: #336E7B;
+}
+/* =================================================================== 
+							ACCORDION
+======================================================================*/
+.accordion-bordered .panel-heading:after,
+.accordion-bordered-top .panel-heading:after
+{
+    background: #336E7B;
+}
+
+/* THEME OVERLAY */
+.theme-overlay:after,
+.theme-bg-opacity,
+.theme-overlay,
+.overlay-theme
+{
+    background-color: rgba(51,110,123,.6);
+}
+.pattern-overlay.theme-overlay:after,
+.theme-bg-lopacity
+{
+    background-color: rgba(51,110,123,.3);
+}
+/* =================================================================== 
+							FORM STYLES
+======================================================================*/
+.form-control:focus,
+.form-theme .form-control
+{
+    border-color: #336E7B;
+}
+.input-group-addon,
+.input-group-addon:hover,
+.input-group-addon:focus,
+.input-group-btn .btn-default,
+.input-group-btn .btn-default:hover,
+.input-group-btn .btn-default:focus
+{
+    border-color: #336E7B;
+    background: #336E7B;
+}
+/* Footer */
+.footer-top-border5
+{
+    border-color: #336E7B;
+}

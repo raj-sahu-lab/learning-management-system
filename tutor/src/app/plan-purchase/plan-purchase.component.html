@@ -1,0 +1,210 @@
+<nav class="top_navbar">
+	<div class="container">
+		<div class="row clearfix">
+			<div class="col-12">
+
+				<div class="navbar-logo">
+					<a href="javascript:void(0);" class="bars"></a>
+					<!-- <a class="navbar-brand" routerLink="/" routerLinkActive="active">
+						<span class="m-l-10 welcomeFont">Company</span>
+					</a> -->
+
+					<a routerLink="/" routerLinkActive="active" class="navbar-brand">
+                        <img class="rounded-circle" src="../../assets/images/company.png"
+                            style="border:0px;border-radius: 0px !important;width: auto;height:35px;">
+                    </a>
+				</div>
+
+			</div>
+		</div>
+	</div>
+</nav>
+
+<section class="content">
+	<div class="container">
+		
+		<div class="row clearfix">
+			<div class="col-lg-12">
+				<div class="card">
+					<div class="body block-header">
+						<div class="row">
+							<div class="col-lg-6 col-md-8 col-sm-12">
+
+								<!-- <h6>Choose your payment mode</h6> -->
+								
+								<ul class="breadcrumb p-l-0 p-b-0 ">
+									<li class="breadcrumb-item">
+										
+										<select class="btn btn-simple" [(ngModel)]="paymentMode" style="font-weight: 700;color: #FF7A59;background-color: #FFF;height: 38px;border: 1px solid #FF7A59;">
+											<option value="1">₹ INR</option>
+											<option value="2">$ USD</option>
+										</select>
+										
+										<button *ngFor="let term of allTermList; let i = index;" class="btn btn-secondary btn-simple" [ngClass]="{'term-notSelected' : selectedPlanIndex!=i}" (click)="termClicked(i)" style="color: #ffffff">
+											<i class="icon-calendar"></i> {{term.title}}
+										</button>
+										
+									</li>
+								</ul>
+								
+							</div>
+							<div class="col-lg-6 col-md-8 col-sm-12 text-right">
+								
+								<!-- <h6>Select your term</h6> -->
+								<a routerLink="/" routerLinkActive="active" class="btn btn-default" style="line-height: 1.60em;">
+									<i class="icon-arrow-left"></i> BACK
+								</a>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="row clearfix">
+
+			<div class="col-lg-4 cool-md-12 col-sm-12" *ngFor="let plan of currentTerm?.plan; let i = index;">
+				<div class="card">
+					<ul class="pricing body">
+						
+						<li [ngClass]="i==1 ? 'facebook feed' : 'google feed'">
+							<h3>{{plan.title}}</h3>
+							<span style="color:#FFF">{{currentTerm.title}} Package</span>
+						</li>
+						<li>
+							<h3>
+								{{(paymentMode == 1 && plan?.amount) != 0 ? '₹ ' : '$ '}}
+
+								{{paymentMode == 1 ? (plan?.amount | number: '1.2' ) : (plan?.amountUSD | number: '1.2' )}}
+
+								<sub style="font-size: 15px;" *ngIf="paymentMode == 1">Exc. GST</sub>
+							</h3>
+						</li>
+
+						<li *ngFor="let planDetail of plan.plan_detail">
+							{{planDetail.title}}
+						</li>
+						
+						<li>
+							<button class="btn btn-secondary btn-simple" style="color: #fff;" (click)="showPreview(i)">
+								{{plan.amount==0 ? 'Try Now' :'Buy Now'}}
+							</button>
+						</li>
+					</ul>
+				</div>
+			</div>
+
+		</div>
+
+		<div class="row clearfix">
+			<div class="col-md-12 col-lg-12">
+				<div class="card active-bg">
+					<div class="body">
+						<p class="copyright m-b-0 text-white">Copyright © 2021 Company Inc.
+						</p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+
+
+<!--Modal Popup -->
+<div id="mdl" class="modal" [style.display]="selectedPreview ? 'block' : 'none'">
+	<div class="modal-dialog modal-lg">
+	  <div class="modal-content">
+
+		<div class="modal-body labelTitle">
+			<div class="body">
+				<div class="row clearfix">
+					<div class="col-md-6 col-sm-6">
+						<address>
+							<strong class="headerSemiBold">{{user.account_title}}</strong><br>
+							{{user?.city?.title}},{{user?.city?.country?.title}}<br>
+							<abbr title="Phone"></abbr> ({{user?.countryCode}}) {{user?.account_phone}}
+						</address>
+					</div>
+					<div class="col-md-6 col-sm-6 text-right">
+						<p class="m-b-0 headerSemiBold">
+							<strong>Order Date: </strong> 
+							{{currentDate | date:'yyyy-MM-dd'}}
+						</p>
+						<!-- <p class="m-b-0"><strong>Order Status: </strong> <span class="badge badge-warning m-b-0">Pending</span></p> -->
+					</div>
+				</div>
+				<div class="row clearfix">
+					<div class="col-md-12">
+						<div class="table-responsive">
+							<table class="table table-hover">
+								<thead>
+									<tr>
+										<th>#</th>
+										<th class="text-center">Tearm</th>
+										<th class="text-center">Plan</th>
+										<th class="text-right">Amount</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr>
+										<td>1</td>
+										<td class="text-center">{{currentTerm?.title}}</td>
+										<td class="text-center">{{selectedPreview?.title}}</td>
+										<td class="text-right">
+											{{(paymentMode == 1 && selectedPreview?.amount) != 0 ? '₹ ' : '$ '}}
+											{{paymentMode == 1 ? (selectedPreview?.amount | number: '1.2') : (selectedPreview?.amountUSD | number: '1.2')}}
+										</td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+					</div>
+				</div>
+				<hr>
+				<div class="row clearfix">
+					<div class="col-md-6">
+						<p class="headerSemiBold">Enter your code!</p>
+						
+						<div class="input-group warning">
+							<input type="text" class="form-control" placeholder="Enter coupon code"	[(ngModel)]="couponCode" maxlength="10">
+							<span class="input-group-addon" (click)="checkCoupon()">
+								<i class="icon-action-redo"></i>
+							</span>
+						</div>
+						<div class="input-group warning">
+							<select class="form-control" [(ngModel)]="gatewayId">
+								<option [ngValue]="undefined" disabled>Select Paymentgateway</option>
+								<option *ngFor="let gateway of gatewayList" value="{{gateway?.paymentGateWay?.id}}">
+									{{gateway?.paymentGateWay?.name}}
+								</option>
+							</select>
+						</div>
+					</div>
+
+					<div class="col-md-6 text-right">
+						<p class="m-b-0">
+							<b>Sub-total:</b> 
+							{{(paymentMode == 1 && selectedPreview?.amount) != 0 ? '₹ ' : '$ '}}
+							{{paymentMode == 1 ? (selectedPreview?.amount | number: '1.2') : (selectedPreview?.amountUSD | number: '1.2')}}
+						</p>
+						<p class="m-b-0" *ngIf="discount != 0">Discout ({{discount}}%) : {{(paymentMode == 1 && selectedPreview?.amount) != 0 ? '₹ ' : '$ '}} {{(discountAmt | number: '1.2')}}</p>
+						<p class="m-b-0" *ngIf="paymentMode == 1">GST ({{gst}}%) : {{(paymentMode == 1 && selectedPreview?.amount) != 0 ? '₹ ' : '$ '}} {{(gstAmt | number: '1.2')}}</p>
+						<h3 class="m-b-0 m-t-10">{{(paymentMode == 1 && selectedPreview?.amount) != 0 ? '₹ ' : '$ '}} {{(total | number: '1.2')}}</h3>
+					</div>
+
+					<div class="hidden-print col-md-12 text-right">
+						
+						<hr>
+						<button class="btn btn-default headerBold" *ngIf="gatewayId == undefined">Select Paymentgateway</button>
+
+						<ngx-paypal  class="btn btn-neutral" [config]="payPalConfig" *ngIf="gatewayId == 1"></ngx-paypal>
+						<button class="btn btn-primary headerBold" *ngIf="gatewayId == 2" (click)="proceedRazorPay()">Continue to pay {{(paymentMode == 1 && selectedPreview?.amount) != 0 ? '₹ ' : '$ '}} {{total}}</button>
+						<button type="button" class="btn btn-secondary headerSemiBold" data-dismiss="modal" (click)="hidePreview()">Close</button>
+
+					</div>
+				</div>
+			</div>
+		</div>
+	  </div>
+	</div>
+  </div>

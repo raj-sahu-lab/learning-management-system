@@ -1,0 +1,118 @@
+<div class="container">
+
+    <div class="row clearfix">
+        <div class="col-lg-12">
+            <div class="card">
+                <div class="body block-header">
+                    <div class="row">
+                        <div class="col-lg-6 col-md-8 col-sm-12">
+                            <h2 class="headerSemiBold">Send Bulk SMS</h2>
+
+                            <ul class="breadcrumb p-l-0 p-b-0 labelTitle">
+                                <li class="breadcrumb-item">
+                                    <a class="linkColor" routerLink="/" routerLinkActive="active"><i
+                                            class="icon-home"></i></a>
+                                </li>
+                                <li class="breadcrumb-item active labelTitle">SMS</li>
+                            </ul>
+                        </div>
+                        <div class="col-lg-6 col-md-4 col-sm-12">
+                            <a routerLink="/" routerLinkActive="active"
+                                class="btn btn-secondary headerSemiBold float-right">
+                                <i class="icon-arrow-left"></i> BACK
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row clearfix">
+
+        <div class="col-sm-12 col-md-12 col-lg-12">
+            <div class="card">
+
+                <div class="header headerSemiBold">
+                    <h2><span class="linkColor">Send</span> SMS</h2>
+                </div>
+
+                <div class="body">
+                    <div class="demo-masked-input labelTitle">
+                        <div class="row clearfix">
+                            <div class="col-lg-12 col-md-12">SMS Content
+                                <div class="input-group">
+                                    <textarea rows="6" class="form-control no-resize" [(ngModel)]="description" style="border: 1px solid #E3E3E3;border-radius: 10px;" maxlength="918" placeholder="Type sms content"></textarea>
+                                </div>
+                            </div>
+                            <div class="col-lg-3 col-md-3">
+                                <div class="input-group">
+                                    <span class="linkColor">{{ 918 - description?.length }} Char. left</span>
+                                </div>
+                            </div>
+                            <div class="col-lg-3 col-md-3">
+                                <div class="input-group">
+                                    <span class="linkColor">SMS Char. - {{ description?.length }}</span>
+                                </div>
+                            </div>
+                            <div class="col-lg-3 col-md-3">
+                                <div class="input-group">
+                                    <span class="linkColor" *ngIf="description?.length == 0">SMS Count - 0</span>
+                                    <span class="linkColor"
+                                        *ngIf="description?.length > 0 && description?.length <= 153">SMS Count -
+                                        1</span>
+                                    <span class="linkColor"
+                                        *ngIf="description?.length > 153 && description?.length <=313">SMS Count -
+                                        2</span>
+                                    <span class="linkColor"
+                                        *ngIf="description?.length > 313 && description?.length <=473">SMS Count -
+                                        3</span>
+                                    <span class="linkColor"
+                                        *ngIf="description?.length > 473 && description?.length <=633">SMS Count -
+                                        4</span>
+                                    <span class="linkColor"
+                                        *ngIf="description?.length > 633 && description?.length <=793">SMS Count -
+                                        5</span>
+                                    <span class="linkColor" *ngIf="description?.length > 793">SMS Count - 6</span>
+                                </div>
+                            </div>
+                            <div class="col-lg-3 col-md-3">
+                                <div class="input-group">
+                                    <span class="linkColor">154 Char. - 1 SMS</span>
+                                </div>
+                            </div>
+
+                            <div class="col-lg-12 col-md-12">Paste number with country code
+                                <div class="input-group">
+                                    <textarea rows="15" class="form-control no-resize" [(ngModel)]="copyNumber" style="border: 1px solid #E3E3E3;border-radius: 10px;padding: 10px;" placeholder="paste your numbers with country code"></textarea>
+                                </div>
+                            </div>
+                            <div class="col-lg-12 col-md-12"><b>&nbsp;</b>
+                                <div class="input-group">
+                                    <input type="button" class="btn btn-secondary headerSemiBold float-right"
+                                        value="SEND" style="margin:0px;" (click)="submitButtonClick();">
+                                </div>
+                            </div>
+
+                            <div class="col-lg-12 col-md-12">
+                                <b>Instructions</b>: <br>
+                                1. Please Paste number with country code.<br>
+                                2. Please make sure that should not be any gap between two numbers.<br>
+                                3. Send Only 10,000 SMS At Once.<br><br>
+
+                                <b>Example </b>: <br>
+
+                                917697439839<br>
+                                919980213101<br>
+                                919429838710
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+</div>

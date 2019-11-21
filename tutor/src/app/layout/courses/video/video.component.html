@@ -1,0 +1,456 @@
+<div class="container" id="startForm">
+	
+	<div class="row clearfix">
+		<div class="col-lg-12">
+			<div class="card">
+				<div class="body block-header">
+					<div class="row">
+						<div class="col-lg-6 col-md-8 col-sm-12">
+							<h2 class="headerSemiBold">Manage Video</h2>
+
+							<ul class="breadcrumb p-l-0 p-b-0 labelTitle">
+								<li class="breadcrumb-item">
+									<a class="linkColor" routerLink="/" routerLinkActive="active"><i
+											class="icon-home"></i></a>
+								</li>
+								<li class="breadcrumb-item active labelTitle">Video</li>
+							</ul>
+						</div>
+						<div class="col-lg-6 col-md-4 col-sm-12">
+							<a routerLink="/" routerLinkActive="active"
+								class="btn btn-secondary headerSemiBold float-right">
+								<i class="icon-arrow-left"></i> BACK
+							</a>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="row clearfix">
+
+		<div class="col-sm-12 col-md-12 col-lg-12">
+			<div class="card">
+				<div class="header headerSemiBold">
+					<h2><span class="linkColor">Manage</span> Video</h2>
+				</div>
+				<div class="body">
+					<div class="demo-masked-input labelTitle">
+						<div class="row clearfix">
+							<div class="col-lg-3 col-md-3">Select Course Bundle
+								<div class="input-group">
+									<select class="form-control" [(ngModel)]="subjectId" (change)="subjectChanged()">
+										<option [ngValue]="undefined" disabled>Select Course Bundle</option>
+										<option *ngFor="let subject of subjectList" [ngValue]="subject.id">
+											{{subject.title}}
+										</option>
+									</select>
+								</div>
+							</div>
+							<div class="col-lg-3 col-md-3">Select Module
+								<div class="input-group">
+									<select class="form-control" [(ngModel)]="topicId" (change)="topicChanged()">
+										<option [ngValue]="undefined" disabled>Select Module</option>
+										<option *ngFor="let topic of topicsList" [ngValue]="topic.id">
+											{{topic.title}}
+										</option>
+									</select>
+								</div>
+							</div>
+							<div class="col-lg-3 col-md-3">Select Lecture Content
+								<div class="input-group">
+									<select class="form-control" [(ngModel)]="contentId" (change)="contentChange()">
+										<option [ngValue]="undefined" disabled>Select Content</option>
+										<option *ngFor="let content of contentList" [ngValue]="content.id">
+											{{content.title}}
+										</option>
+									</select>
+								</div>
+							</div>
+							<div class="col-lg-3 col-md-3">Video Name
+								<div class="input-group">
+									<input type="text" class="form-control" [(ngModel)]="title"
+										placeholder="Enter video name">
+								</div>
+							</div>
+							<div class="col-lg-3 col-md-3">
+								Media Type
+								<div class="input-group">
+									<select class="form-control" [(ngModel)]="videoStreamType">
+										<option value="0" checked>Choose File</option>
+										<option value="1">Youtube</option>
+										<option value="2">Vimeo</option>
+										<option value="3" *ngIf="importLiveClass">Import from live Class</option>
+									</select>
+								</div>
+							</div>
+							<div class="col-lg-3 col-md-3"> Select Video
+								<div class="input-group">
+									<!-- ,video/x-m4v,video/* -->
+									<input type="file" class="form-control" [(ngModel)]="video" accept="video/mp4"
+										(change)="FileChangedVideo($event)" *ngIf="videoStreamType == 0">
+									<input type="text" [(ngModel)]="videourl" class="form-control"
+										placeholder="Paste link" *ngIf="videoStreamType != 0">
+
+									<span class="linkColor" *ngIf="videoStreamType == 1">
+										Right click on video and copy video URL
+									</span>
+								</div>
+							</div>
+
+							<div class="col-lg-3 col-md-3" *ngIf="videoStreamType == 3"> Recording Duration
+								<div class="input-group">
+									<input type="text" [(ngModel)]="recordingDuration" class="form-control"
+										placeholder="Paste link">
+								</div>
+							</div>
+
+							<!-- Paymentgatway Start-->
+							<div class="col-lg-3 col-md-3"> Payment Type
+								<div class="input-group">
+									<div class="radio inlineblock m-r-20" style="margin-top:10px;">
+										<input type="radio" [(ngModel)]="paymentTypeFree" name="paymentType" id="free"
+											class="with-gap" value="0">
+										<label for="free">Free</label>
+									</div>
+									<div class="radio inlineblock" style="margin-top:10px;">
+										<input type="radio" [(ngModel)]="paymentTypeFree" name="paymentType" id="paid"
+											class="with-gap" value="1">
+										<label for="paid">Paid</label>
+									</div>
+								</div>
+							</div>
+							<div class="col-lg-3 col-md-3" *ngIf="paymentTypeFree == '1'">Payment Gateway
+                                <div class="input-group">
+                                    <select class="form-control" [(ngModel)]="paymentGateWayId">
+                                        <option [ngValue]="undefined" disabled>Payment Gateway</option>
+                                        <option *ngFor="let paymentGateWay of paymentGateWayList"
+                                            value="{{ paymentGateWay.id }}">
+                                            {{ paymentGateWay.title }}
+                                        </option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="col-lg-3 col-md-3" *ngIf="paymentTypeFree == '1'">iOS Amount
+								<span tooltip="It is pricing for iOS mobile application as per Apple’s guidelines." placement="top">
+									<i class="icon-info"></i>
+								</span>
+
+                                <div class="input-group">
+                                    <select class="form-control" [(ngModel)]="iosPaymentGateWayid">
+                                        <option [ngValue]="undefined" disabled>iOS Amount</option>
+                                        <option *ngFor="let iOSInApp of iOSInAppList" value="{{ iOSInApp.id }}">
+                                            {{ iOSInApp.title }} ( {{iOSInApp.inAppamount}} $)
+                                        </option>
+                                    </select>
+                                </div>
+							</div>
+
+							<div class="col-lg-3 col-md-3" *ngIf="paymentTypeFree == '1'">Currency
+                                <div class="input-group">
+                                  <select class="form-control" [(ngModel)]="currencyId">
+                                    <option [ngValue]="undefined" disabled>Currency</option>
+                                    <option *ngFor="let currency of currencyList" value="{{currency.id}}">
+                                      {{currency.title}} ( {{currency.sign}} )
+                                    </option>
+                                  </select>
+                                </div>
+                            </div>
+							<div class="col-lg-3 col-md-3" *ngIf="paymentTypeFree == '1'"> Amount
+								<div class="input-group">
+									<input type="number" class="form-control" [(ngModel)]="amount"
+										placeholder="Enter amount" min="0" pattern="/^-?\d+\.?\d*$/" onKeyPress="if(this.value.length==6) return false;">
+								</div>
+							</div>
+							<div class="col-lg-3 col-md-3" *ngIf="paymentTypeFree == '1'">Day's of validity
+								<span tooltip="After validity ends, students won’t be able to access it." placement="top">
+									<i class="icon-info"></i>
+								</span>
+
+								<div class="input-group">
+									<input type="number" class="form-control" [(ngModel)]="validity"
+										placeholder="Enter validity" min="0" pattern="/^-?\d+\.?\d*$/" onKeyPress="if(this.value.length==3) return false;">
+								</div>
+							</div>
+							<div class="col-lg-12 col-md-12" *ngIf="paymentTypeFree == '1'"> Payment Preview
+								<span tooltip="It will be visible on the website and mobile app when a student clicks on pay for video." placement="top">
+									<i class="icon-info"></i>
+								</span>
+
+								<div class="input-group">
+									<textarea rows="6" class="form-control no-resize" [(ngModel)]="previewText" style="border: 1px solid #E3E3E3;border-radius: 10px;" maxlength="200"></textarea>
+								</div>
+							</div>
+							<div class="col-lg-12 col-md-12" *ngIf="paymentTypeFree == '1'">
+								<div class="input-group">
+									<span class="linkColor">{{200 - previewText?.length}} character left</span>
+								</div>
+							</div>
+							<!-- Paymentgatway End-->
+
+							<div class="col-lg-3 col-md-3" *ngIf="isEdit"> Status
+								<div class="input-group">
+									<div class="radio inlineblock m-r-20" style="margin-top:10px;">
+										<input type="radio" [(ngModel)]="status" name="status" id="active"
+											class="with-gap" value="0">
+										<label for="active">Active</label>
+									</div>
+									<div class="radio inlineblock" style="margin-top:10px;">
+										<input type="radio" [(ngModel)]="status" name="status" id="inactive"
+											class="with-gap" value="1">
+										<label for="inactive">Inactive</label>
+									</div>
+								</div>
+							</div>
+							
+							<div class="col-lg-1 col-md-1"><b>&nbsp;</b>
+								<div class="input-group">
+
+									<input type="button" class="btn btn-secondary headerSemiBold float-right"
+										value="{{ isEdit ? 'UPDATE' : 'SUBMIT'}}" style="margin:0px;"
+										(click)="submitButtonClick();">
+
+								</div>
+							</div>
+							<div class="col-lg-1 col-md-1"><b>&nbsp;</b>
+								<div class="input-group">
+									<input type="button" class="btn btn-warning headerSemiBold float-right"
+										*ngIf="isEdit" value="CANCEL" style="margin:0px;" (click)="cancelEditClick();">
+								</div>
+							</div>
+							
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="col-sm-12 col-md-12 col-lg-12">
+			<div class="card">
+				<div class="header headerSemiBold">
+					<div class="row clearfix">
+
+						<div class="col-sm-6 col-md-6 col-lg-6">
+
+							<h2><span class="linkColor">Available</span> Video</h2>
+
+						</div>
+
+						<div class="col-sm-6 col-md-6 col-lg-6">
+
+							<ul class="header-dropdown" style="top: 0px;">
+
+								<li [ngClass]="filter ? 'dropdown show' : 'dropdown'">
+
+									<a href="javascript:void(0);" class="dropdown-toggle mr-4 linkColor"
+										data-toggle="dropdown" role="button" (click)="dropDownFilter();"
+										aria-haspopup="true" aria-expanded="false">
+										Manage columns
+									</a>
+
+									<ul class="dropdown-menu dropdown-menu-right labelTitle mangeColumn">
+										<li class="p-2">
+											<input type="checkbox" data-target="2" [(ngModel)]="columBranch"><span class="pl-2">Branch Name</span><br>
+											<input type="checkbox" data-target="3" [(ngModel)]="columTutor"><span class="pl-2">Educator Name</span><br>
+											<input type="checkbox" data-target="4" [(ngModel)]="columSubject"><span class="pl-2">Bundle Name</span><br>
+											<input type="checkbox" data-target="5" [(ngModel)]="columTopic"><span class="pl-2">Module Name</span><br>
+											<input type="checkbox" data-target="6" [(ngModel)]="columContent"><span class="pl-2">Content Header</span><br>
+											<input type="checkbox" data-target="7" [(ngModel)]="columTitle"><span class="pl-2">Video Name</span> <br>
+											<input type="checkbox" data-target="8" [(ngModel)]="columVideo"><span class="pl-2">Video</span> <br>
+											<input type="checkbox" data-target="9" [(ngModel)]="columVideoStatus"><span class="pl-2">Video Processing</span><br>
+											<input type="checkbox" data-target="10" [(ngModel)]="columPayment"><span class="pl-2">Gateway</span> <br>
+											<input type="checkbox" data-target="11" [(ngModel)]="columAmount"><span class="pl-2">Amount</span> <br>
+											<input type="checkbox" data-target="12" [(ngModel)]="columValidity"><span class="pl-2">Day's of validity</span><br>
+											<input type="checkbox" data-target="13" [(ngModel)]="columPreview"><span class="pl-2">Preview</span> <br>
+											<input type="checkbox" data-target="14" [(ngModel)]="columStatus"><span class="pl-2">Status</span>
+										</li>
+									</ul>
+								</li>
+							</ul>
+						</div>
+					</div>
+				</div>
+				<div class="body">
+					<div class="table-responsive">
+						<table class="table table-bordered table-striped table-hover dataTable js-exportable w-100">
+							<thead class="headerSemiBold">
+								<tr>
+									<th>#</th>
+									<th>S No</th>
+									<th [ngClass]="(columBranch == false)?'d-none':''">Branch Name</th>
+									<th [ngClass]="(columTutor == false)?'d-none':''">Educator Name</th>
+									<th [ngClass]="(columSubject == false)?'d-none':''">Bundle Name</th>
+									<th [ngClass]="(columTopic == false)?'d-none':''">Module Name</th>
+									<th [ngClass]="(columContent == false)?'d-none':''">Content Header</th>
+									<th [ngClass]="(columTitle == false)?'d-none':''">Video Name</th>
+									<th [ngClass]="(columVideo == false)?'d-none':''">Video</th>
+									<th [ngClass]="(columVideoStatus == false)?'d-none':''">Video Processing</th>
+									<th [ngClass]="(columPayment == false)?'d-none':''">Gateway</th>
+									<th [ngClass]="(columAmount == false)?'d-none':''">Amount</th>
+									<th [ngClass]="(columValidity == false)?'d-none':''">Day's of validity</th>
+									<th [ngClass]="(columPreview == false)?'d-none':''">Preview</th>
+									<th [ngClass]="(columStatus == false)?'d-none':''">Status</th>
+								</tr>
+							</thead>
+							<tbody class="labelTitle">
+								<tr *ngFor="let video of videoList;let i=index;">
+									<td>
+										<span class="badge badge-success" title="Update Video"
+											(click)="editButtonClick(video.id)">
+											<i class="icon-pencil"></i>
+										</span>
+										<span class="badge badge-danger" title="Delete Video"
+											(click)="deleteButtonClick(video.id)" *ngIf="userType == 1">
+											<i class="icon-trash"></i>
+										</span>
+									</td>
+									<td>{{videoList.length - i}}</td>
+									<td [ngClass]="(columBranch == false)?'d-none':''">{{video.subject.tutor.branch.name}}</td>
+									<td [ngClass]="(columTutor == false)?'d-none':''">{{video.subject.tutor.name}}</td>
+									<td [ngClass]="(columSubject == false)?'d-none':''">{{video.subject.title}}</td>
+									<td [ngClass]="(columTopic == false)?'d-none':''">{{video.topic.title}}</td>
+									<td [ngClass]="(columContent == false)?'d-none':''">{{video.content.title}}</td>
+									<td [ngClass]="(columTitle == false)?'d-none':''">{{video.title}}</td>
+									<td [ngClass]="(columVideo == false)?'d-none':''">
+										<span class="badge badge-success" title="Play Video"
+											(click)="showDescription(video.id)"
+											*ngIf="video.processingStatus == 2 && video.type == 0">
+											<i class="icon-eye"></i>
+										</span>
+										<span class="badge badge-success" title="Play Video"
+											(click)="showDescription(video.id)" *ngIf="video.type != 0">
+											<i class="icon-eye"></i>
+										</span>
+									</td>
+									<td [ngClass]="(columVideoStatus == false)?'d-none':''">
+										<span *ngIf="video.type == 0">
+											<span *ngIf="video.processingStatus == 0">Uploaded</span>
+											<span *ngIf="video.processingStatus == 1">Processing</span>
+											<span *ngIf="video.processingStatus == 2">Completed</span>
+											<span *ngIf="video.processingStatus == 3">Failed</span>
+										</span>
+										<span *ngIf="video.type!= 0">-</span>
+									</td>
+									<td [ngClass]="(columPayment == false)?'d-none':''">
+										{{ video.payment_type?.title}}
+										{{ video.iosPaymentGateWay == null ? '' : '/' }} 
+                     					{{ video.iosPaymentGateWay?.title }}
+									</td>
+									<td [ngClass]="(columAmount == false)?'d-none':''">
+										<span *ngIf="video.isPaid">{{video.currency.sign}}</span>
+										{{video.amount | number: '1.2'}}
+									</td>
+									<td [ngClass]="(columValidity == false)?'d-none':''">{{video.validity}}</td>
+									<td [ngClass]="(columPreview == false)?'d-none':''">
+										<span class="badge badge-success" title="Preview"
+											(click)="showPreview(video.id)" *ngIf="video.isPaid == 1">
+											<i class="icon-eye"></i>
+										</span>
+									</td>
+									<td [ngClass]="(columStatus == false)?'d-none':''">
+										<span class="badge badge-{{video.status==0 ? 'success' : 'warning'}}">
+											{{video.status==0 ? 'Active' : 'Inactive'}}
+										</span>
+									</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+				</div>
+			</div>
+		</div>
+
+	</div>
+
+</div>
+
+<!--Modal Popup -->
+<div class="modal" [style.display]="selectedPreview ? 'block' : 'none'">
+	<div class="modal-dialog">
+		<div class="modal-content">
+
+			<div class="modal-header">
+				<h6 class="headerBold">{{selectedPreview?.title}}</h6>
+			</div>
+
+			<div class="modal-body labelTitle" [innerHTML]="selectedPreview?.preview"></div>
+
+			<div class="modal-footer">
+				<button type="button" class="btn btn-secondary headerSemiBold" data-dismiss="modal"
+					(click)="hidePreview()">Close</button>
+			</div>
+
+		</div>
+	</div>
+</div>
+
+<div class="modal" [style.display]="selectedDescription ? 'block' : 'none'">
+	<div class="modal-dialog modal-lg">
+		<div class="modal-content">
+
+			<div class="modal-header">
+				<h6 class="headerBold">{{selectedDescription?.title}}</h6>
+			</div>
+
+			<div class="modal-body labelTitle">
+
+				<div *ngIf="videoStreamType==0 && !isMp4">
+					<div id="player" class="vid-wrapper videre-container paused">
+					</div>
+				</div>
+
+				<div *ngIf="videoStreamType==0 && isMp4">
+					<video id="vid" class="video-js" *ngIf="mp4VideoUrl" width="100%" controlsList="nodownload" tabindex="-1" preload="auto" autoplay controls style="border-radius: 0rem !important;">
+                        <source [src]="mp4VideoUrl" type='video/mp4'>
+                    </video>
+				</div>
+
+				<iframe id="youtubeVideo" *ngIf="videoStreamType==1" style="height:400px;" width="100%"
+					[src]="youtubeUrl" frameborder="0"
+					allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+					allowfullscreen></iframe>
+
+				<iframe id="vimeoVideo" *ngIf="videoStreamType==2" style="height:400px;" width="100%" [src]="vimeoUrl"
+					frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+					allowfullscreen></iframe>
+
+			</div>
+
+			<div class="modal-footer">
+				<button type="button" class="btn btn-secondary headerSemiBold" data-dismiss="modal"
+					(click)="hideDescription()">Close</button>
+			</div>
+
+		</div>
+	</div>
+</div>
+<!--Modal Popup -->
+
+<!-- disable background -->
+
+<div class="modal showLoading" *ngIf="progressPercent">
+	<div class="modal-dialog modal-lg">
+		<div class="modal-content">
+
+			<div class="modal-header">
+				<h6 class="headerBold">Kindly don't close the browser window or refresh it until it is uploaded.</h6>
+			</div>
+
+			<div class="modal-body labelTitle">
+				<div class="progress-bar" role="progressbar" [attr.aria-valuenow]="progressPercent" aria-valuemin="0" aria-valuemax="100" [ngStyle]="{'width': progressPercent+'%'}"> {{progressPercent}}% </div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<!-- <div *ngIf="progressPercent" class="showLoading">
+	<div class="row clearfix w-100">
+		<div class="col-12 prg">
+			<div class="progress m-b-5">
+				<div class="progress-bar" role="progressbar" [attr.aria-valuenow]="progressPercent" aria-valuemin="0" aria-valuemax="100" [ngStyle]="{'width': progressPercent+'%'}"> {{progressPercent}}% </div>
+			</div>
+		</div>
+	</div>
+</div> -->

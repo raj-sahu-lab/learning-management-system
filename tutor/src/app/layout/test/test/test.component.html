@@ -1,0 +1,694 @@
+<div class="container">
+
+    <div class="row clearfix">
+        <div class="col-lg-12">
+            <div class="card">
+                <div class="body block-header">
+                    <div class="row">
+                        <div class="col-lg-6 col-md-8 col-sm-12">
+                            <h2 class="headerSemiBold">Manage Assignments</h2>
+
+                            <ul class="breadcrumb p-l-0 p-b-0 labelTitle">
+                                <li class="breadcrumb-item">
+                                    <a class="linkColor" routerLink="/" routerLinkActive="active"><i
+                                            class="icon-home"></i></a>
+                                </li>
+                                <li class="breadcrumb-item active labelTitle">Assignments</li>
+                            </ul>
+                        </div>
+                        <div class="col-lg-6 col-md-4 col-sm-12">
+                            <a routerLink="/" routerLinkActive="active"
+                                class="btn btn-secondary headerSemiBold float-right">
+                                <i class="icon-arrow-left"></i> BACK
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row clearfix">
+        <div class="col-sm-12 col-md-12 col-lg-12">
+            <div class="card">
+
+                <div class="header headerSemiBold">
+                    <h2><span class="linkColor">Manage</span> Assignments</h2>
+                </div>
+
+                <div class="body">
+                    <div class="demo-masked-input labelTitle">
+
+                        <div class="row clearfix">
+
+                            <div class="col-lg-4 col-md-4" *ngIf="setQuestion==0">
+                                Choose File
+                                <a href="../.../../../../../assets/TestUploadSheet.xls" target="_target"
+                                    class="linkColor"> Download
+                                    Sample</a>
+                                    
+                                &nbsp;
+                                <span tooltip="Use execel file or proceed by inputing manual question." placement="top">
+                                    <i class="icon-info"></i>
+                                </span>
+
+                                <div class="input-group">
+                                    <input type="file" class="form-control float-right"
+                                        (change)="selectExcelFile($event)" [(ngModel)]="excelFile" style="margin:0px;"
+                                        accept=".csv, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, application/vnd.ms-excel">
+                                </div>
+
+                            </div>
+
+                            <div class="col-lg-4 col-md-4">Select Course Bundle
+                                <div class="input-group">
+                                    <select class="form-control" [(ngModel)]="subjectId" (change)="subjectChanged()">
+                                        <option [ngValue]="undefined" disabled>Select Course Bundle</option>
+                                        <option *ngFor="let subject of subjectList" [ngValue]="subject.id">
+                                            {{ subject.title }}
+                                        </option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="col-lg-4 col-md-4">Select Lecture Module
+                                <div class="input-group">
+                                    <select class="form-control" [(ngModel)]="topicId" (change)="topicChanged()">
+                                        <option [ngValue]="undefined" disabled>Select Module</option>
+                                        <option *ngFor="let topic of topicsList" [ngValue]="topic.id">
+                                            {{ topic.title }}
+                                        </option>
+                                    </select>
+                                </div>
+                            </div>
+
+                        </div>
+
+                        <div class="row clearfix">
+
+                            <div class="col-lg-4 col-md-4">Select Content
+                                <div class="input-group">
+                                    <select class="form-control" [(ngModel)]="contentId" (change)="contentChange()">
+                                        <option [ngValue]="undefined" disabled>Select Content</option>
+                                        <option *ngFor="let content of contentList" [ngValue]="content.id">
+                                            {{ content.title }}
+                                        </option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="col-lg-4 col-md-4">Test title
+                                <div class="input-group">
+                                    <input type="text" class="form-control" [(ngModel)]="title"
+                                        placeholder="Enter title">
+                                </div>
+                            </div>
+
+                            <div class="col-lg-4 col-md-4" *ngIf="!(excelFile)">Set of question
+                                <div class="input-group">
+                                    <select class="form-control" [(ngModel)]="setQuestion" (change)="setQuestionAdd();">
+                                        <option [ngValue]="0">Select Set</option>
+                                        <option *ngFor="let setOfQuestion of setOfQuestions">{{ setOfQuestion }}</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                        </div>
+
+                        <div class="row clearfix">
+
+                            <div class="col-lg-12 col-md-12">Instruction Description
+                                <div class="input-group">
+                                    <textarea rows="6" class="form-control no-resize" [(ngModel)]="description"
+                                        style="border: 1px solid #E3E3E3;border-radius: 10px;"
+                                        maxlength="200"></textarea>
+                                </div>
+                            </div>
+
+                            <!-- Paymentgatway Start-->
+                            <div class="col-lg-4 col-md-4"> Payment Type
+                                <div class="input-group">
+                                    <div class="radio inlineblock m-r-20" style="margin-top:10px;">
+                                        <input type="radio" [(ngModel)]="paymentTypeFree" name="paymentType" id="free"
+                                            class="with-gap" value="0">
+                                        <label for="free">Free</label>
+                                    </div>
+                                    <div class="radio inlineblock" style="margin-top:10px;">
+                                        <input type="radio" [(ngModel)]="paymentTypeFree" name="paymentType" id="paid"
+                                            class="with-gap" value="1">
+                                        <label for="paid">Paid</label>
+                                    </div>
+                                </div>
+                            </div>
+
+
+                            <div class="col-lg-2 col-md-2" *ngIf="paymentTypeFree == '1'">Payment Gateway
+                                <div class="input-group">
+                                    <select class="form-control" [(ngModel)]="paymentGateWayId">
+                                        <option [ngValue]="undefined" disabled>Payment Gateway</option>
+                                        <option *ngFor="let paymentGateWay of paymentGateWayList"
+                                            value="{{ paymentGateWay.id }}">
+                                            {{ paymentGateWay.title }}
+                                        </option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="col-lg-2 col-md-2" *ngIf="paymentTypeFree == '1'">iOS Amount
+                                <span tooltip="It is pricing for iOS mobile application as per Apple’s guidelines." placement="top">
+                                    <i class="icon-info"></i>
+                                </span>
+                                
+                                <div class="input-group">
+                                    <select class="form-control" [(ngModel)]="iosPaymentGateWayid">
+                                        <option [ngValue]="undefined" disabled>iOS Amount</option>
+                                        <option *ngFor="let iOSInApp of iOSInAppList" value="{{ iOSInApp.id }}">
+                                            {{ iOSInApp.title }} ( {{ iOSInApp.inAppamount }} $)
+                                        </option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="col-lg-2 col-md-2" *ngIf="paymentTypeFree == '1'">Currency
+                                <div class="input-group">
+                                  <select class="form-control" [(ngModel)]="currencyId">
+                                    <option [ngValue]="undefined" disabled>Currency</option>
+                                    <option *ngFor="let currency of currencyList" value="{{currency.id}}">
+                                      {{currency.title}} ( {{currency.sign}} )
+                                    </option>
+                                  </select>
+                                </div>
+                            </div>
+
+                            <div class="col-lg-2 col-md-2" *ngIf="paymentTypeFree == '1'"> Amount
+                                <div class="input-group">
+                                    <input type="number" class="form-control" [(ngModel)]="amount"
+                                        placeholder="Enter amount" min="0" pattern="/^-?\d+\.?\d*$/" onKeyPress="if(this.value.length==5) return false;">
+                                </div>
+                            </div>
+
+                            <div class="col-lg-12 col-md-12" *ngIf="paymentTypeFree == '1'"> Payment Preview
+                                <span tooltip="It will be visible on the website and mobile app when a student clicks on pay for test." placement="top">
+                                    <i class="icon-info"></i>
+                                </span>
+
+                                <div class="input-group">
+                                    <textarea rows="6" class="form-control no-resize" [(ngModel)]="previewText" style="border: 1px solid #E3E3E3;border-radius: 10px;" maxlength="200"></textarea>
+                                </div>
+                            </div>
+
+                            <div class="col-lg-12 col-md-12" *ngIf="paymentTypeFree == '1'">
+                                <div class="input-group">
+                                    <span class="linkColor">{{ 200 - previewText?.length }} character left</span>
+                                </div>
+                            </div>
+                            <!-- Paymentgatway End-->
+                        </div>
+
+                        <div class="row clearfix">
+                            <!-- Time Management Start-->
+                            <div class="col-lg-4 col-md-4"> Set Test Time
+                                <div class="input-group">
+                                    <div class="radio inlineblock m-r-20" style="margin-top:10px;">
+                                        <input type="radio" [(ngModel)]="timedTest" value="0" name="timedTest"
+                                            id="untimed" class="with-gap">
+                                        <label for="untimed">Untimed</label>
+                                    </div>
+                                    <div class="radio inlineblock" style="margin-top:10px;">
+                                        <input type="radio" [(ngModel)]="timedTest" value="1" name="timedTest"
+                                            id="timed" class="with-gap">
+                                        <label for="timed">Timed</label>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-lg-6 col-md-6" *ngIf="timedTest == '1'"> Manage Time
+                                <div class="input-group">
+                                    <div class="radio inlineblock m-r-20" style="margin-top:10px;">
+                                        <input type="radio" [(ngModel)]="timeManage" value="0" name="timeManage"
+                                            id="differentTime" class="with-gap">
+                                        <label for="differentTime">All questions have different time</label>
+                                    </div>
+                                    <div class="radio inlineblock" style="margin-top:10px;">
+                                        <input type="radio" [(ngModel)]="timeManage" value="1" name="timeManage"
+                                            id="equalTime" class="with-gap">
+                                        <label for="equalTime">All question have equal time</label>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-lg-2 col-md-2" *ngIf="timedTest == '1' && timeManage == '1' "> Total
+                                duration in min
+                                <div class="input-group">
+                                    <input type="number" class="form-control" [(ngModel)]="testDuration"
+                                        placeholder="Enter duration" (change)="equalTime();" min="0" pattern="/^-?\d+\.?\d*$/" onKeyPress="if(this.value.length==3) return false;">
+                                </div>
+                            </div>
+                            <!-- Time Management End-->
+                        </div>
+
+                        <div class="row clearfix">
+                            <!-- Mark Management Start-->
+                            <div class="col-lg-10 col-md-10"> Add marks
+                                <div class="input-group">
+                                    <div class="radio inlineblock m-r-20" style="margin-top:10px;">
+                                        <input type="radio" [(ngModel)]="markDistribution" value="0" name="markManage"
+                                            id="differentMark" class="with-gap">
+                                        <label for="differentMark">All questions have different marks</label>
+                                    </div>
+                                    <div class="radio inlineblock" style="margin-top:10px;">
+                                        <input type="radio" [(ngModel)]="markDistribution" value="1" name="markManage"
+                                            id="equalMark" class="with-gap">
+                                        <label for="equalMark">All question have equal mark</label>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-lg-2 col-md-2" *ngIf="markDistribution == '1' "> Total mark
+                                <div class="input-group">
+                                    <input type="number" class="form-control" [(ngModel)]="totalMarks"
+                                        placeholder="Enter duration" (change)="equalMark();" min="0" pattern="/^-?\d+\.?\d*$/" onKeyPress="if(this.value.length==3) return false;">
+                                </div>
+                            </div>
+                            <!-- Mark Management End-->
+
+                        </div>
+
+                        <div class="row clearfix" *ngFor="let testQuestion of testQuestionList; let i = index">
+
+                            <div class="col-lg-12 col-md-12"><span class="linkColor headerBold">Question
+                                    {{ (i+1) }}</span>
+
+                                <div class="input-group">
+                                    <!-- <input type="text" class="form-control" [(ngModel)]="testQuestion.question" placeholder="Enter question"> -->
+
+                                    <textarea rows="2" class="form-control no-resize"
+                                        [(ngModel)]="testQuestion.question" placeholder="Enter question"
+                                        style="border: 1px solid #E3E3E3;border-radius: 10px;"></textarea>
+
+                                    <input type="button" class="btn btn-danger float-right" value="-"
+                                        style="margin:0px;" (click)="removeButtonClick(i);">
+                                </div>
+                            </div>
+
+                            <div class="col-lg-2 col-md-2"> Right Answer </div>
+                            <div class="col-lg-10 col-md-10"> Type Answer of question {{ (i+1) }} </div>
+
+                            <!-- Answer 1 -->
+                            <div class="col-lg-2 col-md-2">
+                                <div class="input-group">
+                                    <div class="radio">
+                                        <!--[(ngModel)]="testQuestion.rightanswer"-->
+                                        <input type="radio" name="rightAnswer{{ i }}" (click)="setAnswer(i,1);"
+                                            id="rightAnswer1{{ i }}" class="with-gap" value="1"
+                                            [checked]="testQuestion.rightanswer == '1'">
+                                        <label for="rightAnswer1{{ i }}">Answer 1</label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-10 col-md-10">
+                                <div class="input-group">
+                                    <textarea rows="3" class="form-control no-resize" [(ngModel)]="testQuestion.answer1"
+                                        placeholder="Enter answer1"
+                                        style="border: 1px solid #E3E3E3;border-radius: 10px;"
+                                        maxlength="200"></textarea>
+                                </div>
+                            </div>
+                            <!-- Answer 1 -->
+
+                            <!-- Answer 2 -->
+                            <div class="col-lg-2 col-md-2">
+                                <div class="input-group">
+                                    <div class="radio">
+                                        <input type="radio" name="rightAnswer{{ i }}" (click)="setAnswer(i,2);"
+                                            id="rightAnswer2{{ i }}" class="with-gap" value="2"
+                                            [checked]="testQuestion.rightanswer == '2'">
+                                        <label for="rightAnswer2{{ i }}">Answer 2</label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-10 col-md-10">
+                                <div class="input-group">
+                                    <textarea rows="3" class="form-control no-resize" [(ngModel)]="testQuestion.answer2"
+                                        placeholder="Enter answer2"
+                                        style="border: 1px solid #E3E3E3;border-radius: 10px;"
+                                        maxlength="200"></textarea>
+                                </div>
+                            </div>
+                            <!-- Answer 2 -->
+
+                            <!-- Answer 3 -->
+                            <div class="col-lg-2 col-md-2">
+                                <div class="input-group">
+                                    <div class="radio">
+                                        <input type="radio" name="rightAnswer{{ i }}" (click)="setAnswer(i,3);"
+                                            id="rightAnswer3{{ i }}" class="with-gap" value="3"
+                                            [checked]="testQuestion.rightanswer == '3'">
+                                        <label for="rightAnswer3{{ i }}">Answer 3</label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-10 col-md-10">
+                                <div class="input-group">
+                                    <textarea rows="3" class="form-control no-resize" [(ngModel)]="testQuestion.answer3"
+                                        placeholder="Enter answer3"
+                                        style="border: 1px solid #E3E3E3;border-radius: 10px;"
+                                        maxlength="200"></textarea>
+                                </div>
+                            </div>
+                            <!-- Answer 3 -->
+
+                            <!-- Answer 4 -->
+                            <div class="col-lg-2 col-md-2">
+                                <div class="input-group">
+                                    <div class="radio">
+                                        <input type="radio" name="rightAnswer{{ i }}" (click)="setAnswer(i,4);"
+                                            id="rightAnswer4{{ i }}" class="with-gap" value="4"
+                                            [checked]="testQuestion.rightanswer == '4'">
+                                        <label for="rightAnswer4{{ i }}">Answer 4</label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-10 col-md-10">
+                                <div class="input-group">
+                                    <textarea rows="3" class="form-control no-resize" [(ngModel)]="testQuestion.answer4"
+                                        placeholder="Enter answer4"
+                                        style="border: 1px solid #E3E3E3;border-radius: 10px;"
+                                        maxlength="200"></textarea>
+                                </div>
+                            </div>
+                            <!-- Answer 4 -->
+
+                            <div class="col-lg-6 col-md-6" *ngIf="timedTest == '1'">Time
+                                <div class="input-group">
+                                    <input type="number" class="form-control" [(ngModel)]="testQuestion.question_time"
+                                        [readonly]="timeManage == '1' ? true : false" placeholder="Enter question time">
+                                </div>
+                            </div>
+
+                            <div class="col-lg-6 col-md-6">Marks
+                                <div class="input-group">
+                                    <input type="number" class="form-control" [(ngModel)]="testQuestion.question_mark"
+                                        [readonly]="markDistribution == '1' ? true : false"
+                                        placeholder="Enter question mark" pattern="/^-?\d+\.?\d*$/" onKeyPress="if(this.value.length==5) return false;">
+                                </div>
+                            </div>
+
+                            <div class="col-lg-12 col-md-12">Answer Explanation
+                                <div class="input-group">
+                                    <textarea rows="3" class="form-control no-resize"
+                                        [(ngModel)]="testQuestion.explanation" value="1" placeholder="Enter explanation"
+                                        style="border: 1px solid #E3E3E3;border-radius: 10px;"
+                                        maxlength="200"></textarea>
+                                </div>
+                            </div>
+
+                            <div class="col-lg-12 col-md-12">Youtube URL
+                                <div class="input-group">
+                                    <input type="text" class="form-control" [(ngModel)]="testQuestion.videoLink"
+                                        placeholder="Enter youtube url">
+                                </div>
+                            </div>
+
+                        </div>
+
+                        <div class="row clearfix">
+                            <div class="col-lg-3 col-md-3"><b>&nbsp;</b>
+                                <div class="input-group">
+                                    <input type="button" class="btn btn-warning headerSemiBold float-right"
+                                        value="Add Questions" style="margin:0px;" (click)="addButtonClick();">
+                                </div>
+                            </div>
+
+                            <div class="col-lg-3 col-md-3" *ngIf="isEdit"> Status
+                                <div class="input-group">
+                                    <div class="radio inlineblock m-r-20" style="margin-top:10px;">
+                                        <input type="radio" [(ngModel)]="status" name="status" id="active"
+                                            class="with-gap" value="0">
+                                        <label for="active">Active</label>
+                                    </div>
+                                    <div class="radio inlineblock" style="margin-top:10px;">
+                                        <input type="radio" [(ngModel)]="status" name="status" id="inactive"
+                                            class="with-gap" value="1">
+                                        <label for="inactive">Inactive</label>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-lg-1 col-md-1"><b>&nbsp;</b>
+                                <div class="input-group">
+                                    <input type="button" class="btn btn-secondary headerSemiBold float-right"
+                                        value="{{ isEdit ? 'UPDATE' : 'SUBMIT' }}"
+                                        style="margin:0px;" (click)="submitButtonClick();">
+                                </div>
+                            </div>
+                            <div class="col-lg-1 col-md-1"><b>&nbsp;</b>
+                                <div class="input-group">
+                                    <input type="button" class="btn btn-warning float-right" *ngIf="isEdit"
+                                        value="CANCEL" style="margin:0px;" (click)="cancelEditClick();">
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-sm-12 col-md-12 col-lg-12">
+            <div class="card">
+                <div class="header headerSemiBold">
+                    <div class="row clearfix">
+
+                        <div class="col-sm-6 col-md-6 col-lg-6">
+
+                            <h2><span class="linkColor">Available</span> Assignments</h2>
+
+                        </div>
+
+                        <div class="col-sm-6 col-md-6 col-lg-6">
+
+                            <ul class="header-dropdown" style="top: 0px;">
+
+                                <li [ngClass]="filter ? 'dropdown show' : 'dropdown'">
+
+                                    <a href="javascript:void(0);" class="dropdown-toggle mr-4 linkColor"
+                                        data-toggle="dropdown" role="button" (click)="dropDownFilter();"
+                                        aria-haspopup="true" aria-expanded="false">
+                                        Manage columns
+                                    </a>
+
+                                    <ul class="dropdown-menu dropdown-menu-right labelTitle">
+
+                                        <li style="padding:10px;">
+                                            <input type="checkbox" [(ngModel)]="columBranch"> Branch Name<br>
+                                            <input type="checkbox" [(ngModel)]="columTutor"> Educator Name<br>
+                                            <input type="checkbox" [(ngModel)]="columSubject"> Bundle Name<br>
+                                            <input type="checkbox" [(ngModel)]="columTopic"> Module Name<br>
+                                            <input type="checkbox" [(ngModel)]="columContent"> Content Header<br>
+                                            <input type="checkbox" [(ngModel)]="columTitle"> Instruction Title <br>
+                                            <input type="checkbox" [(ngModel)]="columDescription">Instruction
+                                            Description <br>
+                                            <input type="checkbox" [(ngModel)]="columPayment"> Gateway <br>
+                                            <input type="checkbox" [(ngModel)]="columAmount"> Amount <br>
+                                            <input type="checkbox" [(ngModel)]="columPreview"> Preview <br>
+                                            <input type="checkbox" [(ngModel)]="columQuestion"> Question <br>
+                                            <input type="checkbox" [(ngModel)]="columDuration"> Duration <br>
+                                            <input type="checkbox" [(ngModel)]="columMarks"> Marks <br>
+                                            <input type="checkbox" [(ngModel)]="columStatus"> Status
+
+                                        </li>
+                                    </ul>
+
+                                </li>
+
+                            </ul>
+
+                        </div>
+
+                    </div>
+                </div>
+
+                <div class="body">
+                    <div class="table-responsive">
+                        <table class="table table-bordered table-striped table-hover dataTable js-exportable">
+                            <thead class="headerSemiBold">
+                                <tr>
+                                    <th *ngIf="userType == 1">#</th>
+                                    <th>S No</th>
+                                    <th [ngClass]="(columBranch == false)?'d-none':''">Branch Name</th>
+                                    <th [ngClass]="(columTutor == false)?'d-none':''">Educator Name</th>
+                                    <th [ngClass]="(columSubject == false)?'d-none':''">Bundle Name</th>
+                                    <th [ngClass]="(columTopic == false)?'d-none':''">Module Name</th>
+                                    <th [ngClass]="(columContent == false)?'d-none':''">Content Header</th>
+                                    <th [ngClass]="(columTitle == false)?'d-none':''">Instruction Title</th>
+                                    <th [ngClass]="(columDescription == false)?'d-none':''">Instruction Description</th>
+                                    <th [ngClass]="(columPayment == false)?'d-none':''">Gateway</th>
+                                    <th [ngClass]="(columAmount == false)?'d-none':''">Amount</th>
+                                    <th [ngClass]="(columPreview == false)?'d-none':''">Preview</th>
+                                    <th [ngClass]="(columQuestion == false)?'d-none':''">Question</th>
+                                    <th [ngClass]="(columDuration == false)?'d-none':''">Duration</th>
+                                    <th [ngClass]="(columMarks == false)?'d-none':''">Marks</th>
+                                    <th [ngClass]="(columStatus == false)?'d-none':''">Status</th>
+                                </tr>
+                            </thead>
+                            <tbody class="labelTitle">
+                                <tr *ngFor="let test of testList;let i=index;">
+                                    <td *ngIf="userType == 1">
+
+                                        <!-- <span class="badge badge-success" title="Update Practice" (click)="editButtonClick(test.id)">
+                      <i class="icon-pencil"></i>
+                    </span> -->
+
+                                        <span class="badge badge-danger" title="Delete Practice"
+                                            (click)="deleteButtonClick(test.id)">
+                                            <i class="icon-trash"></i>
+                                        </span>
+                                    </td>
+                                    <td>{{ testList.length - i }}</td>
+                                    <td [ngClass]="(columBranch == false)?'d-none':''">{{ test.subject.tutor.branch.name }}</td>
+                                    <td [ngClass]="(columTutor == false)?'d-none':''">{{ test.subject.tutor.name }}</td>
+                                    <td [ngClass]="(columSubject == false)?'d-none':''">{{ test.subject.title }}</td>
+                                    <td [ngClass]="(columTopic == false)?'d-none':''">{{ test.topic.title }}</td>
+                                    <td [ngClass]="(columContent == false)?'d-none':''">{{ test.content.title }}</td>
+                                    <td [ngClass]="(columTitle == false)?'d-none':''">{{ test.title }}</td>
+                                    <td [ngClass]="(columDescription == false)?'d-none':''">
+                                        <span class="badge badge-success" title="Question List"
+                                            (click)="showDescription(test.id)">
+                                            <i class="icon-eye"></i>
+                                        </span>
+                                    </td>
+                                    <td [ngClass]="(columPayment == false)?'d-none':''">
+                                        {{ test.payment_type?.title }}
+                                        {{ test.iosPaymentGateWay == null ? '' : '/' }}
+                                        {{ test.iosPaymentGateWay?.title }}
+                                    </td>
+                                    <td [ngClass]="(columAmount == false)?'d-none':''">
+                                        <span *ngIf="test.amount">{{test.currency.sign}}</span>
+                                        {{ test.amount | number: '1.2' }}
+                                    </td>
+                                    <td [ngClass]="(columPreview == false)?'d-none':''">
+                                        <span class="badge badge-success" title="Preview"
+                                            (click)="showPreview(test.id)">
+                                            <i class="icon-eye"></i>
+                                        </span>
+                                    </td>
+                                    <td [ngClass]="(columQuestion == false)?'d-none':''">
+                                        <span class="badge badge-success" title="Question List"
+                                            (click)="showQuestion(test.id)">
+                                            <i class="icon-eye"></i>
+                                        </span>
+                                    </td>
+                                    <td [ngClass]="(columDuration == false)?'d-none':''">{{ test.testDuration }}</td>
+                                    <td [ngClass]="(columMarks == false)?'d-none':''">{{ test.totalMarks | number: '1.2' }}</td>
+                                    <td [ngClass]="(columStatus == false)?'d-none':''">
+                                        <span
+                                            class="badge badge-{{ test.status==0 ? 'success' : 'warning' }}">
+                                            {{ test.status==0 ? 'Active' : 'Inactive' }}
+                                        </span>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+</div>
+
+<!--Modal Popup -->
+<div class="modal" [style.display]="selectedPreview ? 'block' : 'none'">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+
+            <div class="modal-header">
+                <h6 class="headerBold">{{ selectedPreview?.title }}</h6>
+            </div>
+
+            <div class="modal-body labelTitle">
+                {{ selectedPreview?.preview }}
+            </div>
+
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary headerSemiBold" data-dismiss="modal"
+                    (click)="hidePreview()">Close</button>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<div class="modal" [style.display]="selectedDescription ? 'block' : 'none'">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+
+            <div class="modal-header">
+                <h6 class="headerBold">{{ selectedDescription?.title }}</h6>
+            </div>
+
+            <div class="modal-body labelTitle">
+                {{ selectedDescription?.description }}
+            </div>
+
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary headerSemiBold" data-dismiss="modal"
+                    (click)="hideDescription()">Close</button>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<div class="modal" [style.display]="selectedQuestion ? 'block' : 'none'">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+
+            <div class="modal-header">
+                <h6 class="headerBold">{{ selectedQuestion?.title }}</h6>
+            </div>
+
+            <div class="modal-body">
+
+                <table class="table table-bordered table-striped table-hover">
+                    <thead class="headerSemiBold">
+                        <tr>
+                            <th>S No</th>
+                            <th>Question</th>
+                            <th>Answer1</th>
+                            <th>Answer2</th>
+                            <th>Answer3</th>
+                            <th>Answer4</th>
+                            <th>Answer</th>
+                            <th>Explanation</th>
+                            <th>Video</th>
+                        </tr>
+                    </thead>
+                    <tbody class="labelTitle">
+                        <tr *ngFor="let questionList of selectedQuestion?.question_list;let i=index;">
+                            <td>{{ selectedQuestion.question_list.length - i }}</td>
+                            <td>{{ questionList.question }}</td>
+                            <td>{{ questionList.answer1 }}</td>
+                            <td>{{ questionList.answer2 }}</td>
+                            <td>{{ questionList.answer3 }}</td>
+                            <td>{{ questionList.answer4 }}</td>
+                            <td>{{ questionList.answer }}</td>
+                            <td>{{ questionList.explanation }}</td>
+                            <td>{{ questionList.video }}</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+            </div>
+
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary headerSemiBold" data-dismiss="modal"
+                    (click)="hideQuestion()">Close</button>
+            </div>
+
+        </div>
+    </div>
+</div>
+<!--Modal Popup -->

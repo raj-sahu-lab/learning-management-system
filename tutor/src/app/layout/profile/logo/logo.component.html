@@ -1,0 +1,59 @@
+<div class="container">
+	<div class="row clearfix">
+		<div class="col-lg-12">
+			<div class="card">
+				<div class="body block-header">
+					<div class="row">
+						<div class="col-lg-6 col-md-8 col-sm-12">
+							<h2 class="headerSemiBold">Manage Logo</h2>
+							<ul class="breadcrumb p-l-0 p-b-0 labelTitle">
+								<li class="breadcrumb-item">
+									<a class="linkColor" routerLink="/" routerLinkActive="active"><i
+											class="icon-home"></i></a>
+								</li>
+								<li class="breadcrumb-item active labelTitle">Logo</li>
+							</ul>
+						</div>
+
+						<div class="col-lg-6 col-md-4 col-sm-12">
+							<a routerLink="/setting" routerLinkActive="active"
+								class="btn btn-secondary headerSemiBold btn-simple float-right active"><i
+									class="icon-arrow-left"></i> BACK</a>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="row clearfix">
+		<div class="col-sm-12 col-md-6 col-lg-4 offset-md-2 offset-md-4">
+			<div class="card member-card">
+				<div class="header headerSemiBold" style="background: #191F28;color: #FFFFFF !important;">
+					<h4 class="m-t-10">Change Logo</h4>
+				</div>
+				<div class="member-img">
+					<img class="rounded-circle" src="{{ picture }}" style="border-radius: 0px !important;">
+				</div>
+				<div class="body">
+					<div class="col-12">
+						<div class="input-group">
+							<span class="input-group-addon">
+								<i class="icon-picture"></i>
+							</span>
+							<input type="file" class="form-control" [(ngModel)]="logo" accept="image/jpeg, image/png"
+								(change)="logoFileChanged($event)" ng-required="true">
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-md-12">
+							<input type="button" class="btn btn-secondary headerSemiBold" value="UPDATE" (click)="submitButtonClick();">
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+	</div>
+
+</div>

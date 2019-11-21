@@ -1,0 +1,332 @@
+<div class="container">
+  
+	<div class="row clearfix">
+	  <div class="col-lg-12">
+		<div class="card">
+		  <div class="body block-header">
+			<div class="row">
+			  <div class="col-lg-6 col-md-8 col-sm-12">
+				<h2 class="headerSemiBold">Manage Bundles</h2>
+  
+				<ul class="breadcrumb p-l-0 p-b-0 labelTitle">
+				  <li class="breadcrumb-item">
+					<a class="linkColor" routerLink="/" routerLinkActive="active"><i class="icon-home"></i></a>
+				  </li>
+				  <li class="breadcrumb-item active labelTitle">Bundles</li>
+				</ul>
+			  </div>
+			  <div class="col-lg-6 col-md-4 col-sm-12">
+				<a routerLink="/paper" routerLinkActive="active" class="btn btn-secondary headerSemiBold float-right">
+				  <i class="icon-arrow-left"></i> BACK
+				</a>
+			  </div>
+			</div>
+		  </div>
+		</div>
+	  </div>
+	</div>
+  
+	<div class="row clearfix">
+		<div class="col-sm-12 col-md-12 col-lg-12">
+            <div class="card">
+
+                <div class="header headerSemiBold">
+                    <h2><span class="linkColor">Add</span> Bundle</h2>
+                </div>
+
+                <div class="body">
+                    <div class="demo-masked-input labelTitle">
+                        <div class="row clearfix">
+                            <div class="col-lg-12 col-md-12"> Bundle Title
+                                <div class="input-group">
+                                    <input type="text" [(ngModel)]="title" class="form-control"
+                                        placeholder="Enter Bundle Title">
+                                </div>
+							</div>
+						</div>
+                        <div class="row clearfix">
+							
+						<!-- Paymentgatway Start-->
+						<div class="col-lg-2 col-md-2"> Payment Type
+							<div class="input-group">
+								<div class="radio inlineblock m-r-20" style="margin-top:10px;">
+								<input type="radio" [(ngModel)]="paymentTypeFree" name="paymentType" id="free" class="with-gap"
+									value="0">
+								<label for="free">Free</label>
+								</div>
+								<div class="radio inlineblock" style="margin-top:10px;">
+								<input type="radio" [(ngModel)]="paymentTypeFree" name="paymentType" id="paid" class="with-gap"
+									value="1">
+								<label for="paid">Paid</label>
+								</div>
+							</div>
+						</div>
+				
+							<div class="col-lg-2 col-md-2" *ngIf="paymentTypeFree == '1'">Payment Gateway
+								<div class="input-group">
+									<select class="form-control" [(ngModel)]="paymentGateWayId">
+										<option [ngValue]="null" disabled>Payment Gateway</option>
+										<option *ngFor="let paymentGateWay of paymentGateWayList"
+											value="{{ paymentGateWay.id }}">
+											{{ paymentGateWay.title }}
+										</option>
+									</select>
+								</div>
+							</div>
+
+							<div class="col-lg-2 col-md-2" *ngIf="paymentTypeFree == '1'">iOS Amount
+								<span tooltip="It is pricing for iOS mobile application as per Apple’s guidelines." placement="top">
+									<i class="icon-info"></i>
+								</span>
+
+								<div class="input-group">
+									<select class="form-control" [(ngModel)]="iosPaymentGateWayid">
+										<option [ngValue]="null" disabled>iOS Amount</option>
+										<option *ngFor="let iOSInApp of iOSInAppList" value="{{ iOSInApp.id }}">
+											{{ iOSInApp.title }} ( {{ iOSInApp.inAppamount }} $)
+										</option>
+									</select>
+								</div>
+							</div>
+
+							<div class="col-lg-2 col-md-2" *ngIf="paymentTypeFree == '1'">Currency
+								<div class="input-group">
+									<select class="form-control" [(ngModel)]="currencyId">
+									<option [ngValue]="undefined" disabled>Currency</option>
+									<option *ngFor="let currency of currencyList" value="{{currency.id}}">
+										{{currency.title}} ( {{currency.sign}} )
+									</option>
+									</select>
+								</div>
+							</div>
+			
+							<div class="col-lg-2 col-md-2" *ngIf="paymentTypeFree == '1'"> Amount
+								<div class="input-group">
+								<input type="number" class="form-control" [(ngModel)]="amount" placeholder="Enter amount" min="0" pattern="/^-?\d+\.?\d*$/" onKeyPress="if(this.value.length==6) return false;">
+								</div>
+							</div>
+
+							<div class="col-lg-2 col-md-2" *ngIf="paymentTypeFree == '1'">Day's of validity
+								<span tooltip="After validity ends, students won’t be able to access it." placement="top">
+									<i class="icon-info"></i>
+								  </span>
+								<div class="input-group">
+									<input type="number" class="form-control" [(ngModel)]="validity" placeholder="Enter validity" min="0" pattern="/^-?\d+\.?\d*$/" onKeyPress="if(this.value.length==3) return false;">
+								</div>
+							</div>
+				
+							<div class="col-lg-12 col-md-12" *ngIf="paymentTypeFree == '1'"> Payment Preview
+								<span tooltip="It will be visible on the website and mobile app when a student clicks on pay for bundles." placement="top">
+									<i class="icon-info"></i>
+								  </span>
+								<div class="input-group">
+									<textarea rows="6" class="form-control no-resize" [(ngModel)]="previewText" style="border: 1px solid #E3E3E3;border-radius: 10px;" maxlength="200"></textarea>
+								</div>
+							</div>
+				
+							<div class="col-lg-12 col-md-12" *ngIf="paymentTypeFree == '1'">
+								<div class="input-group">
+								<span class="linkColor">{{200 - previewText?.length}} character left</span>
+								</div>
+							</div>
+							<!-- Paymentgatway End-->
+
+							<div *ngIf="setLists?.length" class="col-lg-12 col-md-12 m-t-25 linkColor headerSemiBold">Select Set</div>
+
+							<div *ngIf="setLists?.length" class="col-lg-12 col-md-12">
+								<div class="input-group">
+									<div class="checkbox">
+										<input id="selectAll" type="checkbox" (change)="selectAll($event)">
+										<label for="selectAll">Select All</label>
+									</div>
+								</div>
+							</div>
+
+							<div class="col-lg-12 col-md-12" style="height: 250px;overflow-y: scroll;">
+								<div class="input-group" *ngFor="let set of setLists;let i = index">
+
+									<div class="checkbox">
+										<input id="set{{set.id}}" type="checkbox" (click)="setChecked(set.id,$event)">
+										<label for="set{{set.id}}">
+											{{set?.title}}
+										</label>
+									</div>
+
+								</div>
+								<div *ngIf="setLists.length >= (setPage*limit)" class="text-center">
+									<div class="btn btn-secondary headerSemiBold" (click)="getSet(setPage+1,limit)">View more</div>
+								</div>
+							</div>
+
+							<div class="col-lg-1 col-md-1"><b>&nbsp;</b>
+								<div class="input-group">
+									<input type="button" class="btn btn-secondary headerSemiBold float-right"
+										value="SUBMIT" style="margin:0px;" (click)="submitButtonClick();">
+								</div>
+							</div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-sm-12 col-md-12 col-lg-12" *ngIf="bundleList.length">
+            <div class="card">
+                <div class="header headerSemiBold">
+                    <h2>
+                        <span class="linkColor">Available</span> Bundle
+                    </h2>
+                </div>
+
+                <div class="body">
+                    <div class="table-responsive">
+                        <table class="table table-bordered table-striped table-hover dataTable js-exportable w-100">
+                            <thead class="headerSemiBold">
+                                <tr>
+                                    <th>#</th>
+                                    <th>S No</th>
+                                    <th>title</th>
+                                    <th>Gateway</th>
+									<th>Amount</th>									
+									<th>Day's of validity</th>
+									<th>Status</th>
+                                </tr>
+                            </thead>
+                            <tbody class="labelTitle">
+                                <tr *ngFor="let bundle of bundleList ;let i=index;">
+                                    <td>
+                                        <span class="badge badge-success cursor" title="Update bundle" (click)="editButtonClick(bundle)">
+                                            <i class="icon-pencil"></i>
+                                          </span>
+                                        <span class="badge badge-success cursor" title="Set List" (click)="showSetList(bundle)">
+                                            <i class="icon-eye"></i>
+                                        </span>
+                                        <span class="badge badge-danger cursor" title="Delete Bundle"
+                                            (click)="deleteBundleButtonClick(bundle.id)" *ngIf="userType == 1">
+                                            <i class="icon-trash"></i>
+                                        </span>
+                                    </td>
+                                    <td>{{ bundleList.length - i}}</td>
+									<td>{{ bundle?.title }}</td>
+									<td>
+                                        {{ bundle.payment_type?.title }}
+                                        {{ bundle.iosPaymentGateWay == null ? '' : '/' }}
+                                        {{ bundle.iosPaymentGateWay?.title }}
+                                    </td>
+                                    <td>
+										<span *ngIf="bundle?.isPaid">{{bundle?.currency?.sign}}</span>
+										{{ bundle?.amount | number: '1.2'}}
+									</td>
+									<td>{{ bundle?.validity }}</td>
+									<td>
+										<span class="badge badge-{{bundle.status==0 ? 'success' : 'warning'}}">
+										  {{bundle.status==0 ? 'Active' : 'Inactive'}}
+										</span>
+									</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div *ngIf="bundleList.length >= (page*limit)" class="text-center">
+                        <div class="btn btn-secondary headerSemiBold" (click)="getBundle(page+1,limit)">View more</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+	</div>
+  
+  </div>
+  <!-- Modal -->
+  <div class="modal" [style.display]="editBundle ? 'block' : 'none'">
+	  <div class="modal-dialog modal-lg">
+		<div class="modal-content">
+	
+		  <div class="modal-header">
+			<h6 class="headerBold">{{editBundle?.title}}</h6>
+		  </div>
+	
+		  <div class="modal-body">
+			  <div class="demo-masked-input labelTitle">
+				  <div class="row clearfix">
+					  <div class="col-lg-12 col-md-12 headerSemiBold">Select Set
+					  </div>
+  
+					  <div class="col-lg-12 col-md-12" style="height: 250px;overflow-y: scroll;">
+						  <div class="input-group" *ngFor="let set of setLists;let i = index">
+  
+							  <div class="checkbox">
+								  <input id="editSet{{set.id}}" type="checkbox" (click)="editSetChecked(set.id,$event)">
+								  <label for="editSet{{set.id}}">
+									  {{set?.title}}
+								  </label>
+							  </div>
+  
+						  </div>
+						  <div *ngIf="setLists.length >= (setPage*limit)" class="text-center">
+							  <div class="btn btn-secondary headerSemiBold" (click)="getSet(setPage+1,limit)">View more</div>
+						  </div>
+					  </div>
+  
+					  <div class="col-lg-1 col-md-1"><b>&nbsp;</b>
+						  <div class="input-group">
+							  <input type="button" class="btn btn-secondary headerSemiBold float-right"
+								  value="SUBMIT" style="margin:0px;" (click)="updateSubmitButtonClick();">
+						  </div>
+					  </div>
+  
+				  </div>
+			  </div>
+	
+		  </div>
+	
+		  <div class="modal-footer">
+			<button type="button" class="btn btn-secondary headerSemiBold" data-dismiss="modal"
+			  (click)="hideEditModal()">Close</button>
+		  </div>
+	
+		</div>
+	  </div>
+  </div>
+  <div class="modal" [style.display]="bundleSelected ? 'block' : 'none'">
+	  <div class="modal-dialog modal-lg">
+		  <div class="modal-content">
+  
+		  <div class="modal-header">
+			  <h6 class="headerBold">{{bundleSelected?.title}}</h6>
+		  </div>
+  
+		  <div class="modal-body">
+			  <table class="table table-bordered table-striped table-hover">
+			  <thead class="headerSemiBold">
+				  <tr>
+				  <th>#</th>
+				  <th>Set</th>
+				  </tr>
+			  </thead>
+			  <tbody class="labelTitle">
+				  <tr *ngFor="let set of bundleSelected?.setList;let i=index;">
+				  <td>
+					  <span class="badge badge-danger cursor" title="Delete Set"
+						  (click)="deleteSetButtonClick(set.id)" *ngIf="userType == 1">
+						  <i class="icon-trash"></i>
+					  </span>
+				  </td>
+				  <td>
+					  {{set?.set?.title}}
+				  </td>
+				  </tr>
+			  </tbody>
+			  </table>
+  
+		  </div>
+  
+		  <div class="modal-footer">
+			  <button type="button" class="btn btn-secondary headerSemiBold" data-dismiss="modal"
+			  (click)="hideDeleteModal()">Close</button>
+		  </div>
+  
+		  </div>
+	  </div>
+  </div>
+  <!-- End Modal -->
