@@ -1,6 +1,6 @@
 <?php
-$name = "Haresh";
-$email = "poriyaharesh@gmail";
+$name = "Test User";
+$email = "developer@example.com";
 $phone = "9000000000";
 $message = "Mail Message Testing";
 
@@ -57,7 +57,7 @@ $htmlContent = "
 	
 	/* Send an email campaign */
 	
-		$postdata = array("sender" => array("name" => "utobo", "email" => "sales@utobo.ai"),"to" => array(array("name" => "Haresh","email" =>"developer@example.com")),"htmlContent" => $htmlContent, "textContent" => "Sales Inquiry", "subject" =>"Inquiry From Website");
+		$postdata = array("sender" => array("name" => "utobo", "email" => "sales@utobo.ai"),"to" => array(array("name" => "Test User","email" =>"developer@example.com")),"htmlContent" => $htmlContent, "textContent" => "Sales Inquiry", "subject" =>"Inquiry From Website");
 
 		$curl = curl_init();
 

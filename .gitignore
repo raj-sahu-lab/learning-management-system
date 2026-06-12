@@ -20,3 +20,5 @@ pitchdeck.pdf
 
 # Firebase keys
 *firebase-adminsdk*.json
+.env
+*.env.local
