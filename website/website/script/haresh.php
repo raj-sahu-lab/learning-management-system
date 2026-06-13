@@ -10,7 +10,7 @@ var options = {
 	"currency": "INR",
 	"bank": 'HDFC',
 	"description": "Monthly Premium Package",
-	"image": "http://student.learnonapp.in/assets/img/utobo.png",
+	"image": "http://student.your-saas-domain.example.com/assets/img/utobo.png",
 	"handler": function (response) {
 		console.log(response);
 	},

@@ -1236,7 +1236,7 @@ function beAPartner() {
 /****************************************************************** 
 	New Code
 ******************************************************************/ 
-var baseURL = 'http://api.learnonapp.in:5000/v1/';  //Dev
+var baseURL = 'http://api.your-saas-domain.example.com:5000/v1/';  //Dev
 // var baseURL = 'https://api.example.com/v1/'; //Live
 
 function sendOTP() {

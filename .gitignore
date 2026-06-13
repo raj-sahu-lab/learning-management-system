@@ -22,3 +22,13 @@ pitchdeck.pdf
 *firebase-adminsdk*.json
 .env
 *.env.local
+
+# Server error logs
+php_errorlog
+
+# macOS metadata
+.DS_Store
+**/.DS_Store
+
+# Excel files with potentially real data
+*.xlsx

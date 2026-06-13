@@ -19,9 +19,9 @@ export const environment = {
     bucket: 'edtech-platformdevelopment', // Developer
   },
 
-  chatSocket : 'http://api.learnonapp.in:5000',
+  chatSocket : 'http://api.your-saas-domain.example.com:5000',
   // baseUrl: 'https://api.example.com/v1/', // Live
-  baseUrl: 'http://api.learnonapp.in:5000/v1/', // Developer
+  baseUrl: 'http://api.your-saas-domain.example.com:5000/v1/', // Developer
   // baseUrl: 'http://localhost:5000/v1/', // Check API in local
   encryptionKey:'YOUR_CRYPTO_SECRET_KEY',
   razorPayKey:'rzp_test_XXXXXXXXXXXXXX',

@@ -47,7 +47,7 @@ module.exports.countryCityList = async function (req, res) {
 module.exports.baseUrl = async function (req, res) {
 
     var data = {
-        devUrl: 'http://api.learnonapp.in:5000/',
+        devUrl: 'http://api.your-saas-domain.example.com:5000/',
         liveUrl: 'https://api.example.com/'
     }
     // var baseUrl = 'https://api.example.com/';

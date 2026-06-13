@@ -5,6 +5,7 @@ function check_txnid($tnxid){
 	return true;
 	$valid_txnid = true;
 	//get result set
+	// TODO: migrate to PDO prepared statements before production use
 	$sql = mysql_query("SELECT * FROM `payments` WHERE txnid = '$tnxid'", $link);
 	if ($row = mysql_fetch_array($sql)) {
 		$valid_txnid = false;
@@ -35,6 +36,7 @@ function updatePayments($data){
 	global $link;
 	
 	if (is_array($data)) {
+		// TODO: migrate to PDO prepared statements before production use
 		$sql = mysql_query("INSERT INTO `payments` (txnid, payment_amount, payment_status, itemid, createdtime) VALUES (
 				'".$data['txn_id']."' ,
 				'".$data['payment_amount']."' ,

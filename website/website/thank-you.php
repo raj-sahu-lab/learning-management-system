@@ -114,7 +114,7 @@
 		  (function(t,a,p){t.TapfiliateObject=a;t[a]=t[a]||function(){ (t[a].q=t[a].q||[]).push(arguments)}})(window,'tap');
 
 
-		  var email = "<?php echo $_GET['email'];?>";
+		  var email = "<?php echo htmlspecialchars($_GET['email'], ENT_QUOTES, 'UTF-8');?>";
 		  var amount = "<?php echo $amount;?>";
 		  
 		  var commission = amount;

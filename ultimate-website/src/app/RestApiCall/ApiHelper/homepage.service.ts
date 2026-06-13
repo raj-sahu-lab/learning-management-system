@@ -21,7 +21,7 @@ export class HomepageHelper {
       
       // headers = headers.set('domain', environment.baseUrl);
       headers = headers.set('domain', window.location.hostname);
-      // headers = headers.set('domain', "dev.learnonapp.in");
+      // headers = headers.set('domain', "dev.your-saas-domain.example.com");
       // headers = headers.set('domain',"online.example.com");
 
     } else {

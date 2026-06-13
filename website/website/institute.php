@@ -227,12 +227,12 @@
                                 <input id="countryCode" type="hidden">
                                 <input id="cityId" type="hidden">
 
-                                <input id="transactionId" type="hidden" value="<?php echo $_GET['pay'];?>">
-                                <input id="termId" type="hidden" value="<?php echo $_GET['termId'];?>">
-                                <input id="planId" type="hidden" value="<?php echo $_GET['planId'];?>">
-                                <input id="curId" type="hidden" value="<?php echo $_GET['curId'];?>">
-                                <input id="subscriptionId" type="hidden" value="<?php echo $_GET['subscription'];?>">
-                                <input id="offerId" type="hidden" value="<?php echo $_GET['offerId'];?>">
+                                <input id="transactionId" type="hidden" value="<?php echo htmlspecialchars($_GET['pay'], ENT_QUOTES, 'UTF-8');?>">
+                                <input id="termId" type="hidden" value="<?php echo htmlspecialchars($_GET['termId'], ENT_QUOTES, 'UTF-8');?>">
+                                <input id="planId" type="hidden" value="<?php echo htmlspecialchars($_GET['planId'], ENT_QUOTES, 'UTF-8');?>">
+                                <input id="curId" type="hidden" value="<?php echo htmlspecialchars($_GET['curId'], ENT_QUOTES, 'UTF-8');?>">
+                                <input id="subscriptionId" type="hidden" value="<?php echo htmlspecialchars($_GET['subscription'], ENT_QUOTES, 'UTF-8');?>">
+                                <input id="offerId" type="hidden" value="<?php echo htmlspecialchars($_GET['offerId'], ENT_QUOTES, 'UTF-8');?>">
 
                                 <button type="button" onclick="createInstitute();" class="btn btn--yellow btn--with-shadow">
                                     Submit

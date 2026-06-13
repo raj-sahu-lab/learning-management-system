@@ -2,10 +2,10 @@ export const environment = {
   production: true,
   // apiUrl: 'http://localhost:5000/v1/',
   apiUrl: 'https://api.example.com/v1/',
-  // apiUrl: 'http://api.learnonapp.in:5000/v1/',
+  // apiUrl: 'http://api.your-saas-domain.example.com:5000/v1/',
   // baseUrl : 'http://192.168.43.50:4200/',
   // baseUrl : 'http://localhost:4200/',
-  baseUrl : 'http://student.learnonapp.in/',
+  baseUrl : 'http://student.your-saas-domain.example.com/',
   vimeoApiKey : 'YOUR_VIMEO_ACCESS_TOKEN',
   youTubeApiKey : 'YOUR_YOUTUBE_API_KEY',
   firebase: {
@@ -21,7 +21,7 @@ export const environment = {
   googleCpatchKey : '6LfFjtUUAAAAAGo625k5iEqYbegCR9p7dXDQ7CCI',
   en_key:"[ENCRYPTION_KEY]",
   chatSocket : "http://localhost:5000"
-  // chatSocket : "http://api.learnonapp.in:5000"
+  // chatSocket : "http://api.your-saas-domain.example.com:5000"
   // chatSocket : "https://api.example.com"
 
 };

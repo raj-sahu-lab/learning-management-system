@@ -1,5 +1,7 @@
 # EdTech SaaS Platform — Early Version (Backend Architecture)
 
+> **Note:** This is a 2018–2020 early-version portfolio codebase. The PHP payment pages use legacy `mysql_*` functions and would be migrated to PDO before any production use. Credentials shown in environment files are placeholders — rotate all keys before deployment.
+
 Database schema and API collection for a multi-tenant EdTech SaaS platform built in 2019-2021. This was an early-stage product supporting online tutoring, student management, live classes, and content delivery.
 
 ## Built: 2019–2021

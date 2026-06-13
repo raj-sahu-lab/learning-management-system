@@ -2229,7 +2229,7 @@ module.exports.videoProcessingStatus = async function (req, res) {
                         notification: {
                             title: video.videoProcessingStatus == 2 ? "Video Processing Completed" : "Failed to process your video please try again ",
                             body: (video.videoProcessingStatus == 2 ? "Processing Completed" : "Failed to process") + ' :- ' + videoObj.title,
-                            click_action: CONFIG.port == 3000 ? 'https://tutor.example.com/video' : 'http://toa.learnonapp.in/video'
+                            click_action: CONFIG.port == 3000 ? 'https://tutor.example.com/video' : 'http://app.your-saas-domain.example.com/video'
                         },
                         data: {
                             messageType: "VIDEOPROCESSINGSTATUS",
