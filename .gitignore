@@ -33,3 +33,7 @@ php_errorlog
 # Excel files with potentially real data
 *.xlsx
 *.xls
+*.pem
+*.key
+deck.pdf
+*.postman_collection.json
