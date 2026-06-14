@@ -37,3 +37,9 @@ php_errorlog
 *.key
 deck.pdf
 *.postman_collection.json
+
+# Compiled binaries
+student-rest-api/bin/
+
+# SQL schema dumps
+Database/*.sql
