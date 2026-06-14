@@ -32,3 +32,4 @@ php_errorlog
 
 # Excel files with potentially real data
 *.xlsx
+*.xls
