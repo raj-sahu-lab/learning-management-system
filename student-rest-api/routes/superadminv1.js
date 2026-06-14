@@ -15,7 +15,8 @@ const CurrencyController = require('../controllers/V1/Superadmin/Currency.contro
 const DashboardController = require('../controllers/V1/Superadmin/dashboard.controller');
 const passport = require('passport');
 const path = require('path');
-
+const { adminLoginValidation } = require('../middleware/validators/authValidator');
+const { newInstituteValidation } = require('../middleware/validators/instituteValidator');
 
 require('./../middleware/passport')(passport)
 /* GET home page. */
@@ -32,12 +33,12 @@ router.get('/', function (req, res, next) {
 
 // router.post(    '/updateUUID',            SuperAdminController.updateUUID);
 
-router.post('/login', SuperAdminController.getAdmin);
+router.post('/login', adminLoginValidation, SuperAdminController.getAdmin);
 router.post('/updatePassword', passport.authenticate('admin', { session: false }), SuperAdminController.chnagePassword);
 
 
 
-router.post('/users/create', passport.authenticate('admin', { session: false }), SuperAdminController.addNewInstitute);
+router.post('/users/create', passport.authenticate('admin', { session: false }), newInstituteValidation, SuperAdminController.addNewInstitute);
 router.put('/users', passport.authenticate('admin', { session: false }), SuperAdminController.editInstitute);
 router.get('/users', passport.authenticate('admin', { session: false }), SuperAdminController.getAllUsers);
 router.post('/enableLink', passport.authenticate('admin', { session: false }), SuperAdminController.enableDisableUltimateLink);

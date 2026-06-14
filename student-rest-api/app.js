@@ -9,6 +9,9 @@ const helmet = require('helmet')
 
 const chargebee = require("chargebee");
 
+const CONFIG = require('./config/config');
+const validateEnv = require('./config/validateEnv');
+validateEnv();
 
 const v1 = require('./routes/v1');
 const superAdminV1 = require('./routes/superadminv1');
@@ -18,9 +21,9 @@ const generalV1 = require('./routes/generalapi');
 const website = require('./routes/website');
 
 const GeneralController = require('./controllers/V1/General/General.controller')
+const errorHandler = require('./middleware/errorHandler');
 
 const app = express();
-const CONFIG = require('./config/config');
 const formidableMiddleware = require('express-formidable');
 
 
@@ -109,31 +112,15 @@ app.use('/renewSubscription', async (req, res) => {
 });
 
 
-app.use('/', function (req, res) {
-  res.statusCode = 500; //send the appropriate status code
-  res.json({ status: false, message: "Requested method not found.", data: {} })
-
-});
-
-// catch 404 and forward to error handler
+// catch 404
 app.use(function (req, res, next) {
   var err = new Error('Not Found');
   err.status = 404;
   next(err);
 });
 
-// error handler
-app.use(function (err, req, res, next) {
-  // set locals, only providing error in development
-  res.locals.message = err.message;
-  res.locals.error = req.app.get('env') === 'development' ? err : {};
-
-  // render the error page
-  res.status(err.status || 500);
-  res.json({ status: false, message: "Requested method not found.", data: {} })
-  // res.render('error',{ title: 'platform.example.com', message: 'Failed to load page please try again' });
-
-});
+// Centralized error handler (must be last middleware)
+app.use(errorHandler);
 
 module.exports = app;
 

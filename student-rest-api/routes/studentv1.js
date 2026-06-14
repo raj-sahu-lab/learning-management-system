@@ -21,6 +21,13 @@ const TutorController 	= require('../controllers/V1/Student/Tutor.controller');
 const passport = require('passport');
 const CONFIG = require('../config/config');
 const CryptoJS = require("crypto-js");
+const {
+  studentLoginValidation,
+  studentRegisterValidation,
+  forgotPasswordValidation,
+  sendOTPValidation,
+  verifyOTPValidation
+} = require('../middleware/validators/authValidator');
 
 
 require('./../middleware/passport')(passport)
@@ -54,12 +61,12 @@ router.post('/enc',             AuthenticationController.encryptData);
 // }
 // router.use(decryptPayload);
 
-router.post('/login',           AuthenticationController.login);
+router.post('/login',           studentLoginValidation, AuthenticationController.login);
 router.put('/verify',           AuthenticationController.updateVerified);
-router.post('/sendOTP',         AuthenticationController.sendOTPForRegistration);
-router.post('/verifyOTP',       AuthenticationController.verifyUserOTP);
-router.post('/signup',          AuthenticationController.registerStudent);
-router.post('/forGotPassword',  AuthenticationController.forGotPasswordReset);
+router.post('/sendOTP',         sendOTPValidation, AuthenticationController.sendOTPForRegistration);
+router.post('/verifyOTP',       verifyOTPValidation, AuthenticationController.verifyUserOTP);
+router.post('/signup',          studentRegisterValidation, AuthenticationController.registerStudent);
+router.post('/forGotPassword',  forgotPasswordValidation, AuthenticationController.forGotPasswordReset);
 router.post('/updatePassword',  AuthenticationController.updatePassword);
 
 router.get('/student',              passport.authenticate('student', { session: false }), AuthenticationController.getStudentProfile);

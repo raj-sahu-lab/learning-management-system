@@ -30,6 +30,8 @@ const path = require('path');
 
 const CONFIG = require('../config/config');
 const CryptoJS = require("crypto-js");
+const { institutionLoginValidation, forgotPasswordValidation } = require('../middleware/validators/authValidator');
+const { newInstituteValidation, addBranchValidation, addLearnerValidation, addCouponValidation, sendNotificationValidation } = require('../middleware/validators/instituteValidator');
 
 
 require('../controllers/V1/CronJob.controller');
@@ -62,7 +64,7 @@ const decryptPayload = function (req, res, next) {
 }
 // router.use(decryptPayload);
 
-router.post('/user/login', UserController.login);
+router.post('/user/login', institutionLoginValidation, UserController.login);
 router.get('/user/logout', passport.authenticate('jwt', { session: false }), UserController.logout);
 router.get('/user', passport.authenticate('jwt', { session: false }), UserController.getUser);
 router.put('/user/updateImage', passport.authenticate('jwt', { session: false }), UserController.updateAccountImage);
@@ -73,7 +75,7 @@ router.get('/user/space', passport.authenticate('jwt', { session: false }), User
 
 router.get('/user/invoice', passport.authenticate('jwt', { session: false }), UserController.getPurchasedPlanList);
 
-router.post('/user/forGotPassword', UserController.forGotPasswordReset);
+router.post('/user/forGotPassword', forgotPasswordValidation, UserController.forGotPasswordReset);
 
 router.get('/permissions', passport.authenticate('jwt', { session: false }), UserController.getPermissionsList);
 router.put('/timeZone', passport.authenticate('jwt', { session: false }), UserController.updateTimeZone);
@@ -111,7 +113,7 @@ router.put('/paymentGateWay', passport.authenticate('jwt', { session: false }), 
 
 //Branch Module START
 router.get('/branch/:isFiltered*?', passport.authenticate('jwt', { session: false }), BranchController.getBranchList);
-router.post('/branch', passport.authenticate('jwt', { session: false }), BranchController.addBranch);
+router.post('/branch', passport.authenticate('jwt', { session: false }), addBranchValidation, BranchController.addBranch);
 router.put('/branch', passport.authenticate('jwt', { session: false }), BranchController.updateBranch);
 router.delete('/branch/:id', passport.authenticate('jwt', { session: false }), BranchController.deleteBranch);
 //Branch Module END
@@ -244,7 +246,7 @@ router.delete('/communicate/deleteArticleDiscussionReply/:id', passport.authenti
 
 
 // 12.Learner
-router.post('/learner', passport.authenticate('jwt', { session: false }), LearnerController.addLearner);
+router.post('/learner', passport.authenticate('jwt', { session: false }), addLearnerValidation, LearnerController.addLearner);
 router.get('/learner/:isFiltered?/:purchaseType?/:purchaseId?', passport.authenticate('jwt', { session: false }), LearnerController.getLearnerList);
 router.put('/learner', passport.authenticate('jwt', { session: false }), LearnerController.updateLearner);
 router.delete('/learner/:id', passport.authenticate('jwt', { session: false }), LearnerController.deleteLearner);
@@ -271,7 +273,7 @@ router.put('/news', passport.authenticate('jwt', { session: false }), NewsContro
 router.delete('/news/:id', passport.authenticate('jwt', { session: false }), NewsController.deleteNews);
 
 // 16.Coupon
-router.post('/coupon', passport.authenticate('jwt', { session: false }), CouponController.addCoupon);
+router.post('/coupon', passport.authenticate('jwt', { session: false }), addCouponValidation, CouponController.addCoupon);
 router.get('/coupon', passport.authenticate('jwt', { session: false }), CouponController.getCouponList);
 router.put('/coupon', passport.authenticate('jwt', { session: false }), CouponController.updateCoupon);
 router.delete('/coupon/:id', passport.authenticate('jwt', { session: false }), CouponController.deleteCoupon);
@@ -372,7 +374,7 @@ router.delete('/bundleRemoveSet/:id', passport.authenticate('jwt', { session: fa
 
 
 // Notifications 
-router.post('/notification', passport.authenticate('jwt', { session: false }), NotificationController.sendNotification);
+router.post('/notification', passport.authenticate('jwt', { session: false }), sendNotificationValidation, NotificationController.sendNotification);
 router.get('/notification', passport.authenticate('jwt', { session: false }), NotificationController.getNotificationList);
 
 
