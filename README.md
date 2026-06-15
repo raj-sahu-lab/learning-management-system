@@ -81,3 +81,7 @@ Postman collections documenting the REST API:
 ## Note
 
 This was the early-stage backend for a multi-tenant EdTech platform that later evolved into a full product. The schema demonstrates multi-tenant SaaS architecture, content delivery pipeline, and live classroom integration at scale.
+
+---
+
+© 2019 Raj Sahu
