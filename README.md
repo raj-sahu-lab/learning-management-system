@@ -1,6 +1,6 @@
 [![API CI](https://github.com/Raj-Sahu-Lab/utobo-saas-platform/actions/workflows/api-ci.yml/badge.svg)](https://github.com/Raj-Sahu-Lab/utobo-saas-platform/actions/workflows/api-ci.yml)
 
-# EdTech SaaS Platform — Early Version (Backend Architecture)
+# Learning Management System (2021)
 
 > **Built:** 2018–2020 · Node.js · Angular 10 · PHP · MySQL · AWS
 >
@@ -81,7 +81,3 @@ Postman collections documenting the REST API:
 ## Note
 
 This was the early-stage backend for a multi-tenant EdTech platform that later evolved into a full product. The schema demonstrates multi-tenant SaaS architecture, content delivery pipeline, and live classroom integration at scale.
-
----
-
-© 2019 Raj Sahu
