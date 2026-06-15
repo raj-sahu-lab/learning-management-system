@@ -9,7 +9,8 @@
     "gitbuild": "ng build --prod --base-href /start-angular/SB-Admin-BS4-Angular-7/master/dist/",
     "test": "ng test",
     "test-ci": "TEST_CI=true ng test",
-    "lint": "ng lint",
+    "lint": "eslint src --ext .ts,.html",
+    "lint:ng": "ng lint",
     "e2e": "ng e2e",
     "ng-high-memory": "node --max_old_space_size=8000 ./node_modules/@angular/cli/bin/ng build --configuration=prod"
   },
@@ -95,6 +96,11 @@
     "protractor": "~7.0.0",
     "ts-node": "7.0.1",
     "tslint": "~6.1.0",
-    "typescript": "^3.9.7"
+    "typescript": "^3.9.7",
+    "@angular-eslint/eslint-plugin": "^17.0.0",
+    "@angular-eslint/eslint-plugin-template": "^17.0.0",
+    "@typescript-eslint/eslint-plugin": "^7.0.0",
+    "@typescript-eslint/parser": "^7.0.0",
+    "eslint": "^8.0.0"
   }
 }

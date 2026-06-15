@@ -1,0 +1,49 @@
+name: Angular CI
+
+on:
+  push:
+    branches: [ main ]
+    paths:
+      - 'tutor/**'
+      - 'student-panel/**'
+      - 'ultimate-student/**'
+      - '.github/workflows/angular-ci.yml'
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  build-tutor:
+    name: Build Tutor Panel
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: tutor
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '18.x'
+          cache: 'npm'
+          cache-dependency-path: tutor/package-lock.json
+      - run: npm ci --prefer-offline
+      - run: npm run build -- --configuration production
+        env:
+          CI: true
+
+  build-student-panel:
+    name: Build Student Panel
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: student-panel
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '18.x'
+          cache: 'npm'
+          cache-dependency-path: student-panel/package-lock.json
+      - run: npm ci --prefer-offline
+      - run: npm run build -- --configuration production
+        env:
+          CI: true
