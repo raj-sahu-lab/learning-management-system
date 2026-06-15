@@ -8,16 +8,24 @@ CONFIG.app          = process.env.APP   || 'dev';
 CONFIG.port         = process.env.PORT  || '5000';
 
 CONFIG.db_dialect = process.env.DB_DIALECT || 'mysql';
-CONFIG.db_host = process.env.DB_HOST || '192.168.64.2';
+CONFIG.db_host = process.env.DB_HOST || 'localhost';
 CONFIG.db_port = process.env.DB_PORT || '3306';
 CONFIG.db_name = process.env.DB_NAME || 'name';
-CONFIG.db_user = process.env.DB_USER || 'root';
-CONFIG.db_password = process.env.DB_PASSWORD || 'db-password';
+CONFIG.db_user = process.env.DB_USER || 'app_user';
+CONFIG.db_password = process.env.DB_PASSWORD || '';
 
-CONFIG.jwt_encryption = process.env.JWT_ENCRYPTION || 'jwt_please_change';
+if (!process.env.JWT_ENCRYPTION && process.env.NODE_ENV === 'production') {
+    console.error('FATAL: JWT_ENCRYPTION environment variable is required in production');
+    process.exit(1);
+}
+CONFIG.jwt_encryption = process.env.JWT_ENCRYPTION || 'jwt_dev_secret_change_in_production';
 CONFIG.jwt_expiration = process.env.JWT_EXPIRATION || '5h';
 
-CONFIG.CRYPTOJS_ENCRYPTION_KEY = process.env.CRYPTOJS_ENCRYPTION_KEY || '';
+if (!process.env.CRYPTOJS_ENCRYPTION_KEY && process.env.NODE_ENV === 'production') {
+    console.error('FATAL: CRYPTOJS_ENCRYPTION_KEY environment variable is required in production');
+    process.exit(1);
+}
+CONFIG.CRYPTOJS_ENCRYPTION_KEY = process.env.CRYPTOJS_ENCRYPTION_KEY || 'dev_crypto_key_change_in_production';
 CONFIG.WEBSITE_ENCRYPTION_KEY = process.env.WEBSITE_ENCRYPTION_KEY || '';
 CONFIG.STUDENT_ENCRYPTION_KEY = process.env.STUDENT_ENCRYPTION_KEY || '';
 

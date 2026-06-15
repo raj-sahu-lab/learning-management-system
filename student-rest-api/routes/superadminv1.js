@@ -15,6 +15,7 @@ const CurrencyController = require('../controllers/V1/Superadmin/Currency.contro
 const DashboardController = require('../controllers/V1/Superadmin/dashboard.controller');
 const passport = require('passport');
 const path = require('path');
+const loginLimiter = require('../middleware/loginLimiter');
 const { adminLoginValidation } = require('../middleware/validators/authValidator');
 const { newInstituteValidation } = require('../middleware/validators/instituteValidator');
 
@@ -33,7 +34,7 @@ router.get('/', function (req, res, next) {
 
 // router.post(    '/updateUUID',            SuperAdminController.updateUUID);
 
-router.post('/login', adminLoginValidation, SuperAdminController.getAdmin);
+router.post('/login', loginLimiter, adminLoginValidation, SuperAdminController.getAdmin);
 router.post('/updatePassword', passport.authenticate('admin', { session: false }), SuperAdminController.chnagePassword);
 
 

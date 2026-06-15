@@ -30,6 +30,7 @@ const path = require('path');
 
 const CONFIG = require('../config/config');
 const CryptoJS = require("crypto-js");
+const loginLimiter = require('../middleware/loginLimiter');
 const { institutionLoginValidation, forgotPasswordValidation } = require('../middleware/validators/authValidator');
 const { newInstituteValidation, addBranchValidation, addLearnerValidation, addCouponValidation, sendNotificationValidation } = require('../middleware/validators/instituteValidator');
 
@@ -64,7 +65,7 @@ const decryptPayload = function (req, res, next) {
 }
 // router.use(decryptPayload);
 
-router.post('/user/login', institutionLoginValidation, UserController.login);
+router.post('/user/login', loginLimiter, institutionLoginValidation, UserController.login);
 router.get('/user/logout', passport.authenticate('jwt', { session: false }), UserController.logout);
 router.get('/user', passport.authenticate('jwt', { session: false }), UserController.getUser);
 router.put('/user/updateImage', passport.authenticate('jwt', { session: false }), UserController.updateAccountImage);
