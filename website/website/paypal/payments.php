@@ -51,9 +51,7 @@ if (!isset($_POST["txn_id"]) && !isset($_POST["txn_type"])){
 	header('location:https://www.paypal.com/cgi-bin/webscr'.$querystring);
 	exit();
 } else {
-	//Database Connection
-	$link = mysql_connect($host, $user, $pass);
-	mysql_select_db($db_name);
+	// Database connection is handled via PDO in functions.php
 	
 	// Response from Paypal
 

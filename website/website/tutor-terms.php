@@ -234,7 +234,7 @@
 							<br></br>
 							<div class="c-primary">I accept the Educator terms<div><br>
 			
-							<a href="paypal/index.php?id=2&amount=<?php echo $_REQUEST['amount'];?>&country=0" class="btn btn--green btn--with-shadow">CONTINUE</a>
+							<a href="paypal/index.php?id=2&amount=<?php echo htmlspecialchars((float)$_REQUEST['amount'], ENT_QUOTES, 'UTF-8');?>&country=0" class="btn btn--green btn--with-shadow">CONTINUE</a>
                     </div>
                 </div>				
             </div>

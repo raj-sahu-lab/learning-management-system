@@ -11,9 +11,9 @@
 		<strong>Please Wait ...</strong>
 	</div>
 	<?php
-	$id=$_GET['id'];
-	$country=$_GET['country'];
-	$amount=$_GET['amount'];
+	$id=(int)$_GET['id'];
+	$country=(int)$_GET['country'];
+	$amount=(float)$_GET['amount'];
 	if($country==0)
 	{
 		$lc='IN';
