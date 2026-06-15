@@ -1,3 +1,5 @@
+[![API CI](https://github.com/Raj-Sahu-Lab/utobo-saas-platform/actions/workflows/api-ci.yml/badge.svg)](https://github.com/Raj-Sahu-Lab/utobo-saas-platform/actions/workflows/api-ci.yml)
+
 # EdTech SaaS Platform — Early Version (Backend Architecture)
 
 > **Note:** This is a 2018–2020 early-version portfolio codebase. The PHP payment pages use legacy `mysql_*` functions and would be migrated to PDO before any production use. Credentials shown in environment files are placeholders — rotate all keys before deployment.
