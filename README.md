@@ -2,6 +2,10 @@
 
 # EdTech SaaS Platform — Early Version (Backend Architecture)
 
+> **Built:** 2018–2020 · Node.js · Angular 10 · PHP · MySQL · AWS
+>
+> utobo (originally "Tutor on App" / TOA) is an early-version EdTech SaaS platform built between 2018 and 2020. It is a multi-panel system with separate Angular applications for students, tutors, institutes, and a super-admin, backed by a Node.js/Express REST API. Integrations include Razorpay, Stripe, PayPal, Zoom (live classes), Vimeo (recorded content), AWS S3, CloudFront, Chargebee, and Sendinblue. The codebase has been updated (June 2026) with a Jest test suite (76 passing tests), express-validator on all POST endpoints, centralized error handling, PDO in the payment handler, GitHub Actions CI, and Angular ESLint.
+
 > **Note:** This is a 2018–2020 early-version portfolio codebase. The PHP payment pages use legacy `mysql_*` functions and would be migrated to PDO before any production use. Credentials shown in environment files are placeholders — rotate all keys before deployment.
 
 Database schema and API collection for a multi-tenant EdTech SaaS platform built in 2019-2021. This was an early-stage product supporting online tutoring, student management, live classes, and content delivery.
